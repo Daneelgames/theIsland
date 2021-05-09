@@ -63,6 +63,32 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseTextureGenerator.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandWalker.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
+     <Compile Include="Assets\Scripts\First_Person_Controller\FirstPersonController.cs" />
+     <Compile Include="Assets\Scripts\Camera_Controller\CameraZoom.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\Pickable.cs" />
+     <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\Hoverable.cs" />
+     <Compile Include="Assets\Scripts\Camera_Controller\CameraBreathing.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\InteractionUIPanel.cs" />
+     <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\HeadBobData.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\MovementInputData.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\InteractionUI.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\InteractionInputData.cs" />
+     <Compile Include="Assets\Scripts\First_Person_Controller\HeadBob.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
+     <Compile Include="Assets\Scripts\Perlin_Noise_Scroller\PerlinNoiseScroller.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\InteractionData.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\PerlinNoiseData.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\IPickable.cs" />
+     <Compile Include="Assets\Scripts\Interactables\DestroyInteractable.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\CameraInputData.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\PickableData.cs" />
+     <Compile Include="Assets\Scripts\Camera_Controller\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\IHoverable.cs" />
+     <Compile Include="Assets\Scripts\Scriptable_Objects\PickableInputData.cs" />
+     <Compile Include="Assets\Scripts\Interaction_System\InteractionController.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -284,6 +310,9 @@
  </Reference>
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>C:/theIsland/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -713,6 +742,10 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="GPUInstancer.csproj">
       <Project>{01c1fec9-6828-fd71-f100-ddb6d21db6b7}</Project>
       <Name>GPUInstancer</Name>
