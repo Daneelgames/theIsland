@@ -17,8 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: d21bc7db9f5449948a19209d0d60974d
   m_SerializeEntries:
-  - m_GUID: 18825b835d178cf4b9e787507e7e439b
-    m_Address: '@TilesIsland/DefaultTile.prefab'
+  - m_GUID: 8aa1e1583f2a8dc448c4790dd8ece1b6
+    m_Address: '@TilesIsland/DefaultTile 1.prefab'
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f6b0f3e14d1dbea46a5f7d47f0478362
+    m_Address: '@TilesIsland/DefaultTile 2.prefab'
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

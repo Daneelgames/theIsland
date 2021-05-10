@@ -73,7 +73,7 @@ namespace VHS
                         }
                     }
                 }
-                else
+                else if (uiPanel && interactionData)
                 {
                     uiPanel.ResetUI();
                     interactionData.ResetData();

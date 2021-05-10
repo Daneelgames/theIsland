@@ -28,9 +28,10 @@ public class DynamicLevelGenerator : MonoBehaviour
     private float[,] noiseMap;
 
     private GameObject tilesParent;
-    
+
     [Header("GPU Instancing")]
-    public GPUInstancerPrefab tileGpuPrefab;
+    //public GPUInstancerPrefab tileGpuPrefab;
+    public List<AssetReference> tileTestReferences;
     public GPUInstancerPrefabManager prefabManager;
     
     [Serializable]
@@ -103,8 +104,8 @@ public class DynamicLevelGenerator : MonoBehaviour
                         
                         var pathAsset = ig.GetRoadTile(x, z);
 
-                        AssetReference reference;
-                        reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
+                        AssetReference reference = tileTestReferences[Random.Range(0,tileTestReferences.Count)];
+                        //reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
                         
                         if (reference == null)
                             continue;
@@ -169,6 +170,7 @@ public class DynamicLevelGenerator : MonoBehaviour
         }
     }
 
+    /*
     void SpawnGpuPrefab(Vector3 newPos)
     {
         GPUInstancerPrefab go = Instantiate(tileGpuPrefab, newPos, Quaternion.identity);
@@ -188,7 +190,7 @@ public class DynamicLevelGenerator : MonoBehaviour
         go.transform.parent = tilesParent.transform;
         
         GPUInstancerAPI.AddPrefabInstance(prefabManager, go);
-    }
+    }*/
 
 
     bool CoordinatesInBounds(int x, int z)
