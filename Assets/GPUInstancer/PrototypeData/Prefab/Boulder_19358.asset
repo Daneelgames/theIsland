@@ -36,12 +36,12 @@ MonoBehaviour:
   useOriginalShaderForShadow: 1
   cullShadows: 0
   minDistance: 0
-  maxDistance: 1000
+  maxDistance: 2000
   isFrustumCulling: 1
   isOcclusionCulling: 1
   frustumOffset: 0.2
-  minCullingDistance: 100
-  occlusionOffset: 0
+  minCullingDistance: 0
+  occlusionOffset: 0.01
   occlusionAccuracy: 1
   boundsOffset: {x: 0, y: 0, z: 0}
   isLODCrossFade: 0
