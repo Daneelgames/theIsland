@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 4229176167912549864}
   - component: {fileID: 7605880730344902929}
   - component: {fileID: -1492496896656498157}
-  - component: {fileID: 8063483227763029576}
-  - component: {fileID: 5661306715930159224}
   m_Layer: 6
   m_Name: dumpster_01
   m_TagString: Untagged
@@ -98,29 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5095224459528008946, guid: 4e5dff914484bae4984c63bcf95f0213, type: 3}
---- !u!114 &8063483227763029576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8192419592092542413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 439fb5254899f9245bb14b82935b7759, type: 2}
---- !u!114 &5661306715930159224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8192419592092542413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gpuiPrefab: {fileID: 0}

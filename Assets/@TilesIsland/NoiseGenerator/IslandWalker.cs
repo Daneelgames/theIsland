@@ -17,7 +17,7 @@ public class IslandWalker : MonoBehaviour
         dlg = DynamicLevelGenerator.instance;
         irg = IslandRoadsGenerator.instance;
 
-        target = dlg.playerTarget;
+        target = dlg.playerTarget.transform;
         
         StartCoroutine(RequestPath());
     }

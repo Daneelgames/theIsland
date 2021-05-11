@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 9018232733655381175}
   - component: {fileID: 3322455345919412302}
   - component: {fileID: 4670756382191454663}
-  - component: {fileID: 3112592578573302777}
-  - component: {fileID: 217813082535216378}
   m_Layer: 6
   m_Name: road_barrier_02
   m_TagString: Untagged
@@ -98,29 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6745626220895156678, guid: ce619eab370501d42bb1be996d2df20d, type: 3}
---- !u!114 &3112592578573302777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3902208015944514706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: afcb5124d93ccf345ad8946d237736cb, type: 2}
---- !u!114 &217813082535216378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3902208015944514706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gpuiPrefab: {fileID: 0}

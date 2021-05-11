@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7687021478605246328}
   - component: {fileID: 4148167263366394753}
   - component: {fileID: 815510870375549053}
-  - component: {fileID: 8588024473573922942}
-  - component: {fileID: 7049799147914415829}
   m_Layer: 6
   m_Name: bench_01
   m_TagString: Untagged
@@ -98,29 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3812651674237452722, guid: b5740b52a1ede7641b46e537f82fd226, type: 3}
---- !u!114 &8588024473573922942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426760878608713565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 46dfab61c98fa4c49b2cb1bda51f0ca7, type: 2}
---- !u!114 &7049799147914415829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426760878608713565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gpuiPrefab: {fileID: 0}

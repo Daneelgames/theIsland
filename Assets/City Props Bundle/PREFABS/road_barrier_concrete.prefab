@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6289844527820313530}
   - component: {fileID: 321599654961737539}
   - component: {fileID: -2431600203982023643}
-  - component: {fileID: 1355319875386279228}
-  - component: {fileID: 7598330197300069360}
   m_Layer: 6
   m_Name: road_barrier_concrete
   m_TagString: Untagged
@@ -98,29 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4520744315006033297, guid: 949a502e89741bf4bbc2a9e9522ba6f9, type: 3}
---- !u!114 &1355319875386279228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038541983402941343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 29816bda5a35d484795d622357c522c5, type: 2}
---- !u!114 &7598330197300069360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038541983402941343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gpuiPrefab: {fileID: 0}

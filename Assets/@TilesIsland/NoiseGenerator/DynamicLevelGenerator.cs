@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GPUInstancer;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
@@ -12,7 +13,7 @@ public class DynamicLevelGenerator : MonoBehaviour
     public static DynamicLevelGenerator instance;
 
     public float tileSize = 20;
-    public Transform playerTarget;
+    public CharacterController playerTarget;
     public float heightScale = 1000;
     public int viewDistance = 8;
     public int distanceToDestroyTile = 8;
@@ -30,7 +31,7 @@ public class DynamicLevelGenerator : MonoBehaviour
     private GameObject tilesParent;
 
     [Header("GPU Instancing")]
-    //public GPUInstancerPrefab tileGpuPrefab;
+    public List<GPUInstancerPrefab> tileGpuPrefabs;
     public GPUInstancerPrefabManager prefabManager;
     
     [Serializable]
@@ -57,6 +58,10 @@ public class DynamicLevelGenerator : MonoBehaviour
         
         tilesParent = new GameObject();
         tilesParent.name = "TilesParent";
+
+        var spawnCoords = IslandGenerator.instance.playerSpawnPoint.coordinates;
+        playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 200;
+        playerTarget.enabled = true;
         
         StartCoroutine(UpdateLevelAroundPlayer());
         StartCoroutine(DestroyTiles());
@@ -103,7 +108,8 @@ public class DynamicLevelGenerator : MonoBehaviour
                         
                         var pathAsset = ig.GetRoadTile(x, z);
 
-                        var reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
+                        var reference = tileGpuPrefabs[regionIndex];
+                        //var reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
                         
                         if (reference == null)
                             continue;
@@ -141,17 +147,9 @@ public class DynamicLevelGenerator : MonoBehaviour
                                 newY = 2000;
                                 break;
                         }
-                        AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), 0, -1, -1, false, -1, false );
-                        
-                        //AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * heightScale, z * tileSize), 0, -1, -1, false, -1, false );
                         //AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), 0, -1, -1, false, -1, false );
-                        /*
-                        if (pathAsset != null)
-                        {
-                            //print("Spawn Prop; Coords are " + x +" and " + z);
-                            //AssetSpawner.instance.Spawn(pathAsset, new Vector3(x * tileSize, noiseMap[x,z] * heightScale, z * tileSize), Quaternion.identity, AssetSpawner.ObjectType.Path);   
-                            AssetSpawner.instance.Spawn(pathAsset, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), Quaternion.identity, AssetSpawner.ObjectType.Path);   
-                        }*/
+
+                        SpawnTileGpu(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize));
 
                         t++;
                         if (t >= 500)
@@ -165,6 +163,13 @@ public class DynamicLevelGenerator : MonoBehaviour
             
             yield return null;
         }
+    }
+
+    void SpawnTileGpu(GPUInstancerPrefab prefab, Vector3 pos)
+    {
+        var newInstance = Instantiate(prefab, pos, quaternion.identity);
+        prefabManager.AddPrefabInstance(newInstance, true);
+        StartCoroutine(ProceedTile(newInstance.gameObject));
     }
 
     bool CoordinatesInBounds(int x, int z)

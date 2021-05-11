@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 1804975336921661813}
   - component: {fileID: 5345780360674639244}
   - component: {fileID: -8041881870812008481}
-  - component: {fileID: 6993735961433576438}
-  - component: {fileID: 8373412666964605306}
   m_Layer: 6
   m_Name: barrel_01
   m_TagString: Untagged
@@ -98,29 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3752346648592571390, guid: 1d75dffe699a1bc45b1fb35120705080, type: 3}
---- !u!114 &6993735961433576438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912330099253266768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 3c028c879b5634c4997f4d82ee46eee0, type: 2}
---- !u!114 &8373412666964605306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912330099253266768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gpuiPrefab: {fileID: 0}

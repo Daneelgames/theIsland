@@ -410,6 +410,7 @@
             <e p="CameraSwaying.cs" t="Include" />
             <e p="CameraZoom.cs" t="Include" />
           </e>
+          <e p="CharacterHealth.cs" t="Include" />
           <e p="First_Person_Controller" t="Include">
             <e p="FirstPersonController.cs" t="Include" />
             <e p="HeadBob.cs" t="Include" />

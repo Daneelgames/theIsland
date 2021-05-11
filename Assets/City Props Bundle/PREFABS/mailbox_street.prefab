@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6302707985736285527}
   - component: {fileID: 309410192806625710}
   - component: {fileID: 8712736991372064288}
-  - component: {fileID: 6328156419346814729}
-  - component: {fileID: 7275678999435253854}
   m_Layer: 6
   m_Name: mailbox_street
   m_TagString: Untagged
@@ -98,29 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6356123709261613532, guid: d3d437eaf8e548f46b90a48b04c8c9f5, type: 3}
---- !u!114 &6328156419346814729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051364216636306802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 0bd817cb9bd102048aa035f0ccb85093, type: 2}
---- !u!114 &7275678999435253854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051364216636306802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gpuiPrefab: {fileID: 0}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25e83c12ea754689a476d23cac7e5ad7, type: 3}
-  m_Name: bin_02_32626
+  m_Name: DefaultTileSand_21804
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 2010102323321453278, guid: 80a0304f8a4d6b744b51aea2f654ac21, type: 3}
+  prefabObject: {fileID: 5481642413771031046, guid: 682ba90476563734881769b2845d45e3, type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -39,9 +39,9 @@ MonoBehaviour:
   maxDistance: 1000
   isFrustumCulling: 1
   isOcclusionCulling: 1
-  frustumOffset: 0
-  minCullingDistance: 0
-  occlusionOffset: 0
+  frustumOffset: 0.2
+  minCullingDistance: 100
+  occlusionOffset: 0.1
   occlusionAccuracy: 1
   boundsOffset: {x: 0, y: 0, z: 0}
   isLODCrossFade: 0
@@ -69,14 +69,14 @@ MonoBehaviour:
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
   useGeneratedBillboard: 0
-  checkedForBillboardExtensions: 0
+  checkedForBillboardExtensions: 1
   autoUpdateTransformData: 1
   treeType: 0
   warningText: 
   enableRuntimeModifications: 1
   startWithRigidBody: 0
   addRemoveInstancesAtRuntime: 1
-  extraBufferSize: 16384
+  extraBufferSize: 0
   addRuntimeHandlerScript: 1
   hasRigidBody: 0
   rigidbodyData:
