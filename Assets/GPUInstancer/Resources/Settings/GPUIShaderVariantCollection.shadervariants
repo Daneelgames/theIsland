@@ -27,6 +27,25 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
+  - first: {fileID: -6465566751694194690, guid: 78f1b5ae9238ef140869bdba4aef19db, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: _ALPHATEST_ON _EMISSION _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
+          _UNIFORMWIND_ON _UVSEC_UV1
+        passType: 0
+      - keywords: _ALPHATEST_ON _LIGHTMAPPING_REALTIME _NORMALMAP _SPECGLOSSMAP _UNIFORMWIND_ON
+          _UVSEC_UV1
+        passType: 0
+      - keywords: _ALPHATEST_ON _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
+          _NORMALMAP _SPECGLOSSMAP _UNIFORMWIND_ON _UVSEC_UV1
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: 08c40a79c7e26b644bc2be84c3a0e2d1, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
   - first: {fileID: 4800000, guid: 8edb37386b1a663449e8edcacbf9f788, type: 3}
     second:
       variants:
@@ -39,23 +58,4 @@ ShaderVariantCollection:
       - keywords: _ALPHATEST_ON _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
         passType: 0
       - keywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP _SPECULAR_SETUP
-        passType: 0
-  - first: {fileID: -6465566751694194690, guid: 78f1b5ae9238ef140869bdba4aef19db, type: 3}
-    second:
-      variants:
-      - keywords: 
-        passType: 0
-      - keywords: _ALPHATEST_ON _LIGHTMAPPING_REALTIME _NORMALMAP _SPECGLOSSMAP _UNIFORMWIND_ON
-          _UVSEC_UV1
-        passType: 0
-      - keywords: _ALPHATEST_ON _EMISSION _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
-          _UNIFORMWIND_ON _UVSEC_UV1
-        passType: 0
-      - keywords: _ALPHATEST_ON _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
-          _NORMALMAP _SPECGLOSSMAP _UNIFORMWIND_ON _UVSEC_UV1
-        passType: 0
-  - first: {fileID: -6465566751694194690, guid: 08c40a79c7e26b644bc2be84c3a0e2d1, type: 3}
-    second:
-      variants:
-      - keywords: 
         passType: 0

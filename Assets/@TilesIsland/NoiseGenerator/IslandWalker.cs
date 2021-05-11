@@ -7,6 +7,7 @@ public class IslandWalker : MonoBehaviour
 {
     public Transform target;
     public float updatePathTime = 1;
+    public float stepTime = 10;
     private DynamicLevelGenerator dlg;
     private IslandRoadsGenerator irg;
     private List<Vector2Int> path = new List<Vector2Int>();
@@ -94,7 +95,7 @@ public class IslandWalker : MonoBehaviour
             stepStartPosition = transform.position;
             stepEndPosition = dlg.spawnedTiles[path[targetPathIndex].x, path[targetPathIndex].y].spawnedTile.transform.position;
             t = 0;
-            tt = Mathf.Clamp(Mathf.Abs(stepStartPosition.y - stepEndPosition.y) / 100, 1f, 5f);
+            tt = stepTime;
             
             while (t < tt)
             {

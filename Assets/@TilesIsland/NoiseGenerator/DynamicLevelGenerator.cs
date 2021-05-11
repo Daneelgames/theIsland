@@ -286,6 +286,12 @@ public class DynamicLevelGenerator : MonoBehaviour
 
         go.transform.parent = tilesParent.transform;
         yield return null;
+        
+        if (walkerInstance == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
+        {
+            walkerInstance = Instantiate(islandWalkerPrefab, go.transform.position, Quaternion.identity);
+        }
+        
         yield break;
         
         if (spawnedTiles[_x, _z].spawnedBuilding == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
@@ -295,10 +301,6 @@ public class DynamicLevelGenerator : MonoBehaviour
             spawnedTiles[_x, _z].spawnedBuilding = poi;
         }
         
-        if (walkerInstance == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
-        {
-            walkerInstance = Instantiate(islandWalkerPrefab, go.transform.position, Quaternion.identity);
-        }
     } 
     
     public void ProceedPath(GameObject go)
