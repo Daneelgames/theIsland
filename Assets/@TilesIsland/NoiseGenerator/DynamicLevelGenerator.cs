@@ -31,7 +31,6 @@ public class DynamicLevelGenerator : MonoBehaviour
 
     [Header("GPU Instancing")]
     //public GPUInstancerPrefab tileGpuPrefab;
-    public List<AssetReference> tileTestReferences;
     public GPUInstancerPrefabManager prefabManager;
     
     [Serializable]
@@ -98,14 +97,13 @@ public class DynamicLevelGenerator : MonoBehaviour
                     if (CoordinatesInBounds(x,z) && !TileOnCoordinates(x, z, false))
                     {   
                         int regionIndex = IslandGenerator.instance.GetRegionIndexByHeight(noiseMap[x, z]);
-                        /*if (regionIndex < 2)
+                        if (regionIndex < 2 || IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count == 0)
                             continue;
-                            */
+                            
                         
                         var pathAsset = ig.GetRoadTile(x, z);
 
-                        AssetReference reference = tileTestReferences[Random.Range(0,tileTestReferences.Count)];
-                        //reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
+                        var reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
                         
                         if (reference == null)
                             continue;
@@ -143,7 +141,6 @@ public class DynamicLevelGenerator : MonoBehaviour
                                 newY = 2000;
                                 break;
                         }
-                        //SpawnGpuPrefab(new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize));
                         AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), 0, -1, -1, false, -1, false );
                         
                         //AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * heightScale, z * tileSize), 0, -1, -1, false, -1, false );
@@ -169,29 +166,6 @@ public class DynamicLevelGenerator : MonoBehaviour
             yield return null;
         }
     }
-
-    /*
-    void SpawnGpuPrefab(Vector3 newPos)
-    {
-        GPUInstancerPrefab go = Instantiate(tileGpuPrefab, newPos, Quaternion.identity);
-        go.transform.Rotate(Vector3.up, Random.Range(0, 360f));
-        
-        int _x = Mathf.RoundToInt(go.transform.position.x / tileSize);
-        int _z = Mathf.RoundToInt(go.transform.position.z / tileSize);
-        
-        if (spawnedTiles[_x, _z] == null)
-        {
-            spawnedTiles[_x, _z] = new TileCoordinate();
-            spawnedTiles[_x, _z].x = _x;
-            spawnedTiles[_x, _z].z = _z;
-        }
-        spawnedTiles[_x, _z].spawnedGpuTile = go;
-
-        go.transform.parent = tilesParent.transform;
-        
-        GPUInstancerAPI.AddPrefabInstance(prefabManager, go);
-    }*/
-
 
     bool CoordinatesInBounds(int x, int z)
     {

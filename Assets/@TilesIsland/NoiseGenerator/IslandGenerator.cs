@@ -55,12 +55,11 @@ public class IslandGenerator : MonoBehaviour
 
     public bool generationComplete = false;
     
-    NoiseMapDisplay mapDisplay;
+    public NoiseMapDisplay mapDisplay;
     private IslandRoadsGenerator irg;
 
     void Awake()
     {
-        mapDisplay = gameObject.GetComponent<NoiseMapDisplay>();
         irg = gameObject.GetComponent<IslandRoadsGenerator>();
         instance = this;
         GenerateNewMap();
@@ -81,10 +80,11 @@ public class IslandGenerator : MonoBehaviour
     public void RandomSeed()
     {
         Random.InitState((int) DateTime.Now.Ticks);
-        /*
-        mapWidth = Random.Range(100, 2000);
-        mapHeight = Random.Range(100, 2000);*/
-        noiseScale = Random.Range(100, 200);
+        
+        mapWidth = cellSize * Random.Range(5, 20);
+        mapHeight = cellSize * Random.Range(5, 20);
+        
+        noiseScale = Random.Range(20, 200);
         smooth = Random.Range(0.7f, 1f);
         seed = Random.Range(0, 1000000);
         offset = new Vector2(Random.Range(0, 100000), Random.Range(0, 100000));
@@ -245,7 +245,7 @@ public class IslandGenerator : MonoBehaviour
             cellsWithPixels.Remove(cell);
             //Debug.Log("Try Spawn Poi on cell index " + cell.index);
             // REMOVE EMPTY
-            if (cell.deepPixelsCoordinates.Count > 9900)
+            if (cell.deepPixelsCoordinates.Count > cellSize * cellSize * 0.9f)
             {
                 //cellsWithPixels.Remove(cell);
                 continue;
@@ -293,7 +293,7 @@ public class IslandGenerator : MonoBehaviour
             }
             
             // SNOW SECRET
-            if (cell.snowPixelsCoordinates.Count > 0 && cell.snowPixelsCoordinates.Count < 1000)
+            if (cell.snowPixelsCoordinates.Count > 0 && cell.snowPixelsCoordinates.Count < cellSize * cellSize * 0.5f)
             {
                 int r = Random.Range(0, cell.snowPixelsCoordinates.Count);
                 SaveNewPoi(cell.snowPixelsCoordinates[r], 7, colourMap);
@@ -301,7 +301,7 @@ public class IslandGenerator : MonoBehaviour
             }
             
             // DEEP SECRET
-            if (cell.deepPixelsCoordinates.Count > 0 && cell.deepPixelsCoordinates.Count < 1000)
+            if (cell.deepPixelsCoordinates.Count > 0 && cell.deepPixelsCoordinates.Count < cellSize * cellSize * 0.5f)
             {
                 int r = Random.Range(0, cell.deepPixelsCoordinates.Count);
                 SaveNewPoi(cell.deepPixelsCoordinates[r], 0, colourMap);
@@ -309,14 +309,14 @@ public class IslandGenerator : MonoBehaviour
             }
             
             // SAND SECRET
-            if (cell.sandPixelsCoordinates.Count > 5000)
+            if (cell.sandPixelsCoordinates.Count > cellSize * cellSize * 0.3f)
             {
                 int r = Random.Range(0, cell.sandPixelsCoordinates.Count);
                 SaveNewPoi(cell.sandPixelsCoordinates[r], 2, colourMap);
                 cell.sandPixelsCoordinates.RemoveAt(r);
             }
             // CLIFFS SECRET
-            if (cell.cliffsPixelsCoordinates.Count > 5000)
+            if (cell.cliffsPixelsCoordinates.Count > cellSize * cellSize * 0.3f)
             {
                 int r = Random.Range(0, cell.cliffsPixelsCoordinates.Count);
                 SaveNewPoi(cell.cliffsPixelsCoordinates[r], 6, colourMap);
@@ -324,7 +324,7 @@ public class IslandGenerator : MonoBehaviour
             }
             
             // ROCKS SECRET
-            if (cell.rocksPixelsCoordinates.Count > 5000)
+            if (cell.rocksPixelsCoordinates.Count > cellSize * cellSize * 0.3f)
             {
                 int r = Random.Range(0, cell.rocksPixelsCoordinates.Count);
                 SaveNewPoi(cell.rocksPixelsCoordinates[r], 5, colourMap);
@@ -332,7 +332,7 @@ public class IslandGenerator : MonoBehaviour
             }
             
             // JUNGLE SECRET
-            if (cell.junglePixelsCoordinates.Count > 5000)
+            if (cell.junglePixelsCoordinates.Count > cellSize * cellSize * 0.3f)
             {
                 int r = Random.Range(0, cell.junglePixelsCoordinates.Count);
                 SaveNewPoi(cell.junglePixelsCoordinates[r], 4, colourMap);
@@ -340,14 +340,14 @@ public class IslandGenerator : MonoBehaviour
             }
             
             // GRASS SECRET
-            if (cell.grassPixelsCoordinates.Count > 5000)
+            if (cell.grassPixelsCoordinates.Count > cellSize * cellSize * 0.3f)
             {
                 int r = Random.Range(0, cell.grassPixelsCoordinates.Count);
                 SaveNewPoi(cell.grassPixelsCoordinates[r], 3, colourMap);
                 cell.grassPixelsCoordinates.RemoveAt(r);
             }
             // WATER SECRET
-            if (cell.waterPixelsCoordinates.Count > 0 && cell.waterPixelsCoordinates.Count < 1000)
+            if (cell.waterPixelsCoordinates.Count > 0 && cell.waterPixelsCoordinates.Count < cellSize * cellSize * 0.5f)
             {
                 int r = Random.Range(0, cell.waterPixelsCoordinates.Count);
                 SaveNewPoi(cell.waterPixelsCoordinates[r], 1, colourMap);
@@ -437,11 +437,12 @@ public class IslandGenerator : MonoBehaviour
         #endregion
 
         #region scale POI and find the highest one
-            float _maxHeight = 0;
-            var highestPoi = pointsOfInterest[0];
-            poisCoordinates.Add(pointsOfInterest[0].coordinates[0]);
-            // scale them up 
-            for (int i = pointsOfInterest.Count - 1; i >= 0; i--)
+        
+        float _maxHeight = 0;
+        var highestPoi = pointsOfInterest[0];
+        poisCoordinates.Add(pointsOfInterest[0].coordinates[0]);
+        // scale them up 
+        for (int i = pointsOfInterest.Count - 1; i >= 0; i--)
         {
             var poi = pointsOfInterest[i];
             if (i > 0)
@@ -472,7 +473,8 @@ public class IslandGenerator : MonoBehaviour
                         }
                     }
 
-                    NoiseMap[x, y] = NoiseMap[poi.coordinates[0].x, poi.coordinates[0].y];
+                    //NoiseMap[x, y] = NoiseMap[poi.coordinates[0].x, poi.coordinates[0].y];
+                    
                     if (i == 0)
                         colourMap[y * mapWidth + x] = new Color(0f, 0.75f, 0.24f);
                     else
@@ -559,14 +561,13 @@ public class IslandGenerator : MonoBehaviour
         
         for (int x = 0; x < mapWidth; x ++) {
             for (int y = 0; y < mapHeight; y ++) {
-                Color newColor;
+                Color newColor = Color.clear;
                 if (ObstaclesMap[x, y] == 1)
                 {
                     obstaclesCoordinates.Add(new Vector2Int(x,y));
-                    newColor = Color.black;
+                    if (visualizeObstacles)
+                        newColor = Color.black;
                 }
-                else
-                    newColor = Color.clear;
 
                 colorMap[y * mapWidth + x] = newColor;
             }

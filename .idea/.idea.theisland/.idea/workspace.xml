@@ -1,89 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac98078b-5fe2-4c3b-832b-9080b46add55" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Boulder.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Boulder.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/Boulder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/Boulder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_white_01_scaled.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_white_01_scaled.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/PrototypeData/Terrain/TreeInstancingDemoTerrain_15736.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/PrototypeData/Terrain/TreeInstancingDemoTerrain_15736.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTile_32718.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTile_32718.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUIShaderVariantCollection.shadervariants" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUIShaderVariantCollection.shadervariants" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interaction_System/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interaction_System/InteractionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GPUInstancer.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GPUInstancer.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GPUInstancer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GPUInstancer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/09/090496aae697f61da3af2629c85716c5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0c/0c79911ac8b71327c86a6e59efc7b7a1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0e/0e6253f215459d86c9bd411687b29dcb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/11/118c70503f93d6d4699320664f533baa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/22/229a4990d29a3e952f995b62d44fdd2f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/31/3112be6398c9d667d44f055591dd0ea0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/33/333d7fd85598720fe47b7dddf2962242" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/45/45db7d555aa58d469d9483df6d845992" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4d/4df60e883c9d08cc1c604afeacbb6dfb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/5d/5df185e07dd3035d3c8091937d36b284" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/68/68f0dca4ab634f6d977933a0513266fd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/69/6983f399f6ae8be338056c733cda54cf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6a/6a4aa4f8e7988a6e1a70f96da07ea1bb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/74/7475b693f222b7622d8eb8fdc150e843" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/77/77e67b392514e14301bb134ce4ec8bf5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/7d/7d5afa65b72a07482792648af2f9b295" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/85/8591b945f8f29af34718a9d81d495b71" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9c/9cba91441830c1fa20517f0f920b7cb4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9d/9dff0e27c48899b838f9c59dc66ed18d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9e/9e91e41da77d5fc2d9802c4da4bdc259" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a0/a09aebf8c0001f87b41b350e81d62a3e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a5/a5261f94ea6b431edd4d1d74d9331c5b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a8/a87addaf800bb40794113173b60f8374" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b1/b1e7bab7fcafc24b104a9e9af34ee801" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b8/b84bc3c5099aac9795678ae409ec1be9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c8/c8b48cb03a2870b516f95257809ae252" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/cb/cb468f2b9e60130dbc4e41c6c1b6a2de" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d6/d67755b7cf2ab4edc9017015006b6625" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/df/df48a78b9f7941135dc5176ca5345309" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e2/e22e9d4548684149665685279ba83829" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f3/f307e42f9df724cac7b31868c11a98d6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f7/f753e4866ac0af861d62da620230bd40" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/EditorSnapSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorSnapSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ShaderCache.db" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/MainStageHierarchy/01/01d2e48535ff23411c8675b3d503f78b.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/MainStageHierarchy/01/01d2e48535ff23411c8675b3d503f78b.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/PrefabStageHierarchy/b9/b951af5f07f4b01881f0b80f3d458e35.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/PrefabStageHierarchy/b9/b951af5f07f4b01881f0b80f3d458e35.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/b8/b8eef227a87120a906fef3e8c5eda4f8.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/b8/b8eef227a87120a906fef3e8c5eda4f8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/UIElements/EditorWindows/UnityEditor.PackageManager.UI.PackageManagerWindow.pref" beforeDir="false" afterPath="$PROJECT_DIR$/Library/UIElements/EditorWindows/UnityEditor.PackageManager.UI.PackageManagerWindow.pref" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/com.unity.addressables/AddressablesBuildTEP.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/com.unity.addressables/AddressablesBuildTEP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe3.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe3.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe4.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe5.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe5.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe6.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe6.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe7.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe7.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/theisland.sln" beforeDir="false" afterPath="$PROJECT_DIR$/theisland.sln" afterDir="false" />
-    </list>
+    <list default="true" id="ac98078b-5fe2-4c3b-832b-9080b46add55" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,65 +11,63 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabRuntimeHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/StateCache/MainStageHierarchy/01/01d2e48535ff23411c8675b3d503f78b.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandWalker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerGUIInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Daneelgames/First-Person-Controller-VeryHotShark-master/FirstPersonController/Assets/Scripts/Camera_Controller/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/SnapToObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AssetSpawner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Scripts/AstroidGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction_System/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/Core/Contract/GPUInstancerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/API/GPUInstancerAPI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandRoadsGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/Scripts/AddRemoveInstances.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerGUIInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction_System/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Scripts/AstroidGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/Core/Contract/GPUInstancerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandRoadsGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AssetSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandWalker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/Scripts/AddRemoveInstances.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/API/GPUInstancerAPI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabRuntimeHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandWalker.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AssetSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/ParkourController/Scripts/DetectObs.cs" />
-        <option value="$PROJECT_DIR$/Assets/ParkourController/Scripts/RigidbodyFirstPersonController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interaction_System/InteractionController.cs" />
-        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/SnapToObject.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1sIZUm7N0S6ePtKXKGYICl3QeSd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -171,12 +87,16 @@
       <workItem from="1620571343727" duration="2440000" />
       <workItem from="1620586727689" duration="212000" />
       <workItem from="1620665976754" duration="1567000" />
+      <workItem from="1620722704823" duration="4310000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
 </project>
