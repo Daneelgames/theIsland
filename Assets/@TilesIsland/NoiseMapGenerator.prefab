@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &111246923
 Transform:
   m_ObjectHideFlags: 0
@@ -127,13 +127,13 @@ GameObject:
   - component: {fileID: 1811309838}
   - component: {fileID: 1811309837}
   - component: {fileID: 1811309836}
-  m_Layer: 19
+  m_Layer: 0
   m_Name: Map Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1811309838
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811309835}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 2610570011917151666}
   - component: {fileID: 9139437350408785638}
   - component: {fileID: 2205408001137817336}
-  m_Layer: 19
+  m_Layer: 0
   m_Name: Map Roads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 7535578561586355682}
   - component: {fileID: 8300745436548744304}
   - component: {fileID: 4219231609224915509}
-  m_Layer: 19
+  m_Layer: 0
   m_Name: Map Poi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 1327546899}
   - component: {fileID: 5217022388109155350}
   - component: {fileID: 7247506727602441677}
-  m_Layer: 19
+  m_Layer: 0
   m_Name: NoiseMapGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ MonoBehaviour:
   drawMode: 1
   mapWidth: 500
   mapHeight: 300
-  cellSize: 50
+  cellSize: 10
   smooth: 0.81360495
   noiseScale: 118
   octaves: 15
@@ -445,10 +445,7 @@ MonoBehaviour:
     height: 0.2
     movementPenalty: 10
     colour: {r: 0, g: 0.38431376, b: 0.6392157, a: 0}
-    tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
-      m_SubObjectName: 
-      m_SubObjectType: 
+    tileAssetReferenceList: []
     roadAssetReferenceList: []
   - name: Water
     pointsOfInterestAmountMin: 3
@@ -456,10 +453,7 @@ MonoBehaviour:
     height: 0.25
     movementPenalty: 5
     colour: {r: 0, g: 0.54901963, b: 0.8196079, a: 0}
-    tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
-      m_SubObjectName: 
-      m_SubObjectType: 
+    tileAssetReferenceList: []
     roadAssetReferenceList: []
   - name: Sand
     pointsOfInterestAmountMin: 6
@@ -468,7 +462,7 @@ MonoBehaviour:
     movementPenalty: 0
     colour: {r: 0.7960785, g: 0.7607844, b: 0.5058824, a: 0}
     tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
+    - m_AssetGUID: 682ba90476563734881769b2845d45e3
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
@@ -479,7 +473,7 @@ MonoBehaviour:
     movementPenalty: 0
     colour: {r: 0.36862746, g: 0.68235296, b: 0.3372549, a: 0}
     tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
+    - m_AssetGUID: b3d8b3f20e610e54f9060f3bf388abe4
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
@@ -490,7 +484,7 @@ MonoBehaviour:
     movementPenalty: 2
     colour: {r: 0.19215688, g: 0.3921569, b: 0.18823531, a: 0}
     tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
+    - m_AssetGUID: b3d8b3f20e610e54f9060f3bf388abe4
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
@@ -501,7 +495,7 @@ MonoBehaviour:
     movementPenalty: 4
     colour: {r: 0.26666668, g: 0.2392157, b: 0.14117648, a: 0}
     tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
+    - m_AssetGUID: 8aa1e1583f2a8dc448c4790dd8ece1b6
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
@@ -512,7 +506,7 @@ MonoBehaviour:
     movementPenalty: 6
     colour: {r: 0.1792453, g: 0.14983785, b: 0.044811323, a: 0}
     tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
+    - m_AssetGUID: f6b0f3e14d1dbea46a5f7d47f0478362
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
@@ -523,13 +517,13 @@ MonoBehaviour:
     movementPenalty: 10
     colour: {r: 1, g: 1, b: 1, a: 0}
     tileAssetReferenceList:
-    - m_AssetGUID: 18825b835d178cf4b9e787507e7e439b
+    - m_AssetGUID: 8aa1e1583f2a8dc448c4790dd8ece1b6
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
-  PoiScaler: 2
+  PoiScaler: 1
   addScaledPoiPointsToLists: 0
-  visualizeObstacles: 1
+  visualizeObstacles: 0
   randomFillPercent: 47
   obstaclesSmoothIterations: 1
   playerSpawnPoint:
@@ -548,6 +542,7 @@ MonoBehaviour:
   pathsCoordinates: []
   poisCoordinates: []
   generationComplete: 0
+  mapDisplay: {fileID: 7529001614820252043}
 --- !u!114 &1327546899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +583,6 @@ MonoBehaviour:
   bridgePlatformThreshold: 40
   islandWalkerPrefab: {fileID: 466647521593282713, guid: 9fb4b3b824a891e47b76efe61ba585f7, type: 3}
   poiChurchPrefab: {fileID: 9118859631126355626, guid: 439a66cb8cb1aea478e77363f239d936, type: 3}
-  tileGpuPrefab: {fileID: 5376527581144335781, guid: 18825b835d178cf4b9e787507e7e439b, type: 3}
   prefabManager: {fileID: 0}
 --- !u!114 &7247506727602441677
 MonoBehaviour:
@@ -613,7 +607,7 @@ GameObject:
   - component: {fileID: 7529001615931018277}
   - component: {fileID: 7529001615931018276}
   - component: {fileID: 7529001615931018279}
-  m_Layer: 19
+  m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}

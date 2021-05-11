@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -209,6 +209,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: afcb5124d93ccf345ad8946d237736cb, type: 2}
   - {fileID: 11400000, guid: 29816bda5a35d484795d622357c522c5, type: 2}
   - {fileID: 11400000, guid: 6261a5cd37184ce4ebf105d81848db30, type: 2}
+  - {fileID: 11400000, guid: 20b7dee6e7d3dfa4eb4e271986dd3dbb, type: 2}
+  - {fileID: 11400000, guid: db2fa197d7c129c408233444b8d35471, type: 2}
   autoSelectCamera: 0
   cameraData:
     mainCamera: {fileID: 854643519}
@@ -245,6 +247,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: afcb5124d93ccf345ad8946d237736cb, type: 2}
   - {fileID: 11400000, guid: 29816bda5a35d484795d622357c522c5, type: 2}
   - {fileID: 11400000, guid: 6261a5cd37184ce4ebf105d81848db30, type: 2}
+  - {fileID: 11400000, guid: 20b7dee6e7d3dfa4eb4e271986dd3dbb, type: 2}
+  - {fileID: 11400000, guid: db2fa197d7c129c408233444b8d35471, type: 2}
   isPrototypeTextMode: 0
   showSceneSettingsBox: 1
   showPrototypeBox: 1
@@ -313,6 +317,10 @@ MonoBehaviour:
     registeredPrefabs: []
   - prefabPrototype: {fileID: 11400000, guid: 6261a5cd37184ce4ebf105d81848db30, type: 2}
     registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 20b7dee6e7d3dfa4eb4e271986dd3dbb, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: db2fa197d7c129c408233444b8d35471, type: 2}
+    registeredPrefabs: []
   prefabList:
   - {fileID: 1967248734657734, guid: 5affb069d11bd234aacfe93c7e759ec2, type: 3}
   - {fileID: 1302435274418502, guid: 2df9799025c966e438b6d532c843e7c1, type: 3}
@@ -340,6 +348,8 @@ MonoBehaviour:
   - {fileID: 3902208015944514706, guid: a6e39f2b729089a47a6f068658bc4332, type: 3}
   - {fileID: 2038541983402941343, guid: 24244c48d0af7f34c92922d8932aa732, type: 3}
   - {fileID: 1934166775217431540, guid: 1576ca83414a02a4db4e6f04a34dcd93, type: 3}
+  - {fileID: 1967248734657734, guid: 4148df64c437e3a4299b17c93b3534c6, type: 3}
+  - {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
   enableMROnManagerDisable: 1
   enableMROnRemoveInstance: 1
 --- !u!4 &568955832
@@ -509,10 +519,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 111246919, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
       propertyPath: playerTarget
       value: 
@@ -521,26 +527,6 @@ PrefabInstance:
       propertyPath: prefabManager
       value: 
       objectReference: {fileID: 568955831}
-    - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: tileGpuPrefab
-      value: 
-      objectReference: {fileID: 5903690447044026157, guid: 8aa1e1583f2a8dc448c4790dd8ece1b6, type: 3}
-    - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: tileTestReference.m_AssetGUID
-      value: 8aa1e1583f2a8dc448c4790dd8ece1b6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: tileTestReferences.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: tileTestReferences.Array.data[0].m_AssetGUID
-      value: 8aa1e1583f2a8dc448c4790dd8ece1b6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: tileTestReferences.Array.data[1].m_AssetGUID
-      value: f6b0f3e14d1dbea46a5f7d47f0478362
-      objectReference: {fileID: 0}
     - target: {fileID: 7529001614820252041, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
       propertyPath: m_RootOrder
       value: 0

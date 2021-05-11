@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25e83c12ea754689a476d23cac7e5ad7, type: 3}
-  m_Name: dumpster_02_32560
+  m_Name: BoulderSand_28416
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 9002975250769281862, guid: 53e475089ce39514190b56a493feb7fc, type: 3}
+  prefabObject: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
