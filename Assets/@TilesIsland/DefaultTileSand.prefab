@@ -770,6 +770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoulderSand
       objectReference: {fileID: 0}
+    - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4201127909262196, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_RootOrder
       value: 72
@@ -3496,6 +3500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoulderSand (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4201127909262196, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_RootOrder
       value: 74
@@ -4272,6 +4280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoulderSand (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4201127909262196, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_RootOrder
       value: 73
@@ -4501,6 +4513,10 @@ PrefabInstance:
     - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_Name
       value: BoulderSand (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4201127909262196, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_RootOrder
@@ -5589,6 +5605,10 @@ PrefabInstance:
     - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_Name
       value: BoulderSand (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967248734657734, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4201127909262196, guid: ca174145b06902d4ab603b8c963a1fc6, type: 3}
       propertyPath: m_RootOrder

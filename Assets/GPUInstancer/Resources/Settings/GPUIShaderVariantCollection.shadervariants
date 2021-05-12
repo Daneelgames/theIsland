@@ -53,6 +53,8 @@ ShaderVariantCollection:
         passType: 0
       - keywords: _NORMALMAP
         passType: 0
+      - keywords: _DETAIL_MULX2 _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+        passType: 0
       - keywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
         passType: 0
       - keywords: _ALPHATEST_ON _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
