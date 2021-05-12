@@ -61,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _AmbientOcclusion: 0.5
+    - _AmbientOcclusion: 1
     - _BILLBOARDFACECAMPOS: 0
     - _BillboardFaceCamPos: 0
     - _CutOff: 0.3
@@ -84,7 +84,7 @@ Material:
     m_Colors:
     - _DryColor: {r: 0.21127541, g: 0.3602941, b: 0.12186419, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HealthyColor: {r: 0.9632353, g: 0.9075514, b: 0.15581745, a: 1}
+    - _HealthyColor: {r: 0.4056604, g: 0.3852034, b: 0.12437701, a: 1}
     - _WindDirectionVector: {r: 1.6, g: 3.2, b: 0, a: 0}
     - _WindVector: {r: 0.4, g: 0.8, b: 0, a: 0}
     - _WindWaveTintColor: {r: 1, g: 1, b: 1, a: 0}

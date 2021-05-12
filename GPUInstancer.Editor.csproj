@@ -65,8 +65,8 @@
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerManagerEditor.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerEditorConstants.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPreviewDrawer.cs" />
-     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPrefabEditor.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\Tools\GPUInstancerPrefabReplacerWindow.cs" />
+     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPrefabEditor.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerTerrainProxyEditor.cs" />
      <None Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancer.Editor.asmdef" />
  <Reference Include="UnityEngine">

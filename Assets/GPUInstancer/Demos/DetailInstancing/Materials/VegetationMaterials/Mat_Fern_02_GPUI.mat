@@ -84,7 +84,7 @@ Material:
     m_Colors:
     - _DryColor: {r: 0.42046928, g: 0.5661765, b: 0.33304498, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HealthyColor: {r: 0.8455882, g: 0.6431959, b: 0.111916095, a: 1}
+    - _HealthyColor: {r: 0.3989074, g: 0.4716981, b: 0.13127448, a: 1}
     - _WindDirectionVector: {r: 1.6, g: 3.2, b: 0, a: 0}
     - _WindVector: {r: 0.4, g: 0.8, b: 0, a: 0}
     - _WindWaveTintColor: {r: 1, g: 1, b: 1, a: 0}

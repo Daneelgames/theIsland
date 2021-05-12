@@ -790,6 +790,10 @@
       <Project>{01c1fec9-6828-fd71-f100-ddb6d21db6b7}</Project>
       <Name>GPUInstancer</Name>
     </ProjectReference>
+    <ProjectReference Include="sc.posteffects.editor.csproj">
+      <Project>{4d454618-0422-9639-e38b-e3f3d7af93da}</Project>
+      <Name>sc.posteffects.editor</Name>
+    </ProjectReference>
     <ProjectReference Include="GPUInstancer.Editor.csproj">
       <Project>{c8a9dd7c-a5a4-ccaa-3f2a-d2af6bc135f5}</Project>
       <Name>GPUInstancer.Editor</Name>
@@ -797,10 +801,6 @@
     <ProjectReference Include="sc.posteffects.runtime.csproj">
       <Project>{bb30d283-fe45-e07f-1274-7e86f9085c81}</Project>
       <Name>sc.posteffects.runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="sc.posteffects.editor.csproj">
-      <Project>{4d454618-0422-9639-e38b-e3f3d7af93da}</Project>
-      <Name>sc.posteffects.editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

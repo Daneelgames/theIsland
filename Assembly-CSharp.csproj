@@ -52,25 +52,31 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\VectorClampingUtility.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PerlinNoiseData.cs" />
      <Compile Include="Assets\Scripts\Interactables\DestroyInteractable.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\CombineUtility.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\TemplateMigrationUtility.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionUI.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\PathRequestManager.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Pickable.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionController.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\FavouriteTemplatesUtility.cs" />
      <Compile Include="Assets\Scripts\NotifyOnDestroy.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PickableData.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IHoverable.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\CameraInputData.cs" />
      <Compile Include="Assets\Scripts\AssetSpawner.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandGenerator.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\SaveCombinedMesh.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Noise.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\MovementInputData.cs" />
      <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Hoverable.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrush.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IPickable.cs" />
@@ -79,6 +85,8 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\DynamicLevelGenerator.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraZoom.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionUIPanel.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Enums\BrushMode.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\MeshTransformationUtility.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PickableInputData.cs" />
      <Compile Include="Assets\Scripts\CharacterHealth.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\HeadBobData.cs" />
@@ -86,21 +94,13 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseTextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\InteractionInputData.cs" />
      <Compile Include="Assets\Scripts\First_Person_Controller\FirstPersonController.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Data\EditorIcons.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandWalker.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraBreathing.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionData.cs" />
-     <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\CombineUtility.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrush.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\VectorClampingUtility.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\MeshTransformationUtility.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Data\EditorIcons.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\TemplateMigrationUtility.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\SaveCombinedMesh.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Enums\BrushMode.cs" />
+     <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\FavouriteTemplatesUtility.cs" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\SC Post Effects\Shaders\DepthNormals.shader" />
      <None Include="Assets\MeshBrush\Templates\Examples\Scale Curve Example 1.xml" />
@@ -777,6 +777,10 @@
       <Project>{01c1fec9-6828-fd71-f100-ddb6d21db6b7}</Project>
       <Name>GPUInstancer</Name>
     </ProjectReference>
+    <ProjectReference Include="sc.posteffects.editor.csproj">
+      <Project>{4d454618-0422-9639-e38b-e3f3d7af93da}</Project>
+      <Name>sc.posteffects.editor</Name>
+    </ProjectReference>
     <ProjectReference Include="GPUInstancer.Editor.csproj">
       <Project>{c8a9dd7c-a5a4-ccaa-3f2a-d2af6bc135f5}</Project>
       <Name>GPUInstancer.Editor</Name>
@@ -784,10 +788,6 @@
     <ProjectReference Include="sc.posteffects.runtime.csproj">
       <Project>{bb30d283-fe45-e07f-1274-7e86f9085c81}</Project>
       <Name>sc.posteffects.runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="sc.posteffects.editor.csproj">
-      <Project>{4d454618-0422-9639-e38b-e3f3d7af93da}</Project>
-      <Name>sc.posteffects.editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
