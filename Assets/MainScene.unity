@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1299ef7939bad7949a5f76a4537dd4f0, type: 2}
   - {fileID: 11400000, guid: 75cd6a41384983342b712495100c6bde, type: 2}
   - {fileID: 11400000, guid: 52679fc7b0112974497fda77e53c316d, type: 2}
+  - {fileID: 11400000, guid: 2246e417125813247b2531afca834a48, type: 2}
   autoSelectCamera: 0
   cameraData:
     mainCamera: {fileID: 854643519}
@@ -201,6 +202,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1299ef7939bad7949a5f76a4537dd4f0, type: 2}
   - {fileID: 11400000, guid: 75cd6a41384983342b712495100c6bde, type: 2}
   - {fileID: 11400000, guid: 52679fc7b0112974497fda77e53c316d, type: 2}
+  - {fileID: 11400000, guid: 2246e417125813247b2531afca834a48, type: 2}
   isPrototypeTextMode: 0
   showSceneSettingsBox: 1
   showPrototypeBox: 1
@@ -225,11 +227,14 @@ MonoBehaviour:
     registeredPrefabs: []
   - prefabPrototype: {fileID: 11400000, guid: 52679fc7b0112974497fda77e53c316d, type: 2}
     registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 2246e417125813247b2531afca834a48, type: 2}
+    registeredPrefabs: []
   prefabList:
   - {fileID: 5481642413771031046, guid: 8aa1e1583f2a8dc448c4790dd8ece1b6, type: 3}
   - {fileID: 5481642413771031046, guid: b3d8b3f20e610e54f9060f3bf388abe4, type: 3}
   - {fileID: 5481642413771031046, guid: f6b0f3e14d1dbea46a5f7d47f0478362, type: 3}
   - {fileID: 5481642413771031046, guid: 682ba90476563734881769b2845d45e3, type: 3}
+  - {fileID: 5481642413771031046, guid: 8bbc1a89b48310e47a483735916517b4, type: 3}
   enableMROnManagerDisable: 1
   enableMROnRemoveInstance: 1
 --- !u!4 &568955832

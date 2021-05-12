@@ -714,6 +714,16 @@ public class IslandGenerator : MonoBehaviour
         
         return null;
     }
+    public bool IsPath(int x, int y)
+    {
+        var coord = new Vector2Int(x, y);
+        if (pathsCoordinates.Contains(coord))
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }
 
 [Serializable]

@@ -115,6 +115,7 @@
      <None Include="Assets\GPUInstancer\Shaders\StandardSpecular_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedCameraCalculationKernelVR.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Standard_GPUI.shader" />
+     <None Include="Assets\GPUInstancer\PrototypeData\Shaders\SimpleLit_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Resources\Compute\Include\Collider.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Include\GPUIBillboardInclude.cginc" />
      <None Include="Assets\GPUInstancer\Shaders\Billboard\Billboard2DRendererStandard_GPUI.shader" />

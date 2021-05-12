@@ -101,13 +101,15 @@ public class DynamicLevelGenerator : MonoBehaviour
                 {
                     if (CoordinatesInBounds(x,z) && !TileOnCoordinates(x, z, false))
                     {   
-                        int regionIndex = IslandGenerator.instance.GetRegionIndexByHeight(noiseMap[x, z]);
+                        bool isPath = ig.IsPath(x, z);
+                        float newHeight = noiseMap[x, z];
+
+                        if (isPath) newHeight -= Random.Range(0.1f, 0.5f);
+                            
+                        int regionIndex = IslandGenerator.instance.GetRegionIndexByHeight(newHeight);
                         if (regionIndex < 2 || IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count == 0)
                             continue;
                             
-                        
-                        var pathAsset = ig.GetRoadTile(x, z);
-
                         var reference = tileGpuPrefabs[regionIndex];
                         //var reference = IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList[Random.Range(0, IslandGenerator.instance.regions[regionIndex].tileAssetReferenceList.Count)] ;
                         
@@ -147,6 +149,9 @@ public class DynamicLevelGenerator : MonoBehaviour
                                 newY = 2000;
                                 break;
                         }
+
+                        if (isPath) newY /= 10;
+                        
                         //AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), 0, -1, -1, false, -1, false );
 
                         SpawnTileGpu(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize));

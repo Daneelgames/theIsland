@@ -23,3 +23,8 @@ MonoBehaviour:
     modifiedDate: 05/09/2021 15:58:03.984
     isOriginalInstanced: 1
     extensionCode: 
+  - name: Universal Render Pipeline/Simple Lit
+    instancedShader: {fileID: 4800000, guid: e0d69a0cae717da4693f30615037e2ee, type: 3}
+    modifiedDate: 05/12/2021 21:12:11.315
+    isOriginalInstanced: 0
+    extensionCode: 
