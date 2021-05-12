@@ -39,9 +39,9 @@ MonoBehaviour:
   maxDistance: 1000
   isFrustumCulling: 1
   isOcclusionCulling: 1
-  frustumOffset: 0.2
+  frustumOffset: 0.01
   minCullingDistance: 100
-  occlusionOffset: 0.1
+  occlusionOffset: 0.01
   occlusionAccuracy: 1
   boundsOffset: {x: 0, y: 0, z: 0}
   isLODCrossFade: 0
