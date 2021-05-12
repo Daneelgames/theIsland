@@ -609,14 +609,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 187516081314661600, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3351290641428796138, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
       propertyPath: playerTarget
       value: 
@@ -672,10 +664,6 @@ PrefabInstance:
     - target: {fileID: 7529001614820252042, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
       propertyPath: m_Name
       value: NoiseMapGenerator
-      objectReference: {fileID: 0}
-    - target: {fileID: 7529001615931018278, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
