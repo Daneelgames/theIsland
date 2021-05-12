@@ -60,7 +60,7 @@ public class DynamicLevelGenerator : MonoBehaviour
         tilesParent.name = "TilesParent";
 
         var spawnCoords = IslandGenerator.instance.playerSpawnPoint.coordinates;
-        playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 200;
+        playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 400;
         playerTarget.enabled = true;
         
         StartCoroutine(UpdateLevelAroundPlayer());
@@ -156,12 +156,14 @@ public class DynamicLevelGenerator : MonoBehaviour
 
                         SpawnTileGpu(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize));
 
+                        yield return null;
+                        /*
                         t++;
                         if (t >= 500)
                         {
                             t = 0;
                             yield return null;
-                        }
+                        }*/
                     }
                 }
             }
@@ -232,7 +234,7 @@ public class DynamicLevelGenerator : MonoBehaviour
                         spawnedTiles[x, z] = null;
                     }
                     t++;
-                    if (t > 1000)
+                    if (t > 100)
                     {
                         t = 0;
                         yield return null;

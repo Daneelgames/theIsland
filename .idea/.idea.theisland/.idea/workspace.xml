@@ -2,307 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac98078b-5fe2-4c3b-832b-9080b46add55" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileEmpty.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileEmpty.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileGrass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileGrass.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileJungle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileJungle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileRandomProps.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileRandomProps.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileSand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/DefaultTileSand.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/Boulder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/Boulder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/Fern_01_LOD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/Fern_01_LOD.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/Fern_02_LOD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/Fern_02_LOD.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/veg_plant_01_scaled.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/TileParts/veg_plant_01_scaled.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/Materials/Mat_Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/Materials/Mat_Green.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/PrototypeData/Prefab/ARISphere_Prototype_-155622.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/PrototypeData/Prefab/ARISphere_Prototype_-155622.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ColorVariations/ColorVariationsDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ColorVariations/ColorVariationsDemo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ColorVariations/Materails/Mat_ColorVariation.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ColorVariations/Materails/Mat_ColorVariation.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ColorVariations/Shaders/ColorVariationShader_GPUI_SG.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ColorVariations/Shaders/ColorVariationShader_GPUI_SG.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/CustomComputeShader/BoidsSpace.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/CustomComputeShader/BoidsSpace.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/CustomComputeShader/Materials/Mat_Artifact.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/CustomComputeShader/Materials/Mat_Artifact.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/DetailInstancingDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/DetailInstancingDemo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Boulder.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Boulder.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Boulder.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Boulder.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_BoulderGrass.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_BoulderGrass.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_BoulderSand.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_BoulderSand.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_01.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_01.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_02.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Building_02.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Fence.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Fence.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Fence.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Fence.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Mountain.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Mountain.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Mountain.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/Mat_Mountain.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Fern_01_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Fern_01_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Fern_02_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Fern_02_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Foliage_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Foliage_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_LowPlants_Dark_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_LowPlants_Dark_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_LowPlants_Light_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_LowPlants_Light_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_LowPlants_Mid_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_LowPlants_Mid_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Small_Tree_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Small_Tree_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Small_Tree_Red_GPUI.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Materials/VegetationMaterials/Mat_Small_Tree_Red_GPUI.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_01.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_01.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_01_LOD.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_01_LOD.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_02.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_02.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_02_LOD.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Fern_02_LOD.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/L_plant_01_scaled.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/L_plant_01_scaled.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/L_plant_02_scaled.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/L_plant_02_scaled.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/L_plant_03_scaled.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/L_plant_03_scaled.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/LowPlant_01_Xform_scaled.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/LowPlant_01_Xform_scaled.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/M_plant_04_scaled.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/M_plant_04_scaled.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/RoseyFlower.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/RoseyFlower.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/S_plant_02_scaled.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/S_plant_02_scaled.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Small_Tree_01.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Small_Tree_01.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Small_Tree_02.FBX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/Small_Tree_02.FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_purple_01_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_purple_01_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_purple_02_noflower_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_purple_02_noflower_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_purple_02_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_purple_02_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_white_01_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_white_01_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_white_02_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_clovers_white_02_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_dandelion_01_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_dandelion_01_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_plant_01_scaled.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Meshes/VegetatioMeshes/veg_plant_01_scaled.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Fern_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Fern_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Fern_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Fern_02.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/L_plant_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/L_plant_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/L_plant_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/L_plant_02.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/L_plant_03.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/L_plant_03.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/LowPlant_01_Xform.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/LowPlant_01_Xform.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/M_plant_04.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/M_plant_04.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/RoseyFlower.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/RoseyFlower.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/S_plant_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/S_plant_02.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Small_Tree_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Small_Tree_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Small_Tree_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Small_Tree_02.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Small_Tree_02_Red.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/Small_Tree_02_Red.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_noflower_scaled.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_noflower_scaled.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_purple_01_scaled.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_purple_01_scaled.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_purple_02_scaled.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_purple_02_scaled.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_white_01_scaled.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_white_01_scaled.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_white_02_scaled.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_clovers_white_02_scaled.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_dandelion_01_scaled.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Prefabs/VegetationPrefabs/veg_dandelion_01_scaled.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/PrototypeData/Detail/TerrainSettings_DetailInstancingDemoTerrain_12040.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/PrototypeData/Detail/TerrainSettings_DetailInstancingDemoTerrain_12040.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_01.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_01.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_01.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_01.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_02.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_02.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_02.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_02.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_03.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_03.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_03.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_03.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_04.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_04.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_04.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_04.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_05.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_05.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_05.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Grass_05.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_01.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_01.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_01.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_01.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_02.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_02.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_02.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/TerrainLayers/Terrain_Mud_02.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Terrains/DetailInstancingDemoTerrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Terrains/DetailInstancingDemoTerrain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Boulder_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_m.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_m.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_o.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_o.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_sg.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_01_sg.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_o.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_o.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_sg.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Building_02_sg.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Mountain_Muddy_a.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Mountain_Muddy_a.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Mountain_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Mountain_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_01_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_01_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_01_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_01_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_02_a.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_02_a.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_02_n.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_02_n.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_03_a.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_03_a.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_03_n.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_03_n.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_04_a.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_04_a.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_05_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Grass_05_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_01_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_01_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_01_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_01_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_02_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_02_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_02_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Terrain_Mud_02_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Bushes_a.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Bushes_a.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Bushes_n.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Bushes_n.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Fern_a.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Fern_a.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Fern_n.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Fern_n.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Grass_004DiffuseMap.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Grass_004DiffuseMap.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Small_Tree_a.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Small_Tree_a.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Small_Tree_n.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/Small_Tree_n.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/StandardGrass_DiffuseMap.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/StandardGrass_DiffuseMap.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/veg_foliage.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/veg_foliage.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/veg_foliage_01_d.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/veg_foliage_01_d.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/veg_grass_01_d.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/VegetationTextures/veg_grass_01_d.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Wood_Tiled_a.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Wood_Tiled_a.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Wood_Tiled_n.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Wood_Tiled_n.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Wood_Tiled_o.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/DetailInstancing/Textures/Wood_Tiled_o.tif.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_AsteroidHazeInstanced.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_AsteroidHazeInstanced.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Asteroid_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Asteroid_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Asteroid_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Asteroid_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Asteroid_03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Asteroid_03.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_ImpactShield.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_ImpactShield.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Planet.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_Planet.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_PlanetaryRing.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_PlanetaryRing.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_SunSphere.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Materials/Mat_SunSphere.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrefabInstancingDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrefabInstancingDemo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrefabInstancingDemoMobile.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrefabInstancingDemoMobile.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/AsteroidHazeQuad_Prototype_9532.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/AsteroidHazeQuad_Prototype_9532.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/Asteroid_01_LOD_Prototype_14098.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/Asteroid_01_LOD_Prototype_14098.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/Asteroid_02_LOD_Prototype_-25760568.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/Asteroid_02_LOD_Prototype_-25760568.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/Asteroid_03_LOD_Prototype_15420.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/PrototypeData/Prefab/Asteroid_03_LOD_Prototype_15420.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Shaders/AsteroidHaze_GPUI_SG.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Shaders/AsteroidHaze_GPUI_SG.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabsWithoutGameObjects/PrefabsWithoutGameObjects.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabsWithoutGameObjects/PrefabsWithoutGameObjects.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Materials/GPUIUVVariationMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Materials/GPUIUVVariationMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Prefabs/TreePineLP_001.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Prefabs/TreePineLP_001.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/PrototypeData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/PrototypeData/Prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/PrototypeData/Prefab/TreePineLP_001_25734.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/PrototypeData/Prefab/TreePineLP_001_25734.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Scripts/ShaderGraphVariationsController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Scripts/ShaderGraphVariationsController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/ShaderGraphVariationsDemo.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/ShaderGraphVariationsDemo.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Shaders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Shaders/GPUIUVVariationGraph.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/ShaderGraphVariations/Shaders/GPUIUVVariationGraph.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/PrototypeData/Terrain/TreeInstancingDemoTerrain_15736.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/PrototypeData/Terrain/TreeInstancingDemoTerrain_15736.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TerrainLayers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TerrainLayers.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TerrainLayers/ColorGradients.terrainlayer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TerrainLayers/ColorGradients.terrainlayer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TerrainLayers/ColorGradients.terrainlayer.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TerrainLayers/ColorGradients.terrainlayer.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/Terrains/TreeInstancingDemoTerrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/Terrains/TreeInstancingDemoTerrain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/Terrains/TreeInstancingDemoTerrain.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/Terrains/TreeInstancingDemoTerrain.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TreeInstancingDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TreeInstancingDemo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TreeInstancingDemo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/TreeInstancing/TreeInstancingDemo.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/CalibrationFloor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/CalibrationFloor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/ColorGradients.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/ColorGradients.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/ColorGradients.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/ColorGradients.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_GrassMower.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_GrassMower.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_GrassMower.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_GrassMower.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_Green_Transparent.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_Green_Transparent.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_Spaceship.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Materials/Mat_Spaceship.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Shaders/ImpactShield_GPUI_SG.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Shaders/ImpactShield_GPUI_SG.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Textures/ColorGradients.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Demos/_SharedResources/Textures/ColorGradients.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileEmpty_19574.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileEmpty_19574.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileGrass_21800.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileGrass_21800.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileJungle_60698.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileJungle_60698.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileRandomProps_21802.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileRandomProps_21802.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileSand_21804.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileSand_21804.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUIShaderVariantCollection.shadervariants" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUIShaderVariantCollection.shadervariants" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUInstancerShaderBindings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUInstancerShaderBindings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Textures/Noise/Fractal_Simplex_grayscale.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Textures/Noise/Fractal_Simplex_grayscale.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Textures/Noise/Fractal_Simplex_normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Textures/Noise/Fractal_Simplex_normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/FoliageURP_GPUI_SG.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/FoliageURP_GPUI_SG.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPU Instancer Setup.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPU Instancer Setup.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Float4 Variation.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Float4 Variation.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - AO.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - AO.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - ColorTints.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - ColorTints.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - FinalFrag.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - FinalFrag.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - FinalVert.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - FinalVert.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - FinalWindSway.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - FinalWindSway.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - HealthyDryNoise.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - HealthyDryNoise.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - WindIdleSway.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - WindIdleSway.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - WindWaveSway.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - WindWaveSway.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - WindWavesNoise.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI Foliage - WindWavesNoise.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI SphericalBillboard.shadersubgraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUI SphericalBillboard.shadersubgraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUIFloat4VariationInclude.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUIFloat4VariationInclude.cginc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUIShaderGraphInclude.cginc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Shaders/Include/GPUIShaderGraphInclude.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GPUInstancer.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GPUInstancer.Editor.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GPUInstancer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GPUInstancer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/GPUInstancer.Editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/GPUInstancer.Editor.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/sc.posteffects.editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/sc.posteffects.editor.csprojAssemblyReference.cache" afterDir="false" />
@@ -328,6 +37,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabRuntimeHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandWalker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerGUIInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -350,8 +60,9 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandWalker.cs" />
         <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/GPUInstancer/Scripts/Core/Contract/GPUInstancerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" />
+        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
       </list>
     </option>
   </component>
@@ -418,6 +129,7 @@
       <workItem from="1620819308821" duration="1272000" />
       <workItem from="1620842512150" duration="475000" />
       <workItem from="1620845431854" duration="532000" />
+      <workItem from="1620848273413" duration="698000" />
     </task>
     <servers />
   </component>
@@ -428,5 +140,11 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1620848418130">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1620848418130" />
   </component>
 </project>

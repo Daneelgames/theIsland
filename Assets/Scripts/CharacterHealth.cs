@@ -49,12 +49,19 @@ public class CharacterHealth : MonoBehaviour
         float fallHeight = lastGroundPosition.y - currentGroundPosition.y;
 
         print("Fall Height is " + fallHeight);
-        for (int i = 1; i < 10; i++)
+        if (health == 30)
         {
-            if (fallHeight > fallDamageSafeHeightStep * i && fallHeight < fallDamageSafeHeightStep * (i+1))
+            TakeDamage(1);            
+        }
+        else
+        {
+            for (int i = 1; i < 10; i++)
             {
-                TakeDamage(fallDamageStep * i);
-                break;
+                if (fallHeight > fallDamageSafeHeightStep * i && fallHeight < fallDamageSafeHeightStep * (i+1))
+                {
+                    TakeDamage(fallDamageStep * i);
+                    break;
+                }
             }
         }
         fallCoroutine = null;
