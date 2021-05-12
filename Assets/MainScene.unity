@@ -123,6 +123,133 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &381510877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381510879}
+  - component: {fileID: 381510878}
+  m_Layer: 0
+  m_Name: AmbientAu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &381510878
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381510877}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 47637fa124a2c38439601209d49c0b84, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &381510879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381510877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.179047, y: 1.3021636, z: 13.987056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &501825157
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,11 +310,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prototypeList:
-  - {fileID: 11400000, guid: 06119df0a86824041a28259d8d3dacd5, type: 2}
-  - {fileID: 11400000, guid: 1299ef7939bad7949a5f76a4537dd4f0, type: 2}
-  - {fileID: 11400000, guid: 75cd6a41384983342b712495100c6bde, type: 2}
-  - {fileID: 11400000, guid: 52679fc7b0112974497fda77e53c316d, type: 2}
-  - {fileID: 11400000, guid: 2246e417125813247b2531afca834a48, type: 2}
+  - {fileID: 11400000, guid: a9ca0c5ddfe8d0b42b539c3933980180, type: 2}
+  - {fileID: 11400000, guid: 2edb67fb2d02b7541a84ed54a6df09f0, type: 2}
+  - {fileID: 11400000, guid: 461b15ff769fa004aa29f7f6e18d33cc, type: 2}
+  - {fileID: 11400000, guid: e6ca994c2a5174c4696fdaa6c6370a50, type: 2}
+  - {fileID: 11400000, guid: 01fde956a64910a4eaabb1523959d315, type: 2}
   autoSelectCamera: 0
   cameraData:
     mainCamera: {fileID: 854643519}
@@ -198,11 +325,11 @@ MonoBehaviour:
   isOcclusionCulling: 1
   minCullingDistance: 0
   selectedPrototypeList:
-  - {fileID: 11400000, guid: 06119df0a86824041a28259d8d3dacd5, type: 2}
-  - {fileID: 11400000, guid: 1299ef7939bad7949a5f76a4537dd4f0, type: 2}
-  - {fileID: 11400000, guid: 75cd6a41384983342b712495100c6bde, type: 2}
-  - {fileID: 11400000, guid: 52679fc7b0112974497fda77e53c316d, type: 2}
-  - {fileID: 11400000, guid: 2246e417125813247b2531afca834a48, type: 2}
+  - {fileID: 11400000, guid: a9ca0c5ddfe8d0b42b539c3933980180, type: 2}
+  - {fileID: 11400000, guid: 2edb67fb2d02b7541a84ed54a6df09f0, type: 2}
+  - {fileID: 11400000, guid: 461b15ff769fa004aa29f7f6e18d33cc, type: 2}
+  - {fileID: 11400000, guid: e6ca994c2a5174c4696fdaa6c6370a50, type: 2}
+  - {fileID: 11400000, guid: 01fde956a64910a4eaabb1523959d315, type: 2}
   isPrototypeTextMode: 0
   showSceneSettingsBox: 1
   showPrototypeBox: 1
@@ -219,22 +346,22 @@ MonoBehaviour:
     m_Bits: 4294967295
   lightProbeDisabled: 0
   registeredPrefabs:
-  - prefabPrototype: {fileID: 11400000, guid: 06119df0a86824041a28259d8d3dacd5, type: 2}
+  - prefabPrototype: {fileID: 11400000, guid: a9ca0c5ddfe8d0b42b539c3933980180, type: 2}
     registeredPrefabs: []
-  - prefabPrototype: {fileID: 11400000, guid: 1299ef7939bad7949a5f76a4537dd4f0, type: 2}
+  - prefabPrototype: {fileID: 11400000, guid: 2edb67fb2d02b7541a84ed54a6df09f0, type: 2}
     registeredPrefabs: []
-  - prefabPrototype: {fileID: 11400000, guid: 75cd6a41384983342b712495100c6bde, type: 2}
+  - prefabPrototype: {fileID: 11400000, guid: 461b15ff769fa004aa29f7f6e18d33cc, type: 2}
     registeredPrefabs: []
-  - prefabPrototype: {fileID: 11400000, guid: 52679fc7b0112974497fda77e53c316d, type: 2}
+  - prefabPrototype: {fileID: 11400000, guid: e6ca994c2a5174c4696fdaa6c6370a50, type: 2}
     registeredPrefabs: []
-  - prefabPrototype: {fileID: 11400000, guid: 2246e417125813247b2531afca834a48, type: 2}
+  - prefabPrototype: {fileID: 11400000, guid: 01fde956a64910a4eaabb1523959d315, type: 2}
     registeredPrefabs: []
   prefabList:
   - {fileID: 5481642413771031046, guid: 8aa1e1583f2a8dc448c4790dd8ece1b6, type: 3}
   - {fileID: 5481642413771031046, guid: b3d8b3f20e610e54f9060f3bf388abe4, type: 3}
+  - {fileID: 5481642413771031046, guid: 8bbc1a89b48310e47a483735916517b4, type: 3}
   - {fileID: 5481642413771031046, guid: f6b0f3e14d1dbea46a5f7d47f0478362, type: 3}
   - {fileID: 5481642413771031046, guid: 682ba90476563734881769b2845d45e3, type: 3}
-  - {fileID: 5481642413771031046, guid: 8bbc1a89b48310e47a483735916517b4, type: 3}
   enableMROnManagerDisable: 1
   enableMROnRemoveInstance: 1
 --- !u!4 &568955832

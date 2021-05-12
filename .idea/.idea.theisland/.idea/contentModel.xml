@@ -91,11 +91,6 @@
                 <e p="PrefabsWithoutGameObjects.cs" t="Include" />
               </e>
             </e>
-            <e p="ShaderGraphVariations" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="ShaderGraphVariationsController.cs" t="Include" />
-              </e>
-            </e>
             <e p="TreeInstancing" t="Include">
               <e p="Scripts" t="Include">
                 <e p="TreeDemoSceneController.cs" t="Include" />
@@ -106,6 +101,7 @@
           <e p="PrototypeData" t="Include">
             <e p="Shaders" t="Include">
               <e p="Lit_GPUI.shader" t="Include" />
+              <e p="SimpleLit_GPUI.shader" t="Include" />
             </e>
           </e>
           <e p="ReadMe.txt" t="Include" />
@@ -228,10 +224,8 @@
             <e p="HiZOcclusionGenerator_GPUI.shader" t="Include" />
             <e p="Include" t="Include">
               <e p="GPUIBillboardInclude.cginc" t="Include" />
-              <e p="GPUIFloat4VariationInclude.cginc" t="Include" />
               <e p="GPUInstancerInclude.cginc" t="Include" />
               <e p="GPUIPlatformDependent.cginc" t="Include" />
-              <e p="GPUIShaderGraphInclude.cginc" t="Include" />
               <e p="GPUIStandardInclude.cginc" t="Include" />
             </e>
             <e p="Internal-DepthNormalsTexture_GPUI.shader" t="Include" />
@@ -320,6 +314,7 @@
             <e p="Advanced Grass Light.shader" t="Include" />
             <e p="Advanced Grass Specular.shader" t="Include" />
             <e p="Advanced Grass Standard.shader" t="Include" />
+            <e p="Advanced Grass Standard_GPUI.shader" t="Include" />
             <e p="Cross_Model_Shader.shader" t="Include" />
             <e p="NM_indirect.cginc" t="Include" />
             <e p="NMWind.cginc" t="Include" />

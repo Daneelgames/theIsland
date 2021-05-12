@@ -15,16 +15,16 @@ MonoBehaviour:
   shaderInstances:
   - name: Universal Render Pipeline/Lit
     instancedShader: {fileID: 4800000, guid: 8edb37386b1a663449e8edcacbf9f788, type: 3}
-    modifiedDate: 05/09/2021 15:28:17.197
+    modifiedDate: 05/12/2021 21:50:15.298
     isOriginalInstanced: 0
-    extensionCode: 
-  - name: GPUInstancer/AsteroidHaze_GPUI_SG
-    instancedShader: {fileID: -6465566751694194690, guid: 08c40a79c7e26b644bc2be84c3a0e2d1, type: 3}
-    modifiedDate: 05/09/2021 15:58:03.984
-    isOriginalInstanced: 1
     extensionCode: 
   - name: Universal Render Pipeline/Simple Lit
     instancedShader: {fileID: 4800000, guid: e0d69a0cae717da4693f30615037e2ee, type: 3}
-    modifiedDate: 05/12/2021 21:12:11.315
+    modifiedDate: 05/12/2021 21:50:18.876
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: NatureManufacture Shaders/Grass/Advanced Grass Standard
+    instancedShader: {fileID: 4800000, guid: b17ec8f907cae0b49995cfce845bcd1d, type: 3}
+    modifiedDate: 05/12/2021 21:54:37.614
     isOriginalInstanced: 0
     extensionCode: 

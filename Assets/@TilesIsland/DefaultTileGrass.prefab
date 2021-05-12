@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5481642413771031048}
-  - component: {fileID: 3672645861515111828}
-  - component: {fileID: 6155879113280173438}
+  - component: {fileID: 1147784541135729437}
+  - component: {fileID: 2977719440965902521}
   m_Layer: 6
   m_Name: DefaultTileGrass
   m_TagString: Untagged
@@ -522,7 +522,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3672645861515111828
+--- !u!114 &1147784541135729437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -534,8 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 1299ef7939bad7949a5f76a4537dd4f0, type: 2}
---- !u!114 &6155879113280173438
+  prefabPrototype: {fileID: 11400000, guid: 2edb67fb2d02b7541a84ed54a6df09f0, type: 2}
+--- !u!114 &2977719440965902521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

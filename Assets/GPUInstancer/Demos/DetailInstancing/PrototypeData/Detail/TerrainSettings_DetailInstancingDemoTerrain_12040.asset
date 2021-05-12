@@ -16,8 +16,10 @@ MonoBehaviour:
   maxDetailDistance: 500
   maxTreeDistance: 500
   windVector: {x: 0.4, y: 0.8}
-  healthyDryNoiseTexture: {fileID: 2800000, guid: 5d221d423a7e56d4d8e9bff0c4a73886, type: 3}
-  windWaveNormalTexture: {fileID: 2800000, guid: 78384f2a63e207744a3b1821e032ee03, type: 3}
+  healthyDryNoiseTexture: {fileID: 2800000, guid: 5d221d423a7e56d4d8e9bff0c4a73886,
+    type: 3}
+  windWaveNormalTexture: {fileID: 2800000, guid: 78384f2a63e207744a3b1821e032ee03,
+    type: 3}
   autoSPCellSize: 1
   preferedSPCellSize: 125
   detailDensity: 1
@@ -135,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: L_plant_03
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1810418710323934, guid: f749571d132ad4041a5bf031bcf385e0, type: 3}
+  prefabObject: {fileID: 1810418710323934, guid: f749571d132ad4041a5bf031bcf385e0,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -236,7 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Boulder
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1967248734657734, guid: 5affb069d11bd234aacfe93c7e759ec2, type: 3}
+  prefabObject: {fileID: 1967248734657734, guid: 5affb069d11bd234aacfe93c7e759ec2,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -337,7 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: veg_dandelion_01_scaled
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1689580781567890, guid: 7462a3a4646d99945a5d55ad3863cc33, type: 3}
+  prefabObject: {fileID: 1689580781567890, guid: 7462a3a4646d99945a5d55ad3863cc33,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -438,7 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Boulder
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1967248734657734, guid: 5affb069d11bd234aacfe93c7e759ec2, type: 3}
+  prefabObject: {fileID: 1967248734657734, guid: 5affb069d11bd234aacfe93c7e759ec2,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -539,7 +545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: S_plant_02
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1421494265429266, guid: f79ec0bf44573944d8d0d026d4836d86, type: 3}
+  prefabObject: {fileID: 1421494265429266, guid: f79ec0bf44573944d8d0d026d4836d86,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -640,7 +647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Small_Tree_02_Red
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1224587869125810, guid: 3e81bb96a1a4a874888fac9fd20b27c0, type: 3}
+  prefabObject: {fileID: 1224587869125810, guid: 3e81bb96a1a4a874888fac9fd20b27c0,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -741,7 +749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Fern_02_LOD0
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1830195976470866, guid: e6d377e610e412c40b25c2827de4814f, type: 3}
+  prefabObject: {fileID: 1830195976470866, guid: e6d377e610e412c40b25c2827de4814f,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -842,7 +851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: RoseyFlower
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1862515693711944, guid: f38a0d94b31fc134fb5493c6e7bd084d, type: 3}
+  prefabObject: {fileID: 1862515693711944, guid: f38a0d94b31fc134fb5493c6e7bd084d,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -943,7 +953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Small_Tree_01
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1685883221143000, guid: c2ed12d603a281a4f88231718ed0e9d5, type: 3}
+  prefabObject: {fileID: 1685883221143000, guid: c2ed12d603a281a4f88231718ed0e9d5,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1246,7 +1257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: veg_clovers_noflower_scaled
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1816554410610498, guid: db8c1ffa8224c7c4bbfcbcf2ba6fd56b, type: 3}
+  prefabObject: {fileID: 1816554410610498, guid: db8c1ffa8224c7c4bbfcbcf2ba6fd56b,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1448,7 +1460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: M_plant_04
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1267501320320198, guid: 291f739f1108db84e8220de8b44c8a20, type: 3}
+  prefabObject: {fileID: 1267501320320198, guid: 291f739f1108db84e8220de8b44c8a20,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1549,7 +1562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Fern_01_LOD0
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1559653138796732, guid: 69b0a38b87fa5fe4fb28166b97efb4ab, type: 3}
+  prefabObject: {fileID: 1559653138796732, guid: 69b0a38b87fa5fe4fb28166b97efb4ab,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1650,7 +1664,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: Small_Tree_02
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1642757198140562, guid: 7be38d07b965f8c42b37f4c6fb1c82f6, type: 3}
+  prefabObject: {fileID: 1642757198140562, guid: 7be38d07b965f8c42b37f4c6fb1c82f6,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1707,7 +1722,7 @@ MonoBehaviour:
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
   useGeneratedBillboard: 0
-  checkedForBillboardExtensions: 1
+  checkedForBillboardExtensions: 0
   autoUpdateTransformData: 0
   treeType: 0
   warningText: 
@@ -1751,7 +1766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: veg_plant_01_scaled
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1939020684336960, guid: d8abb1c87ee9b224f972a785bf508e64, type: 3}
+  prefabObject: {fileID: 1939020684336960, guid: d8abb1c87ee9b224f972a785bf508e64,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1852,7 +1868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: LowPlant_01_Xform
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1439678220200840, guid: 98e1bf0dc08dcfd4f9869abfa2dd6da3, type: 3}
+  prefabObject: {fileID: 1439678220200840, guid: 98e1bf0dc08dcfd4f9869abfa2dd6da3,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -1953,7 +1970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: veg_clovers_white_02_scaled
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1737782443298038, guid: 22d8bea7a70e2f84bac6bff70e6f18c4, type: 3}
+  prefabObject: {fileID: 1737782443298038, guid: 22d8bea7a70e2f84bac6bff70e6f18c4,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -2054,7 +2072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: L_plant_01
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1095038537586382, guid: 500333f91687c3e4b945adbf65efaa9b, type: 3}
+  prefabObject: {fileID: 1095038537586382, guid: 500333f91687c3e4b945adbf65efaa9b,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -2155,7 +2174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: veg_clovers_purple_02_scaled
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1996284657069314, guid: df6e6986c0120664b934864b42faece8, type: 3}
+  prefabObject: {fileID: 1996284657069314, guid: df6e6986c0120664b934864b42faece8,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -2256,7 +2276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeaa1ff97134aec9c8aae1beccb5637, type: 3}
   m_Name: L_plant_02
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1058017437352794, guid: 3b964f61fa477f046b74aba79c24f1a4, type: 3}
+  prefabObject: {fileID: 1058017437352794, guid: 3b964f61fa477f046b74aba79c24f1a4,
+    type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0

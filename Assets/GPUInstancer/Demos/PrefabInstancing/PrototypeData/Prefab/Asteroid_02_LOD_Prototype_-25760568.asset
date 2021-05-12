@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e83c12ea754689a476d23cac7e5ad7, type: 3}
   m_Name: Asteroid_02_LOD_Prototype_-25760568
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 1534720786230584, guid: e10bc2139a4821249959ce801b142d13, type: 3}
+  prefabObject: {fileID: 1534720786230584, guid: e10bc2139a4821249959ce801b142d13,
+    type: 3}
   isShadowCasting: 0
   useCustomShadowDistance: 0
   shadowDistance: 0
   shadowLODMap: []
-  useOriginalShaderForShadow: 1
+  useOriginalShaderForShadow: 0
   cullShadows: 0
   minDistance: 0
   maxDistance: 500

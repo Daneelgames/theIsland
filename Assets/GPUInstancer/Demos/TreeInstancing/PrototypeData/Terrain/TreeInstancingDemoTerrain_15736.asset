@@ -16,8 +16,10 @@ MonoBehaviour:
   maxDetailDistance: 250
   maxTreeDistance: 2000
   windVector: {x: 0.4, y: 0.8}
-  healthyDryNoiseTexture: {fileID: 2800000, guid: 5d221d423a7e56d4d8e9bff0c4a73886, type: 3}
-  windWaveNormalTexture: {fileID: 2800000, guid: 78384f2a63e207744a3b1821e032ee03, type: 3}
+  healthyDryNoiseTexture: {fileID: 2800000, guid: 5d221d423a7e56d4d8e9bff0c4a73886,
+    type: 3}
+  windWaveNormalTexture: {fileID: 2800000, guid: 78384f2a63e207744a3b1821e032ee03,
+    type: 3}
   autoSPCellSize: 1
   preferedSPCellSize: 125
   detailDensity: 1
@@ -66,7 +68,7 @@ MonoBehaviour:
   occlusionOffset: 0
   occlusionAccuracy: 1
   boundsOffset: {x: 0, y: 0, z: 0}
-  isLODCrossFade: 0
+  isLODCrossFade: 1
   isLODCrossFadeAnimate: 1
   lodFadeTransitionWidth: 0.1
   lodBiasAdjustment: 1
@@ -78,11 +80,13 @@ MonoBehaviour:
     isOverridingOriginalCutoff: 0
     cutoffOverride: -1
     billboardBrightness: 0.5
-    billboardDistance: 0.8
-    quadSize: 0
-    yPivotOffset: 0
-    albedoAtlasTexture: {fileID: 0}
-    normalAtlasTexture: {fileID: 0}
+    billboardDistance: 0.85
+    quadSize: 21.647888
+    yPivotOffset: 0.26974487
+    albedoAtlasTexture: {fileID: 2800000, guid: 364606c9295a40f45b07670aa685a8aa,
+      type: 3}
+    normalAtlasTexture: {fileID: 2800000, guid: b181ff5bacec5cd4d893cfce37e00bb7,
+      type: 3}
     customBillboardInLODGroup: 0
     useCustomBillboard: 0
     customBillboardMesh: {fileID: 0}
@@ -90,7 +94,7 @@ MonoBehaviour:
     isBillboardShadowCasting: 0
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
-  useGeneratedBillboard: 0
+  useGeneratedBillboard: 1
   checkedForBillboardExtensions: 1
   autoUpdateTransformData: 0
   treeType: 2
@@ -143,7 +147,7 @@ MonoBehaviour:
   occlusionOffset: 0
   occlusionAccuracy: 1
   boundsOffset: {x: 0, y: 0, z: 0}
-  isLODCrossFade: 0
+  isLODCrossFade: 1
   isLODCrossFadeAnimate: 1
   lodFadeTransitionWidth: 0.1
   lodBiasAdjustment: 1
@@ -155,11 +159,13 @@ MonoBehaviour:
     isOverridingOriginalCutoff: 0
     cutoffOverride: -1
     billboardBrightness: 0.5
-    billboardDistance: 0.8
-    quadSize: 0
+    billboardDistance: 0.85
+    quadSize: 31.526123
     yPivotOffset: 0
-    albedoAtlasTexture: {fileID: 0}
-    normalAtlasTexture: {fileID: 0}
+    albedoAtlasTexture: {fileID: 2800000, guid: c291b768aad8394469b625ada06cb65b,
+      type: 3}
+    normalAtlasTexture: {fileID: 2800000, guid: 2d52863c38f2e874ab251fb6fa1007e9,
+      type: 3}
     customBillboardInLODGroup: 0
     useCustomBillboard: 0
     customBillboardMesh: {fileID: 0}
@@ -167,7 +173,7 @@ MonoBehaviour:
     isBillboardShadowCasting: 0
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
-  useGeneratedBillboard: 0
+  useGeneratedBillboard: 1
   checkedForBillboardExtensions: 1
   autoUpdateTransformData: 0
   treeType: 2
@@ -220,7 +226,7 @@ MonoBehaviour:
   occlusionOffset: 0
   occlusionAccuracy: 1
   boundsOffset: {x: 0, y: 0, z: 0}
-  isLODCrossFade: 0
+  isLODCrossFade: 1
   isLODCrossFadeAnimate: 1
   lodFadeTransitionWidth: 0.1
   lodBiasAdjustment: 1
@@ -232,11 +238,13 @@ MonoBehaviour:
     isOverridingOriginalCutoff: 0
     cutoffOverride: -1
     billboardBrightness: 0.5
-    billboardDistance: 0.8
-    quadSize: 0
+    billboardDistance: 0.85
+    quadSize: 27.49414
     yPivotOffset: 0
-    albedoAtlasTexture: {fileID: 0}
-    normalAtlasTexture: {fileID: 0}
+    albedoAtlasTexture: {fileID: 2800000, guid: 1a06cecb9d1cafc42a502ae7b5519ec7,
+      type: 3}
+    normalAtlasTexture: {fileID: 2800000, guid: 47156bb2f19517b49b7a7b850a5a1bca,
+      type: 3}
     customBillboardInLODGroup: 0
     useCustomBillboard: 0
     customBillboardMesh: {fileID: 0}
@@ -244,7 +252,7 @@ MonoBehaviour:
     isBillboardShadowCasting: 0
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
-  useGeneratedBillboard: 0
+  useGeneratedBillboard: 1
   checkedForBillboardExtensions: 1
   autoUpdateTransformData: 0
   treeType: 2
