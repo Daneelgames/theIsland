@@ -674,6 +674,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3843716870331872628, guid: b2a0df894ff4e104094394ec3de0a9b2, type: 3}
+      propertyPath: rayObstacleLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3843716870331872631, guid: b2a0df894ff4e104094394ec3de0a9b2, type: 3}
       propertyPath: m_Name
       value: P_First_Person_Controller

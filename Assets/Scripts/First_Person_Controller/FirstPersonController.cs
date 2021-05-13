@@ -293,8 +293,11 @@ namespace VHS
 
                     bool _hitWall = false;
 
+                    _hitWall = Physics.SphereCast(_origin,rayObstacleSphereRadius,transform.forward, out _wallInfo,rayObstacleLength, obstacleLayers);
+                    /*
                     if(movementInputData.HasInput && m_finalMoveDir.sqrMagnitude > 0)
                         _hitWall = Physics.SphereCast(_origin,rayObstacleSphereRadius,m_finalMoveDir, out _wallInfo,rayObstacleLength,obstacleLayers);
+                        */
                     Debug.DrawRay(_origin,m_finalMoveDir * rayObstacleLength,Color.blue);
 
                     m_hitWall = _hitWall ? true : false;

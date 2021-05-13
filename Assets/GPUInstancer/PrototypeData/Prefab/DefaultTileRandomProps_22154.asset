@@ -39,7 +39,7 @@ MonoBehaviour:
   maxDistance: 1000
   isFrustumCulling: 1
   isOcclusionCulling: 1
-  frustumOffset: 0.2
+  frustumOffset: 0.1
   minCullingDistance: 100
   occlusionOffset: 0.01
   occlusionAccuracy: 1

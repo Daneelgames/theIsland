@@ -500,7 +500,7 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 64
-  rayObstacleLength: 0.4
+  rayObstacleLength: 1
   rayObstacleSphereRadius: 0.2
   smoothRotateSpeed: 10
   smoothInputSpeed: 10

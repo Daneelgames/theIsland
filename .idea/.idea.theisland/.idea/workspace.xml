@@ -3,29 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ac98078b-5fe2-4c3b-832b-9080b46add55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseMapGenerator.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseMapGenerator.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileEmpty_22150.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileEmpty_22150.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileGrass_22152.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileGrass_22152.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileJungle_22158.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileJungle_22158.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileRandomProps_22154.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileRandomProps_22154.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileSand_22156.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/PrototypeData/Prefab/DefaultTileSand_22156.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUIShaderVariantCollection.shadervariants" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GPUInstancer/Resources/Settings/GPUIShaderVariantCollection.shadervariants" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SC Post Effects/SC Default Profile URP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SC Post Effects/SC Default Profile URP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GPUInstancer.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GPUInstancer.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GPUInstancer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GPUInstancer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/GPUInstancer.Editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/GPUInstancer.Editor.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/sc.posteffects.editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/sc.posteffects.editor.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/sc.posteffects.runtime.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/sc.posteffects.runtime.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sc.posteffects.editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/sc.posteffects.editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sc.posteffects.runtime.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/sc.posteffects.runtime.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/P_First_Person_Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/P_First_Person_Controller.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction_System/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/PrefabInstancing/Scripts/AstroidGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable_Objects/MovementInputData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/PathRequestManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/PrototypeData/Prefab/ARISphere_Prototype_-155622.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/Core/Contract/GPUInstancerManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,6 +57,7 @@
         <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" />
       </list>
     </option>
   </component>
@@ -138,7 +125,7 @@
       <workItem from="1620842512150" duration="475000" />
       <workItem from="1620845431854" duration="532000" />
       <workItem from="1620848273413" duration="698000" />
-      <workItem from="1620901715840" duration="4425000" />
+      <workItem from="1620901715840" duration="5429000" />
     </task>
     <servers />
   </component>
