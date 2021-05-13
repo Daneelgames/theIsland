@@ -23,6 +23,7 @@ public class DynamicLevelGenerator : MonoBehaviour
     public float bridgePlatformThreshold = 40;
 
     public TileCoordinate[,] spawnedTiles;
+    public List<Vector2Int> spawnedTilesPositions = new List<Vector2Int>();
     public GameObject islandWalkerPrefab;
     public GameObject poiChurchPrefab;
 
@@ -154,12 +155,12 @@ public class DynamicLevelGenerator : MonoBehaviour
                         
                         //AssetSpawner.instance.SpawnTile(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), 0, -1, -1, false, -1, false );
 
-                        SpawnTileGpu(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize));
+                        SpawnTileGpu(reference, new Vector3(x * tileSize, noiseMap[x,z] * newY, z * tileSize), new Vector2Int(x, z));
 
                         yield return null;
                         /*
                         t++;
-                        if (t >= 500)
+                        if (t >= 10)
                         {
                             t = 0;
                             yield return null;
@@ -167,15 +168,15 @@ public class DynamicLevelGenerator : MonoBehaviour
                     }
                 }
             }
-            
             yield return null;
         }
     }
 
-    void SpawnTileGpu(GPUInstancerPrefab prefab, Vector3 pos)
+    void SpawnTileGpu(GPUInstancerPrefab prefab, Vector3 pos, Vector2Int coords)
     {
         var newInstance = Instantiate(prefab, pos, quaternion.identity);
         prefabManager.AddPrefabInstance(newInstance, true);
+        spawnedTilesPositions.Add(coords);
         StartCoroutine(ProceedTile(newInstance.gameObject));
     }
 
@@ -199,12 +200,55 @@ public class DynamicLevelGenerator : MonoBehaviour
         int t = 0;
         while (true)
         {
-            if (spawnedTiles.Length <= 0)
+            if (spawnedTiles.Length <= 0 || spawnedTilesPositions.Count <= 0)
             {
                 yield return null;
                 continue;
             }
 
+            for (int i = spawnedTilesPositions.Count - 1; i >= 0; i--)
+            {
+                int x = spawnedTilesPositions[i].x;
+                int z = spawnedTilesPositions[i].y;
+                
+                
+                if (x < playerCoords.x - distanceToDestroyTile || x > playerCoords.x + distanceToDestroyTile ||
+                    z < playerCoords.y - distanceToDestroyTile || z > playerCoords.y + distanceToDestroyTile)
+                {
+                    if (spawnedTiles[x, z] != null)
+                    {
+                        if (spawnedTiles[x,z].spawnedTile)
+                            Destroy(spawnedTiles[x,z].spawnedTile);
+                    
+                        if (spawnedTiles[x,z].spawnedPath)
+                            Destroy(spawnedTiles[x,z].spawnedPath);
+                        
+                        if (spawnedTiles[x,z].spawnedBuilding)
+                            Destroy(spawnedTiles[x,z].spawnedBuilding);
+                        
+                        if (spawnedTiles[x,z].spawnedBridgePart)
+                            Destroy(spawnedTiles[x,z].spawnedBridgePart);
+
+                        if (spawnedTiles[x, z].spawnedGpuTile)
+                        {
+                            GPUInstancerAPI.RemovePrefabInstance(prefabManager, spawnedTiles[x,z].spawnedGpuTile);
+                            Destroy(spawnedTiles[x,z].spawnedGpuTile);
+                        }
+                        
+                        spawnedTiles[x, z] = null;
+                        spawnedTilesPositions.RemoveAt(i);
+                    }
+                }
+                t++;
+                if (t > 100)
+                {
+                    t = 0;
+                    yield return null;
+                }
+                //yield return null;
+            }
+            
+            /*
             for (var x = 0; x < spawnedTiles.GetLength(0); x++)
             for (var z = 0; z < spawnedTiles.GetLength(1); z++)
             {
@@ -240,7 +284,7 @@ public class DynamicLevelGenerator : MonoBehaviour
                         yield return null;
                     }
                 }
-            }
+            }*/
         }
     }
 

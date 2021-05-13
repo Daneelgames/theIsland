@@ -21,6 +21,9 @@ public class CharacterHealth : MonoBehaviour
     {
         if (characterController)
             GetFall();
+        
+        if (Input.GetKeyDown("delete"))
+            TakeDamage(health);
     }
 
     void OnGUI()
@@ -48,7 +51,6 @@ public class CharacterHealth : MonoBehaviour
 
         float fallHeight = lastGroundPosition.y - currentGroundPosition.y;
 
-        print("Fall Height is " + fallHeight);
         if (health == 30)
         {
             TakeDamage(1);            

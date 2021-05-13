@@ -521,7 +521,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
     roadAssetReferenceList: []
-  PoiScaler: 1
+  PoiScaler: 0
   addScaledPoiPointsToLists: 0
   visualizeObstacles: 0
   randomFillPercent: 47
@@ -577,10 +577,11 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   heightScale: 100
   viewDistance: 10
-  distanceToDestroyTile: 15
+  distanceToDestroyTile: 12
   waterLevel: 50
   maxBridgePartsHeightDiffrenece: 20
   bridgePlatformThreshold: 40
+  spawnedTilesPositions: []
   islandWalkerPrefab: {fileID: 6180769523463202964, guid: 43552cf35d346f1478b23fb56b43d422, type: 3}
   poiChurchPrefab: {fileID: 9118859631126355626, guid: 439a66cb8cb1aea478e77363f239d936, type: 3}
   tileGpuPrefabs:

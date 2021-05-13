@@ -35,7 +35,7 @@ public class IslandGenerator : MonoBehaviour
     public Vector2 offset;
     public TerrainType[] regions;
     
-    [Range(1,10)]
+    [Range(0,10)]
     public int PoiScaler = 5;
 
     public bool addScaledPoiPointsToLists = false;
