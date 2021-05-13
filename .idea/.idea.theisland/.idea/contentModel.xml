@@ -20,6 +20,16 @@
             <e p="PathRequestManager.cs" t="Include" />
           </e>
         </e>
+        <e p="__Global" t="Include">
+          <e p="Editor" t="Include">
+            <e p="TransformDataDrawer.cs" t="Include" />
+            <e p="TransformDataHolder.cs" t="Include" />
+            <e p="TransformInspector.cs" t="Include" />
+          </e>
+          <e p="FloatHelper.cs" t="Include" />
+          <e p="GameObjectHelper.cs" t="Include" />
+          <e p="TransformHelper.cs" t="Include" />
+        </e>
         <e p="Editor" t="Include">
           <e p="SnapToObject.cs" t="Include" />
         </e>
