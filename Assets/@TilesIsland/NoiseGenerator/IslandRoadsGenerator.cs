@@ -225,14 +225,12 @@ public class IslandRoadsGenerator : MonoBehaviour
             pathFound = waypoints.Count > 0;
         }
 
-        print("PATH pathFound " + pathFound);
         if (colourRoads == null)
             callback(new PathResult(waypoints, pathFound, request.callback));
     }
 
     List<Vector2Int> RetracePath(Node startNode, Node endNode, Color[] colourRoads)
     {
-        print("Retrace Path");
         List<Node> path = new List<Node>();
         Node currentNode = endNode;
         while (currentNode != startNode)

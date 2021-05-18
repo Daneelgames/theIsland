@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\Pickable.cs" />
      <Compile Include="Assets\NatureManufacture Assets\NatureManufacture Wind\NM_Wind.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionController.cs" />
+     <Compile Include="Assets\__Global\FloatHelper.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\FavouriteTemplatesUtility.cs" />
      <Compile Include="Assets\Scripts\NotifyOnDestroy.cs" />
@@ -78,6 +79,7 @@
      <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Hoverable.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrush.cs" />
+     <Compile Include="Assets\__Global\GameObjectHelper.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IPickable.cs" />
@@ -85,6 +87,7 @@
      <Compile Include="Assets\Scripts\Perlin_Noise_Scroller\PerlinNoiseScroller.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\DynamicLevelGenerator.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraZoom.cs" />
+     <Compile Include="Assets\__Global\TransformHelper.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionUIPanel.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Enums\BrushMode.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\MeshTransformationUtility.cs" />
@@ -102,9 +105,6 @@
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\__Global\TransformHelper.cs" />
-     <Compile Include="Assets\__Global\GameObjectHelper.cs" />
-     <Compile Include="Assets\__Global\FloatHelper.cs" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWindNoShiver.cginc" />
      <None Include="Assets\SC Post Effects\Shaders\DepthNormals.shader" />

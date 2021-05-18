@@ -52,13 +52,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\__Global\Editor\TransformInspector.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\SaveCombinedMeshEditor.cs" />
+     <Compile Include="Assets\__Global\Editor\TransformDataDrawer.cs" />
      <Compile Include="Assets\Editor\SnapToObject.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Wizards\Editor\EditRangeLimitsWizard.cs" />
-     <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\MeshBrushEditor.cs" />
-     <Compile Include="Assets\__Global\Editor\TransformInspector.cs" />
-     <Compile Include="Assets\__Global\Editor\TransformDataDrawer.cs" />
      <Compile Include="Assets\__Global\Editor\TransformDataHolder.cs" />
+     <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\MeshBrushEditor.cs" />
      <None Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\FavouriteTemplates.xml" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
