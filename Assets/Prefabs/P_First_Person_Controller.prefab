@@ -128,9 +128,10 @@ MonoBehaviour:
       m_PreInfinity: 0
       m_PostInfinity: 2
       m_RotationOrder: 4
-  sensitivity: {x: 500, y: 500}
+  sensitivity: {x: 100, y: 100}
   smoothAmount: {x: 50, y: 50}
   lookAngleMinMax: {x: -90, y: 90}
+  m_cam: {fileID: 0}
 --- !u!1 &3843716869417167139
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,8 +378,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 5
   m_Radius: 0.75
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 180
+  m_StepOffset: 3
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2.5, z: 0}
@@ -496,7 +497,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayLength: 0.1
-  raySphereRadius: 0.5
+  groundSphereRadius: 1
+  climbSphereRadius: 1.5
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 64
