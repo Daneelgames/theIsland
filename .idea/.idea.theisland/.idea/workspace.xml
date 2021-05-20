@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac98078b-5fe2-4c3b-832b-9080b46add55" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.theisland/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandRoadsGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandRoadsGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NatureManufacture Assets/Forest Environment Dynamic Nature/Beech Trees/Models/Materials/M_beech_leaves.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NatureManufacture Assets/Forest Environment Dynamic Nature/Beech Trees/Models/Materials/M_beech_leaves.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/P_First_Person_Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/P_First_Person_Controller.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera_Controller/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera_Controller/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineAsset_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineAsset_Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/GPUInstancer.Editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/GPUInstancer.Editor.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/sc.posteffects.editor.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/sc.posteffects.editor.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/sc.posteffects.runtime.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/sc.posteffects.runtime.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +36,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabRuntimeHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/@GoldenValleys/Scripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandWalker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerGUIInfo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,6 +49,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable_Objects/MovementInputData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/PathRequestManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Demos/AddRemoveInstances/PrototypeData/Prefab/ARISphere_Prototype_-155622.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera_Controller/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/Core/Contract/GPUInstancerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/API/GPUInstancerAPI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandRoadsGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -44,6 +57,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D971898-EA0F-4307-A8ED-DF491EA76525/f5/3040687e/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GPUInstancer/Scripts/GPUInstancerPrefabManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/@GoldenValleys/Scripts/MouseLook.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -52,8 +66,11 @@
         <option value="$PROJECT_DIR$/Assets/GPUInstancer/Scripts/Core/Contract/GPUInstancerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterHealth.cs" />
-        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/IslandRoadsGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/@GoldenValleys/Scripts/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/@GoldenValleys/Scripts/MouseLook.cs" />
+        <option value="$PROJECT_DIR$/Assets/@TilesIsland/NoiseGenerator/DynamicLevelGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Camera_Controller/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/First_Person_Controller/FirstPersonController.cs" />
       </list>
     </option>
@@ -123,6 +140,7 @@
       <workItem from="1620845431854" duration="532000" />
       <workItem from="1620848273413" duration="698000" />
       <workItem from="1620901715840" duration="11402000" />
+      <workItem from="1621424927859" duration="11744000" />
     </task>
     <servers />
   </component>
@@ -135,9 +153,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1620848418130">
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1621426868874">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1620848418130" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1621426868874" />
   </component>
 </project>

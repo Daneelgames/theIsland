@@ -7,6 +7,23 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="@GoldenValleys" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="EnemyController.cs" t="Include" />
+            <e p="MouseLook.cs" t="Include" />
+            <e p="MovementState.cs" t="Include" />
+            <e p="ObjectForPooling.cs" t="Include" />
+            <e p="ObjectPooling.cs" t="Include" />
+            <e p="PlayerAudioController.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerMovementStats.cs" t="Include" />
+            <e p="ProjectileController.cs" t="Include" />
+            <e p="StaminaBarUiController.cs" t="Include" />
+            <e p="StaminaController.cs" t="Include" />
+            <e p="StaminaStats.cs" t="Include" />
+            <e p="WeaponHandler.cs" t="Include" />
+          </e>
+        </e>
         <e p="@TilesIsland" t="Include">
           <e p="NoiseGenerator" t="Include">
             <e p="DynamicLevelGenerator.cs" t="Include" />
@@ -31,6 +48,8 @@
           <e p="TransformHelper.cs" t="Include" />
         </e>
         <e p="Editor" t="Include">
+          <e p="ExtendedScriptableObjectDrawer.cs" t="Include" />
+          <e p="SimpleEditorUtils.cs" t="Include" />
           <e p="SnapToObject.cs" t="Include" />
         </e>
         <e p="GPUInstancer" t="Include">

@@ -32,7 +32,8 @@ namespace VHS
 
                 #region Components                    
                     private Transform m_pitchTranform;
-                    private Camera m_cam;
+                    [HideInInspector]
+                    public Camera m_cam;
                 #endregion
             #endregion
             

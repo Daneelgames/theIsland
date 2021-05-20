@@ -55,7 +55,8 @@ namespace VHS
                     
                     [SerializeField] private LayerMask groundLayer = ~0;
                     [Slider(0f,1f)][SerializeField] private float rayLength = 0.1f;
-                    [Slider(0.01f,1f)][SerializeField] private float raySphereRadius = 0.1f;
+                    [Slider(0.01f,5f)][SerializeField] private float groundSphereRadius = 0.1f;
+                    [Slider(0.01f,5f)][SerializeField] private float climbSphereRadius = 0.1f;
                 #endregion
 
                 #region Wall Settings
@@ -113,10 +114,10 @@ namespace VHS
                     [BoxGroup("DEBUG")][SerializeField][ReadOnly] private float m_walkRunSpeedDifference;
 
                     [Space]
-                    [BoxGroup("DEBUG")][SerializeField][ReadOnly] private float m_finalRayLength;
                     [BoxGroup("DEBUG")][SerializeField][ReadOnly] private bool m_hitWall;
                     [BoxGroup("DEBUG")][SerializeField][ReadOnly] private bool m_isGrounded;
                     [BoxGroup("DEBUG")][SerializeField][ReadOnly] private bool m_previouslyGrounded;
+                    [BoxGroup("DEBUG")][SerializeField][ReadOnly] private float slopeAngle;
 
                     [Space]
                     [BoxGroup("DEBUG")][SerializeField][ReadOnly] private float m_initHeight;
@@ -147,6 +148,13 @@ namespace VHS
                 InitVariables();
             }
 
+            protected virtual void FixedUpdate()
+            {
+                // Check if Grounded,Wall etc
+                CheckIfGrounded();
+                CheckIfWall();
+            }
+            
             protected virtual void Update()
             {
                 if(m_yawTransform != null)
@@ -154,9 +162,6 @@ namespace VHS
 
                 if(m_characterController)
                 {
-                    // Check if Grounded,Wall etc
-                    CheckIfGrounded();
-                    CheckIfWall();
 
                     // Apply Smoothing
                     SmoothInput();
@@ -224,9 +229,6 @@ namespace VHS
                     m_initCamHeight = m_yawTransform.localPosition.y;
                     m_crouchCamHeight = m_initCamHeight - m_crouchStandHeightDifference;
 
-                    // Sphere radius not included. If you want it to be included just decrease by sphere radius at the end of this equation
-                    m_finalRayLength = rayLength + m_characterController.center.y;
-
                     m_isGrounded = true;
                     m_previouslyGrounded = true;
 
@@ -277,17 +279,29 @@ namespace VHS
             #region Locomotion Calculation Methods
                 protected virtual void CheckIfGrounded()
                 {
-                    Vector3 _origin = transform.position + m_characterController.center;
+                    Vector3 _origin = transform.position;
 
-                    bool _hitGround = Physics.SphereCast(_origin,raySphereRadius,Vector3.down,out m_hitInfo,m_finalRayLength,groundLayer);
-                    Debug.DrawRay(_origin,Vector3.down * (m_finalRayLength),Color.red);
+                    bool _hitGround = Physics.SphereCast(_origin, groundSphereRadius,Vector3.down, out m_hitInfo,rayLength,groundLayer);
 
-                    m_isGrounded = _hitGround ? true : false;
+                    if (_hitGround)
+                    {
+                        if (m_hitInfo.point.y < transform.position.y + m_characterController.center.y)
+                        {
+                            slopeAngle = Vector3.Angle(Vector3.up, m_hitInfo.normal); //Calc angle between normal and character
+                        }
+                    }
+                    
+                    m_isGrounded = _hitGround;
+                    
+                    /*
+                    m_isGrounded = Physics.CheckSphere(transform.position, groundSphereRadius, groundLayer);
+                    */
                 }
 
                 protected virtual void CheckIfWall()
                 {
                     
+                    /*
                     Vector3 _origin = transform.position + m_characterController.center;
                     RaycastHit _wallInfo;
 
@@ -297,10 +311,11 @@ namespace VHS
                     /*
                     if(movementInputData.HasInput && m_finalMoveDir.sqrMagnitude > 0)
                         _hitWall = Physics.SphereCast(_origin,rayObstacleSphereRadius,m_finalMoveDir, out _wallInfo,rayObstacleLength,obstacleLayers);
-                        */
+                        #1#
                     Debug.DrawRay(_origin,m_finalMoveDir * rayObstacleLength,Color.blue);
 
-                    m_hitWall = _hitWall ? true : false;
+                    m_hitWall = _hitWall ? true : false;*/
+                    m_hitWall = Physics.CheckSphere(transform.transform.position + Vector3.up * m_characterController.height, climbSphereRadius, groundLayer);
                 }
 
                 protected virtual bool CheckIfRoof() /// TO FIX
@@ -308,7 +323,7 @@ namespace VHS
                     Vector3 _origin = transform.position;
                     RaycastHit _roofInfo;
 
-                    bool _hitRoof = Physics.SphereCast(_origin,raySphereRadius,Vector3.up,out _roofInfo,m_initHeight);
+                    bool _hitRoof = Physics.SphereCast(_origin,groundSphereRadius,Vector3.up,out _roofInfo,m_initHeight);
 
                     return _hitRoof;
                 }
@@ -326,14 +341,19 @@ namespace VHS
 
                 protected virtual void CalculateMovementDirection()
                 {
-
                     Vector3 _vDir = transform.forward * m_smoothInputVector.y;
+                    
+                    // WALK ON WALLS
+                    if (m_hitWall)
+                        _vDir = m_cameraController.m_cam.transform.forward * m_smoothInputVector.y;
+                    
                     Vector3 _hDir = transform.right * m_smoothInputVector.x;
 
-                    Vector3 _desiredDir = _vDir + _hDir;
+                    Vector3 _desiredDir = _vDir + _hDir;/*
                     Vector3 _flattenDir = FlattenVectorOnSlopes(_desiredDir);
 
-                    m_finalMoveDir = _flattenDir;
+                    m_finalMoveDir = _flattenDir;*/
+                    m_finalMoveDir = _desiredDir;
                 }
 
                 protected virtual Vector3 FlattenVectorOnSlopes(Vector3 _vectorToFlat)
@@ -344,6 +364,14 @@ namespace VHS
                     return _vectorToFlat;
                 }
 
+                void OnControllerColliderHit(ControllerColliderHit hit)
+                {
+                    if (hit.point.y < transform.position.y + m_characterController.center.y)
+                    {
+                        slopeAngle = Vector3.Angle(Vector3.up, hit.normal); //Calc angle between normal and character
+                    }
+                }
+
                 protected virtual void CalculateSpeed()
                 {
                     m_currentSpeed = movementInputData.IsRunning && CanRun() ? runSpeed : walkSpeed;
@@ -351,6 +379,24 @@ namespace VHS
                     m_currentSpeed = !movementInputData.HasInput ? 0f : m_currentSpeed;
                     m_currentSpeed = movementInputData.InputVector.y == -1 ? m_currentSpeed * moveBackwardsSpeedPercent : m_currentSpeed;
                     m_currentSpeed = movementInputData.InputVector.x != 0 && movementInputData.InputVector.y ==  0 ? m_currentSpeed * moveSideSpeedPercent :  m_currentSpeed;
+
+                    if ((m_characterController.isGrounded || m_isGrounded))
+                    {
+                        if (slopeAngle > 80)
+                            m_currentSpeed *= 0.1f;
+                        else if (slopeAngle > 70)
+                            m_currentSpeed *= 0.2f;
+                        else if (slopeAngle > 60)
+                            m_currentSpeed *= 0.3f;
+                        else if (slopeAngle > 50)
+                            m_currentSpeed *= 0.5f;
+                        else if (slopeAngle > 40)
+                            m_currentSpeed *= 0.8f;
+                        else if (slopeAngle > 30)
+                            m_currentSpeed *= 0.9f;
+                    }
+                    else if (m_hitWall)
+                        m_currentSpeed *= 0.1f;
                 }
 
                 protected virtual void CalculateFinalMovement()
@@ -362,7 +408,7 @@ namespace VHS
                     m_finalMoveVector.x = _finalVector.x ;
                     m_finalMoveVector.z = _finalVector.z ;
 
-                    if(m_characterController.isGrounded) // Thanks to this check we are not applying extra y velocity when in air so jump will be consistent
+                    if(m_characterController.isGrounded || m_isGrounded || m_hitWall) // Thanks to this check we are not applying extra y velocity when in air so jump will be consistent
                         m_finalMoveVector.y += _finalVector.y ; //so this makes our player go in forward dir using slope normal but when jumping this is making it go higher so this is weird
                 }
             #endregion
@@ -370,7 +416,7 @@ namespace VHS
             #region Crouching Methods
                 protected virtual void HandleCrouch()
                 {
-                    if(movementInputData.CrouchClicked && m_isGrounded)
+                    if(movementInputData.CrouchClicked && (m_isGrounded || m_characterController.isGrounded))
                         InvokeCrouchRoutine();
                 }
 
@@ -544,14 +590,15 @@ namespace VHS
                 }
                 protected virtual void ApplyGravity()
                 {
-                    if(m_characterController.isGrounded) // if we would use our own m_isGrounded it would not work that good, this one is more precise
+                    if(m_characterController.isGrounded || m_isGrounded || m_hitWall) // if we would use our own m_isGrounded it would not work that good, this one is more precise
                     {
                         m_inAirTimer = 0f;
-                        m_finalMoveVector.y = -stickToGroundForce;
+                        //m_finalMoveVector.y = -stickToGroundForce;
+                        m_finalMoveVector = new Vector3(m_finalMoveVector.x, Mathf.Clamp(m_finalMoveVector.y, -10, 10), m_finalMoveVector.z);
 
                         HandleJump();
                     }
-                    else
+                    else if (m_characterController.isGrounded == false && m_isGrounded == false && m_hitWall == false)
                     {
                         m_inAirTimer += Time.deltaTime;
                         m_finalMoveVector += Physics.gravity * gravityMultiplier * Time.deltaTime;
