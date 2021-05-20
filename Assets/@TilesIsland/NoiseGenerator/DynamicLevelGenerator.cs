@@ -13,7 +13,7 @@ public class DynamicLevelGenerator : MonoBehaviour
     public static DynamicLevelGenerator instance;
 
     public float tileSize = 20;
-    public CharacterController playerTarget;
+    public Rigidbody playerTarget;
     public float heightScale = 1000;
     public int viewDistance = 8;
     public int distanceToDestroyTile = 8;
@@ -62,7 +62,7 @@ public class DynamicLevelGenerator : MonoBehaviour
 
         var spawnCoords = IslandGenerator.instance.playerSpawnPoint.coordinates;
         playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 400;
-        playerTarget.enabled = true;
+        playerTarget.isKinematic = false;
         
         StartCoroutine(UpdateLevelAroundPlayer());
         StartCoroutine(DestroyTiles());

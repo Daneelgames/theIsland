@@ -102,7 +102,7 @@ namespace PlayerControls
             movementStats.movementState = MovementState.Idle;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!teleport)
             {
@@ -115,6 +115,7 @@ namespace PlayerControls
             }
 
             // smooth camera movement when character controller is stepping up
+            
             if (!teleport)
             {
                 playerHead.position = Vector3.Lerp(playerHead.position, transform.position, 50 * Time.deltaTime);
@@ -200,7 +201,8 @@ namespace PlayerControls
             if (movementStats.movementState == MovementState.Dashing)
             {
                 movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.dashSpeed, Time.deltaTime * 0.2f);
-                rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
+                //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
+                rb.AddForce(_move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
             }
             else
             {
@@ -218,15 +220,18 @@ namespace PlayerControls
 
                 if (_z > 0) // MOVING FORWARD
                 {
-                    rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
                 }
                 else if (Mathf.Approximately(_z, 0) && !Mathf.Approximately(_x, 0)) // STRAIFING
                 {
-                    rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
                 }
                 else if (_z < 0) // walking && strafing backwards
                 {
-                    rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
 
                 }
                 else if (Mathf.Approximately(_z, 0) && Mathf.Approximately(_x, 0)) // to idle
@@ -287,7 +292,8 @@ namespace PlayerControls
                 if (!_grounded)
                 {
                     _velocity.y += gravity * 7.5f * currentGravityScaler;
-                    rb.MovePosition(rb.position + _velocity.normalized * movementStats.currentMoveSpeed);   
+                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
+                    rb.AddForce(_velocity.normalized * movementStats.currentMoveSpeed);
                 }
             }
             else
