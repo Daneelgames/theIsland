@@ -382,6 +382,9 @@ namespace VHS
 
                     if ((m_characterController.isGrounded || m_isGrounded))
                     {
+                        if (slopeAngle > 30)
+                            m_currentSpeed *= 0.1f;
+                        /*
                         if (slopeAngle > 80)
                             m_currentSpeed *= 0.1f;
                         else if (slopeAngle > 70)
@@ -393,7 +396,7 @@ namespace VHS
                         else if (slopeAngle > 40)
                             m_currentSpeed *= 0.8f;
                         else if (slopeAngle > 30)
-                            m_currentSpeed *= 0.9f;
+                            m_currentSpeed *= 0.9f;*/
                     }
                     else if (m_hitWall)
                         m_currentSpeed *= 0.1f;
@@ -594,7 +597,7 @@ namespace VHS
                     {
                         m_inAirTimer = 0f;
                         //m_finalMoveVector.y = -stickToGroundForce;
-                        m_finalMoveVector = new Vector3(m_finalMoveVector.x, Mathf.Clamp(m_finalMoveVector.y, -10, 10), m_finalMoveVector.z);
+                        m_finalMoveVector.y = Mathf.Clamp(m_finalMoveVector.y, -10, 10);
 
                         HandleJump();
                     }

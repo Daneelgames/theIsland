@@ -497,8 +497,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayLength: 0.1
-  groundSphereRadius: 1
-  climbSphereRadius: 1.5
+  groundSphereRadius: 1.5
+  climbSphereRadius: 2
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -520,10 +520,10 @@ MonoBehaviour:
   m_smoothCurrentSpeed: 9.014934e-18
   m_finalSmoothCurrentSpeed: 9.014934e-18
   m_walkRunSpeedDifference: 10
-  m_finalRayLength: 2.61
   m_hitWall: 0
   m_isGrounded: 1
   m_previouslyGrounded: 1
+  slopeAngle: 0
   m_initHeight: 5
   m_crouchHeight: 4.5
   m_initCenter: {x: 0, y: 2.51, z: 0}
