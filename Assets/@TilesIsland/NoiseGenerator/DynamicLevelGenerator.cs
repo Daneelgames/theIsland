@@ -61,7 +61,7 @@ public class DynamicLevelGenerator : MonoBehaviour
         tilesParent.name = "TilesParent";
 
         var spawnCoords = IslandGenerator.instance.playerSpawnPoint.coordinates;
-        playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 400;
+        playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 200;
         playerTarget.isKinematic = false;
         
         StartCoroutine(UpdateLevelAroundPlayer());

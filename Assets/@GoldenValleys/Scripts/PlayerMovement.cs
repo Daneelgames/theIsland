@@ -20,8 +20,10 @@ namespace PlayerControls
         public float _x = 0;
         public float _z = 0;
 
+        public float velocityChangeSpeed = 10;
+        public Vector3 targetVelocity;
+        
         private float _dashTimeCurrent = 1;
-
         private float _currentCameraJiggle = 0;
         private float _cameraChangeSpeed = 2;
 
@@ -38,6 +40,11 @@ namespace PlayerControls
 
         private Vector3 _velocity;
         [SerializeField] private float gravity = -3f;
+        private float gravityCurrent = -10;
+        
+        float coyoteTimeCur = 0;
+        float coyoteTimeMax = 0.2f;
+        
         public float groundSphereRadius = 0.4f;
         public float climbSphereRadius = 0.4f;
         public LayerMask groundMask;
@@ -104,6 +111,19 @@ namespace PlayerControls
             
             if (!_grounded && movementStats.movementState != MovementState.Dashing)
                 currentGravityScaler += 3 * Time.deltaTime;
+
+            if (!_grounded && !_climbing)
+            {
+                if (movementStats.movementState != MovementState.Dashing)
+                    gravityCurrent = Mathf.Lerp(gravityCurrent, gravity, Time.deltaTime);
+                    
+                if (coyoteTimeCur < coyoteTimeMax)
+                    coyoteTimeCur += Time.deltaTime;
+            }
+            else
+            {
+                gravityCurrent = Mathf.Lerp(gravityCurrent, gravity / 100, Time.deltaTime);
+            }
         }
         
         private void FixedUpdate()
@@ -113,9 +133,16 @@ namespace PlayerControls
                 return;
             }
             
-            Movement();
+            CalculateMovement();
             Gravity();
             Climbing();
+
+            ApplyVelocity();
+        }
+
+        void ApplyVelocity()
+        {
+            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime * velocityChangeSpeed);
         }
 
         private void LateUpdate()
@@ -149,22 +176,24 @@ namespace PlayerControls
             }
             
             _grounded = false;
-            rb.AddForce(Vector3.up * movementStats.jumpPower, ForceMode.Impulse);
+            StartCoroutine(DashCoroutine());
+            //rb.AddForce(Vector3.up * movementStats.jumpPower, ForceMode.Impulse);
+        }
+
+        IEnumerator DashCoroutine()
+        {
+            while (_dashTimeCurrent < movementStats.dashTime)
+            {
+                targetVelocity += Vector3.up * movementStats.jumpPower;
+                yield return null;
+            }
         }
         
-        private void Movement()
+        private void CalculateMovement()
         {
             _x = Input.GetAxisRaw(horizontalString);
             _z = Input.GetAxisRaw(verticalString);   
 
-            if (parent != null)
-            {
-                if (Mathf.Approximately(_x ,0) && Mathf.Approximately(_z ,0))
-                    rb.isKinematic = true;
-                else
-                    rb.isKinematic = false;
-            }
-            
             movementTransform.eulerAngles = new Vector3(0, movementTransform.eulerAngles.y, 0);
 
             if (movementStats.movementState != MovementState.Dashing)
@@ -195,8 +224,8 @@ namespace PlayerControls
             if (movementStats.movementState == MovementState.Dashing)
             {
                 movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.dashSpeed, Time.deltaTime * 0.2f);
-                rb.velocity = _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower;
-                //rb.AddForce(_move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
+                //rb.velocity = _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower;
+                targetVelocity = _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower;
             }
             else
             {
@@ -214,21 +243,21 @@ namespace PlayerControls
 
                 if (_z > 0) // MOVING FORWARD
                 {
-                    //rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
-                    rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
+                    //rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
+                    targetVelocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (Mathf.Approximately(_z, 0) && !Mathf.Approximately(_x, 0)) // STRAIFING
                 {
-                    rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
+                    targetVelocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (_z < 0) // walking && strafing backwards
                 {
-                    rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
+                    targetVelocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (Mathf.Approximately(_z, 0) && Mathf.Approximately(_x, 0)) // to idle
                 {
                     movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, 0, Time.deltaTime);
-                    rb.velocity = Vector3.zero;
+                    targetVelocity = Vector3.zero;
                 }
 
                 // RUNNING
@@ -279,24 +308,30 @@ namespace PlayerControls
                 return;
             }
 
-            hitInfoGround = Physics.SphereCastAll(transform.position, groundSphereRadius,Vector3.down,groundSphereRadius,groundMask);
+            hitInfoGround = Physics.SphereCastAll(transform.position, groundSphereRadius,Vector3.down,0.1f ,groundMask);
                     
             _grounded = hitInfoGround.Length > 0;
                 
-            _velocity = rb.velocity;
+            _velocity = targetVelocity;
 
-            if (!_grounded && !_climbing)
+            if (!_grounded && !_climbing && coyoteTimeCur >= coyoteTimeMax)
             {
-                _velocity.y = gravity * 7.5f * currentGravityScaler;
-                    
-                rb.velocity = _velocity;
+                _velocity.y = gravityCurrent * 7.5f * currentGravityScaler;
             }
+            else if (_grounded && !_climbing)
+                _velocity.y = gravity / 100;
             
-            if (_grounded || _climbing) 
+            targetVelocity = _velocity;
+
+            if (_grounded || _climbing)
+            {
                 currentGravityScaler = 1;
+                coyoteTimeCur = 0;
+            }
             else
+            {
                 currentGravityScaler = 0;
-            
+            }
         }
         
         private RaycastHit[] hitInfoClimb;

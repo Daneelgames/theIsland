@@ -424,7 +424,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f9e623d123ca0514d93857f526cb0493, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -888,7 +888,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f9e623d123ca0514d93857f526cb0493, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2058,7 +2058,7 @@ GameObject:
   - component: {fileID: 265387704}
   - component: {fileID: 5109477889186714075}
   - component: {fileID: 1824018396724937836}
-  - component: {fileID: 5690027892018356406}
+  - component: {fileID: 7419335003849139349}
   m_Layer: 7
   m_Name: Player GV
   m_TagString: Untagged
@@ -2098,16 +2098,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHead: {fileID: 4035021520469421917}
-  playerHeight: 0.5
+  playerHeight: 0.9
   cameraAnimator: {fileID: 4241874866288030592}
   crosshairAnimator: {fileID: 4241874865819337719}
   _x: 0
   _z: 0
+  velocityChangeSpeed: 10
+  targetVelocity: {x: 0, y: 0, z: 0}
   movementStats: {fileID: 11400000, guid: 10424835cb47ce74a8de3a2fd49a7cb6, type: 2}
   staminaStats: {fileID: 11400000, guid: 2d6096f24bf24bd49a3c53e34234576d, type: 2}
   currentCrosshairJiggle: 0
-  gravity: -50
-  groundSphereRadius: 0.75
+  gravity: -100
+  groundSphereRadius: 0.2
   climbSphereRadius: 0.75
   groundMask:
     serializedVersion: 2
@@ -2177,9 +2179,9 @@ MonoBehaviour:
   dash: {fileID: 8300000, guid: ac4ddf1bf5842304cae0f90530f4f8f4, type: 3}
   switchWeapon: {fileID: 8300000, guid: 236594f6556c85c42967a389af02dfbc, type: 3}
   healSound: {fileID: 8300000, guid: 089e00dca37fca64c93b5ab2e6020311, type: 3}
-  walkStepFrequencyCoefficient: 2
-  tiredStepFrequencyCoefficient: 2
-  runStepFrequencyCoefficient: 2
+  walkStepFrequencyCoefficient: 3
+  tiredStepFrequencyCoefficient: 3
+  runStepFrequencyCoefficient: 3
   dashStepFrequencyCoefficient: 5
   dashNoStaminaStepFrequencyCoefficient: 3
   smallStepCooldown: 0.8
@@ -2214,8 +2216,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 3
---- !u!135 &5690027892018356406
-SphereCollider:
+--- !u!136 &7419335003849139349
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2224,8 +2226,9 @@ SphereCollider:
   m_Material: {fileID: 13400000, guid: 09a0c3d4d16aaab4f90015bde9e59f4a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4241874864905411109
 GameObject:
@@ -2866,7 +2869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5329986955714590010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3946512180965927282}
