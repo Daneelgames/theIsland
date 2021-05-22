@@ -676,10 +676,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1824018396724937836, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4241874864893504352, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
       propertyPath: m_Name
       value: Player GV
