@@ -293,7 +293,7 @@ namespace PlayerControls
                 {
                     _velocity.y += gravity * 7.5f * currentGravityScaler;
                     //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
-                    rb.AddForce(_velocity.normalized * movementStats.currentMoveSpeed);
+                    rb.AddForce(_velocity.normalized * gravity * Time.deltaTime);
                 }
             }
             else

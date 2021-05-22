@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\theIsland" t="IncludeRecursive">
+    <e p="C:\@MrPink\theIsland" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -355,11 +355,6 @@
             <e p="Tree_Leaves_Specular.shader" t="Include" />
           </e>
           <e p="Forest Environment Dynamic Nature" t="Include">
-            <e p="HD and URP Support Packs" t="Include">
-              <e p="About SRP import.txt" t="Include" />
-              <e p="README - 10.3 HD RP FOREST IMPORT.txt" t="Include" />
-              <e p="README -10.2 URP RP FOREST IMPORT AND TIPS.txt" t="Include" />
-            </e>
             <e p="R.A.M Non Tesseled trial" t="Include">
               <e p="Shaders" t="Include">
                 <e p="Water River Offset Vertex Color Flow.shader" t="Include" />
@@ -902,7 +897,7 @@
       <e p="Temp\Bin" t="ExcludeRecursive" />
       <e p="theisland.sln" t="IncludeFlat" />
     </e>
-    <e p="C:\Users\rubbe\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\rubbe\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_theisland.734734117.00" t="ExcludeRecursive" />
+    <e p="C:\Users\MrPink\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\MrPink\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_theisland.-856632028.00" t="ExcludeRecursive" />
   </component>
 </project>
