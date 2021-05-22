@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace PlayerControls
         private float _dashCooldownCurrent = 0;
 
         public Transform playerHead;
+        public float playerHeight = 0.5f;
         public Animator cameraAnimator;
         public Animator crosshairAnimator;
         //public CharacterController controller;
@@ -18,8 +20,6 @@ namespace PlayerControls
         public float _x = 0;
         public float _z = 0;
 
-        [Header("DashAttack")] 
-        public int dashDamage = 100;
         private float _dashTimeCurrent = 1;
 
         private float _currentCameraJiggle = 0;
@@ -34,20 +34,19 @@ namespace PlayerControls
         public float currentCrosshairJiggle = 0;
 
         private float _crosshairChangeSpeed = 0.1f;
-        public float mechSpeed = 5;
         private Vector3 _move;
 
         private Vector3 _velocity;
         [SerializeField] private float gravity = -3f;
-        public Transform groundCheck;
-        public bool fallingInHole = false;
-        public float groundDistance = 0.4f;
+        public float groundSphereRadius = 0.4f;
+        public float climbSphereRadius = 0.4f;
         public LayerMask groundMask;
         //private float characterControllerInitRaduis = 0;
     
         public MouseLook mouseLook;
 
         public bool _grounded = false;
+        public bool _climbing = false;
 
         public CapsuleCollider damagecollider;
         private bool dangerousDash = false;
@@ -55,14 +54,8 @@ namespace PlayerControls
         
         public Transform movementTransform;
         public PlayerAudioController playerAudio;
-        public Collider doorCollider;
 
         public bool teleport = false; 
-
-        public Transform portableTransform;
-
-        public Transform hookshotTarget;
-        public float hookshotSpeed = 5;
 
         private string speedString = "Speed";
         private string dashString = "Jump";
@@ -78,12 +71,12 @@ namespace PlayerControls
         private Transform parent = null;
         public Rigidbody rb;
 
-        public float weightSpeedScaler = 1;
 
         private float currentGravityScaler = 1;
 
         private float shootedCooldown = 0;
         private float shootedCooldownMax = 0.1f;
+
         
         private void Awake()
         {
@@ -102,32 +95,38 @@ namespace PlayerControls
             movementStats.movementState = MovementState.Idle;
         }
 
+        void Update()
+        {
+            if (Input.GetButtonDown(dashString))
+            {
+                Dash();
+            }
+            
+            if (!_grounded && movementStats.movementState != MovementState.Dashing)
+                currentGravityScaler += 3 * Time.deltaTime;
+        }
+        
         private void FixedUpdate()
         {
-            if (!teleport)
+            if (teleport)
             {
-                if (movementStats.movementState != MovementState.Hookshot && movementStats.movementState != MovementState.Shooted)
-                {
-                    Movement();
-                    if (!_grounded && movementStats.movementState != MovementState.Dashing)
-                        currentGravityScaler += 3 * Time.deltaTime;
-                }
+                return;
             }
-
-            // smooth camera movement when character controller is stepping up
             
-            if (!teleport)
-            {
-                playerHead.position = Vector3.Lerp(playerHead.position, transform.position, 50 * Time.deltaTime);
-            }
+            Movement();
+            Gravity();
+            Climbing();
+        }
 
-            if (!teleport)
-                Gravity();
+        private void LateUpdate()
+        {
+            playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.deltaTime);
         }
 
         public void Dash()
         {
-            if (_dashCooldownCurrent > 0 || !_grounded) return; 
+            Debug.Log("Try to jump. _dashCooldownCurrent is " + _dashCooldownCurrent + "; _grounded is " + _grounded + "; _climbing is " + _climbing);
+            if (_dashCooldownCurrent > 0 || (!_grounded && !_climbing)) return; 
 
             movementStats.movementState = MovementState.Dashing;
         
@@ -168,11 +167,6 @@ namespace PlayerControls
             
             movementTransform.eulerAngles = new Vector3(0, movementTransform.eulerAngles.y, 0);
 
-            if ((Input.GetButtonDown(dashString)))
-            {
-                Dash();
-            }
-
             if (movementStats.movementState != MovementState.Dashing)
                 movementStats.movementState = MovementState.Walking;
 
@@ -201,15 +195,15 @@ namespace PlayerControls
             if (movementStats.movementState == MovementState.Dashing)
             {
                 movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.dashSpeed, Time.deltaTime * 0.2f);
-                //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
-                rb.AddForce(_move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
+                rb.velocity = _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower;
+                //rb.AddForce(_move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower);
             }
             else
             {
                 // MOVEMENT DIRECTION
                 ////////////////////
 
-                if (_grounded)
+                if (_climbing)
                     _move = mouseLook.transform.right * _x + mouseLook.transform.forward * _z;
                 else
                     _move = mouseLook.transform.right * _x + movementTransform.forward * _z;
@@ -220,19 +214,16 @@ namespace PlayerControls
 
                 if (_z > 0) // MOVING FORWARD
                 {
-                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
-                    rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
+                    //rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
+                    rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (Mathf.Approximately(_z, 0) && !Mathf.Approximately(_x, 0)) // STRAIFING
                 {
-                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
-                    rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
+                    rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (_z < 0) // walking && strafing backwards
                 {
-                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
-                    rb.AddForce(_move.normalized * movementStats.currentMoveSpeed);
-
+                    rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (Mathf.Approximately(_z, 0) && Mathf.Approximately(_x, 0)) // to idle
                 {
@@ -278,33 +269,42 @@ namespace PlayerControls
             crosshairAnimator.SetFloat(jiggleString, currentCrosshairJiggle);
         }
 
+        private RaycastHit[] hitInfoGround;
+        
         private void Gravity()
         {
-            if (movementStats.movementState != MovementState.Hookshot && movementStats.movementState != MovementState.Shooted)
-            {
-                if (_dashTimeCurrent < movementStats.dashTime || movementStats.movementState == MovementState.Dashing)
-                    return;
-                
-                _grounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-                
-                _velocity = Vector3.zero;
-
-                if (!_grounded)
-                {
-                    _velocity.y += gravity * 7.5f * currentGravityScaler;
-                    //rb.MovePosition(rb.position + _move.normalized * movementStats.currentMoveSpeed);
-                    rb.AddForce(_velocity.normalized * gravity * Time.deltaTime);
-                }
-            }
-            else
+            if (_dashTimeCurrent < movementStats.dashTime || movementStats.movementState == MovementState.Dashing)
             {
                 _grounded = false;
+                return;
+            }
+
+            hitInfoGround = Physics.SphereCastAll(transform.position, groundSphereRadius,Vector3.down,groundSphereRadius,groundMask);
+                    
+            _grounded = hitInfoGround.Length > 0;
+                
+            _velocity = rb.velocity;
+
+            if (!_grounded && !_climbing)
+            {
+                _velocity.y = gravity * 7.5f * currentGravityScaler;
+                    
+                rb.velocity = _velocity;
             }
             
-            if (_grounded) 
+            if (_grounded || _climbing) 
                 currentGravityScaler = 1;
             else
                 currentGravityScaler = 0;
+            
+        }
+        
+        private RaycastHit[] hitInfoClimb;
+        private void Climbing()
+        {
+            hitInfoClimb = Physics.SphereCastAll(transform.position + Vector3.up * playerHeight, climbSphereRadius,Vector3.up,climbSphereRadius,groundMask);
+                    
+            _climbing = hitInfoClimb.Length > 0;
         }
 
         private float ControlJiggle(float jiggle, float changeSpeed)

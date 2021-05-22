@@ -27,7 +27,7 @@ public static class SimpleEditorUtils
         //EditorApplication.SaveCurrentSceneIfUserWantsTo();
         //EditorApplication.OpenScene(
         EditorSceneManager.OpenScene(
-            "Assets/Scenes/MainScene.unity");
+            "Assets/MainScene.unity");
         EditorApplication.isPlaying = true;
     }
 }

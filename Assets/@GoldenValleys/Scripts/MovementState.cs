@@ -4,8 +4,6 @@ namespace PlayerControls
     {
         Idle, 
         Walking,
-        Dashing,
-        Hookshot,
-        Shooted
+        Dashing
     }
 }
