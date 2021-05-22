@@ -11,19 +11,31 @@ namespace PlayerControls
         private void Update()
         {
             float staminaRegen;
-            switch (movementStats.movementState)
+            if (PlayerMovement.instance._climbing && !PlayerMovement.instance._grounded)
             {
-                case MovementState.Idle:
-                    staminaRegen = staminaStats.idleRegen;
-                    break;
-                case MovementState.Walking:
-                    staminaRegen = movementStats.isRunning
-                        ? staminaStats.runRegenCurrent 
-                        : staminaStats.walkRegen;
-                    break;
-                default:
-                    staminaRegen = staminaStats.walkRegen;
-                    break;
+                staminaRegen = staminaStats.climbingRegen;
+            }
+            else if (!PlayerMovement.instance._climbing && !PlayerMovement.instance._grounded)
+            {
+                
+                staminaRegen = 0;
+            }
+            else
+            {
+                switch (movementStats.movementState)
+                {
+                    case MovementState.Idle:
+                        staminaRegen = staminaStats.idleRegen;
+                        break;
+                    case MovementState.Walking:
+                        staminaRegen = movementStats.isRunning
+                            ? staminaStats.runRegenCurrent 
+                            : staminaStats.walkRegen;
+                        break;
+                    default:
+                        staminaRegen = staminaStats.walkRegen;
+                        break;
+                }   
             }
             
             staminaStats.CurrentValue += staminaRegen * Time.deltaTime;

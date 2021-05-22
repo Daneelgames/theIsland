@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf931f0415f149a2bc1d5fd415d5a962, type: 3}
   m_Name: PlayerStaminaStats
   m_EditorClassIdentifier: 
-  idleRegen: 0
-  walkRegen: 0
-  runRegenCurrent: 0
-  runRegen: 0
-  boostedRunRegen: 0
+  idleRegen: 2
+  walkRegen: 2
+  climbingRegen: -10
+  runRegenCurrent: 2
+  runRegen: 2
+  boostedRunRegen: -5
   tiredRegen: 0
   dashCostCurrent: 0
   dashCost: 0
   boostedDashCost: 0
-  currentValue: -10
+  currentValue: 100
   maxValue: 100
   minValue: -10

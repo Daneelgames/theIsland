@@ -15,7 +15,7 @@ MonoBehaviour:
   movementState: 0
   isRunning: 1
   keepsRunningWithZeroStamina: 0
-  currentMoveSpeed: 0.91230524
+  currentMoveSpeed: 1.9712454
   tiredSpeed: 10
   baseMoveSpeed: 10
   runSpeedBonusCurrent: 15
@@ -26,4 +26,4 @@ MonoBehaviour:
   dashTime: 0.5
   dashTimeNoStamina: 0.5
   dashCooldown: 0.25
-  jumpPower: 0.75
+  jumpPower: 5

@@ -7,6 +7,7 @@ namespace PlayerControls
     {
         public float idleRegen = 20f;
         public float walkRegen = 12f;
+        public float climbingRegen = -5f;
         public float runRegenCurrent = -5f;
         public float runRegen = -5f;
         public float boostedRunRegen = -10f;

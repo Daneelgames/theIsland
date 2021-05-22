@@ -43,7 +43,7 @@ namespace PlayerControls
         private float gravityCurrent = -10;
         
         float coyoteTimeCur = 0;
-        float coyoteTimeMax = 0.2f;
+        float coyoteTimeMax = 0.5f;
         
         public float groundSphereRadius = 0.4f;
         public float climbSphereRadius = 0.4f;
@@ -153,7 +153,7 @@ namespace PlayerControls
         public void Dash()
         {
             Debug.Log("Try to jump. _dashCooldownCurrent is " + _dashCooldownCurrent + "; _grounded is " + _grounded + "; _climbing is " + _climbing);
-            if (_dashCooldownCurrent > 0 || (!_grounded && !_climbing)) return; 
+            if (_dashCooldownCurrent > 0 || coyoteTimeCur >= coyoteTimeMax) return; 
 
             movementStats.movementState = MovementState.Dashing;
         
@@ -182,9 +182,11 @@ namespace PlayerControls
 
         IEnumerator DashCoroutine()
         {
+            float jumpPowerCur = movementStats.jumpPower;
             while (_dashTimeCurrent < movementStats.dashTime)
             {
-                targetVelocity += Vector3.up * movementStats.jumpPower;
+                targetVelocity = (mouseLook.transform.forward + Vector3.up).normalized * jumpPowerCur;
+                jumpPowerCur = Mathf.Lerp(movementStats.jumpPower, 0, (_dashTimeCurrent / movementStats.dashTime) * 1.5f);
                 yield return null;
             }
         }
@@ -239,7 +241,7 @@ namespace PlayerControls
                 
                 movementStats.movementState = _move.magnitude < 0.3f ? MovementState.Idle : MovementState.Walking;
                 
-                if (!_grounded) _move /= 100; // FALLING
+                if (!_grounded) _move /= 2; // FALLING
 
                 if (_z > 0) // MOVING FORWARD
                 {
@@ -314,7 +316,7 @@ namespace PlayerControls
                 
             _velocity = targetVelocity;
 
-            if (!_grounded && !_climbing && coyoteTimeCur >= coyoteTimeMax)
+            if (!_grounded && !_climbing /* && coyoteTimeCur >= coyoteTimeMax*/)
             {
                 _velocity.y = gravityCurrent * 7.5f * currentGravityScaler;
             }
@@ -337,6 +339,12 @@ namespace PlayerControls
         private RaycastHit[] hitInfoClimb;
         private void Climbing()
         {
+            if (staminaStats.CurrentValue <= 0)
+            {
+                _climbing = false;
+                return;
+            }
+            
             hitInfoClimb = Physics.SphereCastAll(transform.position + Vector3.up * playerHeight, climbSphereRadius,Vector3.up,climbSphereRadius,groundMask);
                     
             _climbing = hitInfoClimb.Length > 0;
