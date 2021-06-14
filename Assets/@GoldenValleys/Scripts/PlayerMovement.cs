@@ -7,6 +7,7 @@ namespace PlayerControls
 {
     public class PlayerMovement : MonoBehaviour
     {
+        public bool playerInstance = false;
         public static PlayerMovement instance;
 
         private float _dashCooldownCurrent = 0;
@@ -15,7 +16,6 @@ namespace PlayerControls
         public float playerHeight = 0.5f;
         public Animator cameraAnimator;
         public Animator crosshairAnimator;
-        //public CharacterController controller;
         
         public float _x = 0;
         public float _z = 0;
@@ -84,27 +84,26 @@ namespace PlayerControls
         private float shootedCooldown = 0;
         private float shootedCooldownMax = 0.1f;
 
-        
         private void Awake()
         {
-            instance = this;
+            if (playerInstance)
+            {
+                playerHead.parent = null;
+                instance = this;   
+            }
         }
 
         private void Start()
         {
             movementStats.currentMoveSpeed = 0;
             _dashTimeCurrent = movementStats.dashTime;
-            //characterControllerInitRaduis = controller.radius;
             
-            //dashCollider.enabled = false;
-            
-            playerHead.parent = null;
             movementStats.movementState = MovementState.Idle;
         }
 
         void Update()
         {
-            if (Input.GetButtonDown(dashString))
+            if (playerInstance && Input.GetButtonDown(dashString))
             {
                 Dash();
             }
@@ -133,6 +132,9 @@ namespace PlayerControls
                 return;
             }
             
+            if (playerInstance)
+                GetPlayerMovementInput();
+            
             CalculateMovement();
             Gravity();
             Climbing();
@@ -147,7 +149,8 @@ namespace PlayerControls
 
         private void LateUpdate()
         {
-            playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.deltaTime);
+            if (playerInstance)
+                playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.deltaTime);
         }
 
         public void Dash()
@@ -169,7 +172,7 @@ namespace PlayerControls
             cameraAnimator.SetTrigger(dashString);
             _dashTimeCurrent = 0;
             
-            if (staminaStats.CurrentValue >= staminaStats.dashCostCurrent)
+            if (playerInstance && staminaStats.CurrentValue >= staminaStats.dashCostCurrent)
             {
                 movementStats.movementState = MovementState.Dashing;
                 playerAudio.PlayDash();
@@ -190,17 +193,25 @@ namespace PlayerControls
                 yield return null;
             }
         }
-        
-        private void CalculateMovement()
+
+        void GetPlayerMovementInput()
         {
             _x = Input.GetAxisRaw(horizontalString);
             _z = Input.GetAxisRaw(verticalString);   
-
+        }
+        
+        public void GetNpcMovementInput(float x, float z)
+        {
+            _x = x;
+            _z = z;   
+        }
+        
+        private void CalculateMovement()
+        {
             movementTransform.eulerAngles = new Vector3(0, movementTransform.eulerAngles.y, 0);
 
             if (movementStats.movementState != MovementState.Dashing)
                 movementStats.movementState = MovementState.Walking;
-
 
             if (_dashTimeCurrent < movementStats.dashTime)
             {
@@ -226,7 +237,6 @@ namespace PlayerControls
             if (movementStats.movementState == MovementState.Dashing)
             {
                 movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.dashSpeed, Time.deltaTime * 0.2f);
-                //rb.velocity = _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower;
                 targetVelocity = _move.normalized * movementStats.currentMoveSpeed + Vector3.up * movementStats.jumpPower;
             }
             else
@@ -234,7 +244,9 @@ namespace PlayerControls
                 // MOVEMENT DIRECTION
                 ////////////////////
 
-                if (_climbing)
+                if (!playerInstance)
+                    _move = movementTransform.forward * _x + movementTransform.forward * _z;
+                else if (_climbing)
                     _move = mouseLook.transform.right * _x + mouseLook.transform.forward * _z;
                 else
                     _move = mouseLook.transform.right * _x + movementTransform.forward * _z;
@@ -245,7 +257,6 @@ namespace PlayerControls
 
                 if (_z > 0) // MOVING FORWARD
                 {
-                    //rb.velocity = _move.normalized * movementStats.currentMoveSpeed;
                     targetVelocity = _move.normalized * movementStats.currentMoveSpeed;
                 }
                 else if (Mathf.Approximately(_z, 0) && !Mathf.Approximately(_x, 0)) // STRAIFING
@@ -264,40 +275,46 @@ namespace PlayerControls
 
                 // RUNNING
                 //////////
-                if (_grounded && Input.GetAxis(runningString) > 0 && !mouseLook.aiming)
+                if (playerInstance)
                 {
-                    movementStats.isRunning = true;
-                    movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed + movementStats.runSpeedBonusCurrent, Time.deltaTime * 0.1f);
+                    if (_grounded && Input.GetAxis(runningString) > 0 && !mouseLook.aiming)
+                    {
+                        movementStats.isRunning = true;
+                        movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed + movementStats.runSpeedBonusCurrent, Time.deltaTime * 0.1f);
+                    }
+                    else
+                    {
+                        movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed, Time.deltaTime * 0.1f);
+                    }   
+                }
+                else movementStats.currentMoveSpeed = movementStats.baseMoveSpeed;
+            }
+
+            if (playerInstance)
+            {
+                if (_move.magnitude > 0 && _grounded) 
+                    playerAudio.PlaySteps();
+            
+                // HEARTBEAT
+                /////////////
+                if (movementStats.isRunning || movementStats.movementState == MovementState.Dashing)
+                {
+                    playerAudio.heartbeatSource.volume = Mathf.Lerp(playerAudio.heartbeatSource.volume, 1, Time.deltaTime * 0.1f);
                 }
                 else
                 {
-                    movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed, Time.deltaTime * 0.1f);
+                    playerAudio.heartbeatSource.volume = Mathf.Lerp(playerAudio.heartbeatSource.volume, 0, Time.deltaTime * 0.1f);
                 }
-            }
-
-
-            if (_move.magnitude > 0 && _grounded) 
-                playerAudio.PlaySteps();
             
-            // HEARTBEAT
-            /////////////
-            if (movementStats.isRunning || movementStats.movementState == MovementState.Dashing)
-            {
-                playerAudio.heartbeatSource.volume = Mathf.Lerp(playerAudio.heartbeatSource.volume, 1, Time.deltaTime * 0.1f);
-            }
-            else
-            {
-                playerAudio.heartbeatSource.volume = Mathf.Lerp(playerAudio.heartbeatSource.volume, 0, Time.deltaTime * 0.1f);
-            }
+                // VISUAL FEEDBACK
+                //////////////////
             
-            // VISUAL FEEDBACK
-            //////////////////
-            
-            _currentCameraJiggle = ControlJiggle(_currentCameraJiggle, _cameraChangeSpeed);
-            currentCrosshairJiggle = ControlJiggle(currentCrosshairJiggle, _crosshairChangeSpeed);
-            cameraAnimator.SetFloat(speedString, _currentCameraJiggle);
-            cameraAnimator.speed = 1; //todo: check ???
-            crosshairAnimator.SetFloat(jiggleString, currentCrosshairJiggle);
+                _currentCameraJiggle = ControlJiggle(_currentCameraJiggle, _cameraChangeSpeed);
+                currentCrosshairJiggle = ControlJiggle(currentCrosshairJiggle, _crosshairChangeSpeed);
+                cameraAnimator.SetFloat(speedString, _currentCameraJiggle);
+                cameraAnimator.speed = 1; //todo: check ???
+                crosshairAnimator.SetFloat(jiggleString, currentCrosshairJiggle);   
+            }
         }
 
         private RaycastHit[] hitInfoGround;
@@ -339,7 +356,7 @@ namespace PlayerControls
         private RaycastHit[] hitInfoClimb;
         private void Climbing()
         {
-            if (staminaStats.CurrentValue <= 0)
+            if (playerInstance && staminaStats.CurrentValue <= 0)
             {
                 _climbing = false;
                 return;

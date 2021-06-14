@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab02e5fd08d34f3e9aced5420f8b5903, type: 3}
-  m_Name: PlayerMovementStats
+  m_Name: NpcMovementStats
   m_EditorClassIdentifier: 
   movementState: 0
   isRunning: 1

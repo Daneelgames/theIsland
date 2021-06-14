@@ -582,7 +582,7 @@ MonoBehaviour:
   maxBridgePartsHeightDiffrenece: 20
   bridgePlatformThreshold: 40
   spawnedTilesPositions: []
-  islandWalkerPrefab: {fileID: 6180769523463202964, guid: 43552cf35d346f1478b23fb56b43d422, type: 3}
+  islandWalkerPrefab: {fileID: 4241874864893504352, guid: 50c45f3ba1044154f867e4f0e6ce332b, type: 3}
   poiChurchPrefab: {fileID: 9118859631126355626, guid: 439a66cb8cb1aea478e77363f239d936, type: 3}
   tileGpuPrefabs:
   - {fileID: 1189285897622988096, guid: 8aa1e1583f2a8dc448c4790dd8ece1b6, type: 3}

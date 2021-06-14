@@ -77,7 +77,6 @@ public class IslandWalker : MonoBehaviour
         Vector3 stepStartPosition;
         Vector3 stepEndPosition;
         
-        
         while (true)
         {
             if (targetPathIndex >= path.Count)

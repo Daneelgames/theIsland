@@ -528,11 +528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunLight: {fileID: 1549630934}
---- !u!20 &1786916984 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6591736371622716550, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-  m_PrefabInstance: {fileID: 7236709928674578614}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1798483083
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,10 +578,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811309835, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5217022388109155350, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
       propertyPath: playerTarget
       value: 
@@ -642,14 +633,6 @@ PrefabInstance:
     - target: {fileID: 7529001614820252042, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
       propertyPath: m_Name
       value: NoiseMapGenerator
-      objectReference: {fileID: 0}
-    - target: {fileID: 7529001614820252042, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7529001615931018278, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cfde6fc0433164882c2b4da7caff54, type: 3}
@@ -721,14 +704,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 886361931, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 886361931, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-      propertyPath: m_Cameras.Array.data[0]
-      value: 
-      objectReference: {fileID: 1786916984}
     - target: {fileID: 4241874864893504352, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
       propertyPath: m_Name
       value: Player GV
@@ -776,10 +751,6 @@ PrefabInstance:
     - target: {fileID: 4241874864893504358, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8971406971082010649, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-      propertyPath: m_CameraType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
