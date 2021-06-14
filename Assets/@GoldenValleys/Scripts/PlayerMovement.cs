@@ -103,6 +103,11 @@ namespace PlayerControls
 
         void Update()
         {
+            if (playerInstance && Input.GetKey("t"))
+                transform.position = DynamicLevelGenerator.instance
+                    .spawnedTiles[DynamicLevelGenerator.instance.spawnedTilesPositions[0].x,
+                        DynamicLevelGenerator.instance.spawnedTilesPositions[0].y].spawnedTile.transform.position;
+            
             if (playerInstance && Input.GetButtonDown(dashString))
             {
                 Dash();
@@ -155,7 +160,6 @@ namespace PlayerControls
 
         public void Dash()
         {
-            Debug.Log("Try to jump. _dashCooldownCurrent is " + _dashCooldownCurrent + "; _grounded is " + _grounded + "; _climbing is " + _climbing);
             if (_dashCooldownCurrent > 0 || coyoteTimeCur >= coyoteTimeMax) return; 
 
             movementStats.movementState = MovementState.Dashing;
@@ -169,7 +173,9 @@ namespace PlayerControls
 
             _dashCooldownCurrent = movementStats.dashCooldown;
             
-            cameraAnimator.SetTrigger(dashString);
+            if (playerInstance)
+                cameraAnimator.SetTrigger(dashString);
+            
             _dashTimeCurrent = 0;
             
             if (playerInstance && staminaStats.CurrentValue >= staminaStats.dashCostCurrent)
@@ -180,16 +186,20 @@ namespace PlayerControls
             
             _grounded = false;
             StartCoroutine(DashCoroutine());
-            //rb.AddForce(Vector3.up * movementStats.jumpPower, ForceMode.Impulse);
         }
 
         IEnumerator DashCoroutine()
         {
             float jumpPowerCur = movementStats.jumpPower;
+            
+            Transform forwardTransform = movementTransform;
+            if (playerInstance) forwardTransform = mouseLook.transform;
+            
             while (_dashTimeCurrent < movementStats.dashTime)
             {
-                targetVelocity = (mouseLook.transform.forward + Vector3.up).normalized * jumpPowerCur;
-                jumpPowerCur = Mathf.Lerp(movementStats.jumpPower, 0, (_dashTimeCurrent / movementStats.dashTime) * 1.5f);
+                targetVelocity = (forwardTransform.forward + Vector3.up).normalized * jumpPowerCur;
+                //jumpPowerCur = Mathf.Lerp(movementStats.jumpPower, 0, (_dashTimeCurrent / movementStats.dashTime) * 1.5f);
+                jumpPowerCur = Mathf.Lerp(movementStats.jumpPower * 2, movementStats.jumpPower, (_dashTimeCurrent / movementStats.dashTime));
                 yield return null;
             }
         }

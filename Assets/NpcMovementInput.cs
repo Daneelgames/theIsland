@@ -41,6 +41,9 @@ public class NpcMovementInput : MonoBehaviour
             else if (target.position.y < transform.position.y)
                 movementVector += Vector3.down;
             
+            if (target.position.y > transform.position.y + 20)
+                npcMovement.Dash();
+            
             /*
             movementVector = target.position - transform.position;
             movementVector = movementVector.normalized;
