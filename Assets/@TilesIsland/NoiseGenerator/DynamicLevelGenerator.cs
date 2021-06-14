@@ -40,6 +40,7 @@ public class DynamicLevelGenerator : MonoBehaviour
     {
         public GameObject spawnedBuilding;
         public GameObject spawnedTile;
+        public GameObject spawnedNpc;
         public GPUInstancerPrefab spawnedGpuTile;
         public GameObject spawnedPath;
         public GameObject spawnedBridgePart;
@@ -319,7 +320,6 @@ public class DynamicLevelGenerator : MonoBehaviour
         return false;
     }
 
-    private GameObject walkerInstance;
     public IEnumerator ProceedTile(GameObject go)
     {
         go.transform.Rotate(Vector3.up, Random.Range(0, 360f));
@@ -338,9 +338,9 @@ public class DynamicLevelGenerator : MonoBehaviour
         go.transform.parent = tilesParent.transform;
         yield return null;
         
-        if (walkerInstance == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
+        if (spawnedTiles[_x, _z].spawnedNpc == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
         {
-            walkerInstance = Instantiate(islandWalkerPrefab, go.transform.position, Quaternion.identity);
+            spawnedTiles[_x, _z].spawnedNpc = Instantiate(islandWalkerPrefab, go.transform.position, Quaternion.identity);
         }
         
         yield break;

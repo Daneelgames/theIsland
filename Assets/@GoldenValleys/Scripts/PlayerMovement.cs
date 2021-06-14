@@ -197,7 +197,7 @@ namespace PlayerControls
             
             while (_dashTimeCurrent < movementStats.dashTime)
             {
-                targetVelocity = (forwardTransform.forward + Vector3.up).normalized * jumpPowerCur;
+                targetVelocity = (forwardTransform.forward + Vector3.up / 2).normalized * jumpPowerCur;
                 //jumpPowerCur = Mathf.Lerp(movementStats.jumpPower, 0, (_dashTimeCurrent / movementStats.dashTime) * 1.5f);
                 jumpPowerCur = Mathf.Lerp(movementStats.jumpPower * 2, movementStats.jumpPower, (_dashTimeCurrent / movementStats.dashTime));
                 yield return null;
