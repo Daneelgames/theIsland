@@ -54,6 +54,7 @@
   <ItemGroup>
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\VectorClampingUtility.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PerlinNoiseData.cs" />
+     <Compile Include="Assets\Scripts\NpcMovementInput.cs" />
      <Compile Include="Assets\Scripts\Interactables\DestroyInteractable.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraController.cs" />
@@ -86,7 +87,7 @@
      <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Hoverable.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrush.cs" />
-     <Compile Include="Assets\PlayerUiController.cs" />
+     <Compile Include="Assets\Scripts\PlayerUiController.cs" />
      <Compile Include="Assets\__Global\GameObjectHelper.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
@@ -119,7 +120,7 @@
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\NpcMovementInput.cs" />
+     <Compile Include="Assets\Scripts\SetObjectsToPositionsWithOffset.cs" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWindNoShiver.cginc" />
      <None Include="Assets\SC Post Effects\Shaders\DepthNormals.shader" />
