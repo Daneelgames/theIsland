@@ -16,6 +16,7 @@ public class MouseLook : MonoBehaviour
     float yRotation = 0;
 
     public float mouseSensitivity = 10;
+    public float aimingSpeed = 1;
     public float mouseLookSpeedCurrent = 10;
 
     public float cameraFovIdle = 60;
@@ -139,11 +140,11 @@ public class MouseLook : MonoBehaviour
 
         if (aiming)
         {
-            cameraFov = Mathf.Lerp(cameraFov, cameraFovAim, 3 * Time.deltaTime);
+            cameraFov = Mathf.Lerp(cameraFov, cameraFovAim, Time.deltaTime * aimingSpeed);
         }
         else
         {
-            cameraFov = Mathf.Lerp(cameraFov, cameraFovIdle, 3 * Time.deltaTime);
+            cameraFov = Mathf.Lerp(cameraFov, cameraFovIdle,Time.deltaTime * aimingSpeed);
         }
 
         mainCamera.fieldOfView = cameraFov;
@@ -163,8 +164,8 @@ public class MouseLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation.localRotation, Time.deltaTime * mouseLookSpeedCurrent);
-        camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.deltaTime * mouseLookSpeedCurrent);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
+        camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
         pm.movementTransform.transform.rotation = camHolder.transform.rotation;
     }
 

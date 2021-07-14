@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 496220694084960881}
   - component: {fileID: 9170928512099431958}
   - component: {fileID: 8157142975665051724}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ceiling_office_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &496220694084960881
 Transform:
@@ -91,12 +91,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4513624603257551484}
   - component: {fileID: 8645700897592718884}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4513624603257551484
 Transform:

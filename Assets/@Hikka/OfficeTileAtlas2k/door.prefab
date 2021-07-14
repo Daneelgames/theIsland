@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 741632854978437256}
   - component: {fileID: 6191427963238785758}
   - component: {fileID: 985008688892161778}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6191427963238785758
@@ -55,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &413290417477426809
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +92,7 @@ GameObject:
   - component: {fileID: 4447393701644155978}
   - component: {fileID: 5043797007306737463}
   - component: {fileID: 6088060763024091307}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +110,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5043797007306737463
@@ -134,6 +136,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -158,6 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &506520248009843916
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +173,7 @@ GameObject:
   - component: {fileID: 7031518552429125947}
   - component: {fileID: 6236392289430933159}
   - component: {fileID: 1517798843372332833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +191,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6236392289430933159
@@ -213,6 +217,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -237,6 +242,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &568621271953568081
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +254,7 @@ GameObject:
   - component: {fileID: 7495556251040710392}
   - component: {fileID: 6903951922220351072}
   - component: {fileID: 762558696357970444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +272,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6903951922220351072
@@ -292,6 +298,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -316,6 +323,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1099254442066913495
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +335,7 @@ GameObject:
   - component: {fileID: 7563026878819071200}
   - component: {fileID: 3407516612917728992}
   - component: {fileID: 9017481484713031186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +353,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3407516612917728992
@@ -371,6 +379,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -395,6 +404,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1987225555584999932
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +416,7 @@ GameObject:
   - component: {fileID: 4390277499369790455}
   - component: {fileID: 4946267283051087242}
   - component: {fileID: 7345300928540468014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +434,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4946267283051087242
@@ -450,6 +460,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -474,6 +485,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2912422243151903004
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +497,7 @@ GameObject:
   - component: {fileID: 2068164021204238007}
   - component: {fileID: 5548608760741840352}
   - component: {fileID: 2689048325235086255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +515,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5548608760741840352
@@ -529,6 +541,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -553,6 +566,55 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2932301635288140879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2374706471825049130}
+  m_Layer: 6
+  m_Name: doorParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2374706471825049130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932301635288140879}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.514, y: 0.014, z: 0}
+  m_LocalScale: {x: 30.245718, y: 30.245718, z: 30.245718}
+  m_Children:
+  - {fileID: 6938720632468031078}
+  - {fileID: 4440065306978340457}
+  - {fileID: 7495556251040710392}
+  - {fileID: 4447393701644155978}
+  - {fileID: 5927275432821687521}
+  - {fileID: 1375595405832337503}
+  - {fileID: 4959405517721986901}
+  - {fileID: 256540292663168206}
+  - {fileID: 7563026878819071200}
+  - {fileID: 4390277499369790455}
+  - {fileID: 6188195050002385299}
+  - {fileID: 5004968353646680483}
+  - {fileID: 741632854978437256}
+  - {fileID: 2068164021204238007}
+  - {fileID: 7031518552429125947}
+  - {fileID: 3634255361041791176}
+  - {fileID: 1045468710221100316}
+  - {fileID: 5262112671663960051}
+  m_Father: {fileID: 6417138978401432028}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!1 &4213340398101646994
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +626,7 @@ GameObject:
   - component: {fileID: 6188195050002385299}
   - component: {fileID: 8100810496763842299}
   - component: {fileID: 5078858538341254691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +644,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8100810496763842299
@@ -608,6 +670,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -632,6 +695,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4252169499032620481
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +707,7 @@ GameObject:
   - component: {fileID: 256540292663168206}
   - component: {fileID: 6341657624343343046}
   - component: {fileID: 8828747046900958219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +725,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6341657624343343046
@@ -687,6 +751,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -711,6 +776,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4706888284495406052
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +788,7 @@ GameObject:
   - component: {fileID: 5927275432821687521}
   - component: {fileID: 8354604932067270066}
   - component: {fileID: 1425583630743516630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +806,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8354604932067270066
@@ -766,6 +832,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -790,6 +857,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5019795790089197637
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +869,7 @@ GameObject:
   - component: {fileID: 5004968353646680483}
   - component: {fileID: 3828234983434338110}
   - component: {fileID: 3209839098816873492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +887,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3828234983434338110
@@ -845,6 +913,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -869,6 +938,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5561751711896220861
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +950,7 @@ GameObject:
   - component: {fileID: 3634255361041791176}
   - component: {fileID: 6814448437196706956}
   - component: {fileID: 1065694085084479542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,7 +968,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6814448437196706956
@@ -924,6 +994,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -948,6 +1019,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5814096280406445219
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +1031,7 @@ GameObject:
   - component: {fileID: 4440065306978340457}
   - component: {fileID: 7454916832562907589}
   - component: {fileID: 5589256286887149735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,7 +1049,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7454916832562907589
@@ -1003,6 +1075,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1027,6 +1100,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6520146191905169865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1112,7 @@ GameObject:
   - component: {fileID: 5262112671663960051}
   - component: {fileID: 7595334704435362209}
   - component: {fileID: 9175455581169852178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,7 +1130,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7595334704435362209
@@ -1082,6 +1156,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1106,6 +1181,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7635367874846611160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1193,7 @@ GameObject:
   - component: {fileID: 4959405517721986901}
   - component: {fileID: 1150379633715605662}
   - component: {fileID: 5671000136373789407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1211,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1150379633715605662
@@ -1161,6 +1237,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1185,6 +1262,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8126660921857829450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1274,7 @@ GameObject:
   - component: {fileID: 6938720632468031078}
   - component: {fileID: 3529939258321060194}
   - component: {fileID: 2941603585361711850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1292,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3529939258321060194
@@ -1240,6 +1318,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1264,6 +1343,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8129601814052992591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1355,7 @@ GameObject:
   - component: {fileID: 1045468710221100316}
   - component: {fileID: 6457673504869288740}
   - component: {fileID: 4157771889122293502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1293,7 +1373,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6457673504869288740
@@ -1319,6 +1399,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1343,6 +1424,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8820254362059323953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1434,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6417138978401432028}
-  m_Layer: 0
+  - component: {fileID: 1378057203316949964}
+  m_Layer: 6
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1370,27 +1453,23 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6938720632468031078}
-  - {fileID: 4440065306978340457}
-  - {fileID: 7495556251040710392}
-  - {fileID: 4447393701644155978}
-  - {fileID: 5927275432821687521}
-  - {fileID: 1375595405832337503}
-  - {fileID: 4959405517721986901}
-  - {fileID: 256540292663168206}
-  - {fileID: 7563026878819071200}
-  - {fileID: 4390277499369790455}
-  - {fileID: 6188195050002385299}
-  - {fileID: 5004968353646680483}
-  - {fileID: 741632854978437256}
-  - {fileID: 2068164021204238007}
-  - {fileID: 7031518552429125947}
-  - {fileID: 3634255361041791176}
-  - {fileID: 1045468710221100316}
-  - {fileID: 5262112671663960051}
+  - {fileID: 2374706471825049130}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1378057203316949964
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820254362059323953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7669477, z: 0.15}
+  m_Center: {x: 0, y: 0.88146114, z: 0}
 --- !u!1 &8978581506473341744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1481,7 @@ GameObject:
   - component: {fileID: 1375595405832337503}
   - component: {fileID: 1287391594967314285}
   - component: {fileID: 1990779111811539302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1499,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6417138978401432028}
+  m_Father: {fileID: 2374706471825049130}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1287391594967314285
@@ -1446,6 +1525,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1470,3 +1550,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

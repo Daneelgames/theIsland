@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: PlayerMovementStats
   m_EditorClassIdentifier: 
   movementState: 0
-  isRunning: 1
+  isRunning: 0
   keepsRunningWithZeroStamina: 0
-  currentMoveSpeed: 0.47205302
-  tiredSpeed: 10
-  baseMoveSpeed: 10
-  runSpeedBonusCurrent: 15
-  runSpeedBonus: 15
-  runSpeedBonusBoosted: 15
-  dashSpeed: 20
-  dashSpeedNoStamina: 20
+  currentMoveSpeed: 0.6988965
+  tiredSpeed: 1
+  baseMoveSpeed: 1.33
+  runSpeedBonusCurrent: 1
+  runSpeedBonus: 1
+  runSpeedBonusBoosted: 1
+  dashSpeed: 8
+  dashSpeedNoStamina: 8
   dashTime: 0.5
   dashTimeNoStamina: 0.5
   dashCooldown: 0.25

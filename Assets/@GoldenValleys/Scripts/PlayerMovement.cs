@@ -10,6 +10,10 @@ namespace PlayerControls
         public bool playerInstance = false;
         public static PlayerMovement instance;
 
+        public bool inControl = true;
+        public bool canClimb = true;
+        public bool canJump = true;
+        
         private float _dashCooldownCurrent = 0;
 
         public Transform playerHead;
@@ -103,12 +107,16 @@ namespace PlayerControls
 
         void Update()
         {
+            /*
             if (playerInstance && Input.GetKey("t"))
                 transform.position = DynamicLevelGenerator.instance
                     .spawnedTiles[DynamicLevelGenerator.instance.spawnedTilesPositions[0].x,
                         DynamicLevelGenerator.instance.spawnedTilesPositions[0].y].spawnedTile.transform.position;
+                        */
+            if (!inControl)
+                return;
             
-            if (playerInstance && Input.GetButtonDown(dashString))
+            if (canJump && playerInstance && Input.GetButtonDown(dashString))
             {
                 Dash();
             }
@@ -132,7 +140,7 @@ namespace PlayerControls
         
         private void FixedUpdate()
         {
-            if (teleport)
+            if (teleport || !inControl)
             {
                 return;
             }
@@ -142,20 +150,21 @@ namespace PlayerControls
             
             CalculateMovement();
             Gravity();
-            Climbing();
+            if (canClimb)
+                Climbing();
 
             ApplyVelocity();
         }
 
         void ApplyVelocity()
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime * velocityChangeSpeed);
+            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.smoothDeltaTime * velocityChangeSpeed);
         }
 
         private void LateUpdate()
         {
             if (playerInstance)
-                playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.deltaTime);
+                playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.smoothDeltaTime);
         }
 
         public void Dash()
@@ -290,11 +299,12 @@ namespace PlayerControls
                     if (_grounded && Input.GetAxis(runningString) > 0 && !mouseLook.aiming)
                     {
                         movementStats.isRunning = true;
-                        movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed + movementStats.runSpeedBonusCurrent, Time.deltaTime * 0.1f);
+                        movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed + movementStats.runSpeedBonusCurrent, Time.smoothDeltaTime);
                     }
                     else
                     {
-                        movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed, Time.deltaTime * 0.1f);
+                        movementStats.isRunning = false;
+                        movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed, Time.smoothDeltaTime);
                     }   
                 }
                 else movementStats.currentMoveSpeed = movementStats.baseMoveSpeed;

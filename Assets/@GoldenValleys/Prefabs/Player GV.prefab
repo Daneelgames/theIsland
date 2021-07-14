@@ -1374,7 +1374,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2175,8 +2175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInstance: 1
+  inControl: 1
+  canClimb: 0
+  canJump: 0
   playerHead: {fileID: 4035021520469421917}
-  playerHeight: 0.9
+  playerHeight: 1.25
   cameraAnimator: {fileID: 4241874866288030592}
   crosshairAnimator: {fileID: 4241874865819337719}
   _x: 0
@@ -2191,7 +2194,7 @@ MonoBehaviour:
   climbSphereRadius: 0.75
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   mouseLook: {fileID: 4241874864905411291}
   _grounded: 0
   _climbing: 0
@@ -2257,9 +2260,9 @@ MonoBehaviour:
   dash: {fileID: 8300000, guid: ac4ddf1bf5842304cae0f90530f4f8f4, type: 3}
   switchWeapon: {fileID: 8300000, guid: 236594f6556c85c42967a389af02dfbc, type: 3}
   healSound: {fileID: 8300000, guid: 089e00dca37fca64c93b5ab2e6020311, type: 3}
-  walkStepFrequencyCoefficient: 3
-  tiredStepFrequencyCoefficient: 3
-  runStepFrequencyCoefficient: 3
+  walkStepFrequencyCoefficient: 1
+  tiredStepFrequencyCoefficient: 2
+  runStepFrequencyCoefficient: 0.8
   dashStepFrequencyCoefficient: 5
   dashNoStaminaStepFrequencyCoefficient: 3
   smallStepCooldown: 0.8
@@ -2305,9 +2308,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1
+  m_Height: 1.25
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.625, z: 0}
 --- !u!114 &4026480937667046655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2370,11 +2373,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 4241874864893504358}
-  mouseSensitivity: 8
-  mouseLookSpeedCurrent: 20
+  mouseSensitivity: 3
+  aimingSpeed: 1
+  mouseLookSpeedCurrent: 15
   cameraFovIdle: 90
   cameraFovAim: 30
-  cameraFovIdleInit: 60
+  cameraFovIdleInit: 90
   cameraFovAimInit: 30
   canControl: 1
   camHolder: {fileID: 2108950099808418664}
@@ -2484,7 +2488,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5137255, g: 0.69411767, b: 0.7058824, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2505,7 +2509,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 243
+    m_Bits: 499
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2565,7 +2569,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 67108663
+    m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
@@ -2962,7 +2966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5329986955714590010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3946512180965927282}
