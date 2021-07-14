@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    public bool activateLoopsLoadingTrigger = false;
+    public bool working = false;
+    
+    [Header("Player Properties")]
     public Transform initialPlayerPosition;
     public float timeToMoveToInitialPos = 0.5f;
     public Transform finalPlayerPosition;
@@ -13,9 +17,15 @@ public class DoorController : MonoBehaviour
     public Collider doorCollider;
 
     public float timeToOpenTheDoor = 1f;
+    public float timeToWait = 0.5f;
     public float timeToCloseTheDoor = 0.5f;
     public Vector3 doorEulerOpened;
     public Vector3 doorEulerClosed;
+
+    [Header("Audio")] 
+    public AudioSource au;
+    public AudioClip openDoorClip;
+    public AudioClip closeDoorClip;
 
     [ContextMenu("SaveDoorClosedRotation")]
     public void SaveDoorClosedRotation()
@@ -31,8 +41,11 @@ public class DoorController : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == PlayerMovement.instance.gameObject)
+        if (!working && other.gameObject == PlayerMovement.instance.gameObject)
         {
+            working = true;
+            if (activateLoopsLoadingTrigger)
+                LoopsLoadingManager.instance.loadingTrigger.gameObject.SetActive(true);
             StartCoroutine(MovePlayerThroughDoor());
         }
     }
@@ -41,13 +54,13 @@ public class DoorController : MonoBehaviour
     {
         PlayerMovement.instance.inControl = false;
         float t = 0;
-        PlayerMovement.instance.rb.isKinematic = true;
+        PlayerMovement.instance.controller.enabled = false;
         
         // MOVE THE PLAYER TO INITIAL POINT
         Vector3 _initialPlayerPosition = PlayerMovement.instance.transform.position;
         while ( t < timeToMoveToInitialPos)
         {
-            t += Time.smoothDeltaTime;
+            t += Time.deltaTime;
             PlayerAudioController.instance.PlaySteps();
             PlayerMovement.instance.transform.position = Vector3.Lerp(_initialPlayerPosition, initialPlayerPosition.position, t / timeToMoveToInitialPos);
             yield return null;
@@ -57,16 +70,15 @@ public class DoorController : MonoBehaviour
 
         // MOVE THE PLAYER THROUGH THE DOOR
         t = 0;
-        _initialPlayerPosition = PlayerMovement.instance.transform.position;
         while ( t < timeToMoveToFinalPos)
         {
-            t += Time.smoothDeltaTime;
+            t += Time.deltaTime;
             PlayerAudioController.instance.PlaySteps();
-            PlayerMovement.instance.transform.position = Vector3.Lerp(_initialPlayerPosition, finalPlayerPosition.position, t / timeToMoveToInitialPos);
+            PlayerMovement.instance.transform.position = Vector3.Lerp(initialPlayerPosition.position, finalPlayerPosition.position, t / timeToMoveToFinalPos);
             yield return null;
         }
         
-        PlayerMovement.instance.rb.isKinematic = false;
+        PlayerMovement.instance.controller.enabled = true;
         PlayerMovement.instance.inControl = true;
     }
 
@@ -74,7 +86,9 @@ public class DoorController : MonoBehaviour
     {
         Vector3 currentDoorRotation = doorCollider.transform.localEulerAngles;
         doorCollider.enabled = false;
-         
+        
+        PlayAudio(openDoorClip);
+        
         // OPEN THE DOOR
         float t = 0;
         while ( t < timeToOpenTheDoor)
@@ -84,6 +98,8 @@ public class DoorController : MonoBehaviour
             doorCollider.gameObject.transform.localEulerAngles = currentDoorRotation;
             yield return null;
         }
+
+        yield return new WaitForSeconds(timeToWait);
         
         // CLOSE THE DOOR
         t = 0;
@@ -94,6 +110,17 @@ public class DoorController : MonoBehaviour
             doorCollider.gameObject.transform.localEulerAngles = currentDoorRotation;
             yield return null;
         }
+        
+        PlayAudio(closeDoorClip);
+        
         doorCollider.enabled = true;
+        working = false;
+    }
+
+    void PlayAudio(AudioClip clip)
+    {
+        au.pitch = Random.Range(0.75f, 1.25f);
+        au.clip = clip;
+        au.Play();
     }
 }

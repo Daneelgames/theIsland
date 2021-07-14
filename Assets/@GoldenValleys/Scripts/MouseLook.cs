@@ -62,6 +62,12 @@ public class MouseLook : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         instance = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

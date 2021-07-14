@@ -12,6 +12,7 @@ namespace PlayerControls
 
         public bool inControl = true;
         public bool canClimb = true;
+        public bool canSprint = true;
         public bool canJump = true;
         
         private float _dashCooldownCurrent = 0;
@@ -80,7 +81,7 @@ namespace PlayerControls
         bool adrenaline = false;
         public float coldScaler = 1;
         private Transform parent = null;
-        public Rigidbody rb;
+        public CharacterController controller;
 
 
         private float currentGravityScaler = 1;
@@ -92,6 +93,12 @@ namespace PlayerControls
         {
             if (playerInstance)
             {
+                if (instance != null)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+                
                 playerHead.parent = null;
                 instance = this;   
             }
@@ -158,13 +165,19 @@ namespace PlayerControls
 
         void ApplyVelocity()
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.smoothDeltaTime * velocityChangeSpeed);
+            //controller.velocity = Vector3.Lerp(controller.velocity, targetVelocity, Time.smoothDeltaTime * velocityChangeSpeed);
+            controller.Move(targetVelocity * (Time.smoothDeltaTime * velocityChangeSpeed));
         }
 
         private void LateUpdate()
         {
-            if (playerInstance)
+            if (playerInstance && !teleport)
                 playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.smoothDeltaTime);
+        }
+
+        public void TeleportPlayerHead()
+        {
+            playerHead.position = transform.position + Vector3.up * playerHeight;
         }
 
         public void Dash()
@@ -296,7 +309,7 @@ namespace PlayerControls
                 //////////
                 if (playerInstance)
                 {
-                    if (_grounded && Input.GetAxis(runningString) > 0 && !mouseLook.aiming)
+                    if (canSprint && _grounded && Input.GetAxis(runningString) > 0 && !mouseLook.aiming)
                     {
                         movementStats.isRunning = true;
                         movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, movementStats.baseMoveSpeed + movementStats.runSpeedBonusCurrent, Time.smoothDeltaTime);
