@@ -14,6 +14,8 @@ public class PlayerUiController : MonoBehaviour
     public Image selectedObjectIconBackground;
     public Canvas canvas;
     
+    public List<UiActionText> actionTextListUi;
+    
     private bool selectedObject = false;
     private Vector3 selectedPosition;
     
@@ -62,8 +64,7 @@ public class PlayerUiController : MonoBehaviour
 
         while (selectedObject)
         {
-            //selectedObjectIcon.transform.localScale = Vector3.one + new Vector3(Random.Range(-0.2f, 1f), Random.Range(-0.2f, 1f), 0);
-            selectedObjectIconBackground.transform.localScale = Vector3.one + new Vector3(Random.Range(-0.2f, 1f), Random.Range(-0.2f, 1f), 0);
+            selectedObjectIconBackground.transform.localScale = Vector3.one + new Vector3(Random.Range(0.1f, 1f), Random.Range(0.1f, 1f), 0);
             yield return null;
         }
 
@@ -92,4 +93,11 @@ public class PlayerUiController : MonoBehaviour
             yield return null;
         }
     }
+}
+
+[Serializable]
+public class UiActionText
+{
+    public Text uiText;
+    public Image uiBackgroundImage;
 }
