@@ -28,7 +28,7 @@ public class PlayerInteractionController : MonoBehaviour
                 if (hit.collider.gameObject.layer == 9) // interactable
                 {
                     selectedInteractableCenter = hit.collider.bounds.center;
-                    PlayerUiController.instance.SelectedInteractableObject(selectedInteractableCenter);
+                    PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject, selectedInteractableCenter);
                     haveSelectedObject = true;
                 }
             }
@@ -38,5 +38,23 @@ public class PlayerInteractionController : MonoBehaviour
             
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            var objectToInteract = PlayerUiController.instance.GetSelectedObject();
+
+            if (objectToInteract)
+            {
+                Interact(objectToInteract, PlayerUiController.instance.selectedAction);
+            }
+        }
+    }
+
+    public void Interact(InteractiveObject objectToInteract, int selectedAction)
+    {
+        
     }
 }

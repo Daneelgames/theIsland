@@ -56,6 +56,9 @@ public class DoorController : MonoBehaviour
         float t = 0;
         PlayerMovement.instance.controller.enabled = false;
         
+        initialPlayerPosition.position = new Vector3(initialPlayerPosition.position.x, PlayerMovement.instance.transform.position.y, initialPlayerPosition.position.z);
+        finalPlayerPosition.position = new Vector3(finalPlayerPosition.position.x, PlayerMovement.instance.transform.position.y, finalPlayerPosition.position.z);
+        
         // MOVE THE PLAYER TO INITIAL POINT
         Vector3 _initialPlayerPosition = PlayerMovement.instance.transform.position;
         while ( t < timeToMoveToInitialPos)
@@ -69,12 +72,13 @@ public class DoorController : MonoBehaviour
         StartCoroutine(OpenDoor());
 
         // MOVE THE PLAYER THROUGH THE DOOR
+        Vector3 playerTempStartPos = PlayerMovement.instance.transform.position;
         t = 0;
         while ( t < timeToMoveToFinalPos)
         {
             t += Time.deltaTime;
             PlayerAudioController.instance.PlaySteps();
-            PlayerMovement.instance.transform.position = Vector3.Lerp(initialPlayerPosition.position, finalPlayerPosition.position, t / timeToMoveToFinalPos);
+            PlayerMovement.instance.transform.position = Vector3.Lerp(playerTempStartPos, finalPlayerPosition.position, t / timeToMoveToFinalPos);
             yield return null;
         }
         

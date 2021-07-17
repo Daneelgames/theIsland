@@ -322,20 +322,6 @@ namespace PlayerControls
                 if (_move.magnitude > 0 && _grounded) 
                     playerAudio.PlaySteps();
             
-                // HEARTBEAT
-                /////////////
-                if (movementStats.isRunning || movementStats.movementState == MovementState.Dashing)
-                {
-                    playerAudio.heartbeatSource.volume = Mathf.Lerp(playerAudio.heartbeatSource.volume, 1, Time.deltaTime * 0.1f);
-                }
-                else
-                {
-                    playerAudio.heartbeatSource.volume = Mathf.Lerp(playerAudio.heartbeatSource.volume, 0, Time.deltaTime * 0.1f);
-                }
-            
-                // VISUAL FEEDBACK
-                //////////////////
-            
                 _currentCameraJiggle = ControlJiggle(_currentCameraJiggle, _cameraChangeSpeed);
                 currentCrosshairJiggle = ControlJiggle(currentCrosshairJiggle, _crosshairChangeSpeed);
                 cameraAnimator.SetFloat(speedString, _currentCameraJiggle);

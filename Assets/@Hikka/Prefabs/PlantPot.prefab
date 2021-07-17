@@ -154,4 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ee032a40143684c969d97c7e67ed3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionList: 0100000000000000
+  actionList:
+  - actionType: 0
+    displayedName:
+    - Pick up
+  - actionType: 1
+    displayedName:
+    - Apply item

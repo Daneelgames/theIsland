@@ -24,7 +24,6 @@ public class LoopsLoadingManager : MonoBehaviour
     public void LoadNextLoop()
     {
         // UNLOAD OLD SCENE IF ANY
-        Debug.Log(currentLoopScene);
         if (currentLoopScene > 0)
         {
             SceneManager.UnloadSceneAsync(currentLoopScene);

@@ -17,41 +17,15 @@ public class FootSteps
 public class PlayerAudioController : MonoBehaviour
 {
     public static PlayerAudioController instance;
-
-    public float runNoiseDistance = 50f;
-
-    public AudioSource ambientSource;
-    public List<AudioClip> ambients;
-    public AudioClip chaseTheme;
-    public List<AudioClip> bossAmbients;
-    public AudioSource itemSource;
-    public AudioSource damagedSource;
-    public AudioSource interactSource;
-    public AudioSource weaponReloadingSource;
-    public AudioSource heartbeatSource;
-    public AudioSource dashSource;
-    public AudioSource questSource;
-    public AudioSource heavyBreathingSource;
-    public AudioSource poisoneffectSource;
-    public List<AudioClip> interacts;
-    public List<AudioSource> gunShotSources;
+    public AudioSource selectNewUiActionSource;
     public List<AudioSource> footStepSources;
     public List<AudioClip> footStepWalk;
     public List<AudioClip> footStepRun;
     
-    [Header("0 - wood, 1 - metal, 2 - tiles, 3 - snow, 4 - squeeze wood")]
-    public List<FootSteps> footStepsList = new List<FootSteps>();
-    public AudioClip dash;
-    public AudioClip switchWeapon;
-    public AudioClip healSound;
-
-    
     [Header("Greater value = more time between steps")]
     public float walkStepFrequencyCoefficient = 5;
-    public float tiredStepFrequencyCoefficient = 12;
     public float runStepFrequencyCoefficient = 8;
     public float dashStepFrequencyCoefficient = 1;
-    public float dashNoStaminaStepFrequencyCoefficient = 1;
     public float smallStepCooldown = 0.5f;
     private float _timeFromPreviousSmallStep;
     
@@ -85,9 +59,6 @@ public class PlayerAudioController : MonoBehaviour
     void Start()
     {
         pm = PlayerMovement.instance;
-        ambientSource.loop = true;
-        ambientSource.volume = 0.33f;
-        heartbeatSource.Play();
     }
     
     private void Update()
@@ -97,36 +68,9 @@ public class PlayerAudioController : MonoBehaviour
             _previousFrameWasIdle = true;
     }
 
-    public void PlayHeal()
-    {
-        if (!healSound)
-            return;
-        
-        gunShotSources[0].clip = healSound;
-        gunShotSources[0].pitch = Random.Range(0.75f, 1.25f);
-        gunShotSources[0].Play();
-    }
-
-    public void PlayPoisonEffect()
-    {
-        poisoneffectSource.Stop();
-        poisoneffectSource.pitch = Random.Range(0.75f, 1.25f);
-        poisoneffectSource.Play();
-    }
     
     public void PlayDash(bool withoutStamina = false)
     {
-        if (!withoutStamina)
-        {
-            dashSource.pitch = Random.Range(0.75f, 1.25f);
-            dashSource.Play();
-        }
-        else
-        {
-            //todo: play another sound for dash without stamina 
-            dashSource.pitch = Random.Range(0.75f, 1.25f);
-            dashSource.Play();
-        }
     }
     
     public void PlaySteps() // every frame
@@ -207,4 +151,11 @@ public class PlayerAudioController : MonoBehaviour
         footStepSources[lastLeg].Play();
     }
 
+
+    public void SelectNewUiAction()
+    {
+        selectNewUiActionSource.Stop();
+        selectNewUiActionSource.pitch = Random.Range(0.75f, 1.25f);
+        selectNewUiActionSource.Play();
+    }
 }
