@@ -82,7 +82,7 @@ MonoBehaviour:
   activateLoopsLoadingTrigger: 1
   working: 0
   initialPlayerPosition: {fileID: 3048049548024788417}
-  timeToMoveToInitialPos: 0.5
+  timeToMoveToInitialPos: 0
   finalPlayerPosition: {fileID: 625229074530275054}
   timeToMoveToFinalPos: 2
   doorCollider: {fileID: 63701479600254980}

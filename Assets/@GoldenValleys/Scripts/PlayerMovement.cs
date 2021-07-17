@@ -114,12 +114,6 @@ namespace PlayerControls
 
         void Update()
         {
-            /*
-            if (playerInstance && Input.GetKey("t"))
-                transform.position = DynamicLevelGenerator.instance
-                    .spawnedTiles[DynamicLevelGenerator.instance.spawnedTilesPositions[0].x,
-                        DynamicLevelGenerator.instance.spawnedTilesPositions[0].y].spawnedTile.transform.position;
-                        */
             if (!inControl)
                 return;
             

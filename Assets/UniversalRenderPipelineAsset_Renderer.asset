@@ -36,7 +36,7 @@ MonoBehaviour:
     Downsample: 1
     Source: 1
     NormalSamples: 1
-    Intensity: 2.34
+    Intensity: 5
     DirectLightingStrength: 0.5
     Radius: 0.1
     SampleCount: 4
@@ -54,7 +54,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RendererFeatures:
   - {fileID: -6334754685188256677}
-  - {fileID: 554431865139208851}
   - {fileID: 8308135599117277532}
   - {fileID: -907604980246718808}
   m_RendererFeatureMap: a8d60444148a67f3

@@ -31,8 +31,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField]
     GameObject camHolder;
     public Camera mainCamera;
-    [SerializeField]
-    Camera handsCamera;
+    public Camera handsCamera;
 
     float cameraFov = 60;
     [SerializeField]
