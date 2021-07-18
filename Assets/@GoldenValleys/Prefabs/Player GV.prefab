@@ -968,8 +968,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090055458}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4241874864905411108}
@@ -1418,6 +1418,7 @@ MonoBehaviour:
   unselectedActionTextFontSize: 24
   selectedActionBackgroundHeight: 70
   unselectedActionBackgroundHeight: 30
+  putObjectPromtPosition: {x: 0, y: -500, z: 0}
   timeToAnimate: 0.2
   timeToSelect: 0.1
   selectNewActionCooldown: 0.2
@@ -1455,6 +1456,7 @@ MonoBehaviour:
   raycastLayers:
     serializedVersion: 2
     m_Bits: 832
+  draggingObject: {fileID: 0}
 --- !u!1 &4241874864905411109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,21 +1509,15 @@ MonoBehaviour:
   mouseLookSpeedCurrent: 15
   cameraFovIdle: 60
   cameraFovAim: 20
-  cameraFovIdleInit: 90
-  cameraFovAimInit: 30
   canControl: 1
   camHolder: {fileID: 2108950099808418664}
   mainCamera: {fileID: 4241874866288030598}
   handsCamera: {fileID: 6591736371622716550}
   targetRotation: {fileID: 1307971541}
-  hookshotDistance: 50
-  aimLayerMask:
-    serializedVersion: 2
-    m_Bits: 1510400
   aiming: 0
   canAim: 1
   activeWeaponHolderAnim: {fileID: 0}
-  hookCrosshairTransform: {fileID: 0}
+  portableTransform: {fileID: 2090055459}
 --- !u!1 &4241874865819337715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2065,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 63901b4810076354689203181a220035, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0523a213965d7ca4d9df45656ed0a58c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.33
   m_Pitch: 1

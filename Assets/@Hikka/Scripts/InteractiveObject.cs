@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, ApplyItem}
+    public enum ActionType {PickUp, ApplyItem, Put}
     
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
+    public float pickUpTime = 0;
+    public Vector3 protableTransformOffset = Vector3.zero;
+    public Rigidbody rb;
+    public float dragForce = 5;
+    public float zeroVelocityDistanceThreshold = 1;
+
+    public InteractiveAction putAction;
 }
 
 [Serializable]

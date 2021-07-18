@@ -39,9 +39,9 @@ public class DoorController : MonoBehaviour
         doorEulerOpened = doorCollider.transform.localEulerAngles;
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (!working && other.gameObject == PlayerMovement.instance.gameObject)
+        if (!working && other.gameObject == PlayerMovement.instance.gameObject && PlayerInteractionController.instance.draggingObject == null)
         {
             working = true;
             if (activateLoopsLoadingTrigger)
@@ -52,38 +52,17 @@ public class DoorController : MonoBehaviour
 
     IEnumerator MovePlayerThroughDoor()
     {
-        PlayerMovement.instance.inControl = false;
-        float t = 0;
-        PlayerMovement.instance.controller.enabled = false;
-        
         initialPlayerPosition.position = new Vector3(initialPlayerPosition.position.x, PlayerMovement.instance.transform.position.y, initialPlayerPosition.position.z);
         finalPlayerPosition.position = new Vector3(finalPlayerPosition.position.x, PlayerMovement.instance.transform.position.y, finalPlayerPosition.position.z);
         
         // MOVE THE PLAYER TO INITIAL POINT
-        Vector3 _initialPlayerPosition = PlayerMovement.instance.transform.position;
-        while ( t < timeToMoveToInitialPos)
-        {
-            t += Time.deltaTime;
-            PlayerAudioController.instance.PlaySteps();
-            PlayerMovement.instance.transform.position = Vector3.Lerp(_initialPlayerPosition, initialPlayerPosition.position, t / timeToMoveToInitialPos);
-            yield return null;
-        }
+        if (timeToMoveToInitialPos > 0)
+            yield return StartCoroutine(PlayerMovement.instance.MovePlayerWithoutControl(initialPlayerPosition.position, timeToMoveToInitialPos));
 
         StartCoroutine(OpenDoor());
 
         // MOVE THE PLAYER THROUGH THE DOOR
-        Vector3 playerTempStartPos = PlayerMovement.instance.transform.position;
-        t = 0;
-        while ( t < timeToMoveToFinalPos)
-        {
-            t += Time.deltaTime;
-            PlayerAudioController.instance.PlaySteps();
-            PlayerMovement.instance.transform.position = Vector3.Lerp(playerTempStartPos, finalPlayerPosition.position, t / timeToMoveToFinalPos);
-            yield return null;
-        }
-        
-        PlayerMovement.instance.controller.enabled = true;
-        PlayerMovement.instance.inControl = true;
+        yield return StartCoroutine(PlayerMovement.instance.MovePlayerWithoutControl(finalPlayerPosition.position, timeToMoveToFinalPos));
     }
 
     IEnumerator OpenDoor()

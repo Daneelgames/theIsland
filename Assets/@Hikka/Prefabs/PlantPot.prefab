@@ -91,8 +91,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4425827252388529652}
   - component: {fileID: 5671883000685092427}
-  - component: {fileID: 2878209195721209388}
   - component: {fileID: 7415551693825230185}
+  - component: {fileID: 3900513642852422673}
+  - component: {fileID: 7533828681365171757}
   m_Layer: 9
   m_Name: PlantPot
   m_TagString: Untagged
@@ -129,19 +130,6 @@ CapsuleCollider:
   m_Height: 0.7497721
   m_Direction: 1
   m_Center: {x: 0, y: 0.21984148, z: 0}
---- !u!65 &2878209195721209388
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5929119135463285382}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.43109703, y: 0.45306608, z: 0.4357658}
-  m_Center: {x: 0, y: 0.22643651, z: 0}
 --- !u!114 &7415551693825230185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,4 +148,42 @@ MonoBehaviour:
     - Pick up
   - actionType: 1
     displayedName:
-    - Apply item
+    - plant new herb
+  pickUpTime: 1
+  protableTransformOffset: {x: 0, y: -0.75, z: 0.5}
+  rb: {fileID: 3900513642852422673}
+  dragForce: 4
+  zeroVelocityDistanceThreshold: 0.2
+  putAction:
+    actionType: 2
+    displayedName:
+    - let go
+--- !u!54 &3900513642852422673
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929119135463285382}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!65 &7533828681365171757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929119135463285382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41115856, y: 0.45389467, z: 0.41327363}
+  m_Center: {x: -0.0021152496, y: 0.22834226, z: 0.0031729117}

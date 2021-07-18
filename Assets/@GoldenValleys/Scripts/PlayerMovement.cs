@@ -408,24 +408,21 @@ namespace PlayerControls
             return jiggle;
         }
 
-        public void Teleport(bool active)
+        public IEnumerator MovePlayerWithoutControl(Vector3 targetPos, float time)
         {
-            teleport = active;
-        }
-
-        public void EnterParent(Transform p)
-        {
-            parent = p;
-            transform.parent = p;
-        }
-
-        public void ExitParent(Transform p)
-        {
-            if (parent && parent == p)
+            float t = 0;
+            inControl = false;
+            controller.enabled = false;
+            Vector3 startPos = transform.position;
+            while (t < time)
             {
-                parent = null;
-                transform.parent = null;
+                PlayerAudioController.instance.PlaySteps();
+                transform.position = Vector3.Lerp(startPos, targetPos, t / time);
+                t += Time.deltaTime;
+                yield return null;
             }
+            controller.enabled = true;
+            inControl = true;
         }
     }
 }

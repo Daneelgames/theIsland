@@ -25,6 +25,7 @@ public class PlayerUiController : MonoBehaviour
     public int unselectedActionTextFontSize = 42;
     public int selectedActionBackgroundHeight = 100;
     public int unselectedActionBackgroundHeight = 50;
+    public Vector3 putObjectPromtPosition;
 
     [Header("Time")]
     public float timeToAnimate = 0.25f;
@@ -53,6 +54,11 @@ public class PlayerUiController : MonoBehaviour
         return currentSelectedObject;
     }
 
+    public void ResetSelectedObject()
+    {
+        selectedObject = false;
+    }
+    
     private Vector3 screenPos;
     private Vector3 uiFeedbackPosition;
     private GameObject lastSelectedGameObject = null;
@@ -99,34 +105,67 @@ public class PlayerUiController : MonoBehaviour
         Vector3 actionsUiTempPosition;
         actionsParentInitLocalPos.y = selectedObjectIcon.transform.localPosition.y;
 
-        for (int i = 0; i < actionTextListUi.Count; i++)
+        if (PlayerInteractionController.instance.draggingObject)
         {
-            if (i >= currentSelectedObject.actionList.Count)
+            for (int i = 0; i < actionTextListUi.Count; i++)
             {
-                actionTextListUi[i].uiBackgroundImage.enabled = false;
-                actionTextListUi[i].uiText.enabled = false;
-            }
-            else
+                if (i > 0)
+                {
+                    actionTextListUi[i].uiBackgroundImage.enabled = false;
+                    actionTextListUi[i].uiText.enabled = false;
+                }
+                else
+                {
+                    actionTextListUi[i].uiBackgroundImage.enabled = true;
+                    actionTextListUi[i].uiText.enabled = true;
+                    actionTextListUi[i].uiText.text = currentSelectedObject.putAction.displayedName[GameManager.instance.gameLanguage].ToUpper();
+                }
+            }   
+        }
+        else
+        {
+            for (int i = 0; i < actionTextListUi.Count; i++)
             {
-                actionTextListUi[i].uiBackgroundImage.enabled = true;
-                actionTextListUi[i].uiText.enabled = true;
-                actionTextListUi[i].uiText.text = currentSelectedObject.actionList[i].displayedName[GameManager.instance.gameLanguage].ToUpper();
-            }
+                if (i >= currentSelectedObject.actionList.Count)
+                {
+                    actionTextListUi[i].uiBackgroundImage.enabled = false;
+                    actionTextListUi[i].uiText.enabled = false;
+                }
+                else
+                {
+                    actionTextListUi[i].uiBackgroundImage.enabled = true;
+                    actionTextListUi[i].uiText.enabled = true;
+                    actionTextListUi[i].uiText.text = currentSelectedObject.actionList[i].displayedName[GameManager.instance.gameLanguage].ToUpper();
+                }
+            }   
         }
         
         while (t < timeToAnimate)
         {
             t += Time.deltaTime;
-            actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, selectedObjectIcon.transform.localPosition, t /timeToAnimate);
-            selectedObjectIcon.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/timeToAnimate);
-            selectedObjectIconBackground.transform.localScale = selectedObjectIcon.transform.localScale;
+
+            if (PlayerInteractionController.instance.draggingObject)
+            {
+                actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, putObjectPromtPosition, t /timeToAnimate);
+                selectedObjectIcon.transform.localScale = Vector3.zero;
+                selectedObjectIconBackground.transform.localScale = Vector3.zero;
+            }
+            else
+            {
+                actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, selectedObjectIcon.transform.localPosition, t /timeToAnimate);
+                selectedObjectIcon.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/timeToAnimate);
+                selectedObjectIconBackground.transform.localScale = selectedObjectIcon.transform.localScale;   
+            }
             yield return null;
         }
 
+        if (!PlayerInteractionController.instance.draggingObject)
+            selectedObjectIconBackground.transform.localScale = Vector3.one + new Vector3(0.1f, 0.1f, 0);
+        
         while (selectedObject)
         {
-            selectedObjectIconBackground.transform.localScale = Vector3.one + new Vector3(Random.Range(0.1f, 1f), Random.Range(0.1f, 1f), 0);
-            actionsParent.transform.localPosition = selectedObjectIcon.transform.localPosition;
+            if (!PlayerInteractionController.instance.draggingObject)
+                actionsParent.transform.localPosition = selectedObjectIcon.transform.localPosition;
             yield return null;
         }
 
@@ -137,8 +176,12 @@ public class PlayerUiController : MonoBehaviour
         {
             t += Time.deltaTime;
             actionsParent.transform.localPosition = Vector3.Lerp(actionsUiTempPosition, new Vector3(actionsParentInitLocalPos.x, selectedObjectIcon.transform.localPosition.y, 0), t /timeToAnimate);
-            selectedObjectIcon.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero , t/timeToAnimate);
-            selectedObjectIconBackground.transform.localScale = selectedObjectIcon.transform.localScale;
+
+            if (!PlayerInteractionController.instance.draggingObject)
+            {
+                selectedObjectIcon.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero , t/timeToAnimate);
+                selectedObjectIconBackground.transform.localScale = selectedObjectIcon.transform.localScale;
+            }
             yield return null;
         }
 
@@ -217,6 +260,8 @@ public class PlayerUiController : MonoBehaviour
         float t = 0;
         var startHeight = actionTextListUi[index].uiBackgroundImage.rectTransform.sizeDelta.y; 
         var startFontSize = actionTextListUi[index].uiText.fontSize; 
+        actionTextListUi[index].uiBackgroundImage.color = Color.white;
+        actionTextListUi[index].uiText.color = Color.black;
         while (t < timeToSelect)
         {
             t += Time.deltaTime;
@@ -233,6 +278,8 @@ public class PlayerUiController : MonoBehaviour
         float t = 0;
         var startHeight = actionTextListUi[index].uiBackgroundImage.rectTransform.sizeDelta.y; 
         var startFontSize = actionTextListUi[index].uiText.fontSize; 
+        actionTextListUi[index].uiBackgroundImage.color = Color.black;
+        actionTextListUi[index].uiText.color = Color.white;
         while (t < timeToSelect)
         {
             t += Time.deltaTime;

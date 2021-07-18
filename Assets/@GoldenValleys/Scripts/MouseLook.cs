@@ -21,10 +21,6 @@ public class MouseLook : MonoBehaviour
 
     public float cameraFovIdle = 60;
     public float cameraFovAim = 30;
-    [HideInInspector]    
-    public float cameraFovIdleInit = 60;
-    [HideInInspector]
-    public float cameraFovAimInit = 30;
 
     public bool canControl = false;
 
@@ -37,20 +33,18 @@ public class MouseLook : MonoBehaviour
     [SerializeField]
     Transform targetRotation;
 
-    public float hookshotDistance = 50;
-    public LayerMask aimLayerMask;
-    
     public bool aiming = false;
     public bool canAim = true;
     public Animator activeWeaponHolderAnim;
     //public MeshRenderer crosshair;
 
     PlayerMovement pm;
-    public Transform hookCrosshairTransform;
 
     private bool crouching = false; 
     
     public static MouseLook instance;
+
+    public Transform portableTransform;
 
     private Coroutine crouchCoroutine;
 
@@ -75,9 +69,6 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         pm = PlayerMovement.instance;
-
-        cameraFovIdleInit = cameraFovIdle;
-        cameraFovAimInit = cameraFovAim;
     }
 
     public void ToggleCrouch(bool crouch)
