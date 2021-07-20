@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaController.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\CombineUtility.cs" />
+     <Compile Include="Assets\@Hikka\Scripts\PlayerInteractionController.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\TemplateMigrationUtility.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionUI.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\PathRequestManager.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\NatureManufacture Assets\NatureManufacture Wind\NM_Wind.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\ObjectForPooling.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionController.cs" />
+     <Compile Include="Assets\PlayerInventoryController.cs" />
      <Compile Include="Assets\__Global\FloatHelper.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
      <Compile Include="Assets\@Hikka\Scripts\DoorController.cs" />
@@ -86,6 +88,7 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Noise.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\MovementInputData.cs" />
      <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
+     <Compile Include="Assets\@Hikka\Scripts\InteractiveObject.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Hoverable.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrush.cs" />
      <Compile Include="Assets\Scripts\PlayerUiController.cs" />
@@ -96,6 +99,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\IPickable.cs" />
      <Compile Include="Assets\Scripts\First_Person_Controller\HeadBob.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\ObjectPooling.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\Perlin_Noise_Scroller\PerlinNoiseScroller.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\WeaponHandler.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\DynamicLevelGenerator.cs" />
@@ -112,6 +116,7 @@
      <Compile Include="Assets\Scripts\Scriptable_Objects\HeadBobData.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaBarUiController.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandRoadsGenerator.cs" />
+     <Compile Include="Assets\@Hikka\Scripts\RecipesData.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseTextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\InteractionInputData.cs" />
      <Compile Include="Assets\Scripts\First_Person_Controller\FirstPersonController.cs" />
@@ -124,11 +129,7 @@
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\@Hikka\Scripts\PlayerInteractionController.cs" />
-     <Compile Include="Assets\@Hikka\Scripts\InteractiveObject.cs" />
-     <Compile Include="Assets\@Hikka\Scripts\RecipesData.cs" />
-     <Compile Include="Assets\PlayerInventoryController.cs" />
+     <Compile Include="Assets\@Hikka\Scripts\PlantData.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWindNoShiver.cginc" />

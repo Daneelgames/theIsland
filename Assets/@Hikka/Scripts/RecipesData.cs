@@ -15,17 +15,6 @@ public class RecipesData : ScriptableObject
 public class PlantRecipe
 {
     public List<Ingredient> ingredients;
-    public PlantData resultObject;
-}
-
-[Serializable]
-public class PlantData
-{
-    public enum PlantType {FingersPlant}
-
-    public PlantType type = PlantType.FingersPlant;
-    public List<string> name = new List<string>();
-    public List<string> description = new List<string>();
 }
 
 [Serializable]

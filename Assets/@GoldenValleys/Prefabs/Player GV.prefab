@@ -1623,7 +1623,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b676bacbaef08734aa5a8e9b01a6933d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: 059e2734640408249b4f292ede4c0d9a, type: 2}
+  plantsInInventory:
+  - plant: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
+    amount: 1
+  - plant: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
+    amount: 2
 --- !u!114 &327953109
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -308,7 +308,25 @@ public class PlayerUiController : MonoBehaviour
     
     public void OpenItemsWheel()
     {
+        var plantsInInventory = PlayerInventoryController.instance.GetPlantsInInventory();
+        for (int i = 0; i < plantsInInventory.Count; i++)
+        {
+            
+        }
         
+    }
+
+    IEnumerator ShowItemWheelIcon(Image icon)
+    {
+        float t = 0;
+        float tt = Random.Range(0.1f, 0.33f);
+
+        while (t < tt)
+        {
+            t += Time.deltaTime;
+            icon.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/tt);
+            yield return null;
+        }
     }
 }
 

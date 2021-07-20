@@ -88,6 +88,9 @@ public class PlayerInteractionController : MonoBehaviour
             case InteractiveObject.ActionType.PickUp:
                 StartCoroutine(PickUpObject(objectToInteract));
                 break;
+            case InteractiveObject.ActionType.PlantSeed:
+                PlayerUiController.instance.OpenItemsWheel();
+                break;
         }
     }
 
