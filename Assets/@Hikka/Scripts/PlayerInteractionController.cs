@@ -14,7 +14,8 @@ public class PlayerInteractionController : MonoBehaviour
     private Vector3 selectedInteractableCenter;
 
     public InteractiveObject draggingObject;
-    
+
+    private float raycastCooldownAfterDrop = 0.5f;
 
     private void Awake()
     {
@@ -36,6 +37,13 @@ public class PlayerInteractionController : MonoBehaviour
             
             haveSelectedObject = false;
 
+            if (raycastCooldownAfterDrop > 0)
+            {
+                PlayerUiController.instance.NoSelectedObject();
+                continue;
+            }
+                
+            
             if (draggingObject == null)
             {
                 if (Physics.Raycast(MouseLook.instance.mainCamera.transform.position,
@@ -54,21 +62,24 @@ public class PlayerInteractionController : MonoBehaviour
             }
             else
             {
-                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject, Vector3.zero);
+                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject, draggingObject.collider.bounds.center);
             }
-            
         }
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (raycastCooldownAfterDrop > 0)
+            raycastCooldownAfterDrop -= Time.deltaTime;
+        
+        if (Input.GetButtonDown("Interact"))
         {
             if (draggingObject)
             {
                 draggingObject.rb.useGravity = true;
                 PlayerUiController.instance.ResetSelectedObject();
                 draggingObject = null;
+                raycastCooldownAfterDrop = 0.5f;
                 return;    
             }
             
@@ -107,7 +118,7 @@ public class PlayerInteractionController : MonoBehaviour
     {
         Vector3 targetPos = MouseLook.instance.portableTransform.position + objectToInteract.protableTransformOffset;
         draggingObject = objectToInteract;
-        PlayerUiController.instance.ResetSelectedObject();
+        PlayerUiController.instance.DragSelectedObject();
         draggingObject.rb.useGravity = false;
         
         Vector3 targetVelocity;

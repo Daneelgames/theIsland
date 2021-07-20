@@ -8,7 +8,7 @@ public class InteractiveObject : MonoBehaviour
     public enum ActionType {PickUp, PlantSeed, Put}
     
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
-    public float pickUpTime = 0;
+    public Collider collider;
     public Vector3 protableTransformOffset = Vector3.zero;
     public Rigidbody rb;
     public float dragForce = 5;

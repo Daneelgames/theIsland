@@ -69,6 +69,11 @@ public class PlayerUiController : MonoBehaviour
     {
         selectedObject = false;
     }
+    public void DragSelectedObject()
+    {
+        selectedObject = false;
+        SelectedInteractableObject(currentSelectedObject.gameObject, currentSelectedObject.collider.bounds.center);
+    }
     
     private Vector3 screenPos;
     private Vector3 uiFeedbackPosition;

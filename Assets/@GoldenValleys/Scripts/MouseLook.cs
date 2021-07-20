@@ -107,6 +107,7 @@ public class MouseLook : MonoBehaviour
         }
     }
 
+    /*
     void Update()
     {
         if (canControl  && canAim &&!pm.teleport)
@@ -115,6 +116,7 @@ public class MouseLook : MonoBehaviour
             //HandleHookshotStart();
         }
     }
+    */
 
     private void LateUpdate()
     {

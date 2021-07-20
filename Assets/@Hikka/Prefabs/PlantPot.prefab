@@ -127,9 +127,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.33
-  m_Height: 0.7497721
+  m_Height: 1.0450274
   m_Direction: 1
-  m_Center: {x: 0, y: 0.21984148, z: 0}
+  m_Center: {x: 0, y: 0.36746913, z: 0}
 --- !u!114 &7415551693825230185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,11 +145,8 @@ MonoBehaviour:
   actionList:
   - actionType: 0
     displayedName:
-    - Pick up
-  - actionType: 1
-    displayedName:
-    - plant new herb
-  pickUpTime: 1
+    - 'E: Pick up'
+  collider: {fileID: 5671883000685092427}
   protableTransformOffset: {x: 0, y: -0.75, z: 0.5}
   rb: {fileID: 3900513642852422673}
   dragForce: 4
@@ -157,7 +154,7 @@ MonoBehaviour:
   putAction:
     actionType: 2
     displayedName:
-    - let go
+    - 'E: let go'
 --- !u!54 &3900513642852422673
 Rigidbody:
   m_ObjectHideFlags: 0
