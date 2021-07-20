@@ -31,7 +31,11 @@ public class PlayerUiController : MonoBehaviour
     public float timeToAnimate = 0.25f;
     public float timeToSelect = 0.1f;    
     public float selectNewActionCooldown = 0.5f;    
-    float selectNewActionCooldownCurrent = 0.5f;    
+    float selectNewActionCooldownCurrent = 0.5f;
+
+
+    [Header("Items Wheel")] 
+    public List<Image> itemIcons;
 
     private InteractiveObject currentSelectedObject;
     private bool selectedObject = false;
@@ -47,6 +51,11 @@ public class PlayerUiController : MonoBehaviour
 
         instance = this;
         actionsParent.transform.localPosition = actionsParentInitLocalPos;
+
+        foreach (var item in itemIcons)
+        {
+            item.transform.localScale = Vector3.zero;
+        }
     }
 
     public InteractiveObject GetSelectedObject()
@@ -290,6 +299,16 @@ public class PlayerUiController : MonoBehaviour
         }
         actionTextListUi[index].uiBackgroundImage.rectTransform.sizeDelta = new Vector2(2555, unselectedActionBackgroundHeight);
         actionTextListUi[index].uiText.fontSize = unselectedActionTextFontSize;
+    }
+
+    public void CloseItemsWheel()
+    {
+        
+    }
+    
+    public void OpenItemsWheel()
+    {
+        
     }
 }
 
