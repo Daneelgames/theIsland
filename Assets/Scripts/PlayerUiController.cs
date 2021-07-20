@@ -26,6 +26,9 @@ public class PlayerUiController : MonoBehaviour
     public int selectedActionBackgroundHeight = 100;
     public int unselectedActionBackgroundHeight = 50;
     public Vector3 putObjectPromtPosition;
+    private InteractiveObject currentSelectedObject;
+    private bool selectedObject = false;
+    private Vector3 selectedPosition;
 
     [Header("Time")]
     public float timeToAnimate = 0.25f;
@@ -35,11 +38,13 @@ public class PlayerUiController : MonoBehaviour
 
 
     [Header("Items Wheel")] 
-    public List<Image> itemIcons;
+    public bool itemWheelVisible = false;
+    public Transform itemWheel;
+    public List<UiItemOnWheel> itemIcons;
+    List<InventoryPlant> plantsInInventory = new List<InventoryPlant>();
+    int selectedItemOnWheel = -1;
+    int previuosSelectedItemOnWheel = -1;
 
-    private InteractiveObject currentSelectedObject;
-    private bool selectedObject = false;
-    private Vector3 selectedPosition;
     
     private void Awake()
     {
@@ -52,10 +57,7 @@ public class PlayerUiController : MonoBehaviour
         instance = this;
         actionsParent.transform.localPosition = actionsParentInitLocalPos;
 
-        foreach (var item in itemIcons)
-        {
-            item.transform.localScale = Vector3.zero;
-        }
+        CloseItemsWheel();
     }
 
     public InteractiveObject GetSelectedObject()
@@ -106,6 +108,13 @@ public class PlayerUiController : MonoBehaviour
         lastSelectedGameObject = null;
         selectedObject = false;
         StopCoroutine(movePointerCoroutine);
+
+        if (itemWheelVisible)
+        {
+            CloseItemsWheel();
+        }
+
+        PlayerAudioController.instance.CloseUi();
     }
 
     IEnumerator AnimatePointer()
@@ -114,7 +123,15 @@ public class PlayerUiController : MonoBehaviour
         Vector3 actionsUiTempPosition;
         actionsParentInitLocalPos.y = selectedObjectIcon.transform.localPosition.y;
 
-        if (PlayerInteractionController.instance.draggingObject)
+        if (itemWheelVisible)
+        {
+            for (int i = 0; i < actionTextListUi.Count; i++)
+            {
+                actionTextListUi[i].uiBackgroundImage.enabled = false;
+                actionTextListUi[i].uiText.enabled = false;
+            }   
+        }
+        else if (PlayerInteractionController.instance.draggingObject)
         {
             for (int i = 0; i < actionTextListUi.Count; i++)
             {
@@ -205,6 +222,7 @@ public class PlayerUiController : MonoBehaviour
         Vector3 mousePos;
         float distance = 0;
         float newDistance = 0;
+
         
         while (true)
         {
@@ -226,37 +244,73 @@ public class PlayerUiController : MonoBehaviour
                 mousePos = MouseLook.instance.mainCamera.ScreenToWorldPoint(mousePos);
                 distance = 10000000;
 
-                // find closest action
-                for (int i = 0; i < actionTextListUi.Count; i++)
+                if (itemWheelVisible)
                 {
-                    if (actionTextListUi[i].uiBackgroundImage.enabled == false)
-                        continue;
-                
-                    newDistance = Vector3.Distance(mousePos, actionTextListUi[i].targetTransformForCursor.position);
-                    if (newDistance < distance)
+                    // find closest item on wheel
+                    for (int i = 0; i < itemIcons.Count; i++)
                     {
-                        selectedAction = i;
-                        distance = newDistance;
-                    }
-                }
+                        if (itemIcons[i].uiImage.enabled == false)
+                            continue;
                 
-                if (previuosSelectedAction != selectedAction)
+                        newDistance = Vector3.Distance(mousePos, itemIcons[i].uiImage.transform.position);
+                        if (newDistance < distance)
+                        {
+                            selectedItemOnWheel = i;
+                            distance = newDistance;
+                        }
+                    }
+                
+                    if (previuosSelectedItemOnWheel != selectedItemOnWheel)
+                    {
+                        previuosSelectedItemOnWheel = selectedItemOnWheel;
+                        selectNewActionCooldownCurrent = selectNewActionCooldown;
+                        PlayerAudioController.instance.SelectNewUiAction();
+                        for (int i = 0; i < itemIcons.Count; i++)
+                        {
+                            if (i == selectedItemOnWheel)
+                            {
+                                StartCoroutine(SelectItemOnWheel(i));
+                            }
+                            else if (itemIcons[i].uiImage.enabled)
+                            {
+                                StartCoroutine(UnselectItemOnWheel(i));
+                            }
+                        }
+                    }   
+                }
+                else
                 {
-                    previuosSelectedAction = selectedAction;
-                    selectNewActionCooldownCurrent = selectNewActionCooldown;
-                    PlayerAudioController.instance.SelectNewUiAction();
+                    // find closest action
                     for (int i = 0; i < actionTextListUi.Count; i++)
                     {
-                        if (i == selectedAction)
+                        if (actionTextListUi[i].uiBackgroundImage.enabled == false)
+                            continue;
+                
+                        newDistance = Vector3.Distance(mousePos, actionTextListUi[i].targetTransformForCursor.position);
+                        if (newDistance < distance)
                         {
-                            StartCoroutine(SelectActionMenu(i));
-                        }
-                        else if (actionTextListUi[i].uiBackgroundImage.enabled)
-                        {
-                            StartCoroutine(UnselectActionMenu(i));
+                            selectedAction = i;
+                            distance = newDistance;
                         }
                     }
                 
+                    if (previuosSelectedAction != selectedAction)
+                    {
+                        previuosSelectedAction = selectedAction;
+                        selectNewActionCooldownCurrent = selectNewActionCooldown;
+                        PlayerAudioController.instance.SelectNewUiAction();
+                        for (int i = 0; i < actionTextListUi.Count; i++)
+                        {
+                            if (i == selectedAction)
+                            {
+                                StartCoroutine(SelectActionMenu(i));
+                            }
+                            else if (actionTextListUi[i].uiBackgroundImage.enabled)
+                            {
+                                StartCoroutine(UnselectActionMenu(i));
+                            }
+                        }
+                    }   
                 }
             }
             
@@ -303,30 +357,102 @@ public class PlayerUiController : MonoBehaviour
 
     public void CloseItemsWheel()
     {
+        itemWheelVisible = false;
+
+        if (animateItemWheelCoroutine != null)
+        {
+            StopCoroutine(animateItemWheelCoroutine);
+            animateItemWheelCoroutine = null;
+        }
+
+        StartCoroutine(CloseItemsOnWheel());
+    }
+    
+    IEnumerator CloseItemsOnWheel()
+    {
+        float t = 0;
+        while (t < timeToSelect)
+        {
+            t += Time.deltaTime;
+            for (int index = 0; index < itemIcons.Count; index++)
+            {
+                itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.Lerp( itemIcons[index].uiBackgroundImage.transform.localScale, Vector3.zero,t/timeToSelect);   
+            }
+            yield return null;
+        }
         
+        for (int index = 0; index < itemIcons.Count; index++)
+        {
+            itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.zero;   
+            itemIcons[index].uiImage.enabled = false;
+            itemIcons[index].uiBackgroundImage.enabled = false;
+        }
     }
     
     public void OpenItemsWheel()
     {
-        var plantsInInventory = PlayerInventoryController.instance.GetPlantsInInventory();
+        itemWheelVisible = true;
+        plantsInInventory = PlayerInventoryController.instance.GetPlantsInInventory();
         for (int i = 0; i < plantsInInventory.Count; i++)
         {
-            
+            if (itemIcons.Count <= i)
+                break;
+
+            itemIcons[i].uiImage.enabled = true;
+            itemIcons[i].uiBackgroundImage.enabled = true;
+            itemIcons[i].uiBackgroundImage.transform.localScale = Vector3.one;
+            itemIcons[i].uiImage.sprite = plantsInInventory[i].plant.plantIcon;
         }
-        
+
+        animateItemWheelCoroutine = StartCoroutine(AnimateItemWheel());
     }
 
-    IEnumerator ShowItemWheelIcon(Image icon)
+    private Coroutine animateItemWheelCoroutine;
+    IEnumerator AnimateItemWheel()
     {
-        float t = 0;
-        float tt = Random.Range(0.1f, 0.33f);
-
-        while (t < tt)
+        while (true)
         {
-            t += Time.deltaTime;
-            icon.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/tt);
+            itemWheel.position = selectedObjectIcon.transform.position;
             yield return null;
         }
+    }
+
+    public int GetSelectedItemOnWheel()
+    {
+        return selectedItemOnWheel;
+    }
+    
+    IEnumerator SelectItemOnWheel(int index)
+    {
+        float t = 0;
+        itemIcons[index].uiBackgroundImage.color = Color.white;
+        itemIcons[index].uiImage.color = Color.black;
+        itemIcons[index].itemName.text = plantsInInventory[index].plant.plantName[GameManager.instance.gameLanguage];
+        
+        while (t < timeToSelect)
+        {
+            t += Time.deltaTime;
+            
+            itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 1.25f, t/timeToSelect);
+            yield return null;
+        }
+        itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.one * 1.25f;
+    }
+    IEnumerator UnselectItemOnWheel(int index)
+    {
+        float t = 0;
+        itemIcons[index].uiBackgroundImage.color = Color.black;
+        itemIcons[index].uiImage.color = Color.white;
+        itemIcons[index].itemName.text = String.Empty;
+        
+        while (t < timeToSelect)
+        {
+            t += Time.deltaTime;
+            
+            itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.Lerp( Vector3.one * 1.25f, Vector3.one * 0.75f,t/timeToSelect);
+            yield return null;
+        }
+        itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.one * 0.75f;
     }
 }
 
@@ -336,4 +462,12 @@ public class UiActionText
     public Text uiText;
     public Image uiBackgroundImage;
     public Transform targetTransformForCursor;
+}
+
+[Serializable]
+public class UiItemOnWheel
+{
+    public Image uiBackgroundImage;
+    public Image uiImage;
+    public Text itemName;
 }

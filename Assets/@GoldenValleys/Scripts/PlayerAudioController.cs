@@ -18,6 +18,8 @@ public class PlayerAudioController : MonoBehaviour
 {
     public static PlayerAudioController instance;
     public AudioSource selectNewUiActionSource;
+    public AudioSource okUiAdudioSource;
+    public AudioSource closeUiAdudioSource;
     public List<AudioSource> footStepSources;
     public List<AudioClip> footStepWalk;
     public List<AudioClip> footStepRun;
@@ -157,5 +159,17 @@ public class PlayerAudioController : MonoBehaviour
         selectNewUiActionSource.Stop();
         selectNewUiActionSource.pitch = Random.Range(0.75f, 1.25f);
         selectNewUiActionSource.Play();
+    }
+    public void CloseUi()
+    {
+        closeUiAdudioSource.Stop();
+        closeUiAdudioSource.pitch = Random.Range(0.75f, 1.25f);
+        closeUiAdudioSource.Play();
+    }
+    public void OkUi()
+    {
+        okUiAdudioSource.Stop();
+        okUiAdudioSource.pitch = Random.Range(0.75f, 1.25f);
+        okUiAdudioSource.Play();
     }
 }

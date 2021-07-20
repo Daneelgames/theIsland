@@ -83,12 +83,21 @@ public class PlayerInteractionController : MonoBehaviour
 
     public void Interact(InteractiveObject objectToInteract, int selectedAction)
     {
+        PlayerAudioController.instance.OkUi();
+        if (PlayerUiController.instance.itemWheelVisible)
+        {
+            // plant seed with an index of 
+            PlayerUiController.instance.GetSelectedItemOnWheel();
+            return;
+        }
+        
         switch (objectToInteract.actionList[selectedAction].actionType)
         {
             case InteractiveObject.ActionType.PickUp:
                 StartCoroutine(PickUpObject(objectToInteract));
                 break;
             case InteractiveObject.ActionType.PlantSeed:
+                PlayerUiController.instance.ResetSelectedObject();
                 PlayerUiController.instance.OpenItemsWheel();
                 break;
         }
