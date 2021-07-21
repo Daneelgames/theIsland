@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/@Hikka/Scene/SafeRoomScene.unity
+    path: Assets/@Hikka/Scenes/SafeRoomScene.unity
     guid: 9daab45946fc4474a9b553dc5198c4ce
   - enabled: 1
-    path: Assets/@Hikka/Scene/Loop_001.unity
+    path: Assets/@Hikka/Scenes/Loop_001.unity
     guid: a7a8ef201f7f2c64ca27d38b521e1834
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f239bc8a02f252340b9378b1172e175b, type: 2}

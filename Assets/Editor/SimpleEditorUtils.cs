@@ -27,7 +27,7 @@ public static class SimpleEditorUtils
         //EditorApplication.SaveCurrentSceneIfUserWantsTo();
         //EditorApplication.OpenScene(
         EditorSceneManager.OpenScene(
-            "Assets/MainScene.unity");
+            "Assets/@Hikka/Scenes/SafeRoomScene.unity");
         EditorApplication.isPlaying = true;
     }
 }

@@ -42,7 +42,7 @@ public class PlayerUiController : MonoBehaviour
     public Transform itemWheel;
     public List<UiItemOnWheel> itemIcons;
     List<InventoryPlant> plantsInInventory = new List<InventoryPlant>();
-    int selectedItemOnWheel = -1;
+    int selectedItemIndexOnWheel = -1;
     int previuosSelectedItemOnWheel = -1;
 
     
@@ -57,6 +57,10 @@ public class PlayerUiController : MonoBehaviour
         instance = this;
         actionsParent.transform.localPosition = actionsParentInitLocalPos;
 
+    }
+
+    private void Start()
+    {
         CloseItemsWheel();
     }
 
@@ -157,7 +161,7 @@ public class PlayerUiController : MonoBehaviour
         {
             for (int i = 0; i < actionTextListUi.Count; i++)
             {
-                if (i >= currentSelectedObject.actionList.Count)
+                if (i >= currentSelectedObject.actionList.Count || (currentSelectedObject.actionList[i].actionType == InteractiveObject.ActionType.PlantSeed && selectedItemIndexOnWheel == -1))
                 {
                     actionTextListUi[i].uiBackgroundImage.enabled = false;
                     actionTextListUi[i].uiText.enabled = false;
@@ -195,8 +199,23 @@ public class PlayerUiController : MonoBehaviour
         
         while (selectedObject)
         {
+
             if (!PlayerInteractionController.instance.draggingObject)
-                actionsParent.transform.localPosition = selectedObjectIcon.transform.localPosition;
+            {
+                actionsParent.transform.localPosition = selectedObjectIcon.transform.localPosition;   
+            }
+            yield return null;
+        }
+
+        var mousePos = Input.mousePosition;
+        while (itemWheelVisible)
+        {
+            if (!PlayerInteractionController.instance.draggingObject)
+            {
+                mousePos = Input.mousePosition;
+                mousePos.z = 10;
+                actionsParent.transform.localPosition = MouseLook.instance.handsCamera.ScreenToWorldPoint(mousePos);
+            }
             yield return null;
         }
 
@@ -233,9 +252,18 @@ public class PlayerUiController : MonoBehaviour
         {
             if (selectNewActionCooldownCurrent > 0)
                 selectNewActionCooldownCurrent -= Time.deltaTime;
+
+            if (!itemWheelVisible && currentSelectedObject)
+            {
+                screenPos = MouseLook.instance.mainCamera.WorldToScreenPoint(selectedPosition);
+                screenPos.z = (canvas.transform.position - MouseLook.instance.handsCamera.transform.position).magnitude;   
+            }
+            else
+            {
+                screenPos = Input.mousePosition;
+                screenPos.z = 10;
+            }
             
-            screenPos = MouseLook.instance.mainCamera.WorldToScreenPoint(selectedPosition);
-            screenPos.z = (canvas.transform.position - MouseLook.instance.handsCamera.transform.position).magnitude;
             uiFeedbackPosition = MouseLook.instance.handsCamera.ScreenToWorldPoint(screenPos);
         
             selectedObjectIcon.transform.position = uiFeedbackPosition;
@@ -260,19 +288,19 @@ public class PlayerUiController : MonoBehaviour
                         newDistance = Vector3.Distance(mousePos, itemIcons[i].uiImage.transform.position);
                         if (newDistance < distance)
                         {
-                            selectedItemOnWheel = i;
+                            selectedItemIndexOnWheel = i;
                             distance = newDistance;
                         }
                     }
                 
-                    if (previuosSelectedItemOnWheel != selectedItemOnWheel)
+                    if (previuosSelectedItemOnWheel != selectedItemIndexOnWheel)
                     {
-                        previuosSelectedItemOnWheel = selectedItemOnWheel;
+                        previuosSelectedItemOnWheel = selectedItemIndexOnWheel;
                         selectNewActionCooldownCurrent = selectNewActionCooldown;
                         PlayerAudioController.instance.SelectNewUiAction();
                         for (int i = 0; i < itemIcons.Count; i++)
                         {
-                            if (i == selectedItemOnWheel)
+                            if (i == selectedItemIndexOnWheel)
                             {
                                 StartCoroutine(SelectItemOnWheel(i));
                             }
@@ -362,6 +390,8 @@ public class PlayerUiController : MonoBehaviour
 
     public void CloseItemsWheel()
     {
+        PlayerAudioController.instance.CloseUi();
+        UniversalCursorController.instance.HideCursor();
         itemWheelVisible = false;
 
         if (animateItemWheelCoroutine != null)
@@ -396,6 +426,8 @@ public class PlayerUiController : MonoBehaviour
     
     public void OpenItemsWheel()
     {
+        PlayerAudioController.instance.OkUi();
+        UniversalCursorController.instance.ShowCursor();
         itemWheelVisible = true;
         plantsInInventory = PlayerInventoryController.instance.GetPlantsInInventory();
         for (int i = 0; i < plantsInInventory.Count; i++)
@@ -410,6 +442,14 @@ public class PlayerUiController : MonoBehaviour
         }
 
         animateItemWheelCoroutine = StartCoroutine(AnimateItemWheel());
+        StartCoroutine(SelectItemOnWheel(0));
+        if (animatePointerCoroutine != null)
+            StopCoroutine(animatePointerCoroutine);
+        if (movePointerCoroutine != null)
+            StopCoroutine(movePointerCoroutine);
+            
+        animatePointerCoroutine = StartCoroutine(AnimatePointer());
+        movePointerCoroutine = StartCoroutine(MovePointer());
     }
 
     private Coroutine animateItemWheelCoroutine;
@@ -417,14 +457,24 @@ public class PlayerUiController : MonoBehaviour
     {
         while (true)
         {
-            itemWheel.position = selectedObjectIcon.transform.position;
+            var cursorPos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            cursorPos.z = 10.0f; //distance of the plane from the camera
+            cursorPos = MouseLook.instance.mainCamera.ScreenToWorldPoint(cursorPos);
+            
+            itemWheel.position = cursorPos;
+            
+            //itemWheel.position = selectedObjectIcon.transform.position;
             yield return null;
         }
     }
 
-    public int GetSelectedItemOnWheel()
+    public int GetSelectedItemIndexOnWheel()
     {
-        return selectedItemOnWheel;
+        return selectedItemIndexOnWheel;
+    }
+    public void SetSelectedItemIndexOnWheel(int newIndex)
+    {
+        selectedItemIndexOnWheel = newIndex;
     }
     
     IEnumerator SelectItemOnWheel(int index)

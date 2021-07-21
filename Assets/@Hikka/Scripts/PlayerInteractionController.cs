@@ -72,24 +72,66 @@ public class PlayerInteractionController : MonoBehaviour
         if (raycastCooldownAfterDrop > 0)
             raycastCooldownAfterDrop -= Time.deltaTime;
         
+        if (Input.GetButtonDown("Inventory"))
+        {
+            if (draggingObject)
+            {
+                DropDragginObject();
+            }
+            PlayerUiController.instance.ResetSelectedObject();
+            if (!PlayerUiController.instance.itemWheelVisible)
+                PlayerUiController.instance.OpenItemsWheel();
+            else
+                PlayerUiController.instance.CloseItemsWheel();
+            
+            return;
+        }
+        
         if (Input.GetButtonDown("Interact"))
         {
             if (draggingObject)
             {
-                draggingObject.rb.useGravity = true;
-                PlayerUiController.instance.ResetSelectedObject();
-                draggingObject = null;
-                raycastCooldownAfterDrop = 0.5f;
+                DropDragginObject();
                 return;    
             }
-            
+
             var objectToInteract = PlayerUiController.instance.GetSelectedObject();
 
             if (objectToInteract)
             {
                 Interact(objectToInteract, PlayerUiController.instance.selectedAction);
+                return;
             }
         }
+
+        if (Input.GetButtonDown("UseTool"))
+        {
+            if (draggingObject)
+            {
+                DropDragginObject();
+                return;
+            }
+            
+            if (PlayerUiController.instance.itemWheelVisible)
+            {
+                Interact(null, PlayerUiController.instance.GetSelectedItemIndexOnWheel());
+                return;
+            }
+            
+            if (PlayerToolsController.instance.selectedToolIndex != -1)
+            {
+                PlayerToolsController.instance.UseTool();
+                return;
+            }
+        }
+    }
+
+    public void DropDragginObject()
+    {
+        draggingObject.rb.useGravity = true;
+        PlayerUiController.instance.ResetSelectedObject();
+        draggingObject = null;
+        raycastCooldownAfterDrop = 0.5f;
     }
 
     public void Interact(InteractiveObject objectToInteract, int selectedAction)
@@ -98,7 +140,8 @@ public class PlayerInteractionController : MonoBehaviour
         if (PlayerUiController.instance.itemWheelVisible)
         {
             // plant seed with an index of 
-            PlayerUiController.instance.GetSelectedItemOnWheel();
+            PlayerToolsController.instance.SelectTool(selectedAction);
+            PlayerUiController.instance.CloseItemsWheel();
             return;
         }
         

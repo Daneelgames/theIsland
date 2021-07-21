@@ -7,8 +7,8 @@ public class PlayerInventoryController : MonoBehaviour
 {
     public static PlayerInventoryController instance;
     
-    public List<InventoryPlant> plantsInInventory;
-
+    public List<InventoryPlant> seedsInInventory;
+    
     private void Awake()
     {
         if (instance)
@@ -24,13 +24,19 @@ public class PlayerInventoryController : MonoBehaviour
     {
         List<InventoryPlant> temp = new List<InventoryPlant>();
 
-        for (int i = 0; i < plantsInInventory.Count; i++)
+        for (int i = 0; i < seedsInInventory.Count; i++)
         {
-            if (plantsInInventory[i].amount > 0)
-                temp.Add(plantsInInventory[i]);
+            if (seedsInInventory[i].amount > 0)
+                temp.Add(seedsInInventory[i]);
         }
 
         return temp;
+    }
+
+    public int SeedUsed(int seedIndex)
+    {
+        seedsInInventory[seedIndex].amount --;
+        return seedsInInventory[seedIndex].amount;
     }
 }
 

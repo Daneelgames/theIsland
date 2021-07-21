@@ -120,7 +120,7 @@ public class MouseLook : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (canControl  && canAim &&!pm.teleport)
+        if (canControl && canAim &&!pm.teleport)
         {
             Looking();
         }
@@ -154,13 +154,16 @@ public class MouseLook : MonoBehaviour
 
     void Looking()
     {
-        mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
-        mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
+        if (PlayerUiController.instance.itemWheelVisible == false)
+        {
+            mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
+            mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
 
-        xRotation -= mouseY;
-        yRotation += mouseX;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
-
+            xRotation -= mouseY;
+            yRotation += mouseX;
+            xRotation = Mathf.Clamp(xRotation, -90, 90);
+        }
+        
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
         camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
