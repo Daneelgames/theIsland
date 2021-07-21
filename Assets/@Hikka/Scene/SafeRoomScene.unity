@@ -2896,14 +2896,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantPot
       objectReference: {fileID: 0}
-    - target: {fileID: 7415551693825230185, guid: 07b4d528b1e6aeb45855f8c1f8b6ccf6, type: 3}
-      propertyPath: putAction.displayedName.Array.data[0]
-      value: 'E: let go'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7415551693825230185, guid: 07b4d528b1e6aeb45855f8c1f8b6ccf6, type: 3}
-      propertyPath: actionList.Array.data[0].displayedName.Array.data[0]
-      value: 'E: Pick up'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07b4d528b1e6aeb45855f8c1f8b6ccf6, type: 3}
 --- !u!4 &1521019881 stripped
