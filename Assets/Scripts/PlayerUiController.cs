@@ -11,7 +11,7 @@ public class PlayerUiController : MonoBehaviour
     public static PlayerUiController instance;
 
     public Canvas canvas;
-
+    public bool showTooltips = false;
     [Header("Cursor")]
     public Image selectedObjectIcon;
     public Image selectedObjectIconBackground;
@@ -96,14 +96,17 @@ public class PlayerUiController : MonoBehaviour
         if (!selectedObject)
         {
             selectedObject = true;
+
+            if (showTooltips)
+            {
+                if (animatePointerCoroutine != null)
+                    StopCoroutine(animatePointerCoroutine);
+                if (movePointerCoroutine != null)
+                    StopCoroutine(movePointerCoroutine);
             
-            if (animatePointerCoroutine != null)
-                StopCoroutine(animatePointerCoroutine);
-            if (movePointerCoroutine != null)
-                StopCoroutine(movePointerCoroutine);
-            
-            animatePointerCoroutine = StartCoroutine(AnimatePointer());
-            movePointerCoroutine = StartCoroutine(MovePointer());
+                animatePointerCoroutine = StartCoroutine(AnimatePointer());
+                movePointerCoroutine = StartCoroutine(MovePointer());   
+            }
         }
         selectedPosition = newPos;
     }
@@ -116,14 +119,17 @@ public class PlayerUiController : MonoBehaviour
         currentSelectedObject = null;
         lastSelectedGameObject = null;
         selectedObject = false;
-        StopCoroutine(movePointerCoroutine);
+        
+        if (showTooltips)
+            StopCoroutine(movePointerCoroutine);
 
         if (itemWheelVisible)
         {
             CloseItemsWheel();
         }
 
-        PlayerAudioController.instance.CloseUi();
+        if (showTooltips)
+            PlayerAudioController.instance.CloseUi();
     }
 
     IEnumerator AnimatePointer()
@@ -297,7 +303,9 @@ public class PlayerUiController : MonoBehaviour
                     {
                         previuosSelectedItemOnWheel = selectedItemIndexOnWheel;
                         selectNewActionCooldownCurrent = selectNewActionCooldown;
-                        PlayerAudioController.instance.SelectNewUiAction();
+                        
+                        if (showTooltips)
+                            PlayerAudioController.instance.SelectNewUiAction();
                         for (int i = 0; i < itemIcons.Count; i++)
                         {
                             if (i == selectedItemIndexOnWheel)
@@ -331,7 +339,10 @@ public class PlayerUiController : MonoBehaviour
                     {
                         previuosSelectedAction = selectedAction;
                         selectNewActionCooldownCurrent = selectNewActionCooldown;
-                        PlayerAudioController.instance.SelectNewUiAction();
+                        
+                        if (showTooltips)
+                            PlayerAudioController.instance.SelectNewUiAction();
+                        
                         for (int i = 0; i < actionTextListUi.Count; i++)
                         {
                             if (i == selectedAction)
@@ -468,9 +479,9 @@ public class PlayerUiController : MonoBehaviour
         }
     }
 
-    public int GetSelectedItemIndexOnWheel()
+    public int GetItemIndexFromSelectedOnWheel()
     {
-        return selectedItemIndexOnWheel;
+        return plantsInInventory[selectedItemIndexOnWheel].plant.plantIndex;
     }
     public void SetSelectedItemIndexOnWheel(int newIndex)
     {
@@ -479,6 +490,9 @@ public class PlayerUiController : MonoBehaviour
     
     IEnumerator SelectItemOnWheel(int index)
     {
+        if (index == -1)
+            yield break;
+        
         float t = 0;
         itemIcons[index].uiBackgroundImage.color = Color.white;
         itemIcons[index].uiImage.color = Color.black;
@@ -495,6 +509,9 @@ public class PlayerUiController : MonoBehaviour
     }
     IEnumerator UnselectItemOnWheel(int index)
     {
+        if (index == -1)
+            yield break;
+        
         float t = 0;
         itemIcons[index].uiBackgroundImage.color = Color.black;
         itemIcons[index].uiImage.color = Color.white;

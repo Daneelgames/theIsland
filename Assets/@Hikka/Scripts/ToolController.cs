@@ -23,7 +23,7 @@ public class ToolController : MonoBehaviour
                 var selectedObject = PlayerUiController.instance.GetSelectedObject();
                 if (selectedObject && selectedObject.plantController)
                 {
-                    selectedObject.plantController.PlantSeed();
+                    selectedObject.plantController.PlantSeed(seedIndex);
                     int newSeedsAmount = PlayerInventoryController.instance.SeedUsed(seedIndex);
 
                     if (newSeedsAmount <= 0)

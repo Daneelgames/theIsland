@@ -33,7 +33,10 @@ public class PlayerToolsController : MonoBehaviour
     public void UseTool()
     {
         if (useToolCooldown > 0)
+        {
             return;
+        }
+                
         
         allTools[selectedToolIndex].UseTool();
     }
@@ -41,5 +44,12 @@ public class PlayerToolsController : MonoBehaviour
     public void SetUseToolCooldown(float newCooldown)
     {
         useToolCooldown = newCooldown;
+        StartCoroutine(ResetToolCooldown());
+    }
+
+    IEnumerator ResetToolCooldown()
+    {
+        yield return new WaitForSeconds(useToolCooldown);
+        useToolCooldown = 0;
     }
 }

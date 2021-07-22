@@ -35,6 +35,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     public int SeedUsed(int seedIndex)
     {
+        Debug.Log(seedIndex);
         seedsInInventory[seedIndex].amount --;
         return seedsInInventory[seedIndex].amount;
     }

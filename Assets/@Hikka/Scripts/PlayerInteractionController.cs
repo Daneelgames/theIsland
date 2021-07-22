@@ -106,6 +106,7 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (Input.GetButtonDown("UseTool"))
         {
+            PlayerUiController.instance.ResetSelectedObject();
             if (draggingObject)
             {
                 DropDragginObject();
@@ -114,7 +115,7 @@ public class PlayerInteractionController : MonoBehaviour
             
             if (PlayerUiController.instance.itemWheelVisible)
             {
-                Interact(null, PlayerUiController.instance.GetSelectedItemIndexOnWheel());
+                Interact(null,  PlayerUiController.instance.GetItemIndexFromSelectedOnWheel());
                 return;
             }
             
@@ -136,7 +137,9 @@ public class PlayerInteractionController : MonoBehaviour
 
     public void Interact(InteractiveObject objectToInteract, int selectedAction)
     {
-        PlayerAudioController.instance.OkUi();
+        if (PlayerUiController.instance.showTooltips)
+            PlayerAudioController.instance.OkUi();
+        
         if (PlayerUiController.instance.itemWheelVisible)
         {
             // plant seed with an index of 
