@@ -12,12 +12,14 @@ public class PlantController : MonoBehaviour
     public int currentVisualIndex = -1;
     public List<PlantsVisual> visualsByLifetime;
 
-    public float minPulseTime = 0.5f;
-    public float maxPulseTime = 1f;
-    public float minScaleMultiplayer = 0.5f;
-    public float maxScaleMultiplayer = 2f;
+    float minPulseTime = 0.5f;
+    float maxPulseTime = 1f;
+    float minScaleMultiplayer = 0.5f;
+    float maxScaleMultiplayer = 2f;
 
     public List<AssetReference> plantsVisualsReferences = new List<AssetReference>();
+
+    public PlantVisualController spawnedPlantVisual;
 
     void Start()
     {
@@ -30,38 +32,52 @@ public class PlantController : MonoBehaviour
     public void PlantSeed(int seedIndex)
     {
         AssetSpawner.instance.SpawnPlantVisual(plantsVisualsReferences[seedIndex], plantOrigin.position, transform.rotation);
-
     }
 
     public IEnumerator ProceedPlant(GameObject plantVisualGO)
     {
-        var plantVisual = plantVisualGO.GetComponent<PlantVisualController>();
+        plantVisualGO.transform.parent = transform;
+        spawnedPlantVisual = plantVisualGO.GetComponent<PlantVisualController>();
         
-        visualsByLifetime = plantVisual.visualsByLifetime;
+        visualsByLifetime = spawnedPlantVisual.visualsByLifetime;
 
+        minPulseTime = spawnedPlantVisual.minPulseTime;        
+        maxPulseTime = spawnedPlantVisual.maxPulseTime;        
+        minScaleMultiplayer = spawnedPlantVisual.minScaleMultiplayer;        
+        maxScaleMultiplayer = spawnedPlantVisual.maxScaleMultiplayer;        
+        
+        currentVisualIndex = 0;
+
+        StartCoroutine(SetVisualState(currentVisualIndex));
+        yield break;
+    }
+
+    IEnumerator SetVisualState(int index)
+    {
         for (int i = 0; i < visualsByLifetime.Count; i++)
         {
             visualsByLifetime[i].rootObject.SetActive(false);
         }
-
-        currentVisualIndex = 0;
-        visualsByLifetime[0].rootObject.transform.localScale = Vector3.zero;
-        visualsByLifetime[0].rootObject.SetActive(true);
+        visualsByLifetime[index].rootObject.transform.localScale = Vector3.zero;
+        visualsByLifetime[index].rootObject.SetActive(true);
         
         float t = 0;
         float tt = Random.Range(1,5);
 
+        if (index > 0)
+            tt = 0;
+        
         while (t < tt)
         {
             t += Time.deltaTime;
-            visualsByLifetime[0].rootObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/tt);
+            visualsByLifetime[index].rootObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/tt);
             yield return null;
         }
-        visualsByLifetime[0].rootObject.transform.localScale = Vector3.one;
+        visualsByLifetime[index].rootObject.transform.localScale = Vector3.one;
         
-        for (int i = 0; i < visualsByLifetime[0].pulsatingObjects.Count; i++)
+        for (int i = 0; i < visualsByLifetime[index].pulsatingObjects.Count; i++)
         {
-            StartCoroutine(AnimatePulsatingObject(visualsByLifetime[0].pulsatingObjects[i]));   
+            StartCoroutine(AnimatePulsatingObject(visualsByLifetime[index].pulsatingObjects[i]));   
         }
     }
 
@@ -84,6 +100,15 @@ public class PlantController : MonoBehaviour
                 pulsatingObject.transform.localScale = Vector3.Lerp(tempScale, initScale  * r, t/tt);
                 yield return null;
             }
+        }
+    }
+
+    public void NewCycle()
+    {
+        if (currentVisualIndex >= 0 && currentVisualIndex < visualsByLifetime.Count - 1)
+        {
+            currentVisualIndex++; 
+            StartCoroutine(SetVisualState(currentVisualIndex));
         }
     }
 }

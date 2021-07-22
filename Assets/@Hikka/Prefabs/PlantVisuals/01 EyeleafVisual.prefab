@@ -1839,6 +1839,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613daa22f56377841a1008ccbae2c25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPulseTime: 2
+  maxPulseTime: 5
+  minScaleMultiplayer: 0.9
+  maxScaleMultiplayer: 1.1
   visualsByLifetime:
   - rootObject: {fileID: 969136414842618805}
     pulsatingObjects:

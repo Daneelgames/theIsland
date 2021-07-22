@@ -703,6 +703,9 @@
      <Reference Include="UnityEditor.UI">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Rider.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
      </Reference>
@@ -744,9 +747,6 @@
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

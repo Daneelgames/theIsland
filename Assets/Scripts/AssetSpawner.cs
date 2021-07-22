@@ -148,8 +148,8 @@ public class AssetSpawner : MonoBehaviour
 
     void ProceedPlant(GameObject go)
     {
-        InteractiveObjectsManager.instance.GetClosestInteractiveObject(go.transform.position,
-            InteractiveObjectsManager.instance.potsInteractiveObjects).plantController.ProceedPlant(go);
+        StartCoroutine(InteractiveObjectsManager.instance.GetClosestInteractiveObject(go.transform.position,
+            InteractiveObjectsManager.instance.potsInteractiveObjects).plantController.ProceedPlant(go));
     }
     
     void ProceedProp(GameObject go)

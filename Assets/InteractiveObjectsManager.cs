@@ -41,4 +41,12 @@ public class InteractiveObjectsManager : MonoBehaviour
 
         return closestIO; 
     }
+
+    public void NewLoop()
+    {
+        for (int i = 0; i < potsInteractiveObjects.Count; i++)
+        {
+            potsInteractiveObjects[i].plantController.NewCycle();
+        }
+    }
 }

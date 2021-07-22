@@ -65,8 +65,10 @@
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\FavouriteTemplatesUtility.cs" />
      <Compile Include="Assets\Scripts\NotifyOnDestroy.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PickableData.cs" />
+     <Compile Include="Assets\@Hikka\Scripts\UniversalCursorController.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlayerToolsController.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IHoverable.cs" />
+     <Compile Include="Assets\@Hikka\Scripts\ToolController.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\CameraInputData.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\PlayerAudioController.cs" />
      <Compile Include="Assets\Scripts\AssetSpawner.cs" />
@@ -75,6 +77,7 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandGenerator.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\SaveCombinedMesh.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\PlayerMovementStats.cs" />
+     <Compile Include="Assets\PlantVisualController.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Noise.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\MovementInputData.cs" />
      <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
@@ -82,6 +85,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\Hoverable.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrush.cs" />
      <Compile Include="Assets\Scripts\PlayerUiController.cs" />
+     <Compile Include="Assets\PlantController.cs" />
      <Compile Include="Assets\__Global\GameObjectHelper.cs" />
      <Compile Include="Assets\@Hikka\Scripts\LoopsLoadingManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
@@ -118,11 +122,9 @@
      <Compile Include="Assets\@Hikka\Scripts\PlantData.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionData.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
+     <Compile Include="Assets\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\@Hikka\Scripts\ToolController.cs" />
-     <Compile Include="Assets\@Hikka\Scripts\UniversalCursorController.cs" />
-     <Compile Include="Assets\PlantController.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_02.json" />
@@ -807,6 +809,9 @@
      <Reference Include="UnityEditor.UI">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Rider.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
      </Reference>
@@ -848,9 +853,6 @@
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

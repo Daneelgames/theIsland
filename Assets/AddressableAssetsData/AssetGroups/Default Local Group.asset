@@ -17,34 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: d21bc7db9f5449948a19209d0d60974d
   m_SerializeEntries:
-  - m_GUID: 8aa1e1583f2a8dc448c4790dd8ece1b6
-    m_Address: '@TilesIsland/DefaultTileEmpty.prefab'
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f6b0f3e14d1dbea46a5f7d47f0478362
-    m_Address: '@TilesIsland/DefaultTileRandomProps.prefab'
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 682ba90476563734881769b2845d45e3
-    m_Address: '@TilesIsland/DefaultTileSand.prefab'
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: b3d8b3f20e610e54f9060f3bf388abe4
-    m_Address: '@TilesIsland/DefaultTileGrass.prefab'
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: b512574ff6fd59d45bf50b9d6a68903a
     m_Address: PlantVisuals/00 FingerleafVisual.prefab
     m_ReadOnly: 0

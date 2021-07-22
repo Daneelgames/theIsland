@@ -45,7 +45,9 @@ public class DoorController : MonoBehaviour
         {
             working = true;
             if (activateLoopsLoadingTrigger)
-                LoopsLoadingManager.instance.loadingTrigger.gameObject.SetActive(true);
+            {
+                LoopsLoadingManager.instance.ActivateAllLoadingTriggers();
+            }
             StartCoroutine(MovePlayerThroughDoor());
         }
     }
