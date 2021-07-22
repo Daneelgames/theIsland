@@ -20,6 +20,12 @@ public class InteractiveObject : MonoBehaviour
     
     [Header("InteractiveObjectType")]
     public PlantController plantController;
+
+    void Start()
+    {
+        if (plantController)
+            InteractiveObjectsManager.instance.potsInteractiveObjects.Add(this);
+    }
 }
 
 [Serializable]

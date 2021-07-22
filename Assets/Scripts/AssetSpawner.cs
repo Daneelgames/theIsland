@@ -9,7 +9,7 @@ public class AssetSpawner : MonoBehaviour
 {
     public enum ObjectType
     {
-        Room, Prop, Mob, TeleportRoom, Vfx, HubWalls, Path
+        PlantVisual, Prop, Path
     }
 
     public static AssetSpawner instance;
@@ -25,6 +25,28 @@ public class AssetSpawner : MonoBehaviour
     void Awake()
     {
         instance = this;
+    }
+
+    public void SpawnPlantVisual(AssetReference assetReference, Vector3 newPos, Quaternion newRot)
+    {
+        if (assetReference.RuntimeKeyIsValid() == false)
+        {
+            Debug.Log("Invalid Key " + assetReference.RuntimeKey.ToString());
+        }
+        if (asyncOperationHandles.ContainsKey(assetReference)) // if exists
+        {
+            if (asyncOperationHandles[assetReference].IsDone) // if exists and loaded
+            {
+                SpawnFromLoadedReference(assetReference, newPos, newRot, ObjectType.PlantVisual);
+            }
+            else // if exists and not loaded
+                EnqueueSpawnForAfterInitialization(assetReference, newPos, newRot);
+                
+            return;
+        }
+        
+        // if not exists
+        LoadAndSpawn(assetReference, newPos, newRot, ObjectType.PlantVisual);
     }
     
     public void Spawn(AssetReference assetReference, Vector3 newPos, Quaternion newRot, ObjectType objType)
@@ -85,25 +107,17 @@ public class AssetSpawner : MonoBehaviour
             
             spawnedAssets[assetReference].Add(asyncOperationHandle.Result);
 
-            if (objectType == ObjectType.Prop)
+            switch (objectType)
             {
-                ProceedProp(asyncOperationHandle.Result);
-            }
-            else if (objectType == ObjectType.Path)
-            {
-                ProceedPath(asyncOperationHandle.Result);
-            }
-            else if (objectType == ObjectType.Mob)
-            {
-            }
-            else if (objectType == ObjectType.Room)
-            {
-            }
-            else if (objectType == ObjectType.TeleportRoom)
-            {
-            }
-            else if (objectType == ObjectType.HubWalls)
-            {
+                case ObjectType.PlantVisual:
+                    ProceedPlant(asyncOperationHandle.Result);
+                    break;
+                case ObjectType.Prop:
+                    ProceedProp(asyncOperationHandle.Result);
+                    break;
+                case ObjectType.Path:
+                    ProceedPath(asyncOperationHandle.Result);
+                    break;
             }
             
             var notify = asyncOperationHandle.Result.AddComponent<NotifyOnDestroy>();
@@ -132,6 +146,12 @@ public class AssetSpawner : MonoBehaviour
         };
     }
 
+    void ProceedPlant(GameObject go)
+    {
+        InteractiveObjectsManager.instance.GetClosestInteractiveObject(go.transform.position,
+            InteractiveObjectsManager.instance.potsInteractiveObjects).plantController.ProceedPlant(go);
+    }
+    
     void ProceedProp(GameObject go)
     {
         

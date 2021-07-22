@@ -22,8 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-    m_MainAsset: {fileID: 5481642413771031046, guid: 8aa1e1583f2a8dc448c4790dd8ece1b6, type: 3}
-    m_TargetAsset: {fileID: 5481642413771031046, guid: 8aa1e1583f2a8dc448c4790dd8ece1b6, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: f6b0f3e14d1dbea46a5f7d47f0478362
     m_Address: '@TilesIsland/DefaultTileRandomProps.prefab'
     m_ReadOnly: 0
@@ -43,6 +43,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b512574ff6fd59d45bf50b9d6a68903a
+    m_Address: PlantVisuals/00 FingerleafVisual.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8fce519158d46e9469a2b14919f82ab4
+    m_Address: PlantVisuals/01 EyeleafVisual.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
