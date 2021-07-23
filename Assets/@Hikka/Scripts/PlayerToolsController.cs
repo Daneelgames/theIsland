@@ -31,18 +31,21 @@ public class PlayerToolsController : MonoBehaviour
     }
     public void SelectTool(ToolController newSelectedTool)
     {
-        
         for (int i = 0; i < allTools.Count; i++)
         {
             if (allTools[i] != newSelectedTool)
                 allTools[i].gameObject.SetActive(false);
             else
+            {
+                selectedToolIndex = i;
                 allTools[i].gameObject.SetActive(true);
+            }
         }
     }
 
     public void UseTool()
     {
+        Debug.Log("UseTool. selected tool index:" + selectedToolIndex);
         if (useToolCooldown > 0)
         {
             return;

@@ -492,7 +492,6 @@ public class PlayerUiController : MonoBehaviour
     
     IEnumerator SelectItemOnWheel(int index)
     {
-        Debug.Log(index);
         if (index == -1 || index >= itemIcons.Count)
             yield break;
         
@@ -516,6 +515,7 @@ public class PlayerUiController : MonoBehaviour
 
     public ToolController GetSelectedToolOnWheel()
     {
+        Debug.Log("GetSelectedToolOnWheel; return " + inventory[selectedItemIndexOnWheel]);
         return inventory[selectedItemIndexOnWheel];
     }
     

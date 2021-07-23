@@ -68,7 +68,7 @@ public class ToolController : MonoBehaviour
 
                 waterAmount -= _waterToUse;
                 
-                if (selectedObject.plantController.spawnedPlantVisual)
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.spawnedPlantVisual)
                 {
                     // selectedObject.plantController.WaterUsed(_waterToUse);
                 }

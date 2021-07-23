@@ -106,16 +106,15 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (Input.GetButtonDown("UseTool"))
         {
+            if (PlayerUiController.instance.itemWheelVisible)
+            {
+                InteractOnWheel(PlayerUiController.instance.GetSelectedToolOnWheel());
+                return;
+            }
             PlayerUiController.instance.ResetSelectedObject();
             if (draggingObject)
             {
                 DropDragginObject();
-                return;
-            }
-            
-            if (PlayerUiController.instance.itemWheelVisible)
-            {
-                InteractOnWheel(PlayerUiController.instance.GetSelectedToolOnWheel());
                 return;
             }
             
@@ -145,6 +144,8 @@ public class PlayerInteractionController : MonoBehaviour
 
     public void Interact(InteractiveObject objectToInteract, int selectedAction)
     {
+        Debug.Log("Interact; selectedAction " + selectedAction);
+        
         if (selectedAction == -1)
             return;
         
