@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerInventoryController : MonoBehaviour
 {
     public static PlayerInventoryController instance;
+
+    public List<ToolController> inventory;
     
-    public List<InventoryPlant> seedsInInventory;
     
     private void Awake()
     {
@@ -20,30 +21,19 @@ public class PlayerInventoryController : MonoBehaviour
         instance = this;
     }
 
-    public List<InventoryPlant> GetPlantsInInventory()
+    public List<ToolController> GetInventory()
     {
-        List<InventoryPlant> temp = new List<InventoryPlant>();
-
-        for (int i = 0; i < seedsInInventory.Count; i++)
+        inventory.Clear();
+        for (int i = 0; i < PlayerToolsController.instance.allTools.Count; i++)
         {
-            if (seedsInInventory[i].amount > 0)
-                temp.Add(seedsInInventory[i]);
+            inventory.Add(PlayerToolsController.instance.allTools[i]);
         }
-
-        return temp;
+        
+        return inventory;
     }
-
+    
     public int SeedUsed(int seedIndex)
     {
-        Debug.Log(seedIndex);
-        seedsInInventory[seedIndex].amount --;
-        return seedsInInventory[seedIndex].amount;
+        return 0;
     }
-}
-
-[Serializable]
-public class InventoryPlant
-{
-    public PlantData plant;
-    public int amount = 0;
 }

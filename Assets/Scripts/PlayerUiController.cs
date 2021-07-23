@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -41,9 +42,9 @@ public class PlayerUiController : MonoBehaviour
     public bool itemWheelVisible = false;
     public Transform itemWheel;
     public List<UiItemOnWheel> itemIcons;
-    List<InventoryPlant> plantsInInventory = new List<InventoryPlant>();
     int selectedItemIndexOnWheel = -1;
     int previuosSelectedItemOnWheel = -1;
+    List<ToolController> inventory;
 
     
     private void Awake()
@@ -119,7 +120,8 @@ public class PlayerUiController : MonoBehaviour
         currentSelectedObject = null;
         lastSelectedGameObject = null;
         selectedObject = false;
-        
+        selectedAction = -1;
+
         if (showTooltips)
             StopCoroutine(movePointerCoroutine);
 
@@ -304,8 +306,7 @@ public class PlayerUiController : MonoBehaviour
                         previuosSelectedItemOnWheel = selectedItemIndexOnWheel;
                         selectNewActionCooldownCurrent = selectNewActionCooldown;
                         
-                        if (showTooltips)
-                            PlayerAudioController.instance.SelectNewUiAction();
+                        PlayerAudioController.instance.SelectNewUiAction();
                         for (int i = 0; i < itemIcons.Count; i++)
                         {
                             if (i == selectedItemIndexOnWheel)
@@ -440,8 +441,10 @@ public class PlayerUiController : MonoBehaviour
         PlayerAudioController.instance.OkUi();
         UniversalCursorController.instance.ShowCursor();
         itemWheelVisible = true;
-        plantsInInventory = PlayerInventoryController.instance.GetPlantsInInventory();
-        for (int i = 0; i < plantsInInventory.Count; i++)
+
+        inventory =  PlayerInventoryController.instance.GetInventory();
+
+        for (int i = 0; i < inventory.Count; i++)
         {
             if (itemIcons.Count <= i)
                 break;
@@ -449,9 +452,12 @@ public class PlayerUiController : MonoBehaviour
             itemIcons[i].uiImage.enabled = true;
             itemIcons[i].uiBackgroundImage.enabled = true;
             itemIcons[i].uiBackgroundImage.transform.localScale = Vector3.one;
-            itemIcons[i].uiImage.sprite = plantsInInventory[i].plant.plantIcon;
+            if (inventory[i].plantData)
+                itemIcons[i].uiImage.sprite = inventory[i].plantData.plantIcon;
+            else if (inventory[i].toolData)
+                itemIcons[i].uiImage.sprite = inventory[i].toolData.toolIcon;
         }
-
+        
         animateItemWheelCoroutine = StartCoroutine(AnimateItemWheel());
         StartCoroutine(SelectItemOnWheel(0));
         if (animatePointerCoroutine != null)
@@ -479,10 +485,6 @@ public class PlayerUiController : MonoBehaviour
         }
     }
 
-    public int GetItemIndexFromSelectedOnWheel()
-    {
-        return plantsInInventory[selectedItemIndexOnWheel].plant.plantIndex;
-    }
     public void SetSelectedItemIndexOnWheel(int newIndex)
     {
         selectedItemIndexOnWheel = newIndex;
@@ -490,13 +492,17 @@ public class PlayerUiController : MonoBehaviour
     
     IEnumerator SelectItemOnWheel(int index)
     {
-        if (index == -1)
+        Debug.Log(index);
+        if (index == -1 || index >= itemIcons.Count)
             yield break;
         
         float t = 0;
         itemIcons[index].uiBackgroundImage.color = Color.white;
         itemIcons[index].uiImage.color = Color.black;
-        itemIcons[index].itemName.text = plantsInInventory[index].plant.plantName[GameManager.instance.gameLanguage];
+        if (inventory[index].plantData)
+            itemIcons[index].itemName.text = inventory[index].plantData.plantName[GameManager.instance.gameLanguage];
+        else if (inventory[index].toolData)
+            itemIcons[index].itemName.text = inventory[index].toolData.toolName[GameManager.instance.gameLanguage];
         
         while (t < timeToSelect)
         {
@@ -507,6 +513,12 @@ public class PlayerUiController : MonoBehaviour
         }
         itemIcons[index].uiBackgroundImage.transform.localScale = Vector3.one * 1.25f;
     }
+
+    public ToolController GetSelectedToolOnWheel()
+    {
+        return inventory[selectedItemIndexOnWheel];
+    }
+    
     IEnumerator UnselectItemOnWheel(int index)
     {
         if (index == -1)

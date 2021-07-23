@@ -115,7 +115,7 @@ public class PlayerInteractionController : MonoBehaviour
             
             if (PlayerUiController.instance.itemWheelVisible)
             {
-                Interact(null,  PlayerUiController.instance.GetItemIndexFromSelectedOnWheel());
+                InteractOnWheel(PlayerUiController.instance.GetSelectedToolOnWheel());
                 return;
             }
             
@@ -123,6 +123,14 @@ public class PlayerInteractionController : MonoBehaviour
             {
                 PlayerToolsController.instance.UseTool();
                 return;
+            }
+        }
+
+        if (Input.GetButtonUp("UseTool"))
+        {
+            if (PlayerToolsController.instance.selectedToolIndex != -1)
+            {
+                PlayerToolsController.instance.FireButtonUp();
             }
         }
     }
@@ -137,6 +145,9 @@ public class PlayerInteractionController : MonoBehaviour
 
     public void Interact(InteractiveObject objectToInteract, int selectedAction)
     {
+        if (selectedAction == -1)
+            return;
+        
         if (PlayerUiController.instance.showTooltips)
             PlayerAudioController.instance.OkUi();
         
@@ -148,6 +159,9 @@ public class PlayerInteractionController : MonoBehaviour
             return;
         }
         
+        if (selectedAction >= objectToInteract.actionList.Count)
+            return;
+        
         switch (objectToInteract.actionList[selectedAction].actionType)
         {
             case InteractiveObject.ActionType.PickUp:
@@ -157,6 +171,22 @@ public class PlayerInteractionController : MonoBehaviour
                 PlayerUiController.instance.ResetSelectedObject();
                 PlayerUiController.instance.OpenItemsWheel();
                 break;
+        }
+    }
+    public void InteractOnWheel(ToolController toolController)
+    {
+        if (toolController == null)
+            return;
+        
+        if (PlayerUiController.instance.showTooltips)
+            PlayerAudioController.instance.OkUi();
+        
+        if (PlayerUiController.instance.itemWheelVisible)
+        {
+            // plant seed with an index of 
+            PlayerToolsController.instance.SelectTool(toolController);
+            PlayerUiController.instance.CloseItemsWheel();
+            return;
         }
     }
 

@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerToolsController : MonoBehaviour
 {
-    public static PlayerToolsController instance;
     public List<ToolController> allTools;
+    public static PlayerToolsController instance;
     public int selectedToolIndex = -1;
 
     private float useToolCooldown = 0;
@@ -29,6 +29,17 @@ public class PlayerToolsController : MonoBehaviour
                 allTools[i].gameObject.SetActive(true);
         }
     }
+    public void SelectTool(ToolController newSelectedTool)
+    {
+        
+        for (int i = 0; i < allTools.Count; i++)
+        {
+            if (allTools[i] != newSelectedTool)
+                allTools[i].gameObject.SetActive(false);
+            else
+                allTools[i].gameObject.SetActive(true);
+        }
+    }
 
     public void UseTool()
     {
@@ -36,9 +47,11 @@ public class PlayerToolsController : MonoBehaviour
         {
             return;
         }
-                
-        
-        allTools[selectedToolIndex].UseTool();
+
+        if (allTools[selectedToolIndex].toolType != ToolController.ToolType.Water)
+            allTools[selectedToolIndex].UseTool();
+        else
+            allTools[selectedToolIndex].StartPumpingWater();
     }
 
     public void SetUseToolCooldown(float newCooldown)
@@ -51,5 +64,18 @@ public class PlayerToolsController : MonoBehaviour
     {
         yield return new WaitForSeconds(useToolCooldown);
         useToolCooldown = 0;
+    }
+
+    public void CantUseToolFeedback()
+    {
+        
+    }
+
+    public void FireButtonUp()
+    {
+        if (allTools[selectedToolIndex].toolType == ToolController.ToolType.Water && allTools[selectedToolIndex].waterToUse > 0)
+        {
+            allTools[selectedToolIndex].UseTool();   
+        }
     }
 }

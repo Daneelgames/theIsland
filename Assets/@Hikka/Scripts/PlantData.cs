@@ -16,10 +16,11 @@ public class PlantData : ScriptableObject
         GoldOtherdayLittle,GoldOtherdayMedium,GoldOtherdayMuch
     }
 
-    public int plantIndex = 0;
+    public int inventoryIndex = 0;
     public List<string> plantName = new List<string>();
     public int growDays = 3;
     public Sprite plantIcon;
+    
     public List<string> plantDecription = new List<string>();
 
     public List<PlantGrowthRequirements> growthRequirementsList = new List<PlantGrowthRequirements>();
