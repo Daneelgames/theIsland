@@ -74,6 +74,14 @@ public class PlayerInteractionController : MonoBehaviour
         
         if (Input.GetButtonDown("Inventory"))
         {
+            var inventory = PlayerInventoryController.instance.GetInventory();
+            if (inventory == null || inventory.Count <= 0)
+            {
+                if (PlayerUiController.instance.itemWheelVisible)
+                    PlayerUiController.instance.CloseItemsWheel();
+                return;   
+            }
+            
             if (draggingObject)
             {
                 DropDragginObject();
@@ -109,18 +117,20 @@ public class PlayerInteractionController : MonoBehaviour
             if (PlayerUiController.instance.itemWheelVisible)
             {
                 InteractOnWheel(PlayerUiController.instance.GetSelectedToolOnWheel());
+                PlayerUiController.instance.ResetSelectedObject();
                 return;
             }
-            PlayerUiController.instance.ResetSelectedObject();
             if (draggingObject)
             {
                 DropDragginObject();
+                PlayerUiController.instance.ResetSelectedObject();
                 return;
             }
             
             if (PlayerToolsController.instance.selectedToolIndex != -1)
             {
                 PlayerToolsController.instance.UseTool();
+                PlayerUiController.instance.ResetSelectedObject();
                 return;
             }
         }
@@ -149,30 +159,7 @@ public class PlayerInteractionController : MonoBehaviour
         if (selectedAction == -1)
             return;
         
-        if (PlayerUiController.instance.showTooltips)
-            PlayerAudioController.instance.OkUi();
-        
-        if (PlayerUiController.instance.itemWheelVisible)
-        {
-            // plant seed with an index of 
-            PlayerToolsController.instance.SelectTool(selectedAction);
-            PlayerUiController.instance.CloseItemsWheel();
-            return;
-        }
-        
-        if (selectedAction >= objectToInteract.actionList.Count)
-            return;
-        
-        switch (objectToInteract.actionList[selectedAction].actionType)
-        {
-            case InteractiveObject.ActionType.PickUp:
-                StartCoroutine(PickUpObject(objectToInteract));
-                break;
-            case InteractiveObject.ActionType.PlantSeed:
-                PlayerUiController.instance.ResetSelectedObject();
-                PlayerUiController.instance.OpenItemsWheel();
-                break;
-        }
+        objectToInteract.InteractWithObject(selectedAction);
     }
     public void InteractOnWheel(ToolController toolController)
     {
@@ -191,7 +178,7 @@ public class PlayerInteractionController : MonoBehaviour
         }
     }
 
-    IEnumerator PickUpObject(InteractiveObject objectToInteract)
+    public IEnumerator PickUpObject(InteractiveObject objectToInteract)
     {
         Vector3 targetPos = MouseLook.instance.portableTransform.position + objectToInteract.protableTransformOffset;
         draggingObject = objectToInteract;

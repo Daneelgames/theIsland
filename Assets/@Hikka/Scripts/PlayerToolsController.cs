@@ -45,7 +45,6 @@ public class PlayerToolsController : MonoBehaviour
 
     public void UseTool()
     {
-        Debug.Log("UseTool. selected tool index:" + selectedToolIndex);
         if (useToolCooldown > 0)
         {
             return;

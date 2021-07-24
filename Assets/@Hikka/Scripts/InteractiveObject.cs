@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, PlantSeed, Put}
-
+    public enum ActionType {PickUp, PlantSeed, Put, TakeItem}
     
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
     public Collider collider;
@@ -17,14 +16,52 @@ public class InteractiveObject : MonoBehaviour
 
     public InteractiveAction putAction;
     
-    
     [Header("InteractiveObjectType")]
     public PlantController plantController;
+
+    public ToolController toolToPickUp;
 
     void Start()
     {
         if (plantController)
             InteractiveObjectsManager.instance.potsInteractiveObjects.Add(this);
+    }
+
+    public void InteractWithObject(int selectedAction)
+    {
+        if (PlayerUiController.instance.showTooltips)
+            PlayerAudioController.instance.OkUi();
+        
+        if (PlayerUiController.instance.itemWheelVisible)
+        {
+            // plant seed with an index of 
+            PlayerToolsController.instance.SelectTool(selectedAction);
+            PlayerUiController.instance.CloseItemsWheel();
+            return;
+        }
+        
+        if (selectedAction >= actionList.Count)
+            return;
+        
+        switch (actionList[selectedAction].actionType)
+        {
+            case ActionType.PickUp:
+                StartCoroutine(PlayerInteractionController.instance.PickUpObject(this));
+                break;
+            case ActionType.PlantSeed:
+                PlayerUiController.instance.ResetSelectedObject();
+                PlayerUiController.instance.OpenItemsWheel();
+                break;
+            case ActionType.TakeItem:
+                if (toolToPickUp)
+                {
+                    if (toolToPickUp.plantData)
+                        PlayerInventoryController.instance.NewSeedFound(toolToPickUp.inventoryIndex);
+                }
+                Destroy(gameObject);
+                break;
+            
+        }
     }
 }
 

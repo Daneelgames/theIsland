@@ -12,8 +12,8 @@ public class ToolController : MonoBehaviour
     public ToolType toolType = ToolType.Seed;
     public float useToolCooldown = 1f;
 
+    public int inventoryIndex = -1;
     [Header("SEED")] public PlantData plantData;
-    public int seedIndex = -1;
 
     [Header("WATER")] public ToolData toolData;
     public Transform watersackTrasform;
@@ -76,15 +76,15 @@ public class ToolController : MonoBehaviour
             
             case ToolType.Seed:
                 
-                if (selectedObject.plantController.spawnedPlantVisual != null)
+                if (selectedObject.plantController && selectedObject.plantController.spawnedPlantVisual != null)
                 {
                     PlayerToolsController.instance.CantUseToolFeedback();
                     return;
                 }
                 if (selectedObject && selectedObject.plantController)
                 {
-                    selectedObject.plantController.PlantSeed(seedIndex);
-                    int newSeedsAmount = PlayerInventoryController.instance.SeedUsed(seedIndex);
+                    selectedObject.plantController.PlantSeed(inventoryIndex);
+                    int newSeedsAmount = PlayerInventoryController.instance.SeedUsed(inventoryIndex);
 
                     if (newSeedsAmount <= 0)
                     {

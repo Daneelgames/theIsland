@@ -44,7 +44,7 @@ public class PlayerUiController : MonoBehaviour
     public List<UiItemOnWheel> itemIcons;
     int selectedItemIndexOnWheel = -1;
     int previuosSelectedItemOnWheel = -1;
-    List<ToolController> inventory;
+    List<InventorySlot> inventory;
 
     
     private void Awake()
@@ -57,7 +57,6 @@ public class PlayerUiController : MonoBehaviour
 
         instance = this;
         actionsParent.transform.localPosition = actionsParentInitLocalPos;
-
     }
 
     private void Start()
@@ -90,7 +89,13 @@ public class PlayerUiController : MonoBehaviour
     {
         if (newSelectedGameObject != lastSelectedGameObject)
         {
-            currentSelectedObject = newSelectedGameObject.GetComponent<InteractiveObject>();
+            var s = newSelectedGameObject.GetComponent<InteractiveObject>();
+
+            currentSelectedObject = s; 
+            
+            if (s.actionList.Count <= 0)
+                return;
+            
             lastSelectedGameObject = newSelectedGameObject;
         }
         
@@ -117,21 +122,21 @@ public class PlayerUiController : MonoBehaviour
         if (!currentSelectedObject && !lastSelectedGameObject && !selectedObject)
             return;
         
+        if (showTooltips && lastSelectedGameObject)
+            PlayerAudioController.instance.CloseUi();
+        
         currentSelectedObject = null;
         lastSelectedGameObject = null;
         selectedObject = false;
         selectedAction = -1;
 
-        if (showTooltips)
+        if (showTooltips && movePointerCoroutine != null)
             StopCoroutine(movePointerCoroutine);
 
         if (itemWheelVisible)
         {
             CloseItemsWheel();
         }
-
-        if (showTooltips)
-            PlayerAudioController.instance.CloseUi();
     }
 
     IEnumerator AnimatePointer()
@@ -515,8 +520,17 @@ public class PlayerUiController : MonoBehaviour
 
     public ToolController GetSelectedToolOnWheel()
     {
-        Debug.Log("GetSelectedToolOnWheel; return " + inventory[selectedItemIndexOnWheel]);
-        return inventory[selectedItemIndexOnWheel];
+        if (selectedItemIndexOnWheel == -1)
+            return null;
+        
+        for (int i = 0; i < PlayerToolsController.instance.allTools.Count; i++)
+        {
+            if (PlayerToolsController.instance.allTools[i].inventoryIndex == inventory[selectedItemIndexOnWheel].inventoryIndex)
+            {
+                return PlayerToolsController.instance.allTools[i];
+            }
+        }
+        return null;
     }
     
     IEnumerator UnselectItemOnWheel(int index)

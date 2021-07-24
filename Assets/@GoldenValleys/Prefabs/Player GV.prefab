@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 8893255595373604085}
-  showTooltips: 0
+  showTooltips: 1
   selectedObjectIcon: {fileID: 5085301113076175357}
   selectedObjectIconBackground: {fileID: 2400939228790417483}
   actionsParent: {fileID: 2010425623}
@@ -2654,14 +2654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b676bacbaef08734aa5a8e9b01a6933d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolsInInventory:
-  - tool: {fileID: 11400000, guid: 96e03c8823c4e1e44a617f230d5ef31d, type: 2}
-    amount: 1
-  seedsInInventory:
-  - plant: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
-    amount: 1
-  - plant: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
-    amount: 1
+  inventory: []
 --- !u!114 &327953109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4556,9 +4549,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5667142863878981728, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
+      propertyPath: toolData
+      value: 
+      objectReference: {fileID: 11400000, guid: 96e03c8823c4e1e44a617f230d5ef31d, type: 2}
+    - target: {fileID: 5667142863878981728, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
       propertyPath: plantData
       value: 
-      objectReference: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667142863878981728, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
+      propertyPath: inventoryIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8509040436044378797, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
       propertyPath: m_Name
       value: 00_ToolSeed_0
@@ -4645,9 +4646,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6242894665744255383, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
+      propertyPath: toolData
+      value: 
+      objectReference: {fileID: 11400000, guid: 96e03c8823c4e1e44a617f230d5ef31d, type: 2}
+    - target: {fileID: 6242894665744255383, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
       propertyPath: plantData
       value: 
-      objectReference: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242894665744255383, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
+      propertyPath: inventoryIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
 --- !u!114 &1286748403 stripped
@@ -4681,6 +4690,10 @@ PrefabInstance:
       propertyPath: toolData
       value: 
       objectReference: {fileID: 11400000, guid: 96e03c8823c4e1e44a617f230d5ef31d, type: 2}
+    - target: {fileID: 2596291313690800759, guid: a49110c1468c2d84cb2dc6bf86e96321, type: 3}
+      propertyPath: inventoryIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5105103001408322232, guid: a49110c1468c2d84cb2dc6bf86e96321, type: 3}
       propertyPath: m_Name
       value: 02_WaterCan
