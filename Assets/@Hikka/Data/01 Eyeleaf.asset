@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryIndex: 1
   plantName:
-  - Eyeleaf
+  - Eyeleaf seed
   growDays: 2
   plantIcon: {fileID: 21300000, guid: c46abbb1e15f2f0488477b6521f8d00f, type: 3}
   plantDecription:

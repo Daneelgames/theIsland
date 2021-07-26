@@ -27,12 +27,23 @@ public class PlayerInventoryController : MonoBehaviour
     
     public int SeedUsed(int seedIndex)
     {
-        for (int i = 0; i < inventory.Count; i++)
+        Debug.Log("SeedUsed. seedIndex: " + seedIndex);
+        int tempAmount = 0;
+        for (int i = inventory.Count - 1; i >= 0; i--)
         {
             if (inventory[i].plantData && inventory[i].plantData.inventoryIndex == seedIndex)
             {
                 inventory[i].amount--;
-                return inventory[i].amount;
+
+                tempAmount = inventory[i].amount;
+
+                if (inventory[i].amount <= 0)
+                {
+                    inventory.RemoveAt(i);
+                    PlayerToolsController.instance.selectedToolIndex = -1;
+                }
+                
+                return tempAmount;
             }
         }
         return 0;
@@ -41,6 +52,7 @@ public class PlayerInventoryController : MonoBehaviour
     public void NewSeedFound(int seedIndex)
     {
         // already have this item
+        Debug.Log("NewSeedFound(int seedIndex) " + seedIndex);
         for (int i = 0; i < inventory.Count; i++)
         {
             if (inventory[i].plantData && inventory[i].plantData.inventoryIndex == seedIndex)

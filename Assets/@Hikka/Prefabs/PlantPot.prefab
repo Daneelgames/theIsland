@@ -175,10 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ee032a40143684c969d97c7e67ed3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionList:
-  - actionType: 0
-    displayedName:
-    - 'E: Pick up'
+  actionList: []
   collider: {fileID: 789901112897778051}
   protableTransformOffset: {x: 0, y: -0.75, z: 0.5}
   rb: {fileID: 871262649773335713}
@@ -189,6 +186,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   plantController: {fileID: 9169220084416313949}
+  toolToPickUp: {fileID: 0}
 --- !u!114 &9169220084416313949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,10 +202,6 @@ MonoBehaviour:
   plantOrigin: {fileID: 5846307424196773476}
   currentVisualIndex: -1
   visualsByLifetime: []
-  minPulseTime: 0.5
-  maxPulseTime: 3
-  minScaleMultiplayer: 0.5
-  maxScaleMultiplayer: 2
   plantsVisualsReferences:
   - m_AssetGUID: b512574ff6fd59d45bf50b9d6a68903a
     m_SubObjectName: 
@@ -215,6 +209,7 @@ MonoBehaviour:
   - m_AssetGUID: 8fce519158d46e9469a2b14919f82ab4
     m_SubObjectName: 
     m_SubObjectType: 
+  spawnedPlantVisual: {fileID: 0}
 --- !u!54 &871262649773335713
 Rigidbody:
   m_ObjectHideFlags: 0

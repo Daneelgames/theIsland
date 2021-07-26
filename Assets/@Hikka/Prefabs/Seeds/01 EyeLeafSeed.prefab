@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1416832498980317945}
   - component: {fileID: 7008827731472536566}
   m_Layer: 9
-  m_Name: SeedFingerLeaf_PickUpObject
+  m_Name: 01 EyeLeafSeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,8 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolType: 0
   useToolCooldown: 0.5
-  inventoryIndex: -1
-  plantData: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
+  inventoryIndex: 1
+  plantData: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
   toolData: {fileID: 0}
   watersackTrasform: {fileID: 0}
   waterPumpingSpeed: 1

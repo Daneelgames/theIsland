@@ -49,7 +49,7 @@ public class PlayerToolsController : MonoBehaviour
         {
             return;
         }
-
+        
         if (allTools[selectedToolIndex].toolType != ToolController.ToolType.Water)
             allTools[selectedToolIndex].UseTool();
         else

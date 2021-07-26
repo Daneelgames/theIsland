@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3afa26cf4a88f4aa49d6fdb390ca19, type: 3}
   m_Name: 00 Fingerleaf
   m_EditorClassIdentifier: 
+  inventoryIndex: 0
   plantName:
-  - Fingerleaf
+  - Fingerleaf seed
   growDays: 3
   plantIcon: {fileID: 21300000, guid: 4636057a55bb54e44881a7444a0e9060, type: 3}
   plantDecription:

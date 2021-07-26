@@ -29,7 +29,7 @@ public class InteractiveObject : MonoBehaviour
 
     public void InteractWithObject(int selectedAction)
     {
-        if (PlayerUiController.instance.showTooltips)
+        if (PlayerUiController.instance.showTooltips &&  actionList.Count > 0)
             PlayerAudioController.instance.OkUi();
         
         if (PlayerUiController.instance.itemWheelVisible)
@@ -39,7 +39,6 @@ public class InteractiveObject : MonoBehaviour
             PlayerUiController.instance.CloseItemsWheel();
             return;
         }
-        
         if (selectedAction >= actionList.Count)
             return;
         

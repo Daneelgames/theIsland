@@ -4551,11 +4551,11 @@ PrefabInstance:
     - target: {fileID: 5667142863878981728, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
       propertyPath: toolData
       value: 
-      objectReference: {fileID: 11400000, guid: 96e03c8823c4e1e44a617f230d5ef31d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5667142863878981728, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
       propertyPath: plantData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
     - target: {fileID: 5667142863878981728, guid: b1987d76a4a93dd45bc5ec66a7c66823, type: 3}
       propertyPath: inventoryIndex
       value: 0
@@ -4648,11 +4648,11 @@ PrefabInstance:
     - target: {fileID: 6242894665744255383, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
       propertyPath: toolData
       value: 
-      objectReference: {fileID: 11400000, guid: 96e03c8823c4e1e44a617f230d5ef31d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6242894665744255383, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
       propertyPath: plantData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
     - target: {fileID: 6242894665744255383, guid: 4648690d2ffa3124dbdb9e1abc6b506a, type: 3}
       propertyPath: inventoryIndex
       value: 1

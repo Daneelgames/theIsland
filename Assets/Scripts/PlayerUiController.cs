@@ -464,7 +464,17 @@ public class PlayerUiController : MonoBehaviour
         }
         
         animateItemWheelCoroutine = StartCoroutine(AnimateItemWheel());
-        StartCoroutine(SelectItemOnWheel(0));
+        for (int i = 0; i < itemIcons.Count; i++)
+        {
+            if (i == 0)
+            {
+                StartCoroutine(SelectItemOnWheel(i));
+            }
+            else
+            {
+                StartCoroutine(UnselectItemOnWheel(i));
+            }
+        }
         if (animatePointerCoroutine != null)
             StopCoroutine(animatePointerCoroutine);
         if (movePointerCoroutine != null)

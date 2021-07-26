@@ -76,7 +76,7 @@ public class ToolController : MonoBehaviour
             
             case ToolType.Seed:
                 
-                if (selectedObject.plantController && selectedObject.plantController.spawnedPlantVisual != null)
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.spawnedPlantVisual != null)
                 {
                     PlayerToolsController.instance.CantUseToolFeedback();
                     return;
