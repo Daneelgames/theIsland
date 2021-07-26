@@ -75,6 +75,32 @@ public class PlayerInventoryController : MonoBehaviour
             }
         }
     }
+    public void NewToolFound(int toolIndex)
+    {
+        // already have this item
+        Debug.Log("NewToolFound(int toolIndex) " + toolIndex);
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (inventory[i].toolData && inventory[i].toolData.inventoryIndex == toolIndex)
+            {
+                inventory[i].amount++;
+                return;
+            }
+        }
+
+        for (int i = 0; i < PlayerToolsController.instance.allTools.Count; i++)
+        {
+            if (PlayerToolsController.instance.allTools[i].inventoryIndex == toolIndex)
+            {
+                inventory.Add(new InventorySlot());
+                inventory[inventory.Count-1].plantData = PlayerToolsController.instance.allTools[i].plantData;
+                inventory[inventory.Count-1].toolData = PlayerToolsController.instance.allTools[i].toolData;
+                inventory[inventory.Count-1].inventoryIndex = PlayerToolsController.instance.allTools[i].inventoryIndex;
+                inventory[inventory.Count-1].amount = 1;
+                return;
+            }
+        }
+    }
 }
 
 [Serializable]

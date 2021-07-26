@@ -56,6 +56,8 @@ public class InteractiveObject : MonoBehaviour
                 {
                     if (toolToPickUp.plantData)
                         PlayerInventoryController.instance.NewSeedFound(toolToPickUp.inventoryIndex);
+                    else if (toolToPickUp.toolData)
+                        PlayerInventoryController.instance.NewToolFound(toolToPickUp.inventoryIndex);
                 }
                 Destroy(gameObject);
                 break;
