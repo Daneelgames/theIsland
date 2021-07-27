@@ -27,7 +27,6 @@ public class PlayerInventoryController : MonoBehaviour
     
     public int SeedUsed(int seedIndex)
     {
-        Debug.Log("SeedUsed. seedIndex: " + seedIndex);
         int tempAmount = 0;
         for (int i = inventory.Count - 1; i >= 0; i--)
         {
@@ -52,7 +51,6 @@ public class PlayerInventoryController : MonoBehaviour
     public void NewSeedFound(int seedIndex)
     {
         // already have this item
-        Debug.Log("NewSeedFound(int seedIndex) " + seedIndex);
         for (int i = 0; i < inventory.Count; i++)
         {
             if (inventory[i].plantData && inventory[i].plantData.inventoryIndex == seedIndex)

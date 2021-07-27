@@ -19,4 +19,4 @@ MonoBehaviour:
   plantIcon: {fileID: 21300000, guid: 4636057a55bb54e44881a7444a0e9060, type: 3}
   plantDecription:
   - Its fruits are very dexterous. Some might become pianists
-  growthRequirementsList: 0000000005000000
+  growthRequirementsList: 0000000006000000

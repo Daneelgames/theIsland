@@ -8,5 +8,6 @@ public class PlantVisualController : MonoBehaviour
     public float maxPulseTime = 1f;
     public float minScaleMultiplayer = 0.5f;
     public float maxScaleMultiplayer = 2f;
+    public PlantData plantData;
     public List<PlantsVisual> visualsByLifetime;
 }

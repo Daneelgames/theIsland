@@ -19,7 +19,8 @@ public class PlantController : MonoBehaviour
 
     public List<AssetReference> plantsVisualsReferences = new List<AssetReference>();
 
-    public PlantVisualController spawnedPlantVisual;
+    PlantVisualController spawnedPlantVisual;
+    PlantData plantData;
 
     void Start()
     {
@@ -27,6 +28,11 @@ public class PlantController : MonoBehaviour
         {
             visual.rootObject.SetActive(false);
         }
+    }
+
+    public PlantVisualController GetSpawnedPlantVisual()
+    {
+        return spawnedPlantVisual;
     }
     
     public void PlantSeed(int seedIndex)
@@ -38,6 +44,7 @@ public class PlantController : MonoBehaviour
     {
         plantVisualGO.transform.parent = transform;
         spawnedPlantVisual = plantVisualGO.GetComponent<PlantVisualController>();
+        plantData = spawnedPlantVisual.plantData;
         
         visualsByLifetime = spawnedPlantVisual.visualsByLifetime;
 
@@ -111,11 +118,23 @@ public class PlantController : MonoBehaviour
             StartCoroutine(SetVisualState(currentVisualIndex));
         }
     }
+
+    public void WaterUsed(float waterAmount)
+    {
+        for (int i = 0; i < plantData.growthRequirementsList.Count; i++)
+        {
+            if (plantData.growthRequirementsList[i] == PlantData.PlantGrowthRequirements.NoWater)
+            {
+                
+            }
+        }
+    }
 }
 
 [Serializable]
 public class PlantsVisual
 {
+    public PlantData plantData;
     public GameObject rootObject;
     public List<GameObject> pulsatingObjects;
 }

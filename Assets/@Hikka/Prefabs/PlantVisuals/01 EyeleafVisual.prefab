@@ -1843,13 +1843,16 @@ MonoBehaviour:
   maxPulseTime: 5
   minScaleMultiplayer: 0.9
   maxScaleMultiplayer: 1.1
+  plantData: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
   visualsByLifetime:
-  - rootObject: {fileID: 969136414842618805}
+  - plantData: {fileID: 0}
+    rootObject: {fileID: 969136414842618805}
     pulsatingObjects:
     - {fileID: 7769185978507126877}
     - {fileID: 54775244376656062}
     - {fileID: 6264324121133274892}
-  - rootObject: {fileID: 1214701427108506242}
+  - plantData: {fileID: 0}
+    rootObject: {fileID: 1214701427108506242}
     pulsatingObjects:
     - {fileID: 5108969330677110555}
     - {fileID: 1418029873924777406}
@@ -1857,7 +1860,8 @@ MonoBehaviour:
     - {fileID: 728406627035825516}
     - {fileID: 71176955640578345}
     - {fileID: 2710705649401433119}
-  - rootObject: {fileID: 2278204140411328559}
+  - plantData: {fileID: 0}
+    rootObject: {fileID: 2278204140411328559}
     pulsatingObjects:
     - {fileID: 6410669302121394643}
     - {fileID: 4258635050577075850}

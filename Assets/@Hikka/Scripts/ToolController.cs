@@ -17,12 +17,13 @@ public class ToolController : MonoBehaviour
 
     [Header("WATER")] public ToolData toolData;
     public Transform watersackTrasform;
-
-    private Vector3 watersackOriginalScale = Vector3.one;
+    public float watersackScaleSpeed = 0.5f;
     public float waterPumpingSpeed = 1;
     public float waterAmount = 0;
     public float waterToUse = 0;
     public int waterToUseMax = 3; 
+    
+    private Vector3 watersackOriginalScale = Vector3.one;
 
     private InteractiveObject selectedObject;
 
@@ -55,28 +56,22 @@ public class ToolController : MonoBehaviour
                 var _waterToUse = waterToUse;
                 waterToUse = 0;
                 
+                
+                ReleaseWater();
+                waterAmount -= _waterToUse;
+                
                 if (waterAmount < 0)
                     waterAmount = 0;
                 
-                if (_waterToUse > waterAmount)
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedPlantVisual() != null)
                 {
-                    PlayerToolsController.instance.CantUseToolFeedback();
-                    return;
-                }
-
-                ReleaseWater();
-
-                waterAmount -= _waterToUse;
-                
-                if (selectedObject && selectedObject.plantController && selectedObject.plantController.spawnedPlantVisual)
-                {
-                    // selectedObject.plantController.WaterUsed(_waterToUse);
+                    selectedObject.plantController.WaterUsed(_waterToUse);
                 }
                 break;
             
             case ToolType.Seed:
                 
-                if (selectedObject && selectedObject.plantController && selectedObject.plantController.spawnedPlantVisual != null)
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedPlantVisual() != null)
                 {
                     PlayerToolsController.instance.CantUseToolFeedback();
                     return;
@@ -117,7 +112,7 @@ public class ToolController : MonoBehaviour
             waterToSpend = Time.deltaTime * waterPumpingSpeed;
             waterAmount -= waterToSpend;
             waterToUse += waterToSpend;
-            watersackTrasform.localScale += watersackTrasform.localScale * Time.deltaTime; 
+            watersackTrasform.localScale += watersackTrasform.localScale * watersackScaleSpeed * Time.deltaTime; 
             yield return null;
         }
     }
