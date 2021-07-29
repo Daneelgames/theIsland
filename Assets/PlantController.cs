@@ -125,7 +125,13 @@ public class PlantController : MonoBehaviour
         {
             if (plantData.growthRequirementsList[i] == PlantData.PlantGrowthRequirements.NoWater)
             {
-                
+                // this is bad for plant
+                Debug.Log("This plant doesn't like water.");
+            }
+            else if (plantData.growthRequirementsList[i] == PlantData.PlantGrowthRequirements.WaterEverydayMedium)
+            {
+                // this is bad for plant
+                Debug.Log("This plant likes water.");
             }
         }
     }

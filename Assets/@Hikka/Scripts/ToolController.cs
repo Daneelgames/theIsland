@@ -21,7 +21,8 @@ public class ToolController : MonoBehaviour
     public float waterPumpingSpeed = 1;
     public float waterAmount = 0;
     public float waterToUse = 0;
-    public int waterToUseMax = 3; 
+    public int waterToUseMax = 3;
+    public GameObject waterFx;
     
     private Vector3 watersackOriginalScale = Vector3.one;
 
@@ -120,6 +121,7 @@ public class ToolController : MonoBehaviour
     public void ReleaseWater()
     {
         watersackTrasform.localScale = watersackOriginalScale; 
+        waterFx.SetActive(true);
         anim.SetBool(ToolCharging, false);
     }
 }
