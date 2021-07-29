@@ -1804,7 +1804,7 @@ GameObject:
   - component: {fileID: 3374522573488524313}
   - component: {fileID: 8295359324883282507}
   m_Layer: 9
-  m_Name: 01 EyeleafVisual
+  m_Name: 01 EyeleafSeedVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
