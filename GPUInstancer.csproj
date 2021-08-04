@@ -408,14 +408,14 @@
      <Reference Include="DOTween">
      <HintPath>C:/@MrPink/theIsland/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
      </Reference>
+     <Reference Include="JMOAssets_CartoonFXFreeWelcome">
+     <HintPath>C:/@MrPink/theIsland/Assets/JMO Assets/Editor/JMOAssets_CartoonFXFreeWelcome.dll</HintPath>
+     </Reference>
      <Reference Include="Newtonsoft.Json">
      <HintPath>C:/@MrPink/theIsland/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="unityplastic">
      <HintPath>C:/@MrPink/theIsland/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
-     </Reference>
-     <Reference Include="JMOAssets_CartoonFXFreeWelcome">
-     <HintPath>C:/@MrPink/theIsland/Assets/JMO Assets/Editor/JMOAssets_CartoonFXFreeWelcome.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
