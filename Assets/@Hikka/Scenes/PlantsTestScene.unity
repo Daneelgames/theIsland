@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,6 +206,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &525983834 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+  m_PrefabInstance: {fileID: 1482119104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &525983835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+  m_PrefabInstance: {fileID: 1482119104}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a0f0d5267e0c0498b70be2560e977a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1354625364
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,3 +315,138 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1482119104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1526414543}
+    m_Modifications:
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: knotsMinMaxRotation.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: knotsMinMaxRotation.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: startBranchesMinMax.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: startBranchesMinMax.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: defaultBranchesMinMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: defaultBranchesMinMax.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: branchesMinMaxRotation.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: branchesMinMaxRotation.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902942350362594998, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+      propertyPath: m_Name
+      value: ProceduralPlantTest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+--- !u!1 &1526414541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526414543}
+  - component: {fileID: 1526414542}
+  m_Layer: 0
+  m_Name: PlantTestGrowController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1526414542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526414541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc17415f7f5bda4a8b7ccd66a3873ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plants:
+  - {fileID: 525983835}
+--- !u!4 &1526414543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526414541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 525983834}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -13,7 +13,15 @@ public class PlantTestGrowController : MonoBehaviour
         {
             foreach (var plant in plants)
             {
-                plant.NextGrowStep();
+                StartCoroutine(plant.NextGrowStep());
+            }
+        }
+        
+        if (Input.GetButtonDown("Reset"))
+        {
+            foreach (var plant in plants)
+            {
+                plant.ResetPlant();
             }
         }
     }
