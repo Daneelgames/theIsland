@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 using Random = UnityEngine.Random;
 
 public class ProceduralPlant : MonoBehaviour
@@ -23,6 +22,7 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] private Vector2 branchesMinMaxRotation;
     [SerializeField] private Vector2 startBranchesMinMax;
     [SerializeField] [Range(0,1)]private float defaultTwoBranchesChance = 0.3f;
+    [SerializeField] [Range(0,1)]private float defaultLeafGrowChance = 0.3f;
     
     [Header("Nodes and parts in memory")]
     [SerializeField] private List<PlantNode> plantNodes = new List<PlantNode>();
@@ -32,7 +32,13 @@ public class ProceduralPlant : MonoBehaviour
 
     private void Start()
     {
+        InteractiveObjectsManager.instance.proceduralPlants.Add(this);
         StartCoroutine(CheckNodesForCollisions());
+    }
+
+    public void NewCycle()
+    {
+        StartCoroutine(NextGrowStep());
     }
 
     public IEnumerator NextGrowStep()
@@ -109,6 +115,28 @@ public class ProceduralPlant : MonoBehaviour
         _plantNode.branches[i].transform.localScale = Vector3.one * Random.Range(localBranchScaleScalerMinMax.x, localBranchScaleScalerMinMax.y); 
             
         newPlantParts.Add(_plantNode.branches[i]);
+
+        CreateLeaves(_plantNode, _plantNode.branches[i]);
+    }
+
+    void CreateLeaves(PlantNode _plantNode, PlantPart branch)
+    {
+        var points = branch.LeafPoints;
+        for (int i = 0; i < points.Count; i++)
+        {
+            if (Random.value < defaultLeafGrowChance)
+            {            
+                int pointR = Random.Range(0, points.Count);
+                int prefabR = Random.Range(0, leavesPrefabs.Count);
+                var newLeaf = Instantiate(leavesPrefabs[prefabR], points[pointR].position, Quaternion.identity);
+                
+                _plantNode.leaves.Add(newLeaf);
+                newLeaf.transform.parent = points[pointR];
+                newLeaf.transform.localEulerAngles = Vector3.zero;
+                newLeaf.transform.localScale = Vector3.one;
+                points.RemoveAt(pointR);
+            }
+        }
     }
     
     IEnumerator ScalePlantPart(PlantPart part,Vector3 startLocalScale, Vector3 newLocalScale)
@@ -175,7 +203,7 @@ public class ProceduralPlant : MonoBehaviour
             if (!animateGrowth)
                 part.transform.rotation = Quaternion.LookRotation(-temp);
             else
-                StartCoroutine(RotatePlantPartAwayFromConstrainer(part, Quaternion.LookRotation(-temp)));
+                part.RotateAway(Quaternion.LookRotation(-temp));
             
             --repeats;
             if (repeats <= 0)
@@ -185,27 +213,6 @@ public class ProceduralPlant : MonoBehaviour
         }
     }
 
-    IEnumerator RotatePlantPartAwayFromConstrainer(PlantPart part, Quaternion newRotation)
-    {
-        if (part.Rotating)
-            yield break;
-        
-        part.Rotating = true;
-        
-        float t = 0;
-        float tt = Random.Range(0.5f, 2f);
-
-        var startRotation = part.transform.rotation;
-        while (t < tt)
-        {
-            t += Time.deltaTime;
-            part.transform.rotation = Quaternion.Slerp(startRotation, newRotation, t/tt);
-            yield return null;
-        }
-        
-        part.Rotating = false;
-    }
-    
     public void ResetPlant()
     {
         StopAllCoroutines();
@@ -245,5 +252,6 @@ public class PlantNode
     // child
     public PlantPart knot;
     public List<PlantPart> branches = new List<PlantPart>();
+    public List<PlantPart> leaves = new List<PlantPart>();
     public List<int> childNodesIndexes = new List<int>();
 }

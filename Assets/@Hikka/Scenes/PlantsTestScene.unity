@@ -1502,7 +1502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: animateGrowth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: defaultBranchesMinMax.y
@@ -1823,7 +1823,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: animateGrowth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: defaultBranchesMinMax.y
@@ -2446,7 +2446,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: animateGrowth
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: defaultBranchesMinMax.y

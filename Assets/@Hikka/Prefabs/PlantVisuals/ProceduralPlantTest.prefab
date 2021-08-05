@@ -93,7 +93,8 @@ MonoBehaviour:
   - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
   branchesPrefabs:
   - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
-  leavesPrefabs: []
+  leavesPrefabs:
+  - {fileID: 6443928958268257529, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
   fruitsPrefabs: []
   animateGrowth: 0
   scaleEveryNode: 0
@@ -103,7 +104,7 @@ MonoBehaviour:
   maxKnotGrowScalerPerCycle: 1.2
   branchesMinMaxRotation: {x: -30, y: 30}
   startBranchesMinMax: {x: 1, y: 1}
-  defaultBranchesMinMax: {x: 1, y: 1}
+  defaultTwoBranchesChance: 0.3
   plantNodes: []
   newPlantParts: []
   _layerMask:
