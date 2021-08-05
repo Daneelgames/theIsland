@@ -140,8 +140,6 @@ public class ProceduralPlant : MonoBehaviour
         {
             for (int i = 1; i < plantNodes.Count; i++)
             {
-                Debug.Log(i);
-                
                 capsuleStart = plantNodes[i].knot.partStartPoint.position;
                 capsuleEnd = plantNodes[i].knot.partEndPoint.position;
                 direction = plantNodes[i].knot.transform.forward;
@@ -170,20 +168,14 @@ public class ProceduralPlant : MonoBehaviour
 
     void CheckCapsuleForCollision(PlantPart part, Vector3 capsuleStart, Vector3 capsuleEnd, float capsuleRadius, Vector3 direction, int repeats)
     {
-        if (capsuleStart.y > capsuleEnd.y)
-        {
-            Vector3 tempVector;
-            tempVector = capsuleStart;
-            capsuleStart = capsuleEnd;
-            capsuleEnd = tempVector;
-        }
-        
         RaycastHit hit;
-        if (Physics.CapsuleCast(capsuleStart, capsuleEnd, capsuleRadius,  direction, out hit, 0.1f, _layerMask))
+        if (Physics.SphereCast(capsuleStart, capsuleRadius, direction, out hit, Vector3.Distance(capsuleStart, capsuleEnd), _layerMask))
         {
-            //part.transform.LookAt(part.transform.position + hit.normal);
             Vector3 temp = Vector3.Cross (part.transform.forward,hit.normal);
-            part.transform.rotation = Quaternion.LookRotation(-temp);
+            if (!animateGrowth)
+                part.transform.rotation = Quaternion.LookRotation(-temp);
+            else
+                StartCoroutine(RotatePlantPartAwayFromConstrainer(part, Quaternion.LookRotation(-temp)));
             
             --repeats;
             if (repeats <= 0)
@@ -191,6 +183,27 @@ public class ProceduralPlant : MonoBehaviour
             
             CheckCapsuleForCollision(part, capsuleStart, capsuleEnd, capsuleRadius, direction, repeats);
         }
+    }
+
+    IEnumerator RotatePlantPartAwayFromConstrainer(PlantPart part, Quaternion newRotation)
+    {
+        if (part.Rotating)
+            yield break;
+        
+        part.Rotating = true;
+        
+        float t = 0;
+        float tt = Random.Range(0.5f, 2f);
+
+        var startRotation = part.transform.rotation;
+        while (t < tt)
+        {
+            t += Time.deltaTime;
+            part.transform.rotation = Quaternion.Slerp(startRotation, newRotation, t/tt);
+            yield return null;
+        }
+        
+        part.Rotating = false;
     }
     
     public void ResetPlant()

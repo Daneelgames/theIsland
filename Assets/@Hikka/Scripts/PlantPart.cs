@@ -10,6 +10,7 @@ public class PlantPart : MonoBehaviour
     [SerializeField] private Transform _partStartPoint;
     [SerializeField] private Transform _partEndPoint;
 
+    [SerializeField] private bool rotating = false;
     public Transform partStartPoint
     {
         get { return _partStartPoint; }
@@ -23,5 +24,11 @@ public class PlantPart : MonoBehaviour
     public CapsuleCollider collider
     {
         get {return coll; }
+    }
+
+    public bool Rotating
+    {
+        get { return rotating; }
+        set {rotating = value; }
     }
 }
