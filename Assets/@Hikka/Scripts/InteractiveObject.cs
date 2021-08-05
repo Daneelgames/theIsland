@@ -23,7 +23,7 @@ public class InteractiveObject : MonoBehaviour
 
     void Start()
     {
-        if (plantController)
+        if (plantController && InteractiveObjectsManager.instance)
             InteractiveObjectsManager.instance.potsInteractiveObjects.Add(this);
     }
 

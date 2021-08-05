@@ -22,12 +22,19 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] [Range(1,1.5f)] private float maxKnotGrowScalerPerCycle = 1.05f;
     [SerializeField] private Vector2 branchesMinMaxRotation;
     [SerializeField] private Vector2 startBranchesMinMax;
-    [SerializeField] private Vector2 defaultBranchesMinMax;
+    [SerializeField] [Range(0,1)]private float defaultTwoBranchesChance = 0.3f;
     
     [Header("Nodes and parts in memory")]
     [SerializeField] private List<PlantNode> plantNodes = new List<PlantNode>();
     [SerializeField] private List<PlantPart> newPlantParts = new List<PlantPart>();
-    
+
+    [SerializeField] private LayerMask _layerMask;
+
+    private void Start()
+    {
+        StartCoroutine(CheckNodesForCollisions());
+    }
+
     public IEnumerator NextGrowStep()
     {
         if (plantNodes.Count == 0)
@@ -52,15 +59,20 @@ public class ProceduralPlant : MonoBehaviour
                 StartCoroutine(ScalePlantPart(plantNodes[0].knot, plantNodes[0].knot.transform.localScale, plantNodes[0].knot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
             }
             
+            // GROW NEW NODES
             for (int i = newPlantParts.Count - 1; i >= 0; i--)
             {
                 plantNodes.Add(new PlantNode());
-                StartCoroutine(GrowNewNode(plantNodes[plantNodes.Count-1], newPlantParts[i].partEndPoint.position, Random.Range(localKnotScaleScalerMinMax.x, localKnotScaleScalerMinMax.y), newPlantParts[i].transform, Mathf.RoundToInt(Random.Range(defaultBranchesMinMax.x, defaultBranchesMinMax.y))));
+                int r = 1;
+                if (Random.value < defaultTwoBranchesChance)
+                    r = 2;
+                
+                yield return StartCoroutine(GrowNewNode(plantNodes[plantNodes.Count-1], newPlantParts[i].partEndPoint.position, Random.Range(localKnotScaleScalerMinMax.x, localKnotScaleScalerMinMax.y), newPlantParts[i].transform, r));
                 newPlantParts.RemoveAt(i);
-                yield return null;
             }
         }
     }
+
 
     IEnumerator GrowNewNode(PlantNode _plantNode, Vector3 originPos, float localScaleScaler, Transform knotParent, int branchesAmount)
     {
@@ -114,6 +126,73 @@ public class ProceduralPlant : MonoBehaviour
         part.transform.localScale = newLocalScale;
     }
 
+    
+    IEnumerator CheckNodesForCollisions()
+    {
+        Vector3 capsuleStart;
+        Vector3 capsuleEnd;
+        Vector3 direction;
+        float capsuleRadius;
+
+        int t = 0;
+
+        while (true)
+        {
+            for (int i = 1; i < plantNodes.Count; i++)
+            {
+                Debug.Log(i);
+                
+                capsuleStart = plantNodes[i].knot.partStartPoint.position;
+                capsuleEnd = plantNodes[i].knot.partEndPoint.position;
+                direction = plantNodes[i].knot.transform.forward;
+                capsuleRadius = plantNodes[i].knot.collider.radius;
+                CheckCapsuleForCollision(plantNodes[i].knot, capsuleStart, capsuleEnd, capsuleRadius, direction,10);
+
+                for (int j = 0; j < plantNodes[i].branches.Count; j++)
+                {
+                    capsuleStart = plantNodes[i].branches[j].partStartPoint.position;
+                    capsuleEnd = plantNodes[i].branches[j].partEndPoint.position;
+                    direction = plantNodes[i].branches[j].transform.forward;
+                    capsuleRadius = plantNodes[i].branches[j].collider.radius;
+                    CheckCapsuleForCollision(plantNodes[i].branches[j], capsuleStart, capsuleEnd, capsuleRadius, direction, 10);
+                }
+
+                ++t;
+                if (t == 10)
+                {
+                    t = 0;
+                    yield return null;   
+                }
+            }
+            yield return null;      
+        }
+    }
+
+    void CheckCapsuleForCollision(PlantPart part, Vector3 capsuleStart, Vector3 capsuleEnd, float capsuleRadius, Vector3 direction, int repeats)
+    {
+        if (capsuleStart.y > capsuleEnd.y)
+        {
+            Vector3 tempVector;
+            tempVector = capsuleStart;
+            capsuleStart = capsuleEnd;
+            capsuleEnd = tempVector;
+        }
+        
+        RaycastHit hit;
+        if (Physics.CapsuleCast(capsuleStart, capsuleEnd, capsuleRadius,  direction, out hit, 0.1f, _layerMask))
+        {
+            //part.transform.LookAt(part.transform.position + hit.normal);
+            Vector3 temp = Vector3.Cross (part.transform.forward,hit.normal);
+            part.transform.rotation = Quaternion.LookRotation(-temp);
+            
+            --repeats;
+            if (repeats <= 0)
+                return;
+            
+            CheckCapsuleForCollision(part, capsuleStart, capsuleEnd, capsuleRadius, direction, repeats);
+        }
+    }
+    
     public void ResetPlant()
     {
         StopAllCoroutines();

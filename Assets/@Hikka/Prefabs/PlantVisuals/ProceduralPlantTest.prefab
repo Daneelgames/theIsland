@@ -95,17 +95,20 @@ MonoBehaviour:
   - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
   leavesPrefabs: []
   fruitsPrefabs: []
-  animateGrowth: 1
+  animateGrowth: 0
   scaleEveryNode: 0
   localKnotScaleScalerMinMax: {x: 0.8, y: 1.2}
   localBranchScaleScalerMinMax: {x: 0.9, y: 1}
   knotsMinMaxRotation: {x: -90, y: 90}
-  maxKnotGrowScalerPerCycle: 1.15
+  maxKnotGrowScalerPerCycle: 1.2
   branchesMinMaxRotation: {x: -30, y: 30}
-  startBranchesMinMax: {x: 2, y: 2}
-  defaultBranchesMinMax: {x: 1, y: 2}
+  startBranchesMinMax: {x: 1, y: 1}
+  defaultBranchesMinMax: {x: 1, y: 1}
   plantNodes: []
   newPlantParts: []
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!54 &5547513983364014273
 Rigidbody:
   m_ObjectHideFlags: 0
