@@ -15,8 +15,8 @@ TagManager:
   - Units
   - Ceiling
   - Interactable
-  - 
-  - 
+  - PlantPart
+  - PlantGrowthConstrains
   - 
   - 
   - 

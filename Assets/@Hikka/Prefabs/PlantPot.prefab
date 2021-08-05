@@ -209,7 +209,6 @@ MonoBehaviour:
   - m_AssetGUID: 8fce519158d46e9469a2b14919f82ab4
     m_SubObjectName: 
     m_SubObjectType: 
-  spawnedPlantVisual: {fileID: 0}
 --- !u!54 &871262649773335713
 Rigidbody:
   m_ObjectHideFlags: 0

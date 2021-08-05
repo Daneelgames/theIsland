@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543151664059170001}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EndPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956461790336364930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025, y: -0.016, z: 0.12}
+  m_LocalPosition: {x: 0.0003, y: 0.0040085, z: 0.0377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3179122185848018935}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4419366477243310883}
   - component: {fileID: 6623855510156944776}
   - component: {fileID: 3731957334806933049}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,8 +56,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4110634857323494070}
   m_LocalRotation: {x: -0.09907368, y: -0.50481457, z: 0.05845954, w: 0.8555286}
-  m_LocalPosition: {x: 0, y: 0.0008, z: -0.0492}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 0.0036627003, y: 0.0062683, z: 0.014941502}
+  m_LocalScale: {x: 13.450999, y: 13.450999, z: 13.450999}
   m_Children: []
   m_Father: {fileID: 3179122185848018935}
   m_RootOrder: 0
@@ -121,10 +121,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1489190822911656151}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StartPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6624936151969226314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0292, y: 0, z: -0.168}
+  m_LocalPosition: {x: -0.0002648998, y: 0.0061607, z: -0.0010384992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3179122185848018935}
@@ -152,7 +152,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3179122185848018935}
   - component: {fileID: 4048185409795078802}
-  m_Layer: 0
+  - component: {fileID: 1209901292336387747}
+  m_Layer: 10
   m_Name: KnotTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +169,7 @@ Transform:
   m_GameObject: {fileID: 8811553317481452062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419366477243310883}
   - {fileID: 1489190822911656151}
@@ -190,3 +191,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partStartPoint: {fileID: 1489190822911656151}
   _partEndPoint: {fileID: 543151664059170001}
+--- !u!136 &1209901292336387747
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811553317481452062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.014762818
+  m_Height: 0.048936393
+  m_Direction: 2
+  m_Center: {x: 0.0021996507, y: 0.0072521656, z: 0.019022228}
