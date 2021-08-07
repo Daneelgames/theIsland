@@ -7,7 +7,7 @@ public class ToolController : MonoBehaviour
 {
     public enum ToolType
     {
-        Seed, Water, Gold
+        Seed, Water, Gold, Blade
     }
     public ToolType toolType = ToolType.Seed;
     public float useToolCooldown = 1f;
@@ -29,6 +29,8 @@ public class ToolController : MonoBehaviour
     private InteractiveObject selectedObject;
 
     public Animator anim;
+    private Coroutine pumpingWaterCoroutine;
+    private static readonly int UseBlade = Animator.StringToHash("UseBlade");
     private static readonly int ToolCharging = Animator.StringToHash("ToolCharging");
 
     public void Awake()
@@ -89,10 +91,20 @@ public class ToolController : MonoBehaviour
                     }
                 }
                 break;
+            
+            case ToolType.Blade:
+                var selectedPlant = PlayerInteractionController.instance.SelectedPlantPart; 
+                // FOR TEST
+                if (selectedPlant) // AND SELECTED TOOL
+                {
+                    selectedPlant.MasterPlant.RemovePlantPart(selectedPlant);
+                }
+
+                anim.SetTrigger(UseBlade);
+                break;
         }
     }
 
-    private Coroutine pumpingWaterCoroutine;
 
     public void StartPumpingWater()
     {

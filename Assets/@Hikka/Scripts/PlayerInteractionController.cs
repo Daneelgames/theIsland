@@ -9,13 +9,15 @@ public class PlayerInteractionController : MonoBehaviour
 
     public float raycastDistance = 5;
     public LayerMask raycastLayers;
-    
+
     private RaycastHit hit;
     private Vector3 selectedInteractableCenter;
 
     public InteractiveObject draggingObject;
 
     private float raycastCooldownAfterDrop = 0.5f;
+    private GameObject lastSelectedPlantGO = null;
+    [SerializeField] private PlantPart lastSelectedPlantPart;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class PlayerInteractionController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
         instance = this;
     }
 
@@ -33,8 +35,8 @@ public class PlayerInteractionController : MonoBehaviour
         bool haveSelectedObject = false;
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
-            
+            yield return new WaitForSeconds(0.05f);
+
             haveSelectedObject = false;
 
             if (raycastCooldownAfterDrop > 0)
@@ -42,8 +44,7 @@ public class PlayerInteractionController : MonoBehaviour
                 PlayerUiController.instance.NoSelectedObject();
                 continue;
             }
-                
-            
+
             if (draggingObject == null)
             {
                 if (Physics.Raycast(MouseLook.instance.mainCamera.transform.position,
@@ -53,18 +54,94 @@ public class PlayerInteractionController : MonoBehaviour
                     if (hit.collider.gameObject.layer == 9) // interactable
                     {
                         selectedInteractableCenter = hit.collider.bounds.center;
-                        PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject, selectedInteractableCenter);
+                        PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject,
+                            selectedInteractableCenter);
+                        haveSelectedObject = true;
+                    }
+                    else if (PlayerToolsController.instance.selectedToolIndex == 3 && hit.collider.gameObject.layer == 10) // plant part
+                    {
+                        SelectPlantPart(hit.collider.gameObject);
                         haveSelectedObject = true;
                     }
                 }
+
                 if (!haveSelectedObject)
+                {
                     PlayerUiController.instance.NoSelectedObject();
+                    if (lastSelectedPlantGO != null)
+                    {
+                        NoSelectedPlantPartGO();
+                    }
+                }
             }
             else
             {
-                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject, draggingObject.collider.bounds.center);
+                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject,
+                    draggingObject.collider.bounds.center);
+                if (lastSelectedPlantGO != null)
+                {
+                    NoSelectedPlantPartGO();
+                }
             }
         }
+    }
+
+    public PlantPart SelectedPlantPart
+    {
+        get { return lastSelectedPlantPart; }
+    }
+
+    void SelectPlantPart(GameObject plantGo)
+    {
+        if (plantGo != lastSelectedPlantGO)
+        {
+            if (lastSelectedPlantPart)
+            {
+                //lastSelectedPlantPart.UnselectPart();
+                lastSelectedPlantPart.ParentPlantNode.UnselectNode();
+            }
+
+            var temp = plantGo.GetComponent<PlantPart>();
+
+            switch (temp.plantPartType)
+            {
+                case PlantPart.PlantPartType.Knot:
+                    SelectNode(plantGo, temp);
+
+                    break;
+                case PlantPart.PlantPartType.Branch:
+                    SelectNode(plantGo, temp);
+
+                    break;
+                case PlantPart.PlantPartType.Leaves:
+                    SelectPart(plantGo, temp);
+                    break;
+                case PlantPart.PlantPartType.Fruit:
+                    SelectPart(plantGo, temp);
+                    break;
+            }
+        }
+    }
+
+    void SelectNode(GameObject plantGo, PlantPart temp)
+    {
+        lastSelectedPlantGO = plantGo;
+        lastSelectedPlantPart = temp;
+        lastSelectedPlantPart.ParentPlantNode.SelectNode();
+    }
+    void SelectPart(GameObject plantGo, PlantPart temp)
+    {
+        lastSelectedPlantGO = plantGo;
+        lastSelectedPlantPart = temp;
+        lastSelectedPlantPart.SelectPart();
+    }
+
+void NoSelectedPlantPartGO()
+    {
+        //lastSelectedPlantPart.UnselectPart();
+        lastSelectedPlantPart.ParentPlantNode.UnselectNode();
+        lastSelectedPlantPart = null;
+        lastSelectedPlantGO = null;
     }
 
     private void Update()
@@ -133,6 +210,7 @@ public class PlayerInteractionController : MonoBehaviour
                 PlayerUiController.instance.ResetSelectedObject();
                 return;
             }
+            
         }
 
         if (Input.GetButtonUp("UseTool"))

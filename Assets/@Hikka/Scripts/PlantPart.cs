@@ -1,11 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PlantPart : MonoBehaviour
 {
+    public enum PlantPartType
+    {
+        Knot, Branch, Leaves, Fruit
+    }
+
+    [SerializeField] private PlantPartType _plantPartType = PlantPartType.Branch;
+    
     [SerializeField] private CapsuleCollider coll;
     
     [SerializeField] private Transform _partStartPoint;
@@ -13,6 +21,57 @@ public class PlantPart : MonoBehaviour
     [SerializeField] private List<Transform> _spawnPoints;
     private List<Transform> _fruitsSpawnPoints = new List<Transform>();
 
+    [SerializeField] private MeshRenderer mesh;
+    private Material _material;
+    
+    private Coroutine rotateAwayCoroutine;
+    private static readonly int IsSelected = Shader.PropertyToID("is_selected");
+
+    private ProceduralPlant _masterPlant;
+    private PlantNode _parentPlantNode;
+
+    private bool rotating = false;
+
+
+    void Start()
+    {
+        if (mesh)
+            _material = mesh.material;
+    }
+
+    public PlantPartType plantPartType
+    {
+        get { return _plantPartType; }
+    }
+    public bool isRotating
+    {
+        get { return rotating; }
+    }
+    public ProceduralPlant MasterPlant
+    {
+        get { return _masterPlant; }
+        set { _masterPlant = value; }
+    }
+    public PlantNode ParentPlantNode
+    {
+        get { return _parentPlantNode; }
+        set { _parentPlantNode = value; }
+    }
+    
+    #region select Part
+        public void SelectPart()
+        {
+            if (_material && _material.GetInt(IsSelected) != 1)
+                _material.SetInt(IsSelected, 1);
+        }
+
+        public void UnselectPart()
+        {
+            if (_material && _material.GetInt(IsSelected) != 0)
+                _material.SetInt(IsSelected, 0);
+        }
+    #endregion
+    
     public Transform partStartPoint
     {
         get { return _partStartPoint; }
@@ -44,7 +103,7 @@ public class PlantPart : MonoBehaviour
         set => _fruitsSpawnPoints = value;
     }
 
-    private Coroutine rotateAwayCoroutine;
+
     public void RotateAway(Quaternion newRot)
     {
         if (rotateAwayCoroutine != null)
@@ -55,8 +114,9 @@ public class PlantPart : MonoBehaviour
     
     public IEnumerator RotateAwayFromConstrainer(Quaternion newRotation)
     {
+        rotating = true;
         float t = 0;
-        float tt = Random.Range(0.5f, 2f);
+        float tt = Random.Range(0.2f, 0.5f);
 
         var startRotation = transform.rotation;
         while (t < tt)
@@ -65,6 +125,10 @@ public class PlantPart : MonoBehaviour
             transform.rotation = Quaternion.Slerp(startRotation, newRotation, t/tt);
             yield return null;
         }
+
+        rotating = false;
         StopCoroutine(rotateAwayCoroutine);
     }
+    
+    
 }

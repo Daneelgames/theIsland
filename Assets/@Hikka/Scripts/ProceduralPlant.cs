@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,7 +15,8 @@ public class ProceduralPlant : MonoBehaviour
 
     [Header("Growth settings")]
     [SerializeField] private int growthRate = 1;
-    [SerializeField] private bool animateGrowth = true;
+    [SerializeField] private bool animateRotation = false;
+    [SerializeField] private bool animateScale = true;
     [SerializeField] private bool scaleEveryNode = false;
     [SerializeField] [Range(1,1.5f)] private float maxKnotGrowScalerPerCycle = 1.2f;
     [SerializeField] private Vector2 localKnotScaleScalerMinMax = new Vector2(0.8f, 1.2f);
@@ -34,16 +36,21 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     
     private int currentGrowthStep = 0;
+    private Coroutine checkNodesForCollisionsCoroutine;
 
     private void Start()
     {
         InteractiveObjectsManager.instance.proceduralPlants.Add(this);
-        StartCoroutine(CheckNodesForCollisions());
+        
     }
 
     public IEnumerator NextGrowthStep()
     {
         currentGrowthStep++;
+        
+        if (checkNodesForCollisionsCoroutine == null)
+            StartCoroutine(CheckNodesForCollisions());
+        
         for (int i = 0; i < growthRate; i++)
         {
             yield return StartCoroutine(NextGrowthStepCoroutine());   
@@ -55,7 +62,8 @@ public class ProceduralPlant : MonoBehaviour
         if (plantNodes.Count == 0)
         {
             plantNodes.Add(new PlantNode());
-            yield return StartCoroutine(GrowNewNode(plantNodes[plantNodes.Count-1], transform.position, 1f, transform, Mathf.RoundToInt(Random.Range(startBranchesMinMaxAmount.x, startBranchesMinMaxAmount.y))));
+            yield return StartCoroutine(GrowNewNode(plantNodes[plantNodes.Count-1], transform.position, 
+                1f, transform, Mathf.RoundToInt(Random.Range(startBranchesMinMaxAmount.x, startBranchesMinMaxAmount.y)), null));
         }
         else
         {
@@ -71,50 +79,65 @@ public class ProceduralPlant : MonoBehaviour
             }
             else
             {
-                yield return StartCoroutine(ScalePlantPart(plantNodes[0].spawnedKnot, plantNodes[0].spawnedKnot.transform.localScale, plantNodes[0].spawnedKnot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
+                yield return StartCoroutine(ScalePlantPart(plantNodes[0].spawnedKnot, plantNodes[0].spawnedKnot.transform.localScale, 
+                    plantNodes[0].spawnedKnot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
             }
             
             // GROW NEW NODES
             for (int i = newPlantParts.Count - 1; i >= 0; i--)
             {
+                if (newPlantParts[i] == null)
+                {
+                    newPlantParts.RemoveAt(i);
+                    continue;
+                }
+                
                 plantNodes.Add(new PlantNode());
                 int r = 1;
                 if (Random.value < defaultTwoBranchesChance)
                     r = 2;
                 
-                yield return StartCoroutine(GrowNewNode(plantNodes[plantNodes.Count-1], newPlantParts[i].partEndPoint.position, Random.Range(localKnotScaleScalerMinMax.x, localKnotScaleScalerMinMax.y), newPlantParts[i].transform, r));
+                yield return StartCoroutine(GrowNewNode(plantNodes[plantNodes.Count-1], newPlantParts[i].partEndPoint.position, 
+                    Random.Range(localKnotScaleScalerMinMax.x, localKnotScaleScalerMinMax.y), newPlantParts[i].transform, r, newPlantParts[i].ParentPlantNode));
                 newPlantParts.RemoveAt(i);
             }
         }
     }
 
 
-    IEnumerator GrowNewNode(PlantNode _plantNode, Vector3 originPos, float localScaleScaler, Transform knotParent, int branchesAmount)
+    IEnumerator GrowNewNode(PlantNode newNode, Vector3 originPos, float localScaleScaler, Transform knotParent, int branchesAmount, PlantNode parentNode)
     {
-        _plantNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity);
-        _plantNode.spawnedKnot.transform.parent = knotParent;
-        _plantNode.spawnedKnot.transform.localEulerAngles = Vector3.zero;
+        if (parentNode != null)
+            parentNode.closestChildNodes.Add(newNode);
+        
+        newNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity);
+        newNode.spawnedKnot.MasterPlant = this;
+        newNode.spawnedKnot.transform.parent = knotParent;
+        newNode.spawnedKnot.transform.localEulerAngles = Vector3.zero;
+        newNode.spawnedKnot.ParentPlantNode = newNode;
         if (plantNodes.Count > 1)
-            _plantNode.spawnedKnot.transform.localEulerAngles += new Vector3(Random.Range(knotsMinMaxRotation.x, knotsMinMaxRotation.y), Random.Range(knotsMinMaxRotation.x, knotsMinMaxRotation.y), Random.Range(knotsMinMaxRotation.x, knotsMinMaxRotation.y));
+            newNode.spawnedKnot.transform.localEulerAngles += new Vector3(Random.Range(knotsMinMaxRotation.x, knotsMinMaxRotation.y), Random.Range(knotsMinMaxRotation.x, knotsMinMaxRotation.y), Random.Range(knotsMinMaxRotation.x, knotsMinMaxRotation.y));
         
         var startScale = Vector3.zero;
         var endScale = knotParent.localScale * localScaleScaler;
-        _plantNode.spawnedKnot.transform.localScale = startScale;
+        newNode.spawnedKnot.transform.localScale = startScale;
         
         for (int i = 0; i < branchesAmount; i++)
         {
-            CreateBrunch(_plantNode, i);
+            CreateBrunch(newNode, i, newNode);
             yield return null;
         }
         
-        StartCoroutine(ScalePlantPart(_plantNode.spawnedKnot, startScale, endScale));
+        StartCoroutine(ScalePlantPart(newNode.spawnedKnot, startScale, endScale));
     }
 
-    void CreateBrunch(PlantNode _plantNode, int i)
+    void CreateBrunch(PlantNode _plantNode, int i, PlantNode parentPlantNode)
     {
         int prefabR = Random.Range(0, branches.plantPartPrefab.Count);
         _plantNode.spawnedBranches.Add(Instantiate(branches.plantPartPrefab[prefabR], _plantNode.spawnedKnot.partEndPoint.transform.position, Quaternion.identity));
         _plantNode.spawnedBranches[i].transform.parent = _plantNode.spawnedKnot.transform;
+        _plantNode.spawnedBranches[i].MasterPlant = this;
+        _plantNode.spawnedBranches[i].ParentPlantNode = parentPlantNode;
         if (i == 0)
             _plantNode.spawnedBranches[i].transform.localEulerAngles = Vector3.zero;
         else
@@ -125,10 +148,10 @@ public class ProceduralPlant : MonoBehaviour
             
         newPlantParts.Add(_plantNode.spawnedBranches[i]);
 
-        CreateLeaves(_plantNode, _plantNode.spawnedBranches[i]);
+        CreateLeaves(_plantNode, _plantNode.spawnedBranches[i], parentPlantNode);
     }
 
-    void CreateLeaves(PlantNode _plantNode, PlantPart branch)
+    void CreateLeaves(PlantNode _plantNode, PlantPart branch, PlantNode parentPlantNode)
     {
         var points = branch.spawnPoints;
         if (points.Count <= 0)
@@ -145,7 +168,10 @@ public class ProceduralPlant : MonoBehaviour
                 int prefabR = Random.Range(0, leaves.plantPartPrefab.Count);
                 var newLeaf = Instantiate(leaves.plantPartPrefab[prefabR], points[pointR].position, Quaternion.identity);
                 
+                newLeaf.MasterPlant = this;
+                
                 _plantNode.spawnedLeaves.Add(newLeaf);
+                newLeaf.ParentPlantNode = parentPlantNode;
                 newLeaf.transform.parent = points[pointR];
                 newLeaf.transform.localEulerAngles = Vector3.zero;
                 newLeaf.transform.localScale = Vector3.one;
@@ -158,10 +184,10 @@ public class ProceduralPlant : MonoBehaviour
             }
         }
 
-        CreateFruits(_plantNode, branch);
+        CreateFruits(_plantNode, branch, parentPlantNode);
     }
     
-    void CreateFruits(PlantNode _plantNode, PlantPart branch)
+    void CreateFruits(PlantNode _plantNode, PlantPart branch, PlantNode parentPlantNode)
     {
         var points = branch.fruitsSpawnPoints;
         for (int i = points.Count - 1; i >= 0; i--)
@@ -175,8 +201,11 @@ public class ProceduralPlant : MonoBehaviour
                 int prefabR = Random.Range(0, fruits.plantPartPrefab.Count);
                 var newFruit = Instantiate(fruits.plantPartPrefab[prefabR], points[pointR].position, Quaternion.identity);
                 
+                newFruit.MasterPlant = this;
+                
                 _plantNode.spawnedFruits.Add(newFruit);
                 newFruit.transform.parent = points[pointR];
+                newFruit.ParentPlantNode = parentPlantNode;
                 newFruit.transform.localEulerAngles = Vector3.zero;
                 newFruit.transform.localScale = Vector3.one;
                 points.RemoveAt(pointR);
@@ -188,11 +217,15 @@ public class ProceduralPlant : MonoBehaviour
         }
     }
     
-    IEnumerator ScalePlantPart(PlantPart part,Vector3 startLocalScale, Vector3 newLocalScale)
+    IEnumerator ScalePlantPart(PlantPart part, Vector3 startLocalScale, Vector3 newLocalScale)
     {
         float t = 0;
         float tt = Random.Range(0.25f, 1f);
-        if (!animateGrowth) tt = 0;
+        if (!animateScale) tt = 0;
+        
+        if (part == null)
+            yield break;
+        
         part.transform.localScale = startLocalScale;
         while (t < tt)
         {
@@ -217,19 +250,32 @@ public class ProceduralPlant : MonoBehaviour
         {
             for (int i = 1; i < plantNodes.Count; i++)
             {
-                capsuleStart = plantNodes[i].spawnedKnot.partStartPoint.position;
-                capsuleEnd = plantNodes[i].spawnedKnot.partEndPoint.position;
-                direction = plantNodes[i].spawnedKnot.transform.forward;
-                capsuleRadius = plantNodes[i].spawnedKnot.capsuleCollider.radius;
-                CheckPlantPartForCollision(plantNodes[i].spawnedKnot, capsuleStart, capsuleEnd, capsuleRadius, direction,10);
+                
+                if (plantNodes[i].spawnedKnot == null)
+                {
+                    plantNodes.RemoveAt(i);
+                    continue;
+                }
+
+                if (plantNodes[i].spawnedKnot.isRotating == false)
+                {
+                    capsuleStart = plantNodes[i].spawnedKnot.partStartPoint.position;
+                    capsuleEnd = plantNodes[i].spawnedKnot.partEndPoint.position;
+                    direction = plantNodes[i].spawnedKnot.transform.forward;
+                    capsuleRadius = plantNodes[i].spawnedKnot.capsuleCollider.radius;
+                    CheckPlantPartForCollision(plantNodes[i].spawnedKnot, capsuleStart, capsuleEnd, capsuleRadius, direction);   
+                }
 
                 for (int j = 0; j < plantNodes[i].spawnedBranches.Count; j++)
                 {
+                    if (plantNodes[i].spawnedBranches[j].isRotating)
+                        continue;
+                    
                     capsuleStart = plantNodes[i].spawnedBranches[j].partStartPoint.position;
                     capsuleEnd = plantNodes[i].spawnedBranches[j].partEndPoint.position;
                     direction = plantNodes[i].spawnedBranches[j].transform.forward;
                     capsuleRadius = plantNodes[i].spawnedBranches[j].capsuleCollider.radius;
-                    CheckPlantPartForCollision(plantNodes[i].spawnedBranches[j], capsuleStart, capsuleEnd, capsuleRadius, direction, 10);
+                    CheckPlantPartForCollision(plantNodes[i].spawnedBranches[j], capsuleStart, capsuleEnd, capsuleRadius, direction);
                 }
 
                 ++t;
@@ -243,22 +289,16 @@ public class ProceduralPlant : MonoBehaviour
         }
     }
 
-    void CheckPlantPartForCollision(PlantPart part, Vector3 capsuleStart, Vector3 capsuleEnd, float capsuleRadius, Vector3 direction, int repeats)
+    void CheckPlantPartForCollision(PlantPart part, Vector3 capsuleStart, Vector3 capsuleEnd, float capsuleRadius, Vector3 direction)
     {
         RaycastHit hit;
         if (Physics.SphereCast(capsuleStart, capsuleRadius, direction, out hit, Vector3.Distance(capsuleStart, capsuleEnd), _layerMask))
         {
             Vector3 temp = Vector3.Cross (part.transform.forward,hit.normal);
-            if (!animateGrowth)
+            if (!animateRotation)
                 part.transform.rotation = Quaternion.LookRotation(-temp);
             else
                 part.RotateAway(Quaternion.LookRotation(-temp));   
-            
-            --repeats;
-            if (repeats <= 0)
-                return;
-            
-            CheckPlantPartForCollision(part, capsuleStart, capsuleEnd, capsuleRadius, direction, repeats);
         }
     }
 
@@ -273,6 +313,14 @@ public class ProceduralPlant : MonoBehaviour
 
     public void RemovePlantPart(PlantPart part)
     {
+        /*
+        newPlantParts.Add(part.ParentPlantNode.spawnedKnot);
+        
+        for (int i = 0; i < part.ParentPlantNode.spawnedBranches.Count; i++)
+        {
+            newPlantParts.Add(part.ParentPlantNode.spawnedBranches[i]);
+        }*/
+        
         for (int i = plantNodes.Count - 1; i >= 0; i--)
         {
             if (plantNodes[i].spawnedKnot == part)
@@ -291,6 +339,24 @@ public class ProceduralPlant : MonoBehaviour
                     break;
                 }
             }
+            for (int j = 0; j < plantNodes[i].spawnedFruits.Count; j++)
+            {
+                if (plantNodes[i].spawnedFruits[j] == part)
+                {
+                    Destroy(part.gameObject);
+                    plantNodes[i].spawnedFruits.RemoveAt(j);
+                    break;
+                }
+            }
+            for (int j = 0; j < plantNodes[i].spawnedLeaves.Count; j++)
+            {
+                if (plantNodes[i].spawnedLeaves[j] == part)
+                {
+                    Destroy(part.gameObject);
+                    plantNodes[i].spawnedLeaves.RemoveAt(j);
+                    break;
+                }
+            }
         }
     }
 }
@@ -304,7 +370,50 @@ public class PlantNode
     public List<PlantPart> spawnedBranches = new List<PlantPart>();
     public List<PlantPart> spawnedLeaves = new List<PlantPart>();
     public List<PlantPart> spawnedFruits = new List<PlantPart>();
-    public List<int> childNodesIndexes = new List<int>();
+    
+    public List<PlantNode> closestChildNodes = new List<PlantNode>();
+
+    public void SelectNode()
+    {
+        spawnedKnot.SelectPart();
+        for (int i = 0; i < spawnedBranches.Count; i++)
+        {
+            spawnedBranches[i].SelectPart();
+        }
+        for (int i = 0; i < spawnedLeaves.Count; i++)
+        {
+            spawnedLeaves[i].SelectPart();
+        }
+        for (int i = 0; i < spawnedFruits.Count; i++)
+        {
+            spawnedFruits[i].SelectPart();
+        }
+        for (int i = 0; i < closestChildNodes.Count; i++)
+        {
+            closestChildNodes[i].SelectNode();
+        }
+    }
+
+    public void UnselectNode()
+    {
+        spawnedKnot.UnselectPart();
+        for (int i = 0; i < spawnedBranches.Count; i++)
+        {
+            spawnedBranches[i].UnselectPart();
+        }
+        for (int i = 0; i < spawnedLeaves.Count; i++)
+        {
+            spawnedLeaves[i].UnselectPart();
+        }
+        for (int i = 0; i < spawnedFruits.Count; i++)
+        {
+            spawnedFruits[i].UnselectPart();
+        }
+        for (int i = 0; i < closestChildNodes.Count; i++)
+        {
+            closestChildNodes[i].UnselectNode();
+        }
+    }
 }
 
 [Serializable]

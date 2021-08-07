@@ -354,6 +354,7 @@ MonoBehaviour:
   - {fileID: 4065236020568564131}
   - {fileID: 2905951860238499522}
   - {fileID: 5628312382236964679}
+  mesh: {fileID: 2878103806800915727}
 --- !u!136 &1180798862841384193
 CapsuleCollider:
   m_ObjectHideFlags: 0

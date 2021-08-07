@@ -63,6 +63,7 @@
      <Compile Include="Assets\@Hikka\Scripts\PlayerInventoryController.cs" />
      <Compile Include="Assets\__Global\FloatHelper.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
+     <Compile Include="Assets\selected effect\scripts\Selected_effect_mouse_click.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ProceduralPlant.cs" />
      <Compile Include="Assets\@Hikka\Scripts\DoorController.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\FavouriteTemplatesUtility.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\PlayerUiController.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantController.cs" />
      <Compile Include="Assets\__Global\GameObjectHelper.cs" />
+     <Compile Include="Assets\selected effect\scripts\Rotate_self.cs" />
      <Compile Include="Assets\@Hikka\Scripts\LoopsLoadingManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
@@ -102,6 +104,7 @@
      <Compile Include="Assets\@GoldenValleys\Scripts\ObjectPooling.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\@Hikka\Scripts\Utils\PlantTestGrowController.cs" />
+     <Compile Include="Assets\selected effect\scripts\Selected_effect_touch.cs" />
      <Compile Include="Assets\Scripts\Perlin_Noise_Scroller\PerlinNoiseScroller.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantPart.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\WeaponHandler.cs" />
@@ -115,6 +118,7 @@
      <Compile Include="Assets\MeshBrush\Scripts\Enums\BrushMode.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\MeshTransformationUtility.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\selected effect\scripts\Selected_effect_mouse_hover.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PickableInputData.cs" />
      <Compile Include="Assets\Scripts\CharacterHealth.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\HeadBobData.cs" />

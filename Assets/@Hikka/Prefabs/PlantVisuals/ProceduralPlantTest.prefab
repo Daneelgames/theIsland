@@ -105,8 +105,9 @@ MonoBehaviour:
     plantPartPrefab:
     - {fileID: 6443928958268257529, guid: 1fcea2aa1a39cf14fafc0af119c3641b, type: 3}
     startGrowthOnStepMinMax: {x: 3, y: 5}
-  growthRate: 3
-  animateGrowth: 0
+  growthRate: 2
+  animateRotation: 0
+  animateScale: 0
   scaleEveryNode: 0
   maxKnotGrowScalerPerCycle: 1.2
   localKnotScaleScalerMinMax: {x: 0.8, y: 1.2}
@@ -116,7 +117,7 @@ MonoBehaviour:
   startBranchesMinMaxAmount: {x: 1, y: 1}
   defaultTwoBranchesChance: 0.3
   defaultLeavesGrowChance: 0.1
-  defaultFruitsGrowChance: 0.025
+  defaultFruitsGrowChance: 0.005
   plantNodes: []
   newPlantParts: []
   _layerMask:

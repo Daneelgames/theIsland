@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2ec1a1306a0c640ba0d1ffe4ba18f4, type: 3}
+  m_Name: 03 Blade
+  m_EditorClassIdentifier: 
+  inventoryIndex: 3
+  toolName:
+  - Blade
+  toolIcon: {fileID: 21300000, guid: aff67bb7d53832041bc27c45a975f5a9, type: 3}
+  toolDecription:
+  - You can cut plants with it
