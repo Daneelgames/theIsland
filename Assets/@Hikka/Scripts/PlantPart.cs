@@ -10,7 +10,8 @@ public class PlantPart : MonoBehaviour
     
     [SerializeField] private Transform _partStartPoint;
     [SerializeField] private Transform _partEndPoint;
-    [SerializeField] private List<Transform> _leafPoints;
+    [SerializeField] private List<Transform> _spawnPoints;
+    private List<Transform> _fruitsSpawnPoints = new List<Transform>();
 
     public Transform partStartPoint
     {
@@ -22,15 +23,25 @@ public class PlantPart : MonoBehaviour
         get { return _partEndPoint; }
     }
 
-    public CapsuleCollider collider
+    public CapsuleCollider capsuleCollider
+    {
+        get {return coll; }
+    }
+    
+    public Collider boxCollider
     {
         get {return coll; }
     }
 
-    public List<Transform> LeafPoints
+    public List<Transform> spawnPoints
     {
-        get => _leafPoints;
-        set => _leafPoints = value;
+        get => _spawnPoints;
+        set => _spawnPoints = value;
+    }
+    public List<Transform> fruitsSpawnPoints
+    {
+        get => _fruitsSpawnPoints;
+        set => _fruitsSpawnPoints = value;
     }
 
     private Coroutine rotateAwayCoroutine;

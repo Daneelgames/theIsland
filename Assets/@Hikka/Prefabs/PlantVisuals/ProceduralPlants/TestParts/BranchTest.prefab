@@ -348,7 +348,7 @@ MonoBehaviour:
   coll: {fileID: 1180798862841384193}
   _partStartPoint: {fileID: 9102785822080884299}
   _partEndPoint: {fileID: 1015766677435734119}
-  _leafPoints:
+  _spawnPoints:
   - {fileID: 5866713089354379139}
   - {fileID: 8413119643032234129}
   - {fileID: 4065236020568564131}

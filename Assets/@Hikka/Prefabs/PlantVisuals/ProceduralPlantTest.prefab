@@ -89,22 +89,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a0f0d5267e0c0498b70be2560e977a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knotsPrefabs:
-  - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
-  branchesPrefabs:
-  - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
-  leavesPrefabs:
-  - {fileID: 6443928958268257529, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
-  fruitsPrefabs: []
+  knots:
+    plantPartPrefab:
+    - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  branches:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  leaves:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
+    startGrowthOnStepMinMax: {x: 1, y: 3}
+  fruits:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 1fcea2aa1a39cf14fafc0af119c3641b, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 5}
+  growthRate: 3
   animateGrowth: 0
   scaleEveryNode: 0
+  maxKnotGrowScalerPerCycle: 1.2
   localKnotScaleScalerMinMax: {x: 0.8, y: 1.2}
   localBranchScaleScalerMinMax: {x: 0.9, y: 1}
   knotsMinMaxRotation: {x: -90, y: 90}
-  maxKnotGrowScalerPerCycle: 1.2
   branchesMinMaxRotation: {x: -30, y: 30}
-  startBranchesMinMax: {x: 1, y: 1}
+  startBranchesMinMaxAmount: {x: 1, y: 1}
   defaultTwoBranchesChance: 0.3
+  defaultLeavesGrowChance: 0.1
+  defaultFruitsGrowChance: 0.025
   plantNodes: []
   newPlantParts: []
   _layerMask:
