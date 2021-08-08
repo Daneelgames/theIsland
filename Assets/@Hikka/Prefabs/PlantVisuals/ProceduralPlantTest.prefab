@@ -110,6 +110,7 @@ MonoBehaviour:
   animateScale: 0
   scaleEveryNode: 0
   maxKnotGrowScalerPerCycle: 1.2
+  mainKnotGrowthChance: 0.5
   localKnotScaleScalerMinMax: {x: 0.8, y: 1.2}
   localBranchScaleScalerMinMax: {x: 0.9, y: 1}
   knotsMinMaxRotation: {x: -90, y: 90}

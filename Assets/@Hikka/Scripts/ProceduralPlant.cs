@@ -19,6 +19,7 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] private bool animateScale = true;
     [SerializeField] private bool scaleEveryNode = false;
     [SerializeField] [Range(1,1.5f)] private float maxKnotGrowScalerPerCycle = 1.2f;
+    [SerializeField] [Range(0,1)]private float mainKnotGrowthChance = 0.15f;
     [SerializeField] private Vector2 localKnotScaleScalerMinMax = new Vector2(0.8f, 1.2f);
     [SerializeField] private Vector2 localBranchScaleScalerMinMax= new Vector2(0.9f, 1f);
     [SerializeField] private Vector2 knotsMinMaxRotation = new Vector2(-90, 90);
@@ -67,20 +68,23 @@ public class ProceduralPlant : MonoBehaviour
         }
         else
         {
-            if (scaleEveryNode)
+            if (Random.value < mainKnotGrowthChance)
             {
-                for (int i = 0; i < plantNodes.Count; i++)
+                if (scaleEveryNode)
                 {
-                    if (newPlantParts.Contains(plantNodes[i].spawnedKnot))
-                        continue;
+                    for (int i = 0; i < plantNodes.Count; i++)
+                    {
+                        if (newPlantParts.Contains(plantNodes[i].spawnedKnot))
+                            continue;
                 
-                    StartCoroutine(ScalePlantPart(plantNodes[i].spawnedKnot, plantNodes[i].spawnedKnot.transform.localScale, plantNodes[i].spawnedKnot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
+                        StartCoroutine(ScalePlantPart(plantNodes[i].spawnedKnot, plantNodes[i].spawnedKnot.transform.localScale, plantNodes[i].spawnedKnot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
+                    }   
+                }
+                else
+                {
+                    yield return StartCoroutine(ScalePlantPart(plantNodes[0].spawnedKnot, plantNodes[0].spawnedKnot.transform.localScale, 
+                        plantNodes[0].spawnedKnot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
                 }   
-            }
-            else
-            {
-                yield return StartCoroutine(ScalePlantPart(plantNodes[0].spawnedKnot, plantNodes[0].spawnedKnot.transform.localScale, 
-                    plantNodes[0].spawnedKnot.transform.localScale * Random.Range(1f, maxKnotGrowScalerPerCycle)));
             }
             
             // GROW NEW NODES
@@ -313,13 +317,12 @@ public class ProceduralPlant : MonoBehaviour
 
     public void RemovePlantPart(PlantPart part)
     {
-        /*
         newPlantParts.Add(part.ParentPlantNode.spawnedKnot);
         
         for (int i = 0; i < part.ParentPlantNode.spawnedBranches.Count; i++)
         {
             newPlantParts.Add(part.ParentPlantNode.spawnedBranches[i]);
-        }*/
+        }
         
         for (int i = plantNodes.Count - 1; i >= 0; i--)
         {
