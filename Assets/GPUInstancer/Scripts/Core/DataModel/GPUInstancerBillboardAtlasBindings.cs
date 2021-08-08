@@ -71,7 +71,7 @@ namespace GPUInstancer
             return false;
         }
         
-        public bool DeleteBillboardTextures(GPUInstancerPrototype selectedPrototype)
+        public bool DeleteBillboardTextures(GPUInstancerPrototype selectedPrototype, bool exitGUI = true)
         {
             bool billboardsDeleted = false;
 #if UNITY_EDITOR
@@ -80,8 +80,9 @@ namespace GPUInstancer
                 BillboardAtlasBinding billboardAtlasBinding = GetBillboardAtlasBinding(selectedPrototype.prefabObject, selectedPrototype.billboard.atlasResolution,
                         selectedPrototype.billboard.frameCount);
 
-                if (billboardAtlasBinding != null)
+                if (billboardAtlasBinding != null && !selectedPrototype.billboard.isBeingDeleted)
                 {
+                    selectedPrototype.billboard.isBeingDeleted = true;
                     if (selectedPrototype.isBillboardDisabled
                         || (selectedPrototype is GPUInstancerDetailPrototype && !((GPUInstancerDetailPrototype)selectedPrototype).usePrototypeMesh)
                         || EditorUtility.DisplayDialog(
@@ -95,6 +96,10 @@ namespace GPUInstancer
                         AssetDatabase.Refresh();
                         billboardsDeleted = true;
                     }
+                    if (selectedPrototype.billboard != null)
+                        selectedPrototype.billboard.isBeingDeleted = false;
+                    if (exitGUI)
+                        GUIUtility.ExitGUI();
                 }
             }
 #endif

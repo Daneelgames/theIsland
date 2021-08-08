@@ -1,4 +1,4 @@
-GPU Instancer v1.4.6
+GPU Instancer v1.5.3
 Copyright ©2018 GurBu Technologies
 ---------------------------------
 Thank you for supporting GPU Instancer!
@@ -159,18 +159,19 @@ Extension Packs:
   https://assetstore.unity.com/packages/tools/animation/gpu-instancer-crowd-animations-145114
 
 Third Party Integrations:
-- Gaia integration.
-- Map Magic integration.
+- Map Magic and Map Magic 2 integration.
 
 ---------------------------------
 MINIMUM REQUIREMENTS
 ---------------------------------
-- DirectX 11 or DirectX 12 and Shader Model 5.0 GPU (Windows, Windows Store)
+- DirectX 11 or DirectX 12 and Shader Model 5.0 GPU (Windows)
 - Metal (macOS, iOS)
 - OpenGL Core 4.3 (Windows, Linux)
 - Vulkan (Android, Windows, Linux)
 - OpenGL ES 3.1 (Android 8.0 Oreo or later)
-- Modern Consoles (PS4, Xbox One)
+- Modern Consoles (PS4, PS5, Xbox One)
+
+Note: Oculus Quest (any version) is NOT supported
 
 ---------------------------------
 KNOWN LIMITATIONS
@@ -193,6 +194,48 @@ folder to view the demo scenes in your project. For more information, please che
 ---------------------------------
 CHANGE LOG
 ---------------------------------
+
+v1.5.3
+
+New: VR Single Pass Instanced rendering mode support
+
+Changed: Occlusion Culling Type Preference setting is now obsolete, GPUI will always use Compute Shaders for obtaining Depth Texture
+
+Fixed: VR Occlusion Culling "Cannot create GPUI HiZ Depth Texture for occlusion culling: Screen size is too small." error
+Fixed: HDRP shader conversion not working when include pragmas are inside shader passes
+Fixed: VR Occlusio culling not working when test both eyes setting is enabled on SRP
+Fixed: Editor Simulator not loading the correct SceneView camera in Unity 2021.2
+
+v1.5.2
+
+New: HDRP LOD Cross Fade support
+New: Prefab Manager can now show preview images of prototypes that do not have gameObject references 
+New: Multiple shaders and materials can now be selected for setup using the context menu
+New: Added "Use Original Material When Instanced" Preference option
+
+Fixed: Camera half angle not being calculated correctly when auto select camera is disabled
+Fixed: Detail Manager threads not cleared when manager is disabled before initialization finishes
+Fixed: Generate Bilboard GUI errors
+Fixed: Prefab Manager throwing errors when the prototype does not have a prefab reference
+Fixed: ClonePrototypeAtRuntime API method unnecessary initialization
+
+v1.5.1
+
+Fixed: Build error 'The name 'keepSimulationLive' does not exist in the current context' 
+
+v1.5.0
+
+New: Added Package Importer system which automatically imports required GPUI packages depending on the UPM packages and script defines
+New: Added ClonePrototypeAtRuntime API method to create a copy of a prototype at runtime
+New: Detail Manager can now run simulation automatically and update changes without manually pressing the Start Simulation button
+New: Added "Remove From List" button to Prefab Manager to remove the prototype from the manager without deleting its' data
+
+Changed: InstanceDataArray is now obsolete, InstanceDataNativeArray will be used
+Changed: Auto. Update Transform Data feature now runs in Jobs
+Changed: In editor mode Detail Manager will render terrain details by default
+Changed: Renamed NUM_THREADS to GPUI_THREADS because it was causing compile errors on PSSL
+
+Fixed: Editor Layout error after dialog boxes are shown
 
 v1.4.6
 

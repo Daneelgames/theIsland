@@ -15,7 +15,7 @@ namespace GPUInstancer
         {
             terrainProxy = (GPUInstancerTerrainProxy)target;
 
-            if(terrainProxy.detailManager != null)
+            if (terrainProxy.detailManager != null)
             {
                 GPUInstancerEditorConstants.DrawColoredButton(GPUInstancerEditorConstants.Contents.goToGPUInstancerDetail, GPUInstancerEditorConstants.Colors.green, Color.white, FontStyle.Bold, Rect.zero,
                     () =>
@@ -58,21 +58,21 @@ namespace GPUInstancer
             //}
         }
 
-        void OnSceneGUI()
-        {
-            if (Event.current.type == EventType.MouseUp && Event.current.button == 0)
-            {
-                if (terrainProxy != null && terrainProxy.detailManager != null && terrainProxy.detailManager.gpuiSimulator != null && terrainProxy.detailManager.gpuiSimulator.simulateAtEditor
-                    && terrainProxy.detailManager.keepSimulationLive && terrainProxy.detailManager.updateSimulation)
-                {
-                    if (terrainProxy.detailManager.isInitialized)
-                    {
-                        //Debug.Log("restarting simulation");
-                        terrainProxy.detailManager.gpuiSimulator.StopSimulation();
-                        terrainProxy.detailManager.gpuiSimulator.StartSimulation();
-                    }
-                }
-            }
-        }
+        //void OnSceneGUI()
+        //{
+        //    if (Event.current.type == EventType.MouseUp && Event.current.button == 0)
+        //    {
+        //        if (terrainProxy != null && terrainProxy.detailManager != null && terrainProxy.detailManager.gpuiSimulator != null && terrainProxy.detailManager.gpuiSimulator.simulateAtEditor
+        //            && terrainProxy.detailManager.keepSimulationLive && terrainProxy.detailManager.updateSimulation)
+        //        {
+        //            if (terrainProxy.detailManager.isInitialized)
+        //            {
+        //                //Debug.Log("restarting simulation");
+        //                terrainProxy.detailManager.gpuiSimulator.StopSimulation();
+        //                terrainProxy.detailManager.gpuiSimulator.StartSimulation();
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

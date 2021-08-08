@@ -116,6 +116,7 @@ MonoBehaviour:
   knotsMinMaxRotation: {x: -90, y: 90}
   branchesMinMaxRotation: {x: -30, y: 30}
   startBranchesMinMaxAmount: {x: 1, y: 1}
+  defaultGrowBranchesChance: 1
   defaultTwoBranchesChance: 0.3
   defaultLeavesGrowChance: 0.1
   defaultFruitsGrowChance: 0.005

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a45e579af74dd45832a08d7a2696b6, type: 3}
   m_Name: GPUInstancerSettings
   m_EditorClassIdentifier: 
-  versionNo: 1.46
+  versionNo: 1.53
   shaderBindings: {fileID: 11400000, guid: a8e17ef9df29ab349b72eb89b8c0436f, type: 2}
   billboardAtlasBindings: {fileID: 11400000, guid: 38ced65371906b945b0877beb55fd5b2, type: 2}
   shaderVariantCollection: {fileID: 20000000, guid: c9d214e81210d9e4babfdb842bfede3b, type: 2}
@@ -33,8 +33,8 @@ MonoBehaviour:
   disableInstanceCountWarning: 0
   disableAutoShaderConversion: 0
   disableAutoVariantHandling: 0
-  testBothEyesForVROcclusion: 1
-  vrRenderingMode: 0
+  useOriginalMaterialWhenInstanced: 1
+  testBothEyesForVROcclusion: 0
   extensionSettings: []
   renderingSettingPresets:
   - platform: 0
@@ -63,4 +63,3 @@ MonoBehaviour:
     platform: 0
     matrixHandlingType: 0
     computeThreadCount: 0
-  occlusionCullingType: 0

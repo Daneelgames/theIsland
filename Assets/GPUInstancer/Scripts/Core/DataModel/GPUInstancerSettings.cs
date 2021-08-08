@@ -63,11 +63,13 @@ namespace GPUInstancer
         public bool disableInstanceCountWarning = false;
         public bool disableAutoShaderConversion = false;
         public bool disableAutoVariantHandling = false;
+        public bool useOriginalMaterialWhenInstanced = true;
         #endregion Editor Behaviour
 
         #region VR
         public bool testBothEyesForVROcclusion = true;
-        public int vrRenderingMode = 0; // SinglePass = 0, MultiPass = 1
+        [NonSerialized]
+        public bool isVREnabled = false;
         #endregion VR
 
         #region Extensions
@@ -90,7 +92,6 @@ namespace GPUInstancer
 
         public bool hasCustomRenderingSettings;
         public GPUIRenderingSettings customRenderingSettings;
-        public GPUIOcclusionCullingType occlusionCullingType;
         #endregion Core Settings
 
         public static GPUInstancerSettings GetDefaultGPUInstancerSettings()
@@ -134,6 +135,14 @@ namespace GPUInstancer
                 new GPUIRenderingSettings(){ platform = GPUIPlatform.PS4, matrixHandlingType = GPUIMatrixHandlingType.Default, computeThreadCount = GPUIComputeThreadCount.x512 },
                 new GPUIRenderingSettings(){ platform = GPUIPlatform.XBoxOne, matrixHandlingType = GPUIMatrixHandlingType.Default, computeThreadCount = GPUIComputeThreadCount.x512 }
             };
+
+#if GPUI_XR
+            isVREnabled = UnityEngine.XR.XRSettings.enabled;
+#else
+            isVREnabled = false;
+#endif
+            if (testBothEyesForVROcclusion && !IsStandardRenderPipeline())
+                testBothEyesForVROcclusion = false;
         }
 
         #region Shader Bindings
@@ -290,7 +299,7 @@ namespace GPUInstancer
             if (disableShaderVariantCollection)
                 return;
 #if UNITY_EDITOR
-            if (!Application.isPlaying && shaderBindings != null && shaderVariantCollection != null && !string.IsNullOrEmpty(material.shader.name) && material)
+            if (!Application.isPlaying && shaderBindings != null && shaderVariantCollection != null && material != null && !string.IsNullOrEmpty(material.shader.name))
             {
                 Shader instancedShader = shaderBindings.GetInstancedShader(material.shader.name, extensionCode);
                 if (instancedShader != null)
@@ -343,6 +352,20 @@ namespace GPUInstancer
         {
             return !isLWRP && !isHDRP && !isURP;
         }
+
+        public bool IsLODCrossFadeSupported()
+        {
+            return !isLWRP && !isURP;
+        }
+
+        public bool IsUseBothEyesVRCulling()
+        {
+#if GPUI_XR
+            return isVREnabled && testBothEyesForVROcclusion && UnityEngine.XR.XRSettings.stereoRenderingMode != UnityEngine.XR.XRSettings.StereoRenderingMode.SinglePassInstanced;
+#else
+            return false;
+#endif
+        }
     }
 
     public enum GPUIPlatform
@@ -370,11 +393,5 @@ namespace GPUInstancer
         x256 = 2,
         x512 = 3,
         x1024 = 4
-    }
-
-    public enum GPUIOcclusionCullingType
-    {
-        Default = 0, //uses Graphics.Blit
-        CopyTexture = 1 //uses Compute Shader
     }
 }

@@ -21,7 +21,7 @@ uniform bool isApplyTerrainHeight;
 #include "Include/DataModel.compute"
 #include "Include/Matrix.compute"
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSTreeInstantiationKernel(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)

@@ -63,6 +63,10 @@ namespace GPUInstancer
         public static readonly string VISIBILITY_COMPUTE_RESOURCE_PATH_VULKAN = "Compute/CSInstancedRenderingVisibilityKernelVulkan";
         public static readonly string BUFFER_TO_TEXTURE_COMPUTE_RESOURCE_PATH = "Compute/CSInstancedBufferToTexture";
         public static readonly string BUFFER_TO_TEXTURE_KERNEL = "CSInstancedBufferToTextureKernel";
+
+        public static readonly string ARGS_BUFFER_COMPUTE_RESOURCE_PATH = "Compute/CSArgsBuffer";
+        public static readonly string ARGS_BUFFER_DOUBLE_INSTANCE_COUNT_KERNEL = "CSArgsBufferDoubleInstanceCount";
+
         public static class BufferToTextureKernelPoperties
         {
             public static readonly int TRANSFORMATION_MATRIX_TEXTURE = Shader.PropertyToID("gpuiTransformationMatrixTexture");
@@ -110,6 +114,9 @@ namespace GPUInstancer
             public static readonly int BUFFER_PARAMETER_MIN_CULLING_DISTANCE = Shader.PropertyToID("minCullingDistance");
             public static readonly int BUFFER_PARAMETER_SHADOW_LOD_MAP = Shader.PropertyToID("shadowLODMap");
             public static readonly int BUFFER_PARAMETER_CULL_SHADOW = Shader.PropertyToID("cullShadows");
+
+            public static readonly int ARGS_BUFFER = Shader.PropertyToID("argsBuffer");
+            public static readonly int COUNT = Shader.PropertyToID("count");
         }
         public static readonly int BUFFER_COROUTINE_STEP_NUMBER = 16384;
         public static int DETAIL_BUFFER_MERGE_FRAME_LIMIT = 1024;

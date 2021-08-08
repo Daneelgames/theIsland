@@ -14,7 +14,7 @@ uniform uint destinationSizeX;
 uniform uint destinationSizeY;
 uniform bool reverseZ;
 
-[numthreads(NUM_THREADS_2D, NUM_THREADS_2D, 1)]
+[numthreads(GPUI_THREADS_2D, GPUI_THREADS_2D, 1)]
 void CSCopyTexture(uint2 id : SV_DispatchThreadID)
 {
     if (id.x >= sourceSizeX || id.y >= sourceSizeY)
@@ -33,7 +33,7 @@ void CSCopyTexture(uint2 id : SV_DispatchThreadID)
 
 }
 
-[numthreads(NUM_THREADS_2D, NUM_THREADS_2D, 1)]
+[numthreads(GPUI_THREADS_2D, GPUI_THREADS_2D, 1)]
 void CSReduceTexture(uint2 id : SV_DispatchThreadID)
 {
     if (id.x >= sourceSizeX || id.y >= sourceSizeY)

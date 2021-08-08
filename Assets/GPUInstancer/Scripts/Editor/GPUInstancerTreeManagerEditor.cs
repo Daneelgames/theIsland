@@ -443,10 +443,12 @@ namespace GPUInstancer
 
         public override void DrawGPUInstancerPrototypeActions()
         {
+            if (Application.isPlaying)
+                return;
             GUILayout.Space(10);
-            GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_actions, GPUInstancerEditorConstants.Styles.boldLabel, false);
+            //GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_actions, GPUInstancerEditorConstants.Styles.boldLabel, false);
 
-            DrawDeleteButton();
+            DrawDeleteButton(true);
         }
 
         public override float GetMaxDistance(GPUInstancerPrototype selectedPrototype)

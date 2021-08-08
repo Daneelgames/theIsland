@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Rendering;
+using System;
+using Unity.Collections;
+using UnityEngine.Jobs;
+using Unity.Jobs;
 
 namespace GPUInstancer
 {
@@ -20,8 +24,13 @@ namespace GPUInstancer
         public float lodBiasApplied = -1;
 
         // Instance Data
-        [HideInInspector]
+        [Obsolete("The instanceDataArray property is obsolete. Use instanceDataNativeArray instead.", true)]
         public Matrix4x4[] instanceDataArray;
+
+        public NativeArray<Matrix4x4> instanceDataNativeArray;
+        public TransformAccessArray instanceTransformAccessArray;
+        public JobHandle dependentJob;
+
         // Currently instanced count
         public int instanceCount;
         // Buffer size
@@ -51,6 +60,11 @@ namespace GPUInstancer
 
         public virtual void ReleaseBuffers()
         {
+            dependentJob.Complete();
+            if (instanceDataNativeArray.IsCreated)
+                instanceDataNativeArray.Dispose();
+            if (instanceTransformAccessArray.isCreated)
+                instanceTransformAccessArray.Dispose();
         }
 
         #region AddLodAndRenderer
@@ -169,7 +183,8 @@ namespace GPUInstancer
                 layer = layer,
                 castShadows = castShadows,
                 receiveShadows = receiveShadows,
-                rendererRef = rendererRef
+                rendererRef = rendererRef,
+                rendererRefName = rendererRef != null && rendererRef.gameObject != null ? rendererRef.gameObject.name : null
             };
 
             instanceLODs[lod].renderers.Add(renderer);
@@ -296,7 +311,7 @@ namespace GPUInstancer
                     for (int m = 0; m < lodRenderers[r].sharedMaterials.Length; m++)
                     {
                         instanceMaterials.Add(GPUInstancerConstants.gpuiSettings.shaderBindings.GetInstancedMaterial(lodRenderers[r].sharedMaterials[m]));
-                        if (prototype.isLODCrossFade && GPUInstancerConstants.gpuiSettings.IsStandardRenderPipeline())
+                        if (prototype.isLODCrossFade && GPUInstancerConstants.gpuiSettings.IsLODCrossFadeSupported())
                             instanceMaterials[m].EnableKeyword("LOD_FADE_CROSSFADE");
                     }
 
@@ -446,5 +461,19 @@ namespace GPUInstancer
         public bool castShadows;
         public bool receiveShadows;
         public Renderer rendererRef;
+        public string rendererRefName;
+    }
+
+#if GPUI_BURST
+    [Unity.Burst.BurstCompile]
+#endif
+    public struct AutoUpdateTransformsJob : IJobParallelForTransform
+    {
+        [WriteOnly] public NativeArray<Matrix4x4> instanceDataNativeArray;
+
+        public void Execute(int index, TransformAccess transform)
+        {
+            instanceDataNativeArray[index] = transform.localToWorldMatrix;
+        }
     }
 }

@@ -35,7 +35,7 @@ inline uint FixBounds(uint value, uint max, uint failValue)
     return (value >= max) ? failValue : value;
 }
 
-[numthreads(NUM_THREADS_2D, 1, NUM_THREADS_2D)]
+[numthreads(GPUI_THREADS_2D, 1, GPUI_THREADS_2D)]
 void CSInstancedRenderingGrassInstantiationKernel(uint3 id : SV_DispatchThreadID)
 {
     // Check if out of terrain detail size 

@@ -123,6 +123,8 @@ GameObject:
   - component: {fileID: 2356113929326768681}
   - component: {fileID: 6443928958268257529}
   - component: {fileID: 1180798862841384193}
+  - component: {fileID: 5853364167009312217}
+  - component: {fileID: 2780584979938756193}
   m_Layer: 10
   m_Name: FruitTest
   m_TagString: Untagged
@@ -179,6 +181,32 @@ CapsuleCollider:
   m_Height: 0.11174244
   m_Direction: 1
   m_Center: {x: 0.0000000037252903, y: -0.060551554, z: 0}
+--- !u!114 &5853364167009312217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639419732496513187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 777957bc380093c4fbcbed451c696e0a, type: 2}
+--- !u!114 &2780584979938756193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639419732496513187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gpuiPrefab: {fileID: 0}
 --- !u!1 &8259493360689086685
 GameObject:
   m_ObjectHideFlags: 0

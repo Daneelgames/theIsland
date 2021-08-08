@@ -30,7 +30,7 @@ inline half3 LinearToGamma(half3 linRGB)
     return half3(LinearToGammaExact(linRGB.r), LinearToGammaExact(linRGB.g), LinearToGammaExact(linRGB.b));
 }
 
-[numthreads(NUM_THREADS_2D, NUM_THREADS_2D, 1)]
+[numthreads(GPUI_THREADS_2D, GPUI_THREADS_2D, 1)]
 void CSBillboardDilate(uint3 id : SV_DispatchThreadID)
 {
     uint frameWidth = billboardSize.x / frameCount;

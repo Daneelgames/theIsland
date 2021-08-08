@@ -41,14 +41,14 @@ namespace GPUInstancer
             hasOcclusionGenerator = hiZOcclusionGenerator != null && hiZOcclusionGenerator.hiZDepthTexture != null;
 
             Matrix4x4 mvpMatrix =
-                (hasOcclusionGenerator && hiZOcclusionGenerator.isVREnabled
+                (hasOcclusionGenerator && GPUInstancerConstants.gpuiSettings.isVREnabled
                 ? mainCamera.GetStereoProjectionMatrix(Camera.StereoscopicEye.Left) : mainCamera.projectionMatrix) * mainCamera.worldToCameraMatrix;
 
             if (mvpMatrixFloats == null || mvpMatrixFloats.Length != 16)
                 mvpMatrixFloats = new float[16];
             mvpMatrix.Matrix4x4ToFloatArray(mvpMatrixFloats);
 
-            if (hasOcclusionGenerator && hiZOcclusionGenerator.isVREnabled && GPUInstancerConstants.gpuiSettings.testBothEyesForVROcclusion)
+            if (hasOcclusionGenerator && GPUInstancerConstants.gpuiSettings.IsUseBothEyesVRCulling())
             {
                 Matrix4x4 mvpMatrix2 = mainCamera.GetStereoProjectionMatrix(Camera.StereoscopicEye.Right) * mainCamera.worldToCameraMatrix;
                 if (mvpMatrix2Floats == null || mvpMatrix2Floats.Length != 16)

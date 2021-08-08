@@ -15,6 +15,8 @@ namespace GPUInstancer
 
         protected SerializedProperty prop_layerMask;
         protected SerializedProperty prop_disableLightProbes;
+        protected SerializedProperty prop_keepSimulationLive;
+        protected SerializedProperty prop_updateSimulation;
 
         protected int pickerControlID = -1;
         protected bool editorDataChanged = false;
@@ -39,6 +41,9 @@ namespace GPUInstancer
 
             prop_layerMask = serializedObject.FindProperty("layerMask");
             prop_disableLightProbes = serializedObject.FindProperty("lightProbeDisabled");
+
+            prop_keepSimulationLive = serializedObject.FindProperty("keepSimulationLive");
+            prop_updateSimulation = serializedObject.FindProperty("updateSimulation");
 
             showSceneSettingsBox = _manager.showSceneSettingsBox;
             showPrototypeBox = _manager.showPrototypeBox;
@@ -204,6 +209,7 @@ namespace GPUInstancer
                                     FontStyle.Bold, Rect.zero, () =>
                                     {
                                         simulator.StopSimulation();
+                                        _manager.keepSimulationLive = false;
                                     });
                             }
                         }
@@ -218,11 +224,11 @@ namespace GPUInstancer
                     }
                     DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_simulator);
 
-                    _manager.keepSimulationLive = EditorGUILayout.Toggle("Keep Simulation Live", _manager.keepSimulationLive);
+                    prop_keepSimulationLive.boolValue = EditorGUILayout.Toggle("Keep Simulation Live", prop_keepSimulationLive.boolValue);
 
-                    if (_manager.keepSimulationLive)
+                    if (prop_keepSimulationLive.boolValue)
                     {
-                        _manager.updateSimulation = EditorGUILayout.Toggle(new GUIContent("Update Simulation On Change", "Update Simulation On Change"), _manager.updateSimulation);
+                        prop_updateSimulation.boolValue = EditorGUILayout.Toggle(new GUIContent("Update Simulation On Change", "Update Simulation On Change"), prop_updateSimulation.boolValue);
 
                         EditorGUILayout.HelpBox("Simulation is kept alive. The simulation might not show every change on terrain details. Changing some prototype settings during the simulation can also cause errors. Please stop and start the simulation again to solve these issues.", MessageType.Warning);
                     }
@@ -367,13 +373,14 @@ namespace GPUInstancer
                 EditorGUILayout.BeginHorizontal();
                 foreach (GPUInstancerPrototype prototype in _manager.prototypeList)
                 {
-                    if (prototype == null)
-                        continue;
                     if (i != 0 && i % prototypeRowCount == 0)
                     {
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.BeginHorizontal();
                     }
+
+                    if (prototype == null)
+                        continue;
 
                     DrawGPUInstancerPrototypeButton(prototype, prototypeContents[i]);
                     i++;
@@ -526,9 +533,9 @@ namespace GPUInstancer
                 });
         }
 
-        public virtual void DrawDeleteButton()
+        public virtual void DrawDeleteButton(bool removeSO)
         {
-            GPUInstancerEditorConstants.DrawColoredButton(GPUInstancerEditorConstants.Contents.delete, Color.red, Color.white, FontStyle.Bold, Rect.zero,
+            GPUInstancerEditorConstants.DrawColoredButton((removeSO ? GPUInstancerEditorConstants.Contents.delete : GPUInstancerEditorConstants.Contents.removeFromList), removeSO ? Color.red : GPUInstancerEditorConstants.Colors.darkyellow, Color.white, FontStyle.Bold, Rect.zero,
                 () =>
                 {
                     string selectedPrototypesText = "";
@@ -536,16 +543,17 @@ namespace GPUInstancer
                     {
                         selectedPrototypesText += "\n\"" + prototype.ToString() + "\"";
                     }
-                    if (EditorUtility.DisplayDialog(GPUInstancerEditorConstants.TEXT_deleteConfirmation, GPUInstancerEditorConstants.TEXT_deleteAreYouSure + selectedPrototypesText, GPUInstancerEditorConstants.TEXT_delete, GPUInstancerEditorConstants.TEXT_cancel))
+                    if (EditorUtility.DisplayDialog(GPUInstancerEditorConstants.TEXT_deleteConfirmation, (removeSO ? GPUInstancerEditorConstants.TEXT_deletePrototypeAreYouSure : GPUInstancerEditorConstants.TEXT_deleteAreYouSure) + selectedPrototypesText, (removeSO ? GPUInstancerEditorConstants.TEXT_delete : GPUInstancerEditorConstants.TEXT_removeFromList), GPUInstancerEditorConstants.TEXT_cancel))
                     {
                         foreach (GPUInstancerPrototype prototype in _manager.selectedPrototypeList)
                         {
-                            _manager.DeletePrototype(prototype);
+                            _manager.DeletePrototype(prototype, removeSO);
                         }
                         _manager.selectedPrototypeList.Clear();
                     }
+                    GUIUtility.ExitGUI();
                 });
-            DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_delete);
+            DrawHelpText(removeSO ? GPUInstancerEditorConstants.HELPTEXT_delete : GPUInstancerEditorConstants.HELPTEXT_removeFromList);
         }
 
         public GPUInstancerManager GetManager()

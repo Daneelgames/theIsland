@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8727996988176165171
+--- !u!114 &-2534054441483537659
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22,9 +22,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Fence
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _EMISSION _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
-    _NORMALMAP _OCCLUSIONMAP _UVSEC_UV1
-  m_LightmapFlags: 1
+  m_ShaderKeywords: _NORMALMAP _OCCLUSIONMAP
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -36,7 +35,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 1811fb3f491e03044b1ed440aa17650c, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: a23fd3000bac56e4b89169d88dadd8a1, type: 3}
@@ -60,7 +59,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 1811fb3f491e03044b1ed440aa17650c, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskyMixAlbedo:
         m_Texture: {fileID: 2800000, guid: 9c05ab852b0a1034ba7fa0ebc859271c, type: 3}

@@ -38,7 +38,6 @@ namespace GPUInstancer
             if (!_isTransformSet || forceNew)
             {
                 _instanceTransform = transform;
-                _instanceTransform.hasChanged = false;
                 _isTransformSet = true;
             }
             return _instanceTransform;

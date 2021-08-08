@@ -29,7 +29,7 @@ float3 GetSeparationVector(float3 pos, float3 targetPos)
     return diff * (scaler / diffLen);
 }
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSGPUIBoids(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)

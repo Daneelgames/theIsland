@@ -41,7 +41,6 @@ namespace GPUInstancer
         {
             if ((Application.isPlaying && !EditorApplication.isPaused) || gpuiManager == null)
                 return;
-
             initializingInstances = true;
 
             simulateAtEditor = true;
@@ -110,11 +109,16 @@ namespace GPUInstancer
         {
             if (sceneViewCameraData.mainCamera == null || sceneViewCameraData.mainCamera.name != sceneViewCameraName)
             {
-                Camera currentCam = Camera.current;
-                if (currentCam != null && currentCam.name == sceneViewCameraName)
-                    sceneViewCameraData.SetCamera(currentCam);
+                if (SceneView.lastActiveSceneView != null && SceneView.lastActiveSceneView.camera != null)
+                    sceneViewCameraData.SetCamera(SceneView.lastActiveSceneView.camera);
                 else
-                    return;
+                {
+                    Camera currentCam = Camera.current;
+                    if (currentCam != null && currentCam.name == sceneViewCameraName)
+                        sceneViewCameraData.SetCamera(currentCam);
+                    else
+                        return;
+                }
             }
             EditorApplication.update -= FindSceneViewCamera;
         }

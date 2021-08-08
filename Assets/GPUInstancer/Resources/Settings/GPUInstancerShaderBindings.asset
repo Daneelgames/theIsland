@@ -28,3 +28,23 @@ MonoBehaviour:
     modifiedDate: 06/14/2021 14:04:39.477
     isOriginalInstanced: 0
     extensionCode: 
+  - name: GPUInstancer/AsteroidHaze
+    instancedShader: {fileID: 4800000, guid: a1fe6b00539636f49bae5f911c8ccc55, type: 3}
+    modifiedDate: 08/08/2021 16:40:40.951
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: GPUInstancer/AsteroidHaze_GPUI_SG
+    instancedShader: {fileID: -6465566751694194690, guid: 08c40a79c7e26b644bc2be84c3a0e2d1, type: 3}
+    modifiedDate: 08/08/2021 16:41:46.966
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: EasyGameStudio/select effect
+    instancedShader: {fileID: -6465566751694194690, guid: 4c36f6176d9f525449b33c671cb56707, type: 3}
+    modifiedDate: 08/08/2021 16:47:26.811
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: EasyGameStudio/select effect gpu instancing
+    instancedShader: {fileID: -6465566751694194690, guid: 7861571fe2ae6004daf9e5eeee4a1fcd, type: 3}
+    modifiedDate: 08/08/2021 17:09:35.598
+    isOriginalInstanced: 1
+    extensionCode: 

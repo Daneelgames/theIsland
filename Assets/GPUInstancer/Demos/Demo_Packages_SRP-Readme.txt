@@ -1,4 +1,6 @@
 The example scenes contained under the Demos folder are by default designed for the Standard Pipeline. 
+By default GPUI automatically imports URP or HDRP packages when installed, but if you need to import them manually please follow these instructions:
+
 If you are using URP or HDRP in your project, you can extract the respective override packages in order to view these scenes correctly.
 
 If you are using Unity 2020.2 or later, you will need the SRP 10 and later packages:

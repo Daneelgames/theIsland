@@ -36,11 +36,14 @@ namespace GPUInstancer
         public static bool showRenderedAmount;
 
         protected static ComputeShader _cameraComputeShader;
+        protected static ComputeShader _cameraComputeShaderVR;
         protected static int[] _cameraComputeKernelIDs;
         protected static ComputeShader _visibilityComputeShader;
         protected static int[] _instanceVisibilityComputeKernelIDs;
         protected static ComputeShader _bufferToTextureComputeShader;
         protected static int _bufferToTextureComputeKernelID;
+        protected static ComputeShader _argsBufferComputeShader;
+        protected static int _argsBufferDoubleInstanceCountComputeKernelID;
 
 #if UNITY_EDITOR
         public List<GPUInstancerPrototype> selectedPrototypeList;
@@ -143,24 +146,13 @@ namespace GPUInstancer
                     GPUInstancerConstants.TEXTURE_MAX_SIZE = SystemInfo.maxTextureSize;
 
                     _cameraComputeShader = (ComputeShader)Resources.Load(GPUInstancerConstants.CAMERA_COMPUTE_RESOURCE_PATH);
-
-#if GPUI_VR || GPUI_XR
-#if UNITY_2017_2_OR_NEWER
-#if GPUI_XR
-                    if (isOcclusionCulling && UnityEngine.XR.XRSettings.enabled && GPUInstancerConstants.gpuiSettings.testBothEyesForVROcclusion)
-#endif
-#else
-#if GPUI_VR
-                    if (isOcclusionCulling && UnityEngine.VR.VRSettings.enabled && GPUInstancerConstants.gpuiSettings.testBothEyesForVROcclusion)
-#endif
-#endif
-                    {
-                        _cameraComputeShader = (ComputeShader)Resources.Load(GPUInstancerConstants.CAMERA_VR_COMPUTE_RESOURCE_PATH);
-                    }
-#endif
+                    _cameraComputeShaderVR = (ComputeShader)Resources.Load(GPUInstancerConstants.CAMERA_VR_COMPUTE_RESOURCE_PATH);
                     _cameraComputeKernelIDs = new int[GPUInstancerConstants.CAMERA_COMPUTE_KERNELS.Length];
                     for (int i = 0; i < _cameraComputeKernelIDs.Length; i++)
                         _cameraComputeKernelIDs[i] = _cameraComputeShader.FindKernel(GPUInstancerConstants.CAMERA_COMPUTE_KERNELS[i]);
+
+                    _argsBufferComputeShader = Resources.Load<ComputeShader>(GPUInstancerConstants.ARGS_BUFFER_COMPUTE_RESOURCE_PATH);
+                    _argsBufferDoubleInstanceCountComputeKernelID = _argsBufferComputeShader.FindKernel(GPUInstancerConstants.ARGS_BUFFER_DOUBLE_INSTANCE_COUNT_KERNEL);
                 }
 
                 GPUInstancerConstants.SetupComputeRuntimeModification();
@@ -446,7 +438,7 @@ namespace GPUInstancer
 
             if (removeSO && prototype.useGeneratedBillboard && prototype.billboard != null)
             {
-                if (GPUInstancerConstants.gpuiSettings.billboardAtlasBindings.DeleteBillboardTextures(prototype))
+                if (GPUInstancerConstants.gpuiSettings.billboardAtlasBindings.DeleteBillboardTextures(prototype, false))
                     prototype.billboard = null;
             }
         }
@@ -505,9 +497,9 @@ namespace GPUInstancer
         public void InitializeCameraData()
         {
             if (autoSelectCamera || cameraData.mainCamera == null)
-            {
                 cameraData.SetCamera(Camera.main);
-            }
+            else
+                cameraData.CalculateHalfAngle();
         }
 
         public void SetupOcclusionCulling(GPUInstancerCameraData renderingCameraData)
@@ -561,12 +553,30 @@ namespace GPUInstancer
 
                 UpdateSpatialPartitioningCells(renderingCameraData);
 
-                GPUInstancerUtility.UpdateGPUBuffers(_cameraComputeShader, _cameraComputeKernelIDs, _visibilityComputeShader, _instanceVisibilityComputeKernelIDs, runtimeDataList, renderingCameraData, isFrustumCulling,
+                GPUInstancerUtility.UpdateGPUBuffers(GPUInstancerConstants.gpuiSettings.IsUseBothEyesVRCulling() ? _cameraComputeShaderVR : _cameraComputeShader, _cameraComputeKernelIDs, _visibilityComputeShader, _instanceVisibilityComputeKernelIDs, runtimeDataList, renderingCameraData, isFrustumCulling,
                     isOcclusionCulling, showRenderedAmount, isInitial);
                 isInitial = false;
 
                 if (GPUInstancerUtility.matrixHandlingType == GPUIMatrixHandlingType.CopyToTexture)
                     GPUInstancerUtility.DispatchBufferToTexture(runtimeDataList, _bufferToTextureComputeShader, _bufferToTextureComputeKernelID);
+
+#if GPUI_XR
+                if (GPUInstancerConstants.gpuiSettings.isVREnabled && UnityEngine.XR.XRSettings.stereoRenderingMode == UnityEngine.XR.XRSettings.StereoRenderingMode.SinglePassInstanced)
+                {
+                    for (int i = 0; i < runtimeDataList.Count; i++)
+                    {
+                        GPUInstancerRuntimeData runtimeData = runtimeDataList[i];
+
+                        if (runtimeData == null || runtimeData.argsBuffer == null || runtimeData.argsBuffer.count == 0)
+                            continue;
+
+                        int count = runtimeData.argsBuffer.count / 5;
+                        _argsBufferComputeShader.SetBuffer(_argsBufferDoubleInstanceCountComputeKernelID, GPUInstancerConstants.VisibilityKernelPoperties.ARGS_BUFFER, runtimeData.argsBuffer);
+                        _argsBufferComputeShader.SetInt(GPUInstancerConstants.VisibilityKernelPoperties.COUNT, count);
+                        _argsBufferComputeShader.Dispatch(_argsBufferDoubleInstanceCountComputeKernelID, Mathf.CeilToInt(count / GPUInstancerConstants.COMPUTE_SHADER_THREAD_COUNT), 1, 1);
+                    }
+                }
+#endif
 
                 GPUInstancerUtility.GPUIDrawMeshInstancedIndirect(runtimeDataList, instancingBounds, renderingCameraData, layerMask, lightProbeDisabled);
             }
@@ -826,7 +836,7 @@ namespace GPUInstancer
         public GPUInstancerRuntimeData GetRuntimeData(GPUInstancerPrototype prototype, bool logError = false)
         {
             GPUInstancerRuntimeData runtimeData = null;
-            if (!runtimeDataDictionary.TryGetValue(prototype, out runtimeData) && logError)
+            if (runtimeDataDictionary != null && !runtimeDataDictionary.TryGetValue(prototype, out runtimeData) && logError)
                 Debug.LogError("Can not find runtime data for prototype: " + prototype + ". Please check if the prototype was added to the Manager and the initialize method was called.");
             return runtimeData;
         }

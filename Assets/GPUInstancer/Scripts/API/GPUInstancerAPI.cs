@@ -238,17 +238,27 @@ namespace GPUInstancer
         }
 
         /// <summary>
-        /// Returns the array that stores the transform data of the instances
+        /// [OBSOLETE]
+        /// </summary>
+        [Obsolete("GetInstanceDataArray method is obsolete. Use GetInstanceDataNativeArray instead.", true)]
+        public static Matrix4x4[] GetInstanceDataArray(GPUInstancerManager manager, GPUInstancerPrototype prototype)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the native array that stores the transform data of the instances
         /// </summary>
         /// <param name="manager">GPUI Manager</param>
         /// <param name="prototype">GPUI Prototype</param>
         /// <returns>Instance data array</returns>
-        public static Matrix4x4[] GetInstanceDataArray(GPUInstancerManager manager, GPUInstancerPrototype prototype)
+        public static NativeArray<Matrix4x4> GetInstanceDataNativeArray(GPUInstancerManager manager, GPUInstancerPrototype prototype)
         {
             GPUInstancerRuntimeData runtimeData = manager.GetRuntimeData(prototype, true);
             if (runtimeData == null)
-                return null;
-            return runtimeData.instanceDataArray;
+                throw new Exception("GetInstanceDataNativeArray API method must be used after manager is initialized.");
+            runtimeData.dependentJob.Complete();
+            return runtimeData.instanceDataNativeArray;
         }
 
         /// <summary>
@@ -600,10 +610,30 @@ namespace GPUInstancer
         /// Use this method to remove a prototype definition at runtime
         /// </summary>
         /// <param name="prefabManager">The GPUI Prefab Manager that the prefab prototype is defined on</param>
-        /// <param name="prefabPrototype">GPUI Prefab Prototype ro remove from the manager</param>
+        /// <param name="prefabPrototype">GPUI Prefab Prototype to remove from the manager</param>
         public static void RemovePrototypeAtRuntime(GPUInstancerPrefabManager prefabManager, GPUInstancerPrefabPrototype prefabPrototype)
         {
             prefabManager.RemovePrototypeAtRuntime(prefabPrototype);
+        }
+
+        /// <summary>
+        /// Creates a copy of the given prototype. After the changes you want to make to the prototype are completed, you need call InitializePrototype or InitializeWithMatrix4x4Array to create the runtimeData for this prototype
+        /// </summary>
+        /// <param name="prefabManager">The GPUI Prefab Manager that the prefab prototype is defined on</param>
+        /// <param name="originalPrototype">Prototype to copy from</param>
+        /// <returns></returns>
+        public static GPUInstancerPrefabPrototype ClonePrototypeAtRuntime(GPUInstancerPrefabManager prefabManager, GPUInstancerPrefabPrototype originalPrototype)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                Debug.LogError("ClonePrototypeAtRuntime metod can not be called at edit mode.");
+                return null;
+            }
+#endif
+            GPUInstancerPrefabPrototype clone = ScriptableObject.Instantiate(originalPrototype);
+            prefabManager.prototypeList.Add(clone);
+            return clone;
         }
         #endregion Prefab Instancing
 
@@ -737,7 +767,7 @@ namespace GPUInstancer
             }
             else
             {
-                Debug.Log("Shader has already been setup for GPUI.");
+                Debug.Log(shader.name + " shader has already been setup for GPUI.");
                 return true;
             }
         }

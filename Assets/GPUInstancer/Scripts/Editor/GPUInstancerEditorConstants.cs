@@ -7,8 +7,8 @@ namespace GPUInstancer
 {
     public static class GPUInstancerEditorConstants
     {
-        public static readonly string GPUI_VERSION = "GPU Instancer v1.4.6";
-        public static readonly float GPUI_VERSION_NO = 1.46f;
+        public static readonly string GPUI_VERSION = "GPU Instancer v1.5.3";
+        public static readonly float GPUI_VERSION_NO = 1.53f;
 
         public static readonly string PUBLISHER_NAME = "GurBu Technologies";
         public static readonly string PACKAGE_NAME = "GPU Instancer";
@@ -22,7 +22,7 @@ namespace GPUInstancer
         public static readonly string TEXT_healthyDryNoiseTexture = "Healthy/Dry Noise Texture";
         public static readonly string TEXT_windWaveNormalTexture = "Wind Wave Normal Texture";
         public static readonly string TEXT_autoSPCellSize = "Auto SP Cell Size";
-        public static readonly string TEXT_preferedSPCellSize = "Prefered SP Cell Size";
+        public static readonly string TEXT_preferedSPCellSize = "Preferred SP Cell Size";
         public static readonly string TEXT_storeDetailInstanceData = "Store Detail Instance Data";
         public static readonly string TEXT_showGPUInstancingInfo = "Show GPU Instancing Info";
         public static readonly string TEXT_showRenderedAmount = "Show Rendered Amount";
@@ -47,6 +47,7 @@ namespace GPUInstancer
         public static readonly string TEXT_actions = "Actions";
         public static readonly string TEXT_advancedActions = "Advanced Actions";
         public static readonly string TEXT_delete = "Delete";
+        public static readonly string TEXT_removeFromList = "Remove From List";
         public static readonly string TEXT_remove = "Remove";
         public static readonly string TEXT_keepPrototypeDefinition = "Keep Prototype Definition";
         public static readonly string TEXT_crossQuads = "Cross Quads";
@@ -75,7 +76,7 @@ namespace GPUInstancer
         public static readonly string TEXT_windWaveSway = "Wind Wave Sway";
         public static readonly string TEXT_deleteConfirmation = "Delete Confirmation";
         public static readonly string TEXT_deleteAreYouSure = "Are you sure you want to remove the prototype from prototype list?";
-        public static readonly string TEXT_deletePrototypeAreYouSure = "Do you wish to delete the prototype settings?";
+        public static readonly string TEXT_deletePrototypeAreYouSure = "Do you wish to remove the prototype from prototype list and delete the prototype settings?";
         public static readonly string TEXT_close = "Close";
         public static readonly string TEXT_cancel = "Cancel";
         public static readonly string TEXT_paintOnTerrain = "Paint On Terrain";
@@ -194,6 +195,7 @@ namespace GPUInstancer
 
         public static readonly string TEXT_settingAutoGenerateBillboards = "Auto Generate Billboards";
         public static readonly string TEXT_settingAutoShaderConversion = "Auto Shader Conversion";
+        public static readonly string TEXT_settingUseOriginalMaterial = "Use Original Material When Instanced";
         public static readonly string TEXT_settingAutoShaderVariantHandling = "Auto Shader Variant Handling";
         public static readonly string TEXT_settingGenerateShaderVariant = "Generate Shader Variant Collection";
         public static readonly string TEXT_settingDisableICWarning = "Disable Instance Count Warnings";
@@ -317,6 +319,7 @@ namespace GPUInstancer
         public static readonly string HELPTEXT_settingsIntro = "GPU Instancer Settings can be used to personalize the GPUI Manager editors according to your needs. Press the \"?\" button on the top right corner to see more information.";
 
         public static readonly string HELPTEXT_applyChangesToTerrain = "The \"Apply Changes To Terrain\" button can be used to modify the Unity terrain component with the changes that are made in Detail Manager.";
+        public static readonly string HELPTEXT_removeFromList = "The \"Remove From List\" button removes the prototype from this manager but keeps the settings data related to this prototype.";
         public static readonly string HELPTEXT_delete = "The \"Delete\" button deletes this prototype and removes all related data.";
         public static readonly string HELPTEXT_terrainProxyWarning = "Adding and removing detail and tree prototypes should be done only from the GPU Instancer Managers. Unity terrain component can be used to paint detail and tree prototypes on the terrain.";
 
@@ -340,6 +343,7 @@ namespace GPUInstancer
 
         public static readonly string HELPTEXT_autoGenerateBillboards = "If enabled, billboard textures will be automatically generated for known tree types when they are added to the GPUI Managers.";
         public static readonly string HELPTEXT_autoShaderConversion = "If enabled, shaders of the prefabs that are added to the GPUI Managers will be automatically converted to support GPU Instancer.";
+        public static readonly string HELPTEXT_settingUseOriginalMaterial = "If enabled, GPUI will not create a copy of the materials that uses shaders that are setup for GPUI.";
         public static readonly string HELPTEXT_autoShaderVariantHandling = "If enabled, shaders variants of the prefabs that are added to the GPUI Managers will be automatically added to a ShaderVariantCollection to be included in builds.";
         public static readonly string HELPTEXT_generateShaderVariantCollection = "If enabled, a ShaderVariantCollection with reference to shaders that are used in GPUI Managers will be generated automatically inside Resources folder. This will add the GPUI shader variants automatically to your builds. These shader variants are required for GPUI to work in your builds.";
         public static readonly string HELPTEXT_disableInstanceCountWarnings = "If enabled, Prefab Manager will not show warnings for prototypes with low instance counts.";
@@ -379,6 +383,7 @@ namespace GPUInstancer
             public static GUIContent generateBillboard = new GUIContent(TEXT_generateBillboard);
             public static GUIContent regenerateBillboard = new GUIContent(TEXT_regenerateBillboard);
             public static GUIContent showBillboard = new GUIContent(TEXT_showBillboard);
+            public static GUIContent removeFromList = new GUIContent(TEXT_removeFromList);
             public static GUIContent delete = new GUIContent(TEXT_delete);
             public static GUIContent registerPrefabsInScene = new GUIContent(TEXT_registerPrefabsInScene);
             public static GUIContent goToGPUInstancerDetail = new GUIContent(TEXT_goToGPUInstancerDetail);
@@ -430,6 +435,7 @@ namespace GPUInstancer
 
             public static GUIContent settingAutoGenerateBillboards = new GUIContent(TEXT_settingAutoGenerateBillboards, HELPTEXT_autoGenerateBillboards);
             public static GUIContent settingAutoShaderConversion = new GUIContent(TEXT_settingAutoShaderConversion, HELPTEXT_autoShaderConversion);
+            public static GUIContent settingUseOriginalMaterial = new GUIContent(TEXT_settingUseOriginalMaterial, HELPTEXT_settingUseOriginalMaterial);
             public static GUIContent settingAutoShaderVariantHandling = new GUIContent(TEXT_settingAutoShaderVariantHandling, HELPTEXT_autoShaderVariantHandling);
             public static GUIContent settingGenerateShaderVariant = new GUIContent(TEXT_settingGenerateShaderVariant, HELPTEXT_generateShaderVariantCollection);
             public static GUIContent settingDisableICWarning = new GUIContent(TEXT_settingDisableICWarning, HELPTEXT_disableInstanceCountWarnings);
@@ -489,6 +495,7 @@ namespace GPUInstancer
             public static Color darkred = new Color(0.8f, 0.2f, 0.2f, 1);
             public static Color gainsboro = new Color(220 / 255f, 220 / 255f, 220 / 255f);
             public static Color dimgray = new Color(105 / 255f, 105 / 255f, 105 / 255f);
+            public static Color darkyellow = new Color(153 / 255f, 153 / 255f, 0);
         }
 
         public static void DrawCustomLabel(string text, GUIStyle style, bool center = true)
@@ -819,6 +826,12 @@ namespace GPUInstancer
                 Selection.activeObject = shaderVariantCollection;
         }
 
+        [MenuItem("Tools/GPU Instancer/Reimport Packages", validate = false, priority = 401)]
+        public static void ReimportPackages()
+        {
+            GPUInstancerDefines.ImportPackages(true);
+        }
+
         static Dictionary<GPUInstancerSettingsExtension, Editor> extensionEditors;
 #if UNITY_2019_1_OR_NEWER
         [SettingsProvider]
@@ -849,48 +862,43 @@ namespace GPUInstancer
         }
 #endif
 
-        [MenuItem("Assets/GPU Instancer/Setup Shader for GPUI", validate = false, priority = 2001)]
+        [MenuItem("Assets/GPU Instancer/Setup Shaders and Materials for GPUI", validate = false, priority = 2001)]
         public static void SetupShaderForGPUIMenuItem()
         {
-            Object selected = Selection.activeObject;
-            if (selected != null && selected is Shader)
+            Shader[] shaders = Selection.GetFiltered<Shader>(SelectionMode.Assets);
+            if (shaders != null)
             {
-                Shader shader = (Shader)selected;
-                GPUInstancerAPI.SetupShaderForGPUI(shader);
+                for (int i = 0; i < shaders.Length; i++)
+                {
+                    GPUInstancerAPI.SetupShaderForGPUI(shaders[i]);
+                }
+            }
+
+            Material[] materials = Selection.GetFiltered<Material>(SelectionMode.Assets);
+            if (materials != null)
+            {
+                for (int i = 0; i < materials.Length; i++)
+                {
+                    Material mat = materials[i];
+                    if (!GPUInstancerConstants.gpuiSettings.shaderBindings.IsShadersInstancedVersionExists(mat.shader.name))
+                    {
+                        GPUInstancerAPI.SetupShaderForGPUI(mat.shader);
+                    }
+                    if (GPUInstancerConstants.gpuiSettings.shaderBindings.IsShadersInstancedVersionExists(mat.shader.name))
+                    {
+                        GPUInstancerAPI.AddShaderVariantToCollection(mat);
+                        Debug.Log(mat.name + " material has been successfully added to Shader Variant Collection.", mat);
+                    }
+                }
             }
         }
 
-        [MenuItem("Assets/GPU Instancer/Setup Shader for GPUI", validate = true, priority = 2001)]
+        [MenuItem("Assets/GPU Instancer/Setup Shaders and Materials for GPUI", validate = true, priority = 2001)]
         public static bool SetupShaderForGPUIMenuItemValidate()
         {
-            Object selected = Selection.activeObject;
-            return selected != null && selected is Shader;
-        }
-
-        [MenuItem("Assets/GPU Instancer/Setup Material for GPUI", validate = false, priority = 2002)]
-        public static void SetupMaterialForGPUIMenuItem()
-        {
-            Object selected = Selection.activeObject;
-            if (selected != null && selected is Material)
-            {
-                Material mat = (Material)selected;
-                if (!GPUInstancerConstants.gpuiSettings.shaderBindings.IsShadersInstancedVersionExists(mat.shader.name))
-                {
-                    GPUInstancerAPI.SetupShaderForGPUI(mat.shader);
-                }
-                if (GPUInstancerConstants.gpuiSettings.shaderBindings.IsShadersInstancedVersionExists(mat.shader.name))
-                {
-                    GPUInstancerAPI.AddShaderVariantToCollection(mat);
-                    Debug.Log("Material has been successfully added to Shader Variant Collection.");
-                }
-            }
-        }
-
-        [MenuItem("Assets/GPU Instancer/Setup Material for GPUI", validate = true, priority = 2002)]
-        public static bool SetupMaterialForGPUIMenuItemValidate()
-        {
-            Object selected = Selection.activeObject;
-            return selected != null && selected is Material;
+            Shader[] shaders = Selection.GetFiltered<Shader>(SelectionMode.Assets);
+            Material[] materials = Selection.GetFiltered<Material>(SelectionMode.Assets);
+            return (shaders != null && shaders.Length > 0) || (materials != null && materials.Length > 0);
         }
 
         private static bool _loadedSettings;
@@ -917,6 +925,8 @@ namespace GPUInstancer
                 _customRenderingSettingsChanged = false;
             }
 
+            float previousLabelWight = EditorGUIUtility.labelWidth;
+            EditorGUIUtility.labelWidth = previousLabelWight + 75f;
             EditorGUI.BeginChangeCheck();
 
             EditorGUILayout.BeginVertical(Styles.box);
@@ -938,6 +948,7 @@ namespace GPUInstancer
 
             gPUInstancerSettings.disableAutoGenerateBillboards = !EditorGUILayout.Toggle(Contents.settingAutoGenerateBillboards, !gPUInstancerSettings.disableAutoGenerateBillboards);
             gPUInstancerSettings.disableAutoShaderConversion = !EditorGUILayout.Toggle(Contents.settingAutoShaderConversion, !gPUInstancerSettings.disableAutoShaderConversion);
+            gPUInstancerSettings.useOriginalMaterialWhenInstanced = EditorGUILayout.Toggle(Contents.settingUseOriginalMaterial, gPUInstancerSettings.useOriginalMaterialWhenInstanced);
             gPUInstancerSettings.disableAutoVariantHandling = !EditorGUILayout.Toggle(Contents.settingAutoShaderVariantHandling, !gPUInstancerSettings.disableAutoVariantHandling);
             gPUInstancerSettings.disableShaderVariantCollection = !EditorGUILayout.Toggle(Contents.settingGenerateShaderVariant, !gPUInstancerSettings.disableShaderVariantCollection);
             gPUInstancerSettings.disableInstanceCountWarning = EditorGUILayout.Toggle(Contents.settingDisableICWarning, gPUInstancerSettings.disableInstanceCountWarning);
@@ -948,13 +959,11 @@ namespace GPUInstancer
             EditorGUILayout.BeginVertical(Styles.box);
             GUILayout.Space(5);
             DrawCustomLabel("VR", Styles.boldLabel);
-
-#if !UNITY_2018_3_OR_NEWER
-            gPUInstancerSettings.vrRenderingMode = EditorGUILayout.Popup(Contents.settingVRRenderingMode, gPUInstancerSettings.vrRenderingMode, Contents.settingVRRenderingModeOptions);
-#endif
-
+            if (!gPUInstancerSettings.IsStandardRenderPipeline())
+                EditorGUILayout.HelpBox("Test Both Eyes for VR Occ. Culling is currently only supported on Standard Pipeline, because SRP does not provide required callback methods for this functionality.", MessageType.Warning);
+            EditorGUI.BeginDisabledGroup(!gPUInstancerSettings.IsStandardRenderPipeline());
             gPUInstancerSettings.testBothEyesForVROcclusion = EditorGUILayout.Toggle(Contents.settingTestBothEyesForVROcclusion, gPUInstancerSettings.testBothEyesForVROcclusion);
-
+            EditorGUI.EndDisabledGroup();
             GUILayout.Space(5);
             EditorGUILayout.EndVertical();
 
@@ -1032,8 +1041,6 @@ namespace GPUInstancer
 
                 EditorGUILayout.Space();
             }
-
-            gPUInstancerSettings.occlusionCullingType = (GPUIOcclusionCullingType)EditorGUILayout.Popup(Contents.settingOcclusionCullingType, (int)gPUInstancerSettings.occlusionCullingType, Contents.settingOcclusionCullingTypeOptions);
 
             GUILayout.Space(5);
             EditorGUILayout.EndVertical();
@@ -1117,6 +1124,8 @@ namespace GPUInstancer
                 EditorGUILayout.EndVertical();
             }
             #endregion
+
+            EditorGUIUtility.labelWidth = previousLabelWight;
         }
     }
 }

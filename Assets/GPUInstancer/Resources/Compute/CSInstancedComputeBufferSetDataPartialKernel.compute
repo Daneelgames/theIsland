@@ -11,7 +11,7 @@ uniform float4x4 dataToSet;
 uniform uint computeBufferStartIndex;
 uniform uint count;
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedComputeBufferSetDataPartialKernel(uint3 id : SV_DispatchThreadID)
 {
     // runtime modification on instanceData 

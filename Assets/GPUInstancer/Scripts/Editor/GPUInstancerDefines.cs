@@ -13,6 +13,7 @@ namespace GPUInstancer
     public class GPUInstancerDefines
     {
         private static readonly string DEFINE_GPU_INSTANCER = "GPU_INSTANCER";
+        private static readonly string[] AUTO_PACKAGE_IMPORTER_GUIDS = { "e134ae9cb2828d147a6ec91b020fcb63", "87dd7798fac1eed45bd360e61b272470" };
 
         // billboard extensions
         private static Type _billboardExtensionType;
@@ -93,18 +94,24 @@ namespace GPUInstancer
 #endif
             if (GPUInstancerConstants.gpuiSettings.versionNo != GPUInstancerEditorConstants.GPUI_VERSION_NO)
             {
-                UpdateVersion(GPUInstancerConstants.gpuiSettings.versionNo, GPUInstancerEditorConstants.GPUI_VERSION_NO);
+                float previousVerisonNo = GPUInstancerConstants.gpuiSettings.versionNo;
+                UpdateVersion(previousVerisonNo, GPUInstancerEditorConstants.GPUI_VERSION_NO);
                 GPUInstancerConstants.gpuiSettings.versionNo = GPUInstancerEditorConstants.GPUI_VERSION_NO;
-                if (GPUInstancerConstants.gpuiSettings != null)
-                    EditorUtility.SetDirty(GPUInstancerConstants.gpuiSettings);
+                EditorUtility.SetDirty(GPUInstancerConstants.gpuiSettings);
 #if UNITY_2018_1_OR_NEWER
                 forcePackageLoad = true;
 #endif
+                ImportPackages(previousVerisonNo == 0);
             }
 
 #if UNITY_2018_1_OR_NEWER
             LoadPackageDefinitions(forcePackageLoad);
 #endif
+        }
+
+        public static void ImportPackages(bool forceReimport)
+        {
+            GPUIPackageImporter.ImportPackages(AUTO_PACKAGE_IMPORTER_GUIDS, forceReimport);
         }
 
         public static bool IsVersionUpdateRequired(float previousVersion, float newVersion)
@@ -168,6 +175,23 @@ namespace GPUInstancer
                             EditorApplication.update -= RegenerateShaders;
                             EditorApplication.update += RegenerateShaders;
                         }
+                    }
+                }
+            }
+            // v1.5.2 Update
+            else if (previousVersion < 1.53f && newVersion >= 1.53f)
+            {
+                if (GPUInstancerConstants.gpuiSettings.isHDRP)
+                {
+                    GPUInstancerShaderBindings shaderBindings = GetGPUInstancerShaderBindings();
+                    if (shaderBindings != null && shaderBindings.shaderInstances != null && shaderBindings.shaderInstances.Count > 0)
+                    {
+                        foreach (ShaderInstance si in shaderBindings.shaderInstances)
+                        {
+                            if (si != null)
+                                si.Regenerate();
+                        }
+                        EditorUtility.SetDirty(shaderBindings);
                     }
                 }
             }

@@ -512,8 +512,9 @@ namespace GPUInstancer
                         GPUInstancerEditorConstants.Styles.label.normal.textColor = Color.red;
                     else
                         GPUInstancerEditorConstants.Styles.label.normal.textColor = defaultColor;
-                    prototypeSelection[rpd.prefabPrototype] = EditorGUILayout.ToggleLeft(rpd.prefabPrototype.ToString() + " Instance Count: " +
-                        count, prototypeSelection[rpd.prefabPrototype], GPUInstancerEditorConstants.Styles.label);
+                    if (prototypeSelection.ContainsKey(rpd.prefabPrototype))
+                        prototypeSelection[rpd.prefabPrototype] = EditorGUILayout.ToggleLeft(rpd.prefabPrototype.ToString() + " Instance Count: " +
+                            count, prototypeSelection[rpd.prefabPrototype], GPUInstancerEditorConstants.Styles.label);
                 }
 
                 GPUInstancerEditorConstants.Styles.label.normal.textColor = defaultColor;
@@ -739,6 +740,10 @@ namespace GPUInstancer
             bool autoUpdateTransformData = prototype.autoUpdateTransformData;
             prototype.autoUpdateTransformData = EditorGUILayout.Toggle(GPUInstancerEditorConstants.TEXT_autoUpdateTransformData, prototype.autoUpdateTransformData);
             DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_autoUpdateTransformData);
+#if !GPUI_BURST
+            if (prototype.autoUpdateTransformData)
+                EditorGUILayout.HelpBox("It is recommended to use the Burst Compiler with Auto Update Transform Data feature. You can download it from the Package Manager Window.", MessageType.Warning);
+#endif
             if (autoUpdateTransformData != prototype.autoUpdateTransformData && prototype.meshRenderersDisabled)
                 SetRenderersEnabled(prototype, !prototype.meshRenderersDisabled);
             EditorGUI.EndDisabledGroup();
@@ -782,12 +787,11 @@ namespace GPUInstancer
         {
             if (Application.isPlaying)
                 return;
-
             GUILayout.Space(10);
+            //GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_actions, GPUInstancerEditorConstants.Styles.boldLabel, false);
 
-            GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_actions, GPUInstancerEditorConstants.Styles.boldLabel, false);
-
-            DrawDeleteButton();
+            DrawDeleteButton(false);
+            DrawDeleteButton(true);
         }
 
         public override void DrawGPUInstancerPrototypeAdvancedActions()
@@ -857,6 +861,7 @@ namespace GPUInstancer
                                 {
                                     SetRenderersEnabled(prefabPrototype, true);
                                 }
+                                GUIUtility.ExitGUI();
                             });
                         //MultiToggle(_prefabManager.selectedPrototypeList, GPUInstancerEditorConstants.TEXT_disableMeshRenderersSimulation, meshRenderersDisabledSimulation, meshRenderersDisabledSimulationMixed, (p, v) => ((GPUInstancerPrefabPrototype)p).meshRenderersDisabledSimulation = v);
                     }
@@ -872,6 +877,7 @@ namespace GPUInstancer
                                     SetRenderersEnabled(prefabPrototype, false);
                                 }
                             }
+                            GUIUtility.ExitGUI();
                         });
                     }
                     DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_disableMeshRenderers);
@@ -896,6 +902,7 @@ namespace GPUInstancer
                                         Debug.LogError(e);
                                     }
                                     EditorUtility.ClearProgressBar();
+                                    GUIUtility.ExitGUI();
                                 });
                     }
                     else if (!isTransformsSerializedMixed && !isTransformsSerialized)
@@ -919,6 +926,7 @@ namespace GPUInstancer
                                             Debug.LogError(e);
                                         }
                                         EditorUtility.ClearProgressBar();
+                                        GUIUtility.ExitGUI();
                                     }
                                 });
                     }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using System.Threading;
+using Unity.Collections;
+using System.Linq;
+using UnityEngine.Jobs;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -22,7 +24,6 @@ namespace GPUInstancer
         protected List<GPUInstancerModificationCollider> _modificationColliders;
         protected Dictionary<GPUInstancerPrototype, List<GPUInstancerPrefab>> _registeredPrefabsRuntimeData;
         protected List<IPrefabVariationData> _variationDataList;
-        protected bool _addRemoveInProgress;
 
         #region MonoBehavior Methods
 
@@ -49,33 +50,35 @@ namespace GPUInstancer
             {
                 foreach (GPUInstancerRuntimeData runtimeData in runtimeDataList)
                 {
-                    if (runtimeData.prototype.autoUpdateTransformData
-                        //#if UNITY_EDITOR
-                        //                        || EditorApplication.isPaused
-                        //#endif
-                        )
+                    if (runtimeData.prototype.autoUpdateTransformData && runtimeData.instanceCount > 0 && runtimeData.instanceDataNativeArray.IsCreated && runtimeData.instanceTransformAccessArray.isCreated)
                     {
-                        List<GPUInstancerPrefab> prefabInstanceList = _registeredPrefabsRuntimeData[runtimeData.prototype];
-                        Transform instanceTransform;
-                        foreach (GPUInstancerPrefab prefabInstance in prefabInstanceList)
+                        runtimeData.dependentJob.Complete();
+                        runtimeData.dependentJob = new AutoUpdateTransformsJob()
                         {
-                            instanceTransform = prefabInstance.GetInstanceTransform();
-                            if (instanceTransform.hasChanged && prefabInstance.state == PrefabInstancingState.Instanced)
-                            {
-                                instanceTransform.hasChanged = false;
-                                runtimeData.instanceDataArray[prefabInstance.gpuInstancerID - 1] = instanceTransform.localToWorldMatrix;
-                                runtimeData.transformDataModified = true;
-                            }
-                        }
+                            instanceDataNativeArray = runtimeData.instanceDataNativeArray
+                        }.Schedule(runtimeData.instanceTransformAccessArray);
+                        runtimeData.transformDataModified = true;
                     }
+                }
+            }
+        }
 
+        public override void LateUpdate()
+        {
+            if (runtimeDataList != null && Application.isPlaying)
+            {
+                foreach (GPUInstancerRuntimeData runtimeData in runtimeDataList)
+                {
                     if (runtimeData.transformDataModified)
                     {
-                        runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataArray);
+                        runtimeData.dependentJob.Complete();
+                        if (runtimeData.instanceDataNativeArray.IsCreated && runtimeData.transformationMatrixVisibilityBuffer != null)
+                            runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray);
                         runtimeData.transformDataModified = false;
                     }
                 }
             }
+            base.LateUpdate();
         }
         #endregion MonoBehavior Methods
 
@@ -160,10 +163,7 @@ namespace GPUInstancer
                         if (!_registeredPrefabsRuntimeData.ContainsKey(rpd.prefabPrototype))
                             _registeredPrefabsRuntimeData.Add(rpd.prefabPrototype, rpd.registeredPrefabs);
                         else
-                        {
                             _registeredPrefabsRuntimeData[rpd.prefabPrototype].AddRange(rpd.registeredPrefabs);
-                            _registeredPrefabsRuntimeData[rpd.prefabPrototype] = new List<GPUInstancerPrefab>(_registeredPrefabsRuntimeData[rpd.prefabPrototype].Distinct());
-                        }
                     }
                     registeredPrefabs.Clear();
                 }
@@ -213,8 +213,6 @@ namespace GPUInstancer
         {
             if (runtimeDataList == null)
                 runtimeDataList = new List<GPUInstancerRuntimeData>();
-            else
-                GPUInstancerUtility.ClearInstanceData(runtimeDataList);
             if (runtimeDataDictionary == null)
                 runtimeDataDictionary = new Dictionary<GPUInstancerPrototype, GPUInstancerRuntimeData>();
 
@@ -256,7 +254,7 @@ namespace GPUInstancer
                 if (p.treeType == GPUInstancerTreeType.SpeedTree || p.treeType == GPUInstancerTreeType.SpeedTree8 || p.treeType == GPUInstancerTreeType.TreeCreatorTree)
                     AddTreeProxy(p, runtimeData);
             }
-
+            runtimeData.dependentJob.Complete();
             int instanceCount = 0;
             List<GPUInstancerPrefab> registeredPrefabsList = null;
             if (p.isTransformsSerialized)
@@ -274,77 +272,88 @@ namespace GPUInstancer
                     else
                         break;
                 }
-                runtimeData.instanceDataArray = matrixData.ToArray();
-                runtimeData.bufferSize = runtimeData.instanceDataArray.Length + (p.enableRuntimeModifications && p.addRemoveInstancesAtRuntime ? p.extraBufferSize : 0) + additionalBufferSize;
-                instanceCount = runtimeData.instanceDataArray.Length;
+                if (runtimeData.instanceDataNativeArray.IsCreated)
+                    runtimeData.instanceDataNativeArray.Dispose();
+                runtimeData.instanceDataNativeArray = new NativeArray<Matrix4x4>(matrixData.ToArray(), Allocator.Persistent);
+                runtimeData.bufferSize = matrixData.Count + (p.enableRuntimeModifications && p.addRemoveInstancesAtRuntime ? p.extraBufferSize : 0) + additionalBufferSize;
+                instanceCount = matrixData.Count;
             }
 #if UNITY_EDITOR
             else if (!Application.isPlaying && p.meshRenderersDisabled)
             {
                 List<GPUInstancerPrefab> prefabInstances = registeredPrefabs.Find(rpd => rpd.prefabPrototype == p).registeredPrefabs;
-                runtimeData.instanceDataArray = new Matrix4x4[prefabInstances.Count];
+                runtimeData.ReleaseBuffers();
                 runtimeData.bufferSize = prefabInstances.Count;
-                instanceCount = prefabInstances.Count;
-                for (int i = 0; i < runtimeData.instanceDataArray.Length; i++)
+                runtimeData.instanceDataNativeArray = new NativeArray<Matrix4x4>(runtimeData.bufferSize, Allocator.Persistent);
+                instanceCount = runtimeData.bufferSize;
+                for (int i = 0; i < instanceCount; i++)
                 {
-                    runtimeData.instanceDataArray[i] = prefabInstances[i].transform.localToWorldMatrix;
+                    runtimeData.instanceDataNativeArray[i] = prefabInstances[i].GetInstanceTransform().localToWorldMatrix;
                 }
             }
 #endif
-            else
+            else if (_registeredPrefabsRuntimeData.TryGetValue(p, out registeredPrefabsList))
             {
-                if (_registeredPrefabsRuntimeData.TryGetValue(p, out registeredPrefabsList))
+                runtimeData.ReleaseBuffers();
+                runtimeData.bufferSize = registeredPrefabsList.Count + (p.enableRuntimeModifications && p.addRemoveInstancesAtRuntime ? p.extraBufferSize : 0) + additionalBufferSize;
+                if (runtimeData.bufferSize > 0)
                 {
-                    runtimeData.instanceDataArray = new Matrix4x4[registeredPrefabsList.Count + (p.enableRuntimeModifications && p.addRemoveInstancesAtRuntime ? p.extraBufferSize : 0) + additionalBufferSize];
-                    runtimeData.bufferSize = runtimeData.instanceDataArray.Length;
+                    runtimeData.instanceDataNativeArray = new NativeArray<Matrix4x4>(runtimeData.bufferSize, Allocator.Persistent);
 
                     Matrix4x4 instanceData;
+                    bool hasModificationColliders = p.enableRuntimeModifications && _modificationColliders != null && _modificationColliders.Count > 0;
+                    bool hasAutoTransformUpdate = p.enableRuntimeModifications && p.autoUpdateTransformData;
+                    if (hasAutoTransformUpdate && runtimeData.bufferSize > 0)
+                    {
+                        TransformAccessArray.Allocate(runtimeData.bufferSize, -1, out runtimeData.instanceTransformAccessArray);
+                        runtimeData.instanceTransformAccessArray.SetTransforms(new Transform[runtimeData.bufferSize]);
+                    }
+
                     foreach (GPUInstancerPrefab prefabInstance in registeredPrefabsList)
                     {
                         if (!prefabInstance)
                             continue;
 
-                        instanceData = prefabInstance.GetInstanceTransform().localToWorldMatrix;
-                        prefabInstance.GetInstanceTransform().hasChanged = false;
+                        Transform instanceTransform = prefabInstance.GetInstanceTransform();
+                        instanceData = instanceTransform.localToWorldMatrix;
                         prefabInstance.state = PrefabInstancingState.Instanced;
 
                         bool disableRenderers = true;
 
-                        if (prefabInstance.prefabPrototype.enableRuntimeModifications)
+                        if (hasModificationColliders)
                         {
-                            if (_modificationColliders != null && _modificationColliders.Count > 0)
+                            bool isInsideCollider = false;
+                            foreach (GPUInstancerModificationCollider mc in _modificationColliders)
                             {
-                                bool isInsideCollider = false;
-                                foreach (GPUInstancerModificationCollider mc in _modificationColliders)
+                                if (mc.IsInsideCollider(prefabInstance))
                                 {
-                                    if (mc.IsInsideCollider(prefabInstance))
-                                    {
-                                        isInsideCollider = true;
-                                        mc.AddEnteredInstance(prefabInstance);
-                                        instanceData = GPUInstancerConstants.zeroMatrix;
-                                        prefabInstance.state = PrefabInstancingState.Disabled;
-                                        disableRenderers = false;
-                                        break;
-                                    }
+                                    isInsideCollider = true;
+                                    mc.AddEnteredInstance(prefabInstance);
+                                    instanceData = GPUInstancerConstants.zeroMatrix;
+                                    prefabInstance.state = PrefabInstancingState.Disabled;
+                                    disableRenderers = false;
+                                    break;
                                 }
-                                if (!isInsideCollider)
+                            }
+                            if (!isInsideCollider)
+                            {
+                                if (p.startWithRigidBody && prefabInstance.GetComponent<Rigidbody>() != null)
                                 {
-                                    if (prefabInstance.prefabPrototype.startWithRigidBody && prefabInstance.GetComponent<Rigidbody>() != null)
-                                    {
-                                        isInsideCollider = true;
-                                        _modificationColliders[0].AddEnteredInstance(prefabInstance);
-                                        instanceData = GPUInstancerConstants.zeroMatrix;
-                                        prefabInstance.state = PrefabInstancingState.Disabled;
-                                        disableRenderers = false;
-                                    }
+                                    isInsideCollider = true;
+                                    _modificationColliders[0].AddEnteredInstance(prefabInstance);
+                                    instanceData = GPUInstancerConstants.zeroMatrix;
+                                    prefabInstance.state = PrefabInstancingState.Disabled;
+                                    disableRenderers = false;
                                 }
                             }
                         }
 
-                        if (disableRenderers && !prefabInstance.prefabPrototype.meshRenderersDisabled)
+                        if (disableRenderers && !p.meshRenderersDisabled)
                             SetRenderersEnabled(prefabInstance, false);
 
-                        runtimeData.instanceDataArray[instanceCount] = instanceData;
+                        if (hasAutoTransformUpdate)
+                            runtimeData.instanceTransformAccessArray[instanceCount] = instanceTransform;
+                        runtimeData.instanceDataNativeArray[instanceCount] = instanceData;
                         instanceCount++;
                         prefabInstance.gpuInstancerID = instanceCount;
                     }
@@ -432,18 +441,40 @@ namespace GPUInstancer
 
         #region API Methods
 
+        public static void ExpandBufferSize(GPUInstancerRuntimeData runtimeData, int newBufferSize)
+        {
+            if (runtimeData.bufferSize < newBufferSize)
+            {
+                runtimeData.bufferSize = newBufferSize;
+                runtimeData.instanceDataNativeArray = GPUInstancerUtility.ResizeNativeArray(runtimeData.instanceDataNativeArray, newBufferSize, Allocator.Persistent);
+
+                if (runtimeData.instanceTransformAccessArray.isCreated)
+                {
+                    runtimeData.instanceTransformAccessArray = GPUInstancerUtility.ResizeTransformAccessArray(runtimeData.instanceTransformAccessArray, newBufferSize);
+                }
+            }
+        }
+
+        public virtual void SetInstanceTransform(GPUInstancerRuntimeData runtimeData, int index, Transform transform)
+        {
+            runtimeData.instanceDataNativeArray[index] = transform ? transform.localToWorldMatrix : GPUInstancerConstants.zeroMatrix;
+            if (runtimeData.instanceTransformAccessArray.isCreated)
+                runtimeData.instanceTransformAccessArray[index] = transform;
+        }
+
         public virtual void DisableIntancingForInstance(GPUInstancerPrefab prefabInstance, bool setRenderersEnabled = true)
         {
             if (!prefabInstance)
                 return;
 
             GPUInstancerRuntimeData runtimeData = GetRuntimeData(prefabInstance.prefabPrototype, true);
-            if (runtimeData != null && prefabInstance.gpuInstancerID > 0 && prefabInstance.gpuInstancerID <= runtimeData.instanceDataArray.Length)
+            if (runtimeData != null && prefabInstance.gpuInstancerID > 0 && prefabInstance.gpuInstancerID <= runtimeData.bufferSize)
             {
+                runtimeData.dependentJob.Complete();
                 prefabInstance.state = PrefabInstancingState.Disabled;
-                runtimeData.instanceDataArray[prefabInstance.gpuInstancerID - 1] = GPUInstancerConstants.zeroMatrix;
+                SetInstanceTransform(runtimeData, prefabInstance.gpuInstancerID - 1, null);
 
-                runtimeData.transformationMatrixVisibilityBuffer.SetDataPartial(runtimeData.instanceDataArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
+                runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
                 if (setRenderersEnabled)
                     SetRenderersEnabled(prefabInstance, true);
             }
@@ -459,12 +490,13 @@ namespace GPUInstancer
                 return;
 
             GPUInstancerRuntimeData runtimeData = GetRuntimeData(prefabInstance.prefabPrototype, true);
-            if (runtimeData != null && prefabInstance.gpuInstancerID > 0 && prefabInstance.gpuInstancerID <= runtimeData.instanceDataArray.Length)
+            if (runtimeData != null && prefabInstance.gpuInstancerID > 0 && prefabInstance.gpuInstancerID <= runtimeData.bufferSize)
             {
+                runtimeData.dependentJob.Complete();
                 prefabInstance.state = PrefabInstancingState.Instanced;
-                runtimeData.instanceDataArray[prefabInstance.gpuInstancerID - 1] = prefabInstance.GetInstanceTransform().localToWorldMatrix;
+                SetInstanceTransform(runtimeData, prefabInstance.gpuInstancerID - 1, prefabInstance.GetInstanceTransform());
 
-                runtimeData.transformationMatrixVisibilityBuffer.SetDataPartial(runtimeData.instanceDataArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
+                runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
                 if (setRenderersDisabled)
                     SetRenderersEnabled(prefabInstance, false);
             }
@@ -480,9 +512,10 @@ namespace GPUInstancer
                 return;
 
             GPUInstancerRuntimeData runtimeData = GetRuntimeData(prefabInstance.prefabPrototype, true);
-            if (runtimeData != null && prefabInstance.gpuInstancerID > 0 && prefabInstance.gpuInstancerID <= runtimeData.instanceDataArray.Length)
+            if (runtimeData != null && prefabInstance.gpuInstancerID > 0 && prefabInstance.gpuInstancerID <= runtimeData.bufferSize)
             {
-                runtimeData.instanceDataArray[prefabInstance.gpuInstancerID - 1] = prefabInstance.GetInstanceTransform().localToWorldMatrix;
+                runtimeData.dependentJob.Complete();
+                runtimeData.instanceDataNativeArray[prefabInstance.gpuInstancerID - 1] = prefabInstance.GetInstanceTransform().localToWorldMatrix;
 
                 // automatically set in Update method
                 runtimeData.transformDataModified = true;
@@ -496,9 +529,9 @@ namespace GPUInstancer
 
         public virtual void AddPrefabInstance(GPUInstancerPrefab prefabInstance, bool automaticallyIncreaseBufferSize = false)
         {
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerPrefabManager.AddPrefabInstance");
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerPrefabManager.AddPrefabInstance");
+            //#endif
             if (!prefabInstance || prefabInstance.state == PrefabInstancingState.Instanced)
                 return;
 
@@ -508,21 +541,19 @@ namespace GPUInstancer
             GPUInstancerRuntimeData runtimeData = GetRuntimeData(prefabInstance.prefabPrototype, true);
             if (runtimeData != null)
             {
-                if (runtimeData.instanceDataArray.Length == runtimeData.instanceCount)
+                runtimeData.dependentJob.Complete();
+                Transform instanceTransform = prefabInstance.GetInstanceTransform();
+                if (runtimeData.bufferSize == runtimeData.instanceCount)
                 {
                     if (automaticallyIncreaseBufferSize)
                     {
-                        runtimeData.bufferSize += 1024;
-                        Matrix4x4[] oldInstanceDataArray = runtimeData.instanceDataArray;
-                        runtimeData.instanceDataArray = new Matrix4x4[runtimeData.bufferSize];
-                        Array.Copy(oldInstanceDataArray, runtimeData.instanceDataArray, oldInstanceDataArray.Length);
-                        runtimeData.instanceDataArray[runtimeData.instanceCount] = prefabInstance.GetInstanceTransform().localToWorldMatrix;
+                        ExpandBufferSize(runtimeData, runtimeData.bufferSize + 1024);
+                        SetInstanceTransform(runtimeData, runtimeData.instanceCount, instanceTransform);
                         runtimeData.instanceCount++;
                         prefabInstance.gpuInstancerID = runtimeData.instanceCount;
                         _registeredPrefabsRuntimeData[prefabInstance.prefabPrototype].Add(prefabInstance);
                         if (!prefabInstance.prefabPrototype.meshRenderersDisabled)
                             SetRenderersEnabled(prefabInstance, false);
-                        prefabInstance.GetInstanceTransform().hasChanged = false;
                         prefabInstance.state = PrefabInstancingState.Instanced;
                         GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
                         prefabInstance.SetupPrefabInstance(runtimeData, true);
@@ -558,18 +589,17 @@ namespace GPUInstancer
                     }
                 }
                 prefabInstance.state = PrefabInstancingState.Instanced;
-                runtimeData.instanceDataArray[runtimeData.instanceCount] = prefabInstance.GetInstanceTransform().localToWorldMatrix;
+                SetInstanceTransform(runtimeData, runtimeData.instanceCount, instanceTransform);
                 runtimeData.instanceCount++;
                 prefabInstance.gpuInstancerID = runtimeData.instanceCount;
 
-                runtimeData.transformationMatrixVisibilityBuffer.SetDataPartial(runtimeData.instanceDataArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
+                runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
                 if (!prefabInstance.prefabPrototype.meshRenderersDisabled)
                     SetRenderersEnabled(prefabInstance, false);
 
                 if (!_registeredPrefabsRuntimeData.ContainsKey(prefabInstance.prefabPrototype))
                     _registeredPrefabsRuntimeData.Add(prefabInstance.prefabPrototype, new List<GPUInstancerPrefab>());
                 _registeredPrefabsRuntimeData[prefabInstance.prefabPrototype].Add(prefabInstance);
-                prefabInstance.GetInstanceTransform().hasChanged = false;
 
                 // variations
                 if (_variationDataList != null)
@@ -586,19 +616,16 @@ namespace GPUInstancer
 
                 prefabInstance.SetupPrefabInstance(runtimeData, true);
             }
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.EndSample();
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.EndSample();
+            //#endif
         }
 
         /// <summary>
         /// Adds prefab instances for multiple prototypes
         /// </summary>
-        public virtual void AddPrefabInstances(IEnumerable<GPUInstancerPrefab> prefabInstances, bool isThreading = false)
+        public virtual void AddPrefabInstances(IEnumerable<GPUInstancerPrefab> prefabInstances)
         {
-            while (isThreading && _addRemoveInProgress)
-                Thread.Sleep(100);
-            _addRemoveInProgress = true;
             List<GPUInstancerPrefab>[] instanceLists = new List<GPUInstancerPrefab>[prototypeList.Count];
             Dictionary<GPUInstancerPrototype, int> indexDict = new Dictionary<GPUInstancerPrototype, int>();
             for (int i = 0; i < instanceLists.Length; i++)
@@ -614,20 +641,16 @@ namespace GPUInstancer
 
             for (int i = 0; i < instanceLists.Length; i++)
             {
-                AddPrefabInstances((GPUInstancerPrefabPrototype)prototypeList[i], instanceLists[i], isThreading);
+                AddPrefabInstances((GPUInstancerPrefabPrototype)prototypeList[i], instanceLists[i]);
             }
-            if (isThreading)
-                threadQueue.Enqueue(() => _addRemoveInProgress = false);
-            else
-                _addRemoveInProgress = false;
         }
 
         /// <summary>
         /// Adds prefab instances for single prototye
         /// </summary>
-        public virtual void AddPrefabInstances(GPUInstancerPrefabPrototype prototype, IEnumerable<GPUInstancerPrefab> prefabInstances, bool isThreading = false)
+        public virtual void AddPrefabInstances(GPUInstancerPrefabPrototype prototype, IEnumerable<GPUInstancerPrefab> prefabInstances)
         {
-            if (prefabInstances == null || prefabInstances.Count() == 0)
+            if (prefabInstances == null)
                 return;
 
             GPUInstancerRuntimeData runtimeData = GetRuntimeData(prototype, true);
@@ -636,18 +659,19 @@ namespace GPUInstancer
 
             int count = prefabInstances.Count();
 
+            if (count == 0)
+                return;
+
+            runtimeData.dependentJob.Complete();
             GPUInstancerPrefab prefabInstance;
             if (runtimeData.instanceCount + count > runtimeData.bufferSize)
             {
-                runtimeData.bufferSize = runtimeData.instanceCount + count;
-                Matrix4x4[] oldInstanceDataArray = runtimeData.instanceDataArray;
-                runtimeData.instanceDataArray = new Matrix4x4[runtimeData.bufferSize];
-                Array.Copy(oldInstanceDataArray, runtimeData.instanceDataArray, oldInstanceDataArray.Length);
+                ExpandBufferSize(runtimeData, runtimeData.instanceCount + count);
 
                 for (int i = 0; i < count; i++)
                 {
                     prefabInstance = prefabInstances.ElementAt(i);
-                    runtimeData.instanceDataArray[runtimeData.instanceCount + i] = prefabInstance.GetLocalToWorldMatrix();
+                    SetInstanceTransform(runtimeData, runtimeData.instanceCount + i, prefabInstance.GetInstanceTransform());
                     prefabInstance.gpuInstancerID = runtimeData.instanceCount + i + 1;
                     if (!prototype.meshRenderersDisabled)
                         SetRenderersEnabled(prefabInstance, false);
@@ -656,81 +680,69 @@ namespace GPUInstancer
                 _registeredPrefabsRuntimeData[prototype].AddRange(prefabInstances);
                 runtimeData.instanceCount = runtimeData.bufferSize;
 
-                if (isThreading)
-                    threadQueue.Enqueue(() => GPUInstancerUtility.InitializeGPUBuffer(runtimeData));
-                else
-                    GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
+                GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
                 return;
             }
 
             for (int i = 0; i < count; i++)
             {
                 prefabInstance = prefabInstances.ElementAt(i);
-                runtimeData.instanceDataArray[runtimeData.instanceCount + i] = prefabInstance.GetLocalToWorldMatrix();
+                SetInstanceTransform(runtimeData, runtimeData.instanceCount + i, prefabInstance.GetInstanceTransform());
                 prefabInstance.gpuInstancerID = runtimeData.instanceCount + i + 1;
                 if (!prototype.meshRenderersDisabled)
                     SetRenderersEnabled(prefabInstance, false);
                 prefabInstance.state = PrefabInstancingState.Instanced;
             }
             _registeredPrefabsRuntimeData[prototype].AddRange(prefabInstances);
-            if (isThreading)
-                threadQueue.Enqueue(() => runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataArray));
-            else
-                runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataArray);
+            runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray);
             runtimeData.instanceCount += count;
         }
 
-        public virtual void UpdateInstanceDataArray(GPUInstancerRuntimeData runtimeData, List<GPUInstancerPrefab> prefabList, bool isThreading = false)
+        public virtual void UpdateInstanceDataArray(GPUInstancerRuntimeData runtimeData, List<GPUInstancerPrefab> prefabList)
         {
-            if (runtimeData.instanceDataArray.Length != prefabList.Count)
-                runtimeData.instanceDataArray = new Matrix4x4[prefabList.Count];
+            runtimeData.ReleaseBuffers();
+            int instanceCount = prefabList.Count;
+            int bufferSize = instanceCount + ((GPUInstancerPrefabPrototype)runtimeData.prototype).extraBufferSize;
+
+            runtimeData.instanceDataNativeArray = new NativeArray<Matrix4x4>(bufferSize, Allocator.Persistent);
+            if (runtimeData.prototype.autoUpdateTransformData)
+                TransformAccessArray.Allocate(bufferSize, -1, out runtimeData.instanceTransformAccessArray);
 
             for (int i = 0; i < prefabList.Count;)
             {
-                runtimeData.instanceDataArray[i] = prefabList[i].GetLocalToWorldMatrix();
-                prefabList[i].gpuInstancerID = ++i;
+                GPUInstancerPrefab gPUInstancerPrefab = prefabList[i];
+                SetInstanceTransform(runtimeData, i, gPUInstancerPrefab.GetInstanceTransform());
+                gPUInstancerPrefab.gpuInstancerID = ++i;
             }
-            int instanceCount = prefabList.Count;
-            int bufferSize = instanceCount + ((GPUInstancerPrefabPrototype)runtimeData.prototype).extraBufferSize;
-            if (isThreading)
-                threadQueue.Enqueue(() =>
-                {
-                    runtimeData.instanceCount = instanceCount;
-                    runtimeData.bufferSize = bufferSize;
-                    GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
-                });
-            else
-            {
-                runtimeData.instanceCount = instanceCount;
-                runtimeData.bufferSize = bufferSize;
-                GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
-            }
-            return;
+            runtimeData.instanceCount = instanceCount;
+            runtimeData.bufferSize = bufferSize;
+            GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
         }
 
         public virtual void RemovePrefabInstance(GPUInstancerPrefab prefabInstance, bool setRenderersEnabled = true)
         {
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerPrefabManager.RemovePrefabInstance");
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerPrefabManager.RemovePrefabInstance");
+            //#endif
             if (!prefabInstance || prefabInstance.state == PrefabInstancingState.None)
                 return;
 
             GPUInstancerRuntimeData runtimeData = GetRuntimeData(prefabInstance.prefabPrototype);
             if (runtimeData != null)
             {
-                if (prefabInstance.gpuInstancerID > runtimeData.instanceDataArray.Length)
+                if (prefabInstance.gpuInstancerID > runtimeData.bufferSize || prefabInstance.gpuInstancerID <= 0)
                 {
                     Debug.LogWarning("Instance can not be removed.");
                     return;
                 }
 
+                runtimeData.dependentJob.Complete();
                 List<GPUInstancerPrefab> prefabInstanceList = _registeredPrefabsRuntimeData[prefabInstance.prefabPrototype];
 
                 if (prefabInstance.gpuInstancerID == runtimeData.instanceCount)
                 {
                     prefabInstance.state = PrefabInstancingState.None;
-                    runtimeData.instanceDataArray[prefabInstance.gpuInstancerID - 1] = GPUInstancerConstants.zeroMatrix;
+                    SetInstanceTransform(runtimeData, prefabInstance.gpuInstancerID - 1, null);
                     runtimeData.instanceCount--;
                     prefabInstanceList.RemoveAt(prefabInstance.gpuInstancerID - 1);
                     if (setRenderersEnabled && enableMROnRemoveInstance && !prefabInstance.prefabPrototype.meshRenderersDisabled)
@@ -764,13 +776,12 @@ namespace GPUInstancer
                     prefabInstance.state = PrefabInstancingState.None;
 
                     // exchange last index with this one
-                    runtimeData.instanceDataArray[prefabInstance.gpuInstancerID - 1] = runtimeData.instanceDataArray[lastIndexPrefabInstance.gpuInstancerID - 1];
+                    SetInstanceTransform(runtimeData, prefabInstance.gpuInstancerID - 1, lastIndexPrefabInstance.GetInstanceTransform());
                     // set last index data to Matrix4x4.zero
-                    runtimeData.instanceDataArray[lastIndexPrefabInstance.gpuInstancerID - 1] = GPUInstancerConstants.zeroMatrix;
+                    SetInstanceTransform(runtimeData, lastIndexPrefabInstance.gpuInstancerID - 1, null);
                     runtimeData.instanceCount--;
 
-                    runtimeData.transformationMatrixVisibilityBuffer.SetDataPartial(runtimeData.instanceDataArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
-                    //runtimeData.transformationMatrixVisibilityBuffer.SetDataPartial(runtimeData.instanceDataArray, lastIndexPrefabInstance.gpuInstancerID - 1, lastIndexPrefabInstance.gpuInstancerID - 1, 1);
+                    runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray, prefabInstance.gpuInstancerID - 1, prefabInstance.gpuInstancerID - 1, 1);
 
                     prefabInstanceList.RemoveAt(lastIndexPrefabInstance.gpuInstancerID - 1);
                     lastIndexPrefabInstance.gpuInstancerID = prefabInstance.gpuInstancerID;
@@ -797,19 +808,16 @@ namespace GPUInstancer
                 }
             }
 
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.EndSample();
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.EndSample();
+            //#endif
         }
 
         /// <summary>
         /// Removes prefab instances for multiple prototypes
         /// </summary>
-        public virtual void RemovePrefabInstances(IEnumerable<GPUInstancerPrefab> prefabInstances, bool isThreading = false)
+        public virtual void RemovePrefabInstances(IEnumerable<GPUInstancerPrefab> prefabInstances)
         {
-            while (isThreading && _addRemoveInProgress)
-                Thread.Sleep(100);
-            _addRemoveInProgress = true;
             List<GPUInstancerPrefab>[] instanceLists = new List<GPUInstancerPrefab>[prototypeList.Count];
             Dictionary<GPUInstancerPrototype, int> indexDict = new Dictionary<GPUInstancerPrototype, int>();
             for (int i = 0; i < instanceLists.Length; i++)
@@ -824,18 +832,14 @@ namespace GPUInstancer
             }
             for (int i = 0; i < instanceLists.Length; i++)
             {
-                RemovePrefabInstances((GPUInstancerPrefabPrototype)prototypeList[i], instanceLists[i], isThreading);
+                RemovePrefabInstances((GPUInstancerPrefabPrototype)prototypeList[i], instanceLists[i]);
             }
-            if (isThreading)
-                threadQueue.Enqueue(() => _addRemoveInProgress = false);
-            else
-                _addRemoveInProgress = false;
         }
 
         /// <summary>
         /// Removes prefab instances for single prototye
         /// </summary>
-        public virtual void RemovePrefabInstances(GPUInstancerPrefabPrototype prototype, IEnumerable<GPUInstancerPrefab> prefabInstances, bool isThreading = false)
+        public virtual void RemovePrefabInstances(GPUInstancerPrefabPrototype prototype, IEnumerable<GPUInstancerPrefab> prefabInstances)
         {
             if (prefabInstances == null || prefabInstances.Count() == 0)
                 return;
@@ -856,7 +860,7 @@ namespace GPUInstancer
                 pi.gpuInstancerID = 0;
             }
 
-            UpdateInstanceDataArray(runtimeData, prefabInstanceList, isThreading);
+            UpdateInstanceDataArray(runtimeData, prefabInstanceList);
         }
 
         public virtual void RegisterPrefabsInScene()
@@ -917,8 +921,8 @@ namespace GPUInstancer
 
         public void ClearRegisteredPrefabInstances(GPUInstancerPrototype p)
         {
-            if (_registeredPrefabsRuntimeData.ContainsKey(p))
-                _registeredPrefabsRuntimeData[p].Clear();
+            if (_registeredPrefabsRuntimeData.TryGetValue(p, out List<GPUInstancerPrefab> prefabList))
+                prefabList.Clear();
         }
 
         public virtual PrefabVariationData<T> DefinePrototypeVariationBuffer<T>(GPUInstancerPrefabPrototype prototype, string bufferName)
@@ -948,9 +952,9 @@ namespace GPUInstancer
                 {
                     GPUInstancerRuntimeData runtimeData = GetRuntimeData(prototype);
                     result.InitializeBufferAndArray(runtimeData.bufferSize);
-                    if (_registeredPrefabsRuntimeData != null && _registeredPrefabsRuntimeData.ContainsKey(prototype))
+                    if (_registeredPrefabsRuntimeData != null && _registeredPrefabsRuntimeData.TryGetValue(prototype, out List<GPUInstancerPrefab> prefabList))
                     {
-                        foreach (GPUInstancerPrefab prefabInstance in _registeredPrefabsRuntimeData[prototype])
+                        foreach (GPUInstancerPrefab prefabInstance in prefabList)
                         {
                             result.SetInstanceData(prefabInstance);
                         }
@@ -1104,7 +1108,6 @@ namespace GPUInstancer
                 }
 
                 GPUInstancerRuntimeData runtimeData = InitializeRuntimeDataForPrefabPrototype(prefabPrototype, 0);
-                GPUInstancerUtility.ReleaseInstanceBuffers(runtimeData);
                 GPUInstancerUtility.InitializeGPUBuffer(runtimeData);
             }
             else
@@ -1202,9 +1205,7 @@ namespace GPUInstancer
         public virtual void AddRuntimeRegisteredPrefab(GPUInstancerPrefab prefabInstance)
         {
             List<GPUInstancerPrefab> list;
-            if (_registeredPrefabsRuntimeData.ContainsKey(prefabInstance.prefabPrototype))
-                list = _registeredPrefabsRuntimeData[prefabInstance.prefabPrototype];
-            else
+            if (!_registeredPrefabsRuntimeData.TryGetValue(prefabInstance.prefabPrototype, out list))
             {
                 list = new List<GPUInstancerPrefab>();
                 _registeredPrefabsRuntimeData.Add(prefabInstance.prefabPrototype, list);

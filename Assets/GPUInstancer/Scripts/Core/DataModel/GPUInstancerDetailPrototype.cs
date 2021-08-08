@@ -62,6 +62,10 @@ namespace GPUInstancer
                 return prototypeTexture.name;
             return base.ToString();
         }
-    }
 
+        public override Texture2D GetPreviewTexture()
+        {
+            return prototypeTexture;
+        }
+    }
 }

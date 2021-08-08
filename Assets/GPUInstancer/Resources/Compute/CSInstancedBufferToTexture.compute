@@ -10,7 +10,7 @@ RWStructuredBuffer<uint> argsBuffer;
 uniform uint argsBufferIndex;
 uniform uint maxTextureSize;
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedBufferToTextureKernel(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= argsBuffer[argsBufferIndex])

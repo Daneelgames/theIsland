@@ -16,7 +16,7 @@ uniform uint bufferSize;
 uniform uint lodShift;
 uniform uint lodAppendIndex;
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedRenderingVisibilityKernelLOD0(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)
@@ -28,7 +28,7 @@ void CSInstancedRenderingVisibilityKernelLOD0(uint3 id : SV_DispatchThreadID)
         gpuiTransformationMatrix_LOD0.Append(id.x);
 }
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedRenderingVisibilityKernelLOD1(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)
@@ -42,7 +42,7 @@ void CSInstancedRenderingVisibilityKernelLOD1(uint3 id : SV_DispatchThreadID)
         gpuiTransformationMatrix_LOD1.Append(id.x);
 }
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedRenderingVisibilityKernelLOD2(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)
@@ -58,7 +58,7 @@ void CSInstancedRenderingVisibilityKernelLOD2(uint3 id : SV_DispatchThreadID)
         gpuiTransformationMatrix_LOD2.Append(id.x);
 }
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedRenderingVisibilityKernelLOD3(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)

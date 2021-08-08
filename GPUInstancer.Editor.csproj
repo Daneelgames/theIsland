@@ -57,6 +57,9 @@
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\Tools\GPUInstancerPrefabReplacerWindow.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPrefabEditor.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerTerrainProxyEditor.cs" />
+     <Compile Include="Assets\GPUInstancer\Scripts\Editor\PackageImporter\GPUIPackageImporterImportedData.cs" />
+     <Compile Include="Assets\GPUInstancer\Scripts\Editor\PackageImporter\GPUIPackageImporter.cs" />
+     <Compile Include="Assets\GPUInstancer\Scripts\Editor\PackageImporter\GPUIPackageImporterData.cs" />
      <None Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancer.Editor.asmdef" />
      <Reference Include="UnityEngine">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

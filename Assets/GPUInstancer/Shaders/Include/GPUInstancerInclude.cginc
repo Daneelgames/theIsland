@@ -23,9 +23,9 @@
 
 #if UNITY_VERSION >= 201711
 
-    #ifdef UNITY_APPLY_DITHER_CROSSFADE
-        #undef UNITY_APPLY_DITHER_CROSSFADE
-    #endif
+#ifdef UNITY_APPLY_DITHER_CROSSFADE
+    #undef UNITY_APPLY_DITHER_CROSSFADE
+#endif
 
 #if SHADER_API_GLCORE || SHADER_API_GLES3
     #define UNITY_APPLY_DITHER_CROSSFADE(vpos)
@@ -67,6 +67,43 @@
             }
         }
     }
+
+#ifdef UNITY_RANDOM_INCLUDED
+    #ifdef LODDitheringTransition
+        #undef LODDitheringTransition
+    #endif
+
+    #define LODDitheringTransition(fadeMaskSeed, ditherFactor) LODDitheringTransitionGPUI(fadeMaskSeed, ditherFactor)
+
+    void LODDitheringTransitionGPUI(uint2 fadeMaskSeed, float ditherFactor)
+    {
+        if (LODLevel >= 0)
+        { 
+            uint4 lodData = gpuiInstanceLODData[gpuiTransformationMatrix[unity_InstanceID]];
+
+            if(lodData.w > 0)
+            {
+                float fadeLevel = floor(lodData.w * fadeLevelMultiplier);
+
+                if (lodData.z == uint(LODLevel))
+                    fadeLevel = 15 - fadeLevel;
+
+                if (fadeLevel > 0)
+                {
+                    ditherFactor =  (frac(fadeMaskSeed.y) + fadeLevel) * 0.0625;
+                    // Generate a spatially varying pattern.
+                    // Unfortunately, varying the pattern with time confuses the TAA, increasing the amount of noise.
+                    float p = GenerateHashedRandomFloat(fadeMaskSeed);
+
+                    // This preserves the symmetry s.t. if LOD 0 has f = x, LOD 1 has f = -x.
+                    float f = ditherFactor - CopySign(p, ditherFactor);
+                    clip(f);
+                }
+            }
+        }
+    }
+#endif // UNITY_RANDOM_INCLUDED
+
 #endif // UNITY_VERSION
 
 #endif // SHADER_API

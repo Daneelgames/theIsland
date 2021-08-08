@@ -74,10 +74,10 @@ namespace GPUInstancer
         public GPUInstancerPreviewDrawer(Texture2D defaultBackgroundTexture)
         {
             _defaultBackgroundTexture = defaultBackgroundTexture;
-            Initialize();
+            InitializeCameraAndLights();
         }
 
-        public void Initialize()
+        public void InitializeCameraAndLights()
         {
             var camGO = EditorUtility.CreateGameObjectWithHideFlags("Preview Scene Camera", HideFlags.HideAndDontSave, typeof(Camera));
             AddGameObject(camGO);
@@ -147,12 +147,12 @@ namespace GPUInstancer
             lights = null;
         }
 
-        public Texture2D GetPreviewForGameObject(GameObject gameObject, Rect prevRect, Color backgroundColor)
+        public Texture2D GetPreviewForGameObject(GameObject gameObject, Rect prevRect, Color backgroundColor, GPUInstancerRuntimeData runtimeData = null)
         {
             if (!_camera || lights == null)
             {
                 Cleanup();
-                Initialize();
+                InitializeCameraAndLights();
             }
 
             #region Initialize
@@ -296,6 +296,32 @@ namespace GPUInstancer
                         foreach (Material mat in renderer.sharedMaterials)
                         {
                             Graphics.DrawMesh(mesh, matrix, mat, _sampleLayer, _camera, Math.Min(submeshIndex, mesh.subMeshCount - 1),
+                                null, ShadowCastingMode.Off, false, null, false);
+                            submeshIndex++;
+                        }
+                    }
+                }
+
+                _camera.Render();
+                UnityEditorInternal.InternalEditorUtility.RemoveCustomLighting();
+            }
+            else if (runtimeData != null && runtimeData.instanceLODs != null && runtimeData.instanceLODs.Count > 0 && runtimeData.instanceLODs[0].renderers != null)
+            {
+                float maxBounds = Mathf.Max(Mathf.Max(runtimeData.instanceBounds.extents.x, runtimeData.instanceBounds.extents.y), runtimeData.instanceBounds.extents.z);
+                _camera.transform.position = runtimeData.instanceBounds.center;
+                _camera.orthographicSize = maxBounds * 1.3f;
+
+                UnityEditorInternal.InternalEditorUtility.SetCustomLighting(lights, Color.gray);
+
+                for (int i = 0; i < runtimeData.instanceLODs[0].renderers.Count; i++)
+                {
+                    GPUInstancerRenderer renderer = runtimeData.instanceLODs[0].renderers[i];
+                    if (renderer.materials != null)
+                    {
+                        int submeshIndex = 0;
+                        foreach (Material mat in renderer.materials)
+                        {
+                            Graphics.DrawMesh(renderer.mesh, renderer.transformOffset, mat, _sampleLayer, _camera, Math.Min(submeshIndex, renderer.mesh.subMeshCount - 1),
                                 null, ShadowCastingMode.Off, false, null, false);
                             submeshIndex++;
                         }

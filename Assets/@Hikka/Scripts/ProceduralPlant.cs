@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GPUInstancer;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,7 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] private Vector2 knotsMinMaxRotation = new Vector2(-90, 90);
     [SerializeField] private Vector2 branchesMinMaxRotation= new Vector2(-30, 30);
     [SerializeField] private Vector2 startBranchesMinMaxAmount = Vector2.one;
+    [SerializeField] [Range(0,1)]private float defaultGrowBranchesChance = 0.3f;
     [SerializeField] [Range(0,1)]private float defaultTwoBranchesChance = 0.3f;
     [SerializeField] [Range(0,1)]private float defaultLeavesGrowChance = 0.1f;
     [SerializeField] [Range(0,1)]private float defaultFruitsGrowChance = 0.025f;
@@ -96,6 +98,9 @@ public class ProceduralPlant : MonoBehaviour
                     continue;
                 }
                 
+                if (Random.value > defaultGrowBranchesChance)
+                    continue;
+                
                 plantNodes.Add(new PlantNode());
                 int r = 1;
                 if (Random.value < defaultTwoBranchesChance)
@@ -115,6 +120,7 @@ public class ProceduralPlant : MonoBehaviour
             parentNode.closestChildNodes.Add(newNode);
         
         newNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity);
+        
         newNode.spawnedKnot.MasterPlant = this;
         newNode.spawnedKnot.transform.parent = knotParent;
         newNode.spawnedKnot.transform.localEulerAngles = Vector3.zero;
@@ -289,7 +295,8 @@ public class ProceduralPlant : MonoBehaviour
                     yield return null;   
                 }
             }
-            yield return null;      
+            yield return new WaitForSeconds(1);
+            
         }
     }
 

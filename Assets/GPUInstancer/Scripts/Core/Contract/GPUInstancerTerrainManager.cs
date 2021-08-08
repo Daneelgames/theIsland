@@ -61,7 +61,7 @@ namespace GPUInstancer
 
             if (_terrainsToAdd != null)
             {
-                while(_terrainsToAdd.Count > 0)
+                while (_terrainsToAdd.Count > 0)
                 {
                     Terrain terrain = _terrainsToAdd.Dequeue();
                     if (!_terrains.Contains(terrain))
@@ -101,7 +101,7 @@ namespace GPUInstancer
         {
             base.Reset();
 
-            if(terrain == null && gameObject.GetComponent<Terrain>() != null)
+            if (terrain == null && gameObject.GetComponent<Terrain>() != null)
             {
                 SetupManagerWithTerrain(gameObject.GetComponent<Terrain>());
             }
@@ -309,10 +309,10 @@ namespace GPUInstancer
 #endif
         }
 
-        public virtual void UpdateTerrains() 
+        public virtual void UpdateTerrains()
         {
             _requiresTerrainUpdate = true;
-        }  
+        }
 
         public virtual void AddTerrain(Terrain newTerrain)
         {

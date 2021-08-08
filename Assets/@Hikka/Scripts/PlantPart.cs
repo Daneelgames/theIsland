@@ -31,6 +31,7 @@ public class PlantPart : MonoBehaviour
     private PlantNode _parentPlantNode;
 
     private bool rotating = false;
+    private static readonly int Emission = Shader.PropertyToID("Emission");
 
 
     void Start()
@@ -61,14 +62,26 @@ public class PlantPart : MonoBehaviour
     #region select Part
         public void SelectPart()
         {
-            if (_material && _material.GetInt(IsSelected) != 1)
-                _material.SetInt(IsSelected, 1);
+            /*
+            //if (_material && _material.GetInt(Emission) != 1)
+            if (_material)
+            {
+                _material.SetColor("_EmissionColor", Color.white);
+                //_material.SetInt(Emission, 1);
+                //_material.SetInt(IsSelected, 1);   
+            }*/
         }
 
         public void UnselectPart()
         {
-            if (_material && _material.GetInt(IsSelected) != 0)
-                _material.SetInt(IsSelected, 0);
+            /*
+            //if (_material && _material.GetInt(Emission) != 0)
+            if (_material)
+            {
+                _material.SetColor("_EmissionColor", Color.black);
+                //_material.SetInt(Emission, 0);
+                //_material.SetInt(IsSelected, 0);   
+            }*/
         }
     #endregion
     

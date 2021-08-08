@@ -899,8 +899,10 @@ namespace GPUInstancer
 
         public override void DrawGPUInstancerPrototypeActions()
         {
+            if (Application.isPlaying)
+                return;
             GUILayout.Space(10);
-            GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_actions, GPUInstancerEditorConstants.Styles.boldLabel, false);
+            //GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_actions, GPUInstancerEditorConstants.Styles.boldLabel, false);
 
             if (!editorDataChanged)
                 EditorGUI.BeginDisabledGroup(true);
@@ -913,7 +915,7 @@ namespace GPUInstancer
                 EditorGUI.EndDisabledGroup();
             DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_applyChangesToTerrain);
 
-            DrawDeleteButton();
+            DrawDeleteButton(true);
         }
 
         public override float GetMaxDistance(GPUInstancerPrototype selectedPrototype)

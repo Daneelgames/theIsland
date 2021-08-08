@@ -8,7 +8,7 @@ RWStructuredBuffer<uint4> gpuiInstanceLODData; // lodNo - shadowLodNo - cfLodNo 
 #include "Include/CullingVR.compute"
 #include "Include/Camera.compute"
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedCameraCalculationKernel(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)
@@ -28,7 +28,7 @@ void CSInstancedCameraCalculationKernel(uint3 id : SV_DispatchThreadID)
     gpuiInstanceLODData[id.x] = lodData;
 }
 
-[numthreads(NUM_THREADS, 1, 1)]
+[numthreads(GPUI_THREADS, 1, 1)]
 void CSInstancedCameraCalculationKernelCrossFade(uint3 id : SV_DispatchThreadID)
 {
     if (id.x >= bufferSize)

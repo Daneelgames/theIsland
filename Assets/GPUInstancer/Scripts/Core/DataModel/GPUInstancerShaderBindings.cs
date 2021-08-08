@@ -130,8 +130,10 @@ namespace GPUInstancer
                 Debug.LogWarning("One of the GPU Instancer prototypes is missing material reference! Check the Material references in MeshRenderer.");
                 return new Material(GetInstancedShader(GPUInstancerConstants.SHADER_UNITY_STANDARD));
             }
-            Material instancedMaterial = new Material(originalMaterial);
-            instancedMaterial.shader = GetInstancedShader(originalMaterial.shader.name);
+            if (GPUInstancerConstants.gpuiSettings.useOriginalMaterialWhenInstanced && IsOriginalShaderInstanced(originalMaterial.shader.name))
+                return originalMaterial;
+            Material instancedMaterial = new Material(GetInstancedShader(originalMaterial.shader.name));
+            instancedMaterial.CopyPropertiesFromMaterial(originalMaterial);
             instancedMaterial.name = originalMaterial.name + "_GPUI";
 
             return instancedMaterial;
@@ -240,6 +242,19 @@ namespace GPUInstancer
             foreach (ShaderInstance si in shaderInstances)
             {
                 if (si.name.Equals(shaderName) && string.IsNullOrEmpty(si.extensionCode))
+                    return true;
+            }
+            return false;
+        }
+
+        public virtual bool IsOriginalShaderInstanced(string shaderName)
+        {
+            if (_standardUnityShadersGPUI.Contains(shaderName) || _extraGPUIShaders.Contains(shaderName))
+                return true;
+
+            foreach (ShaderInstance si in shaderInstances)
+            {
+                if (si.name.Equals(shaderName) && si.isOriginalInstanced)
                     return true;
             }
             return false;

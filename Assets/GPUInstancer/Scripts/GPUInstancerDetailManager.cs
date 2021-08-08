@@ -41,12 +41,32 @@ namespace GPUInstancer
 
         public override void OnDisable()
         {
+            if (runInThreads && activeThreads.Count > 0)
+            {
+                foreach (Thread thread in activeThreads)
+                {
+                    thread.Abort();
+                }
+            }
+            ClearCompletedThreads();
+
+            threadHeightMapData = null;
+            threadDetailMapData = null;
+
             base.OnDisable();
 
             if (_generatingVisibilityBuffer != null)
             {
                 _generatingVisibilityBuffer.Release();
             }
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+#if UNITY_EDITOR
+            keepSimulationLive = true;
+#endif
         }
         #endregion MonoBehaviour Methods
 
@@ -197,9 +217,9 @@ namespace GPUInstancer
 
         public override void RemoveInstancesInsideBounds(Bounds bounds, float offset, List<GPUInstancerPrototype> prototypeFilter = null)
         {
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerDetailManager.RemoveInstancesInsideBounds");
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerDetailManager.RemoveInstancesInsideBounds");
+            //#endif
             base.RemoveInstancesInsideBounds(bounds, offset, prototypeFilter);
             if (spData != null && !initalizingInstances)
             {
@@ -244,16 +264,16 @@ namespace GPUInstancer
                     }
                 }
             }
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.EndSample();
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.EndSample();
+            //#endif
         }
 
         public override void RemoveInstancesInsideCollider(Collider collider, float offset, List<GPUInstancerPrototype> prototypeFilter = null)
         {
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerDetailManager.RemoveInstancesInsideCollider");
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.BeginSample("GPUInstancerDetailManager.RemoveInstancesInsideCollider");
+            //#endif
             base.RemoveInstancesInsideCollider(collider, offset, prototypeFilter);
             if (spData != null && !initalizingInstances)
             {
@@ -317,9 +337,9 @@ namespace GPUInstancer
                     }
                 }
             }
-//#if UNITY_EDITOR
-//            UnityEngine.Profiling.Profiler.EndSample();
-//#endif
+            //#if UNITY_EDITOR
+            //            UnityEngine.Profiling.Profiler.EndSample();
+            //#endif
         }
 
         public override void SetGlobalPositionOffset(Vector3 offsetPosition)
@@ -678,7 +698,6 @@ namespace GPUInstancer
                     if (_generatingVisibilityBuffer != null)
                         _generatingVisibilityBuffer.Release();
                     GPUInstancerUtility.ReleaseInstanceBuffers(runtimeDatas);
-                    GPUInstancerUtility.ClearInstanceData(runtimeDatas);
                 }
 
                 _generatingVisibilityBuffer = null;
@@ -866,6 +885,8 @@ namespace GPUInstancer
         private void SetInstanceDataForDetailCellsCallback()
         {
             initalizingInstances = false;
+            if (spData == null)
+                return;
             foreach (GPUInstancerCell cell in spData.activeCellList)
                 cell.isActive = false;
             spData.activeCellList.Clear();
@@ -1010,6 +1031,8 @@ namespace GPUInstancer
                 {
                     for (int x = startX; x < endX; x++)
                     {
+                        if (spData == null)
+                            return;
                         int hash = GPUInstancerCell.CalculateHash(x, 0, z);
                         spData.GetCell(hash, out cell);
 

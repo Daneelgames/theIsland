@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Events;
 using Unity.Collections;
+using UnityEngine.Jobs;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -53,8 +54,8 @@ namespace GPUInstancer
                 if (runtimeData.transformationMatrixVisibilityBuffer != null)
                     runtimeData.transformationMatrixVisibilityBuffer.Release();
                 runtimeData.transformationMatrixVisibilityBuffer = new ComputeBuffer(runtimeData.bufferSize, GPUInstancerConstants.STRIDE_SIZE_MATRIX4X4);
-                if (runtimeData.instanceDataArray != null)
-                    runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataArray);
+                if (runtimeData.instanceDataNativeArray.IsCreated)
+                    runtimeData.transformationMatrixVisibilityBuffer.SetData(runtimeData.instanceDataNativeArray);
             }
             #endregion Set Visibility Buffer
 
@@ -510,7 +511,7 @@ namespace GPUInstancer
             {
                 cameraComputeShader.SetBool(GPUInstancerConstants.VisibilityKernelPoperties.BUFFER_PARAMETER_OCCLUSION_CULL_SWITCH,
                     runtimeData.prototype.isOcclusionCulling);
-                if (cameraData.hiZOcclusionGenerator.isVREnabled && GPUInstancerConstants.gpuiSettings.testBothEyesForVROcclusion)
+                if (GPUInstancerConstants.gpuiSettings.IsUseBothEyesVRCulling())
                 {
                     cameraComputeShader.SetFloats(GPUInstancerConstants.VisibilityKernelPoperties.BUFFER_PARAMETER_MVP_MATRIX2,
                         cameraData.mvpMatrix2Floats);
@@ -772,17 +773,6 @@ namespace GPUInstancer
             }
         }
 
-        public static void ClearInstanceData<T>(List<T> runtimeDataList) where T : GPUInstancerRuntimeData
-        {
-            if (runtimeDataList == null)
-                return;
-
-            for (int i = 0; i < runtimeDataList.Count; i++)
-            {
-                runtimeDataList[i].instanceDataArray = null;
-            }
-        }
-
         #endregion Prototype Release
 
         #region Create Prototypes
@@ -834,19 +824,8 @@ namespace GPUInstancer
             detailPrototype.useCrossQuads = quadCount > 1;
             detailPrototype.quadCount = quadCount;
 
-#if GPUI_VR || GPUI_XR
-#if UNITY_2017_2_OR_NEWER
-#if GPUI_XR
-            detailPrototype.billboardFaceCamPos = UnityEngine.XR.XRSettings.enabled;
-#endif
-#else
-#if GPUI_VR
-            detailPrototype.billboardFaceCamPos = UnityEngine.VR.VRSettings.enabled;
-#endif
-#endif
-#else
-            detailPrototype.billboardFaceCamPos = false;
-#endif
+            detailPrototype.billboardFaceCamPos = GPUInstancerConstants.gpuiSettings.isVREnabled;
+
             detailPrototype.detailHealthyColor = terrainDetailPrototype.healthyColor;
             detailPrototype.detailDryColor = terrainDetailPrototype.dryColor;
             detailPrototype.noiseSpread = terrainDetailPrototype.noiseSpread;
@@ -869,7 +848,7 @@ namespace GPUInstancer
 
             if (!GPUInstancerConstants.gpuiSettings.disableAutoGenerateBillboards && IsBillboardGeneratedByDefault(detailPrototype))
             {
-                detailPrototype.isLODCrossFade = GPUInstancerConstants.gpuiSettings.IsStandardRenderPipeline();
+                detailPrototype.isLODCrossFade = GPUInstancerConstants.gpuiSettings.IsLODCrossFadeSupported();
                 detailPrototype.useGeneratedBillboard = true;
                 if (detailPrototype.billboard == null)
                     detailPrototype.billboard = new GPUInstancerBillboard();
@@ -1348,7 +1327,7 @@ namespace GPUInstancer
 
                 if (!GPUInstancerConstants.gpuiSettings.disableAutoGenerateBillboards && IsBillboardGeneratedByDefault(prototype))
                 {
-                    prototype.isLODCrossFade = GPUInstancerConstants.gpuiSettings.IsStandardRenderPipeline();
+                    prototype.isLODCrossFade = GPUInstancerConstants.gpuiSettings.IsLODCrossFadeSupported();
                     prototype.useGeneratedBillboard = true;
                     if (prototype.billboard == null)
                         prototype.billboard = new GPUInstancerBillboard();
@@ -1431,7 +1410,7 @@ namespace GPUInstancer
             //if (treePrototypeType == GPUInstancerTreeType.SpeedTree) 
             //    treePrototype.lodBiasAdjustment = 0.5f;
 
-            treePrototype.isLODCrossFade = GPUInstancerConstants.gpuiSettings.IsStandardRenderPipeline();
+            treePrototype.isLODCrossFade = GPUInstancerConstants.gpuiSettings.IsLODCrossFadeSupported();
 
             if (!GPUInstancerConstants.gpuiSettings.disableAutoGenerateBillboards && treePrototype.treeType != GPUInstancerTreeType.SpeedTree8)
             {
@@ -1789,19 +1768,7 @@ namespace GPUInstancer
 
             DetermineTreePrototypeType(prototype);
 
-#if GPUI_VR || GPUI_XR
-#if UNITY_2017_2_OR_NEWER
-#if GPUI_XR
-            prototype.billboard.billboardFaceCamPos = UnityEngine.XR.XRSettings.enabled;
-#endif
-#else
-#if GPUI_VR
-            prototype.billboard.billboardFaceCamPos = UnityEngine.VR.VRSettings.enabled;
-#endif
-#endif
-#else
-            prototype.billboard.billboardFaceCamPos = false;
-#endif
+            prototype.billboard.billboardFaceCamPos = GPUInstancerConstants.gpuiSettings.isVREnabled;
 
             BillboardAtlasBinding billboardAtlasBinding = GPUInstancerConstants.gpuiSettings.billboardAtlasBindings.GetBillboardAtlasBinding(prototype.prefabObject, prototype.billboard.atlasResolution, prototype.billboard.frameCount);
             if (billboardAtlasBinding != null)
@@ -2153,6 +2120,9 @@ namespace GPUInstancer
 
         public static Material GetBillboardMaterial(GPUInstancerPrototype prototype)
         {
+            if (!GPUInstancerConstants.gpuiSettings.IsStandardRenderPipeline())
+                return null;
+
             Material billboardMaterial = null;
 
             switch (prototype.treeType)
@@ -2889,9 +2859,9 @@ namespace GPUInstancer
                 #region HLSLPROGRAM
                 lastIndex = 0;
                 searchStart = "HLSLPROGRAM";
-                additionTextStart = "";
+                additionTextStart = GPUInstancerConstants.gpuiSettings.isHDRP ? "\n#include \"Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl\"\n#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl\"\n\n#include \"" + includePath + "\"\n#pragma instancing_options procedural:setupGPUI\n#pragma multi_compile_instancing\n" : "";
                 searchEnd = "ENDHLSL";
-                additionTextEnd = "\n#include \"" + includePath + "\"\n#pragma instancing_options procedural:setupGPUI\n#pragma multi_compile_instancing\n";
+                additionTextEnd = GPUInstancerConstants.gpuiSettings.isHDRP ? "" : "\n#include \"" + includePath + "\"\n#pragma instancing_options procedural:setupGPUI\n#pragma multi_compile_instancing\n";
 
                 foundIndex = -1;
                 while (true)
@@ -2927,7 +2897,7 @@ namespace GPUInstancer
                     instancedShader = Shader.Find(newShaderName);
 
                 if (instancedShader != null)
-                    Debug.Log("Generated GPUI support enabled version for shader: " + originalShader.name);
+                    Debug.Log("Generated GPUI support enabled version for shader: " + originalShader.name, instancedShader);
                 EditorUtility.ClearProgressBar();
 
                 return instancedShader;
@@ -3311,8 +3281,6 @@ namespace GPUInstancer
                     return;
                 }
             }
-            // add matrices to runtimeData
-            runtimeData.instanceDataArray = matrix4x4Array;
             // set counts to runtimeData
             runtimeData.bufferSize = matrix4x4Array.Length;
             runtimeData.instanceCount = matrix4x4Array.Length;
@@ -3324,6 +3292,8 @@ namespace GPUInstancer
                 GPUInstancerManager.AddTreeProxy(prototype, runtimeData);
             // initialize buffers
             InitializeGPUBuffer(runtimeData);
+            // set data to initialized buffer
+            runtimeData.transformationMatrixVisibilityBuffer.SetData(matrix4x4Array);
         }
 
         public static void InitializePrototype(GPUInstancerPrefabManager prefabManager, GPUInstancerPrefabPrototype prototype, int bufferSize, int instanceCount = 0)
@@ -3367,6 +3337,7 @@ namespace GPUInstancer
                 Debug.LogError("Can not find runtime data for prototype: " + prototype + ". Please check if the prototype was added to the Prefab Manager and the initialize method was called before update.");
                 return;
             }
+
             // set data to buffer
 #if UNITY_2017_1_OR_NEWER
             if (count > 0)
@@ -3445,6 +3416,38 @@ namespace GPUInstancer
         }
 
         #endregion Texture Methods
+
+        public static NativeArray<T> ResizeNativeArray<T>(NativeArray<T> previousArray, int newSize, Allocator allocator) where T : struct
+        {
+            NativeArray<T> result = new NativeArray<T>(newSize, allocator);
+            if (previousArray.IsCreated)
+            {
+                int count = Math.Min(previousArray.Length, newSize);
+                for (int i = 0; i < count; i++)
+                {
+                    result[i] = previousArray[i];
+                }
+                previousArray.Dispose();
+            }
+            return result;
+        }
+
+        public static TransformAccessArray ResizeTransformAccessArray(TransformAccessArray previousArray, int newSize)
+        {
+            TransformAccessArray.Allocate(newSize, -1, out TransformAccessArray result);
+            Transform[] transforms = new Transform[newSize];
+            if (previousArray.isCreated)
+            {
+                int count = Math.Min(previousArray.length, newSize);
+                for (int i = 0; i < count; i++)
+                {
+                    transforms[i] = previousArray[i];
+                }
+                previousArray.Dispose();
+            }
+            result.SetTransforms(transforms);
+            return result;
+        }
 
         #endregion Extensions
 
@@ -3718,11 +3721,11 @@ namespace GPUInstancer
                 string computePlatformDefinesText = "#ifndef __platformDefines_hlsl_\n#define __platformDefines_hlsl_\n\n";
                 if (!GPUInstancerConstants.gpuiSettings.hasCustomRenderingSettings)
                 {
-                    computePlatformDefinesText += "#if SHADER_API_METAL\n    #define NUM_THREADS 256\n    #define NUM_THREADS_2D 16\n#elif SHADER_API_GLES3\n    #define NUM_THREADS 128\n    #define NUM_THREADS_2D 8\n#elif SHADER_API_VULKAN\n    #define NUM_THREADS 128\n    #define NUM_THREADS_2D 8\n#elif SHADER_API_GLCORE\n    #define NUM_THREADS 256\n    #define NUM_THREADS_2D 16\n#elif SHADER_API_PS4\n    #define NUM_THREADS 512\n    #define NUM_THREADS_2D 16\n#else\n    #define NUM_THREADS 512\n    #define NUM_THREADS_2D 16\n#endif";
+                    computePlatformDefinesText += "#if SHADER_API_METAL\n    #define GPUI_THREADS 256\n    #define GPUI_THREADS_2D 16\n#elif SHADER_API_GLES3\n    #define GPUI_THREADS 128\n    #define GPUI_THREADS_2D 8\n#elif SHADER_API_VULKAN\n    #define GPUI_THREADS 128\n    #define GPUI_THREADS_2D 8\n#elif SHADER_API_GLCORE\n    #define GPUI_THREADS 256\n    #define GPUI_THREADS_2D 16\n#elif SHADER_API_PS4\n    #define GPUI_THREADS 512\n    #define GPUI_THREADS_2D 16\n#else\n    #define GPUI_THREADS 512\n    #define GPUI_THREADS_2D 16\n#endif";
                 }
                 else
                 {
-                    computePlatformDefinesText += "#define NUM_THREADS " + GPUInstancerConstants.COMPUTE_SHADER_THREAD_COUNT + "\n#define NUM_THREADS_2D " + GPUInstancerConstants.COMPUTE_SHADER_THREAD_COUNT_2D;
+                    computePlatformDefinesText += "#define GPUI_THREADS " + GPUInstancerConstants.COMPUTE_SHADER_THREAD_COUNT + "\n#define GPUI_THREADS_2D " + GPUInstancerConstants.COMPUTE_SHADER_THREAD_COUNT_2D;
                 }
                 computePlatformDefinesText += "\n\n#endif";
                 byte[] bytes = System.Text.Encoding.UTF8.GetBytes(computePlatformDefinesText);

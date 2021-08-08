@@ -31,17 +31,18 @@ namespace GPUInstancer
                 Rigidbody rb;
                 for (int i = 0; i < _enteredInstances.Count; i++)
                 {
-                    if (!IsInsideCollider(_enteredInstances[i]))
+                    GPUInstancerPrefab prefabInstance = _enteredInstances[i];
+                    if (!IsInsideCollider(prefabInstance))
                     {
-                        rb = _enteredInstances[i].GetComponent<Rigidbody>();
+                        rb = prefabInstance.GetComponent<Rigidbody>();
                         if (rb != null && !rb.IsSleeping())
                             continue;
-                        GPUInstancerAPI.EnableInstancingForInstance(prefabManager, _enteredInstances[i]);
-                        _enteredInstances.Remove(_enteredInstances[i]);
+                        GPUInstancerAPI.EnableInstancingForInstance(prefabManager, prefabInstance);
+                        _enteredInstances.RemoveAt(i);
                         i--;
                     }
-                    else if (_enteredInstances[i].state != PrefabInstancingState.Disabled)
-                        prefabManager.DisableIntancingForInstance(_enteredInstances[i]);
+                    else if (prefabInstance.state != PrefabInstancingState.Disabled)
+                        prefabManager.DisableIntancingForInstance(prefabInstance);
                 }
             }
         }

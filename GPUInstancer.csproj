@@ -100,6 +100,7 @@
      <Compile Include="Assets\GPUInstancer\Scripts\API\GPUInstancerAPI.cs" />
      <Compile Include="Assets\GPUInstancer\Demos\PrefabInstancing\Scripts\SpaceshipMobileController.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerBillboardAtlasBindings.cs" />
+     <Compile Include="Assets\GPUInstancer\Demos\ShaderGraphVariations\Scripts\ShaderGraphVariationsController.cs" />
      <None Include="Assets\GPUInstancer\Shaders\StandardSpecular_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedCameraCalculationKernelVR.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Standard_GPUI.shader" />
@@ -132,6 +133,7 @@
      <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedRenderingVisibilityKernelVulkan.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Nature\TreeCreator\TreeCreatorBark_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Shaders\Include\GPUInstancerInclude.cginc" />
+     <None Include="Assets\GPUInstancer\Shaders\Include\GPUIShaderGraphInclude.cginc" />
      <None Include="Assets\GPUInstancer\Shaders\Foliage_Lambert_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSBillboard.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Nature\TreeCreator\TreeCreatorBarkOptimized_GPUI.shader" />
@@ -145,6 +147,7 @@
      <None Include="Assets\GPUInstancer\Shaders\HiZOcclusionGenerator_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Shaders\Foliage_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Shaders\Billboard\Billboard2DRendererTree_GPUI.shader" />
+     <None Include="Assets\GPUInstancer\Resources\Compute\CSArgsBuffer.compute" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSTextureUtils.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Billboard\BillboardAlbedoBake_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedCameraCalculationKernel.compute" />
@@ -157,6 +160,7 @@
      <None Include="Assets\GPUInstancer\Resources\Compute\Include\DataModel.compute" />
      <None Include="Assets\GPUInstancer\PrototypeData\Shaders\Lit_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Shaders\Nature\TreeCreator\TreeCreatorLeavesFastOptimized_GPUI.shader" />
+     <None Include="Assets\GPUInstancer\Shaders\Include\GPUIFloat4VariationInclude.cginc" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSRuntimeModification.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Nature\SPDTree_GPUI.shader" />
      <Reference Include="UnityEngine">

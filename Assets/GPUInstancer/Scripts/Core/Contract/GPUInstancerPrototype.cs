@@ -56,7 +56,12 @@ namespace GPUInstancer
         {
             if (prefabObject != null)
                 return prefabObject.name;
-            return base.ToString();
+            return name;
+        }
+
+        public virtual Texture2D GetPreviewTexture()
+        {
+            return null;
         }
     }
 
@@ -90,6 +95,9 @@ namespace GPUInstancer
         public bool isBillboardShadowCasting = false;
 
         public bool billboardFaceCamPos = false;
+
+        [NonSerialized]
+        public bool isBeingDeleted = false;
     }
 
     public enum BillboardQuality

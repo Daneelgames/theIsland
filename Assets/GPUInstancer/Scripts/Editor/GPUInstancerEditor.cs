@@ -170,17 +170,13 @@ namespace GPUInstancer
             {
                 if (prototype.prefabObject == null)
                 {
-                    if (prototype is GPUInstancerDetailPrototype)
+                    if (prototype.GetPreviewTexture() != null)
                     {
-                        GPUInstancerDetailPrototype detailPrototype = (GPUInstancerDetailPrototype)prototype;
-                        if (detailPrototype.prototypeTexture != null)
-                        {
-                            _previewDrawer.SetAdditionalTexture(detailPrototype.prototypeTexture);
-                            Texture2D result = _previewDrawer.GetPreviewForGameObject(null, new Rect(0, 0, PROTOTYPE_RECT_SIZE - 10, PROTOTYPE_RECT_SIZE - 10),
-                                useCustomPreviewBackgroundColor ? previewBackgroundColor : Color.clear);
-                            _previewDrawer.SetAdditionalTexture(null);
-                            return result;
-                        }
+                        _previewDrawer.SetAdditionalTexture(prototype.GetPreviewTexture());
+                        Texture2D result = _previewDrawer.GetPreviewForGameObject(null, new Rect(0, 0, PROTOTYPE_RECT_SIZE - 10, PROTOTYPE_RECT_SIZE - 10),
+                            useCustomPreviewBackgroundColor ? previewBackgroundColor : Color.clear);
+                        _previewDrawer.SetAdditionalTexture(null);
+                        return result;
                     }
                 }
                 else
@@ -190,6 +186,23 @@ namespace GPUInstancer
 
                     return _previewDrawer.GetPreviewForGameObject(prototype.prefabObject, new Rect(0, 0, PROTOTYPE_RECT_SIZE - 10, PROTOTYPE_RECT_SIZE - 10),
                         useCustomPreviewBackgroundColor ? previewBackgroundColor : Color.clear);
+                }
+
+                if (Application.isPlaying && GPUInstancerManager.activeManagerList != null)
+                {
+                    for (int i = 0; i < GPUInstancerManager.activeManagerList.Count; i++)
+                    {
+                        GPUInstancerManager manager = GPUInstancerManager.activeManagerList[i];
+                        if (manager != null && manager.isInitialized)
+                        {
+                            GPUInstancerRuntimeData runtimeData = manager.GetRuntimeData(prototype);
+                            if (runtimeData != null && runtimeData.instanceLODs != null && runtimeData.instanceLODs.Count > 0)
+                            {
+                                return _previewDrawer.GetPreviewForGameObject(null, new Rect(0, 0, PROTOTYPE_RECT_SIZE - 10, PROTOTYPE_RECT_SIZE - 10),
+                       useCustomPreviewBackgroundColor ? previewBackgroundColor : Color.clear, runtimeData);
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception e)
@@ -703,7 +716,9 @@ namespace GPUInstancer
                 selectedPrototype.minCullingDistance = EditorGUILayout.Slider(GPUInstancerEditorConstants.TEXT_minCullingDistance, selectedPrototype.minCullingDistance, 0, 100);
                 DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_minCullingDistance);
             }
+            EditorGUI.BeginDisabledGroup(Application.isPlaying);
             selectedPrototype.boundsOffset = EditorGUILayout.Vector3Field(GPUInstancerEditorConstants.TEXT_boundsOffset, selectedPrototype.boundsOffset);
+            EditorGUI.EndDisabledGroup();
             if (selectedPrototype.boundsOffset.x < 0)
                 selectedPrototype.boundsOffset.x = 0;
             if (selectedPrototype.boundsOffset.y < 0)
@@ -722,7 +737,7 @@ namespace GPUInstancer
                 GPUInstancerEditorConstants.DrawCustomLabel(GPUInstancerEditorConstants.TEXT_LOD, GPUInstancerEditorConstants.Styles.boldLabel);
 
                 EditorGUI.BeginDisabledGroup(Application.isPlaying);
-                if (GPUInstancerConstants.gpuiSettings.IsStandardRenderPipeline())
+                if (GPUInstancerConstants.gpuiSettings.IsLODCrossFadeSupported())
                 {
                     selectedPrototype.isLODCrossFade = EditorGUILayout.Toggle(GPUInstancerEditorConstants.TEXT_isLODCrossFade, selectedPrototype.isLODCrossFade);
                     DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_isLODCrossFade);
@@ -755,14 +770,15 @@ namespace GPUInstancer
 
             DrawGPUInstancerPrototypeBillboardSettings(selectedPrototype);
 
-            DrawGPUInstancerPrototypeActions();
-            DrawGPUInstancerPrototypeAdvancedActions();
-
             if (EditorGUI.EndChangeCheck())
             {
                 if (selectedPrototype != null)
                     EditorUtility.SetDirty(selectedPrototype);
             }
+
+            DrawGPUInstancerPrototypeActions();
+            DrawGPUInstancerPrototypeAdvancedActions();
+
             EditorGUI.EndDisabledGroup();
             EditorGUILayout.EndVertical();
         }
@@ -776,12 +792,6 @@ namespace GPUInstancer
                     selectedPrototype.useGeneratedBillboard = false;
                 if (selectedPrototype.billboard != null)
                     selectedPrototype.billboard = null;
-                return;
-            }
-
-            if (selectedPrototype.prefabObject == null)
-            {
-                Debug.LogError("Prefab is missing for prototype: " + selectedPrototype.name);
                 return;
             }
 
@@ -809,7 +819,7 @@ namespace GPUInstancer
             {
                 if (selectedPrototype.billboard.albedoAtlasTexture != null)
                     GPUInstancerConstants.gpuiSettings.billboardAtlasBindings.DeleteBillboardTextures(selectedPrototype);
-                if (!selectedPrototype.billboard.useCustomBillboard)
+                if (selectedPrototype.billboard != null && !selectedPrototype.billboard.useCustomBillboard)
                     selectedPrototype.billboard = null;
             }
 
@@ -902,7 +912,7 @@ namespace GPUInstancer
 
                 if (!selectedPrototype.billboard.customBillboardInLODGroup)
                 {
-                    bool hasLODGroup = selectedPrototype.prefabObject.GetComponent<LODGroup>() != null;
+                    bool hasLODGroup = selectedPrototype.prefabObject != null && selectedPrototype.prefabObject.GetComponent<LODGroup>() != null;
                     bool speedTreeBillboard = (selectedPrototype.treeType == GPUInstancerTreeType.SpeedTree || selectedPrototype.treeType == GPUInstancerTreeType.SpeedTree8) && hasLODGroup
                         && (selectedPrototype.treeType == GPUInstancerTreeType.SpeedTree8 || selectedPrototype.prefabObject.GetComponentInChildren<BillboardRenderer>() != null);
                     if (hasLODGroup && !speedTreeBillboard)
@@ -943,6 +953,7 @@ namespace GPUInstancer
                         () =>
                         {
                             GPUInstancerUtility.GeneratePrototypeBillboard(selectedPrototype, selectedPrototype.billboard.albedoAtlasTexture != null);
+                            GUIUtility.ExitGUI();
                         });
                 }
 
@@ -964,7 +975,7 @@ namespace GPUInstancer
                 DrawHelpText(GPUInstancerEditorConstants.HELPTEXT_showBillboard);
             }
 
-            if (selectedPrototype.useGeneratedBillboard && selectedPrototype.billboard != null && selectedPrototype.billboard.useCustomBillboard && GPUInstancerDefines.billboardExtensions != null && GPUInstancerDefines.billboardExtensions.Count > 0)
+            if (selectedPrototype.prefabObject != null && selectedPrototype.useGeneratedBillboard && selectedPrototype.billboard != null && selectedPrototype.billboard.useCustomBillboard && GPUInstancerDefines.billboardExtensions != null && GPUInstancerDefines.billboardExtensions.Count > 0)
             {
                 GUILayout.Space(10);
 

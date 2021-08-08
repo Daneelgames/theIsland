@@ -153,6 +153,8 @@ GameObject:
   - component: {fileID: 3179122185848018935}
   - component: {fileID: 4048185409795078802}
   - component: {fileID: 1209901292336387747}
+  - component: {fileID: 3875039616460220775}
+  - component: {fileID: 3583130529323282426}
   m_Layer: 10
   m_Name: KnotTest
   m_TagString: Untagged
@@ -209,3 +211,29 @@ CapsuleCollider:
   m_Height: 0.048936393
   m_Direction: 2
   m_Center: {x: 0.0021996507, y: 0.0072521656, z: 0.019022228}
+--- !u!114 &3875039616460220775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811553317481452062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: fd73f977ca18a3b4da5edbfd51b0f765, type: 2}
+--- !u!114 &3583130529323282426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811553317481452062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af364fdba3900e7439da4d2db3e16fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gpuiPrefab: {fileID: 0}
