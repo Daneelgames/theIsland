@@ -56,32 +56,21 @@ public class PlantPart : MonoBehaviour
     public PlantNode ParentPlantNode
     {
         get { return _parentPlantNode; }
-        set { _parentPlantNode = value; }
+        set
+        {
+            _parentPlantNode = value;
+        }
     }
     
     #region select Part
         public void SelectPart()
         {
-            /*
-            //if (_material && _material.GetInt(Emission) != 1)
-            if (_material)
-            {
-                _material.SetColor("_EmissionColor", Color.white);
-                //_material.SetInt(Emission, 1);
-                //_material.SetInt(IsSelected, 1);   
-            }*/
+            
         }
 
         public void UnselectPart()
         {
-            /*
-            //if (_material && _material.GetInt(Emission) != 0)
-            if (_material)
-            {
-                _material.SetColor("_EmissionColor", Color.black);
-                //_material.SetInt(Emission, 0);
-                //_material.SetInt(IsSelected, 0);   
-            }*/
+            
         }
     #endregion
     
