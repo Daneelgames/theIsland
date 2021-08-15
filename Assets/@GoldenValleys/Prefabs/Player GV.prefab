@@ -2752,10 +2752,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92585a957c1c534cbb97fc137a0347f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 1
+  raycastDistance: 1.5
   raycastLayers:
     serializedVersion: 2
     m_Bits: 1856
+  raycastLayersWater:
+    serializedVersion: 2
+    m_Bits: 832
+  raycastLayersBlade:
+    serializedVersion: 2
+    m_Bits: 1344
   draggingObject: {fileID: 0}
   lastSelectedPlantPart: {fileID: 0}
 --- !u!136 &7419335003849139349

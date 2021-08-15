@@ -8,6 +8,8 @@ public class PlayerToolsController : MonoBehaviour
 {
     public List<ToolController> allTools;
     public static PlayerToolsController instance;
+    
+    // 2 is water, 3 is blade
     public int selectedToolIndex = -1;
 
     private float useToolCooldown = 0;

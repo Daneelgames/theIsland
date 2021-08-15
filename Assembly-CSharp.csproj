@@ -144,6 +144,7 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
      <Compile Include="Assets\ProceduralPlantsManager.cs" />
+     <Compile Include="Assets\ProceduralPlantStatsFeedback.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_02.json" />

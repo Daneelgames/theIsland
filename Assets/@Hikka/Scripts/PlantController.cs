@@ -8,12 +8,20 @@ using Random = UnityEngine.Random;
 
 public class PlantController : MonoBehaviour
 {
+    public enum ActionWithPlant
+    {
+        GiveWater, UseBlade
+    }
+
+    [SerializeField] private List<ActionWithPlant> actionsByDay = new List<ActionWithPlant>();
+    
     public Transform plantOrigin;
 
     ProceduralPlant spawnedProceduralPlant;
     PlantData plantData;
 
-
+    // list actions used by day
+    
     public ProceduralPlant GetSpawnedProceduralPlant()
     {
         return spawnedProceduralPlant;
@@ -30,24 +38,49 @@ public class PlantController : MonoBehaviour
         spawnedProceduralPlant = plantVisualGO.GetComponent<ProceduralPlant>();
         plantData = spawnedProceduralPlant.plantData;
         
-        spawnedProceduralPlant.PlantBorn();
+        spawnedProceduralPlant.PlantBorn(this);
         yield break;
     }
 
     public void WaterUsed(float waterAmount)
     {
-        for (int i = 0; i < plantData.growthRequirementsList.Count; i++)
+        actionsByDay.Add(ActionWithPlant.GiveWater);
+    }
+
+    public void BladeUsed()
+    {
+        actionsByDay.Add(ActionWithPlant.UseBlade);
+    }
+
+    public int CompareActionsWithRequirements()
+    {
+        int hpOffset = 0;
+
+        var tempRequirementsList = new List<ActionWithPlant>(plantData.growthRequirementsList);
+        
+        for (int i = tempRequirementsList.Count - 1; i >= 0; i--)
         {
-            if (plantData.growthRequirementsList[i] == PlantData.PlantGrowthRequirements.NoWater)
+            for (int j = actionsByDay.Count - 1; j >= 0; j--)
             {
-                // this is bad for plant
-                Debug.Log("This plant doesn't like water.");
+                if (actionsByDay[j] == tempRequirementsList[i])
+                {
+                    //
+                    tempRequirementsList.RemoveAt(i);
+                    actionsByDay.RemoveAt(j);
+                    
+                    break;
+                }
             }
-            else if (plantData.growthRequirementsList[i] == PlantData.PlantGrowthRequirements.WaterEverydayMedium)
+
+            if (tempRequirementsList.Count != 0 || actionsByDay.Count != 0)
             {
-                // this is bad for plant
-                Debug.Log("This plant likes water.");
+                hpOffset = -1;
             }
-        }
+            else
+                hpOffset = 1;
+        }   
+        
+        actionsByDay.Clear();
+        return hpOffset;
     }
 }

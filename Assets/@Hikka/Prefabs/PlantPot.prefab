@@ -121,7 +121,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4425827252388529652}
-  - component: {fileID: 789901112897778051}
   - component: {fileID: 4041686621002594313}
   - component: {fileID: 9169220084416313949}
   - component: {fileID: 871262649773335713}
@@ -149,20 +148,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &789901112897778051
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5929119135463285382}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.33
-  m_Height: 0.66
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.61172235, z: 0}
 --- !u!114 &4041686621002594313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionList: []
-  collider: {fileID: 789901112897778051}
+  collider: {fileID: 1727503028482247355}
   protableTransformOffset: {x: 0, y: -0.75, z: 0.5}
   rb: {fileID: 871262649773335713}
   dragForce: 4
@@ -200,15 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantOrigin: {fileID: 5846307424196773476}
-  currentVisualIndex: -1
-  visualsByLifetime: []
-  plantsVisualsReferences:
-  - m_AssetGUID: b512574ff6fd59d45bf50b9d6a68903a
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: 8fce519158d46e9469a2b14919f82ab4
-    m_SubObjectName: 
-    m_SubObjectType: 
 --- !u!54 &871262649773335713
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,8 +196,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0

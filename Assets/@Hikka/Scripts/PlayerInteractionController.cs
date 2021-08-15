@@ -8,7 +8,10 @@ public class PlayerInteractionController : MonoBehaviour
     public static PlayerInteractionController instance;
 
     public float raycastDistance = 5;
+    LayerMask raycastLayersCurrent;
     public LayerMask raycastLayers;
+    public LayerMask raycastLayersWater;
+    public LayerMask raycastLayersBlade;
 
     private RaycastHit hit;
     private Vector3 selectedInteractableCenter;
@@ -45,22 +48,34 @@ public class PlayerInteractionController : MonoBehaviour
                 continue;
             }
 
+            switch (PlayerToolsController.instance.selectedToolIndex)
+            {
+                case 2:
+                    raycastLayersCurrent = raycastLayersWater;
+                    break;
+                case 3:
+                    raycastLayersCurrent = raycastLayersBlade;
+                    break;
+                default:
+                    raycastLayersCurrent = raycastLayers;
+                    break;
+            }
+            
             if (draggingObject == null)
             {
                 if (Physics.Raycast(MouseLook.instance.mainCamera.transform.position,
                     MouseLook.instance.mainCamera.transform.forward, out hit,
-                    raycastDistance, raycastLayers))
+                    raycastDistance, raycastLayersCurrent))
                 {
-                    if (hit.collider.gameObject.layer == 9) // interactable
-                    {
-                        selectedInteractableCenter = hit.collider.bounds.center;
-                        PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject,
-                            selectedInteractableCenter);
-                        haveSelectedObject = true;
-                    }
-                    else if (PlayerToolsController.instance.selectedToolIndex == 3 && hit.collider.gameObject.layer == 10) // plant part
+                    if (PlayerToolsController.instance.selectedToolIndex == 3 && hit.collider.gameObject.layer == 10) // plant part
                     {
                         SelectPlantPart(hit.collider.gameObject);
+                        haveSelectedObject = true;
+                    }
+                    else if (hit.collider.gameObject.layer == 9) // interactable
+                    {
+                        selectedInteractableCenter = hit.collider.bounds.center;
+                        PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject, selectedInteractableCenter);
                         haveSelectedObject = true;
                     }
                 }
@@ -76,8 +91,7 @@ public class PlayerInteractionController : MonoBehaviour
             }
             else
             {
-                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject,
-                    draggingObject.collider.bounds.center);
+                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject, draggingObject.collider.bounds.center);
                 if (lastSelectedPlantGO != null)
                 {
                     NoSelectedPlantPartGO();

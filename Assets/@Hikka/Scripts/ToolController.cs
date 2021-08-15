@@ -19,6 +19,7 @@ public class ToolController : MonoBehaviour
     public Transform watersackTrasform;
     public float watersackScaleSpeed = 0.5f;
     public float waterPumpingSpeed = 1;
+    [Tooltip("It's not decreases now")]
     public float waterAmount = 0;
     public float waterToUse = 0;
     public int waterToUseMax = 3;
@@ -61,7 +62,6 @@ public class ToolController : MonoBehaviour
                 
                 
                 ReleaseWater();
-                waterAmount -= _waterToUse;
                 
                 if (waterAmount < 0)
                     waterAmount = 0;
@@ -101,6 +101,11 @@ public class ToolController : MonoBehaviour
                 }
 
                 anim.SetTrigger(UseBlade);
+                
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedProceduralPlant() != null)
+                {
+                    selectedObject.plantController.BladeUsed();
+                }
                 break;
         }
     }
@@ -123,7 +128,7 @@ public class ToolController : MonoBehaviour
         while (waterAmount > 0 && waterToUse <= waterToUseMax)
         {
             waterToSpend = Time.deltaTime * waterPumpingSpeed;
-            waterAmount -= waterToSpend;
+            //waterAmount -= waterToSpend;
             waterToUse += waterToSpend;
             watersackTrasform.localScale += watersackTrasform.localScale * watersackScaleSpeed * Time.deltaTime; 
             yield return null;

@@ -5,17 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/NewPlantData", order = 1)]
 public class PlantData : ScriptableObject
 {
-    public enum PlantGrowthRequirements
-    {
-        Light, Darkness, Warmth, Cold, NoWater, 
-        WaterEverydayLittle, WaterEverydayMedium, WaterEverydayMuch, 
-        WaterOtherdayLittle, WaterOtherdayMedium, WaterOtherdayMuch,
-        BloodEverydayLittle, BloodEverydayMedium, BloodEverydayMuch, 
-        BloodOtherdayLittle, BloodOtherdayMedium, BloodOtherdayMuch,
-        GoldEverydayLittle,GoldEverydayMedium,GoldEverydayMuch,
-        GoldOtherdayLittle,GoldOtherdayMedium,GoldOtherdayMuch
-    }
-
     public int inventoryIndex = 0;
     public List<string> plantName = new List<string>();
     public int growDays = 3;
@@ -23,5 +12,5 @@ public class PlantData : ScriptableObject
     
     public List<string> plantDecription = new List<string>();
 
-    public List<PlantGrowthRequirements> growthRequirementsList = new List<PlantGrowthRequirements>();
+    public List<PlantController.ActionWithPlant> growthRequirementsList = new List<PlantController.ActionWithPlant>();
 }

@@ -15,7 +15,26 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] private PlantPartData branches;
     [SerializeField] private PlantPartData leaves;
     [SerializeField] private PlantPartData fruits;
+    
+    [Header("Age And Health")]
+    [Tooltip("Increases if actions are right; Decreases if actions are wrong or the plant is dying")]
+    [SerializeField] private int currentHealth = 3;
 
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+        set { currentHealth = value; }
+    }
+    [SerializeField] private int minHealthForFruitsSpawn = 6; 
+    
+    [SerializeField] private int currentAgeInDays = 0;
+    public int CurrentAge
+    {
+        get { return currentAgeInDays; }
+    }
+    [SerializeField] private Vector2Int startDyingOnDayMinMax = new Vector2Int(5,5);
+    [SerializeField] private int currentDyingAge = 5;
+    
     [Header("Growth settings")]
     [SerializeField] private int growthRate = 1;
     [SerializeField] private bool animateRotation = false;
@@ -44,21 +63,42 @@ public class ProceduralPlant : MonoBehaviour
     private Coroutine checkNodesForCollisionsCoroutine;
 
     private bool ableToDoNextGrowthStep = true;
-    
+    private PlantController _plantController;
+
+    public ProceduralPlantStatsFeedback statsFeedback;
     private void Start()
     {
         ProceduralPlantsManager.instance.AddProceduralPlant(this);
+
+        currentDyingAge = Random.Range(startDyingOnDayMinMax.x, startDyingOnDayMinMax.y);
     }
 
-    public void PlantBorn()
+    public void PlantBorn(PlantController controller)
     {
+        _plantController = controller;
+        
+        statsFeedback.UpdateText(this);
+        
         StartCoroutine(NextGrowthStep());
     }
 
     public void NewDay()
     {
+        currentAgeInDays++;
 
-        StartCoroutine(NextGrowthStep());
+        int hpOffset = _plantController.CompareActionsWithRequirements();
+        currentHealth += hpOffset;
+        
+        statsFeedback.UpdateText(this);
+        
+        if (currentAgeInDays >= currentDyingAge)
+        {
+            // start coroutine NextStepDying
+        }
+        else if (hpOffset > 0)
+        {
+            StartCoroutine(NextGrowthStep());   
+        }
     }
     
     public IEnumerator NextGrowthStep()
@@ -221,6 +261,9 @@ public class ProceduralPlant : MonoBehaviour
     
     void CreateFruits(PlantNode _plantNode, PlantPart branch, PlantNode parentPlantNode)
     {
+        if (currentHealth <= minHealthForFruitsSpawn)
+            return;
+        
         var points = branch.fruitsSpawnPoints;
         for (int i = points.Count - 1; i >= 0; i--)
         {
@@ -300,7 +343,7 @@ public class ProceduralPlant : MonoBehaviour
 
                 for (int j = 0; j < plantNodes[i].spawnedBranches.Count; j++)
                 {
-                    if (plantNodes[i].spawnedBranches[j].isRotating)
+                    if (plantNodes[i].spawnedBranches[j].isRotating || plantNodes[i].spawnedBranches[j].transform.lossyScale.x < 0.1f)
                         continue;
                     
                     capsuleStart = plantNodes[i].spawnedBranches[j].partStartPoint.position;
@@ -311,7 +354,7 @@ public class ProceduralPlant : MonoBehaviour
                 }
 
                 ++t;
-                if (t == 1)
+                if (t == 2)
                 {
                     t = 0;
                     yield return null;   
@@ -427,6 +470,12 @@ public class ProceduralPlant : MonoBehaviour
     {
         while (true)
         {
+            if (PlayerToolsController.instance.selectedToolIndex != 3)
+            {
+                nodeSelected.ShowSpawnedKnot();
+                nodeSelected = null;
+            }
+            
             if (nodeSelected == null)
                 yield break;
             
@@ -485,14 +534,12 @@ public class PlantNode
     
     public void HideSpawnedKnot()
     {
-        Debug.Log("HideSpawnedKnot " + spawnedKnot);
         if (spawnedKnot)
             spawnedKnot.gameObject.SetActive(false);
     }
 
     public void ShowSpawnedKnot()
     {
-        Debug.Log("ShowSpawnedKnot " + spawnedKnot);
         if (spawnedKnot)
             spawnedKnot.gameObject.SetActive(true);
     }
