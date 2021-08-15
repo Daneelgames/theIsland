@@ -41,6 +41,8 @@ public class ProceduralPlant : MonoBehaviour
     private int currentGrowthStep = 0;
     private Coroutine checkNodesForCollisionsCoroutine;
 
+    private bool ableToDoNextGrowthStep = true;
+    
     private void Start()
     {
         InteractiveObjectsManager.instance.proceduralPlants.Add(this);
@@ -49,6 +51,11 @@ public class ProceduralPlant : MonoBehaviour
 
     public IEnumerator NextGrowthStep()
     {
+        if (!ableToDoNextGrowthStep)
+            yield break;
+
+        ableToDoNextGrowthStep = false;
+        
         currentGrowthStep++;
         
         if (checkNodesForCollisionsCoroutine == null)
@@ -111,6 +118,7 @@ public class ProceduralPlant : MonoBehaviour
                 newPlantParts.RemoveAt(i);
             }
         }
+        ableToDoNextGrowthStep = true;
     }
 
 
@@ -119,10 +127,10 @@ public class ProceduralPlant : MonoBehaviour
         if (parentNode != null)
             parentNode.closestChildNodes.Add(newNode);
         
-        newNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity);
+        newNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity, knotParent);
         
         newNode.spawnedKnot.MasterPlant = this;
-        newNode.spawnedKnot.transform.parent = knotParent;
+        //newNode.spawnedKnot.transform.parent = knotParent;
         newNode.spawnedKnot.transform.localEulerAngles = Vector3.zero;
         newNode.spawnedKnot.ParentPlantNode = newNode;
         if (plantNodes.Count > 1)
@@ -144,8 +152,8 @@ public class ProceduralPlant : MonoBehaviour
     void CreateBrunch(PlantNode _plantNode, int i, PlantNode parentPlantNode)
     {
         int prefabR = Random.Range(0, branches.plantPartPrefab.Count);
-        _plantNode.spawnedBranches.Add(Instantiate(branches.plantPartPrefab[prefabR], _plantNode.spawnedKnot.partEndPoint.transform.position, Quaternion.identity));
-        _plantNode.spawnedBranches[i].transform.parent = _plantNode.spawnedKnot.transform;
+        _plantNode.spawnedBranches.Add(Instantiate(branches.plantPartPrefab[prefabR], _plantNode.spawnedKnot.partEndPoint.transform.position, Quaternion.identity, _plantNode.spawnedKnot.transform));
+        //_plantNode.spawnedBranches[i].transform.parent = _plantNode.spawnedKnot.transform;
         _plantNode.spawnedBranches[i].MasterPlant = this;
         _plantNode.spawnedBranches[i].ParentPlantNode = parentPlantNode;
         if (i == 0)
@@ -154,10 +162,10 @@ public class ProceduralPlant : MonoBehaviour
             _plantNode.spawnedBranches[i].transform.localEulerAngles = _plantNode.spawnedBranches[i-1].transform.localEulerAngles;
             
         _plantNode.spawnedBranches[i].transform.localEulerAngles += new Vector3(Random.Range(branchesMinMaxRotation.x, branchesMinMaxRotation.y), Random.Range(branchesMinMaxRotation.x, branchesMinMaxRotation.y), Random.Range(branchesMinMaxRotation.x, branchesMinMaxRotation.y));
+        
         _plantNode.spawnedBranches[i].transform.localScale = Vector3.one * Random.Range(localBranchScaleScalerMinMax.x, localBranchScaleScalerMinMax.y); 
             
         newPlantParts.Add(_plantNode.spawnedBranches[i]);
-
         CreateLeaves(_plantNode, _plantNode.spawnedBranches[i], parentPlantNode);
     }
 
@@ -176,13 +184,13 @@ public class ProceduralPlant : MonoBehaviour
             {            
                 int pointR = Random.Range(0, points.Count);
                 int prefabR = Random.Range(0, leaves.plantPartPrefab.Count);
-                var newLeaf = Instantiate(leaves.plantPartPrefab[prefabR], points[pointR].position, Quaternion.identity);
+                var newLeaf = Instantiate(leaves.plantPartPrefab[prefabR], points[pointR].position, Quaternion.identity, points[pointR]);
                 
                 newLeaf.MasterPlant = this;
                 
                 _plantNode.spawnedLeaves.Add(newLeaf);
                 newLeaf.ParentPlantNode = parentPlantNode;
-                newLeaf.transform.parent = points[pointR];
+                //newLeaf.transform.parent = points[pointR];
                 newLeaf.transform.localEulerAngles = Vector3.zero;
                 newLeaf.transform.localScale = Vector3.one;
                 points.RemoveAt(pointR);
@@ -209,12 +217,12 @@ public class ProceduralPlant : MonoBehaviour
             {            
                 int pointR = Random.Range(0, points.Count);
                 int prefabR = Random.Range(0, fruits.plantPartPrefab.Count);
-                var newFruit = Instantiate(fruits.plantPartPrefab[prefabR], points[pointR].position, Quaternion.identity);
+                var newFruit = Instantiate(fruits.plantPartPrefab[prefabR], points[pointR].position, Quaternion.identity, points[pointR]);
                 
                 newFruit.MasterPlant = this;
                 
                 _plantNode.spawnedFruits.Add(newFruit);
-                newFruit.transform.parent = points[pointR];
+                //newFruit.transform.parent = points[pointR];
                 newFruit.ParentPlantNode = parentPlantNode;
                 newFruit.transform.localEulerAngles = Vector3.zero;
                 newFruit.transform.localScale = Vector3.one;
@@ -235,6 +243,8 @@ public class ProceduralPlant : MonoBehaviour
         
         if (part == null)
             yield break;
+        
+        Debug.Log(startLocalScale + "; " + newLocalScale);
         
         part.transform.localScale = startLocalScale;
         while (t < tt)
@@ -289,7 +299,7 @@ public class ProceduralPlant : MonoBehaviour
                 }
 
                 ++t;
-                if (t == 10)
+                if (t == 1)
                 {
                     t = 0;
                     yield return null;   
