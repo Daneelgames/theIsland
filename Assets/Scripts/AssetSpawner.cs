@@ -9,7 +9,7 @@ public class AssetSpawner : MonoBehaviour
 {
     public enum ObjectType
     {
-        PlantVisual, Prop, Path
+        ProceduralPlant, Prop, Path
     }
 
     public static AssetSpawner instance;
@@ -27,7 +27,7 @@ public class AssetSpawner : MonoBehaviour
         instance = this;
     }
 
-    public void SpawnPlantVisual(AssetReference assetReference, Vector3 newPos, Quaternion newRot)
+    public void SpawnProceduralPlant(AssetReference assetReference, Vector3 newPos, Quaternion newRot)
     {
         if (assetReference.RuntimeKeyIsValid() == false)
         {
@@ -37,7 +37,7 @@ public class AssetSpawner : MonoBehaviour
         {
             if (asyncOperationHandles[assetReference].IsDone) // if exists and loaded
             {
-                SpawnFromLoadedReference(assetReference, newPos, newRot, ObjectType.PlantVisual);
+                SpawnFromLoadedReference(assetReference, newPos, newRot, ObjectType.ProceduralPlant);
             }
             else // if exists and not loaded
                 EnqueueSpawnForAfterInitialization(assetReference, newPos, newRot);
@@ -46,7 +46,7 @@ public class AssetSpawner : MonoBehaviour
         }
         
         // if not exists
-        LoadAndSpawn(assetReference, newPos, newRot, ObjectType.PlantVisual);
+        LoadAndSpawn(assetReference, newPos, newRot, ObjectType.ProceduralPlant);
     }
     
     public void Spawn(AssetReference assetReference, Vector3 newPos, Quaternion newRot, ObjectType objType)
@@ -109,7 +109,7 @@ public class AssetSpawner : MonoBehaviour
 
             switch (objectType)
             {
-                case ObjectType.PlantVisual:
+                case ObjectType.ProceduralPlant:
                     ProceedPlant(asyncOperationHandle.Result);
                     break;
                 case ObjectType.Prop:

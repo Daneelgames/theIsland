@@ -29,6 +29,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: cb13aabb69357e4459f173693b6fb336
+    m_Address: ProceduralPlants/00 Fingerleaf ProceduralPlant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1fbfb4a6f5cc909459e66c522a12745e
+    m_Address: ProceduralPlants/01 Eyeleaf ProceduralPlant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 733579267f0ec3c49a75c8dbec89e2a9, type: 2}
   m_SchemaSet:

@@ -6,7 +6,6 @@ public class InteractiveObjectsManager : MonoBehaviour
 {
     public static InteractiveObjectsManager instance;
     public List<InteractiveObject> potsInteractiveObjects = new List<InteractiveObject>();
-    public List<ProceduralPlant> proceduralPlants = new List<ProceduralPlant>();
     void Awake()
     {
         if (instance != null)
@@ -42,11 +41,4 @@ public class InteractiveObjectsManager : MonoBehaviour
         return closestIO; 
     }
 
-    public void NewLoop()
-    {
-        for (int i = 0; i < proceduralPlants.Count; i++)
-        {
-            proceduralPlants[i].NewDay();
-        }
-    }
 }

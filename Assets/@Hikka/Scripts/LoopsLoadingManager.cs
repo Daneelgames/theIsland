@@ -44,7 +44,7 @@ public class LoopsLoadingManager : MonoBehaviour
         SceneManager.LoadSceneAsync(currentLoopScene, LoadSceneMode.Additive);
         
         
-        InteractiveObjectsManager.instance.NewLoop();
+        ProceduralPlantsManager.instance.NewDay();
         PlayerMovement.instance.controller.enabled = false;
         PlayerMovement.instance.teleport = true;
         //PlayerMovement.instance.transform.position = new Vector3(PlayerMovement.instance.transform.position.x, positionForPlayerTeleport.position.y, PlayerMovement.instance.transform.position.z);

@@ -13,41 +13,15 @@ ShaderVariantCollection:
       variants:
       - keywords: _NORMALMAP
         passType: 0
-      - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
-        passType: 0
       - keywords: _EMISSION _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
           _NORMALMAP _UVSEC_UV1
         passType: 0
-  - first: {fileID: 4800000, guid: e0d69a0cae717da4693f30615037e2ee, type: 3}
-    second:
-      variants:
-      - keywords: 
-        passType: 0
-      - keywords: _BACKFACEMIRRORNORMAL_ON
-        passType: 0
-      - keywords: _NORMALMAP
-        passType: 0
-      - keywords: _METALLICSPECGLOSSMAP _NORMALMAP
-        passType: 0
       - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
-        passType: 0
-      - keywords: _ALPHATEST_ON
-        passType: 0
-      - keywords: _ALPHATEST_ON _NORMALMAP
-        passType: 0
-      - keywords: _EMISSION _NORMALMAP
-        passType: 0
-      - keywords: _ALPHATEST_ON _EMISSION
         passType: 0
   - first: {fileID: 4800000, guid: a1fe6b00539636f49bae5f911c8ccc55, type: 3}
     second:
       variants:
       - keywords: 
-        passType: 0
-  - first: {fileID: 4800000, guid: b17ec8f907cae0b49995cfce845bcd1d, type: 3}
-    second:
-      variants:
-      - keywords: _BACKFACEMIRRORNORMAL_ON
         passType: 0
   - first: {fileID: 4800000, guid: d52a38c4e70daf4449eaab298ba27ce6, type: 3}
     second:
@@ -92,17 +66,43 @@ ShaderVariantCollection:
         passType: 0
       - keywords: _ALPHATEST_ON _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
         passType: 0
+  - first: {fileID: -6465566751694194690, guid: 08c40a79c7e26b644bc2be84c3a0e2d1, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 4800000, guid: e0d69a0cae717da4693f30615037e2ee, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: _BACKFACEMIRRORNORMAL_ON
+        passType: 0
+      - keywords: _NORMALMAP
+        passType: 0
+      - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
+        passType: 0
+      - keywords: _METALLICSPECGLOSSMAP _NORMALMAP
+        passType: 0
+      - keywords: _ALPHATEST_ON
+        passType: 0
+      - keywords: _ALPHATEST_ON _NORMALMAP
+        passType: 0
+      - keywords: _EMISSION _NORMALMAP
+        passType: 0
+      - keywords: _ALPHATEST_ON _EMISSION
+        passType: 0
+  - first: {fileID: 4800000, guid: b17ec8f907cae0b49995cfce845bcd1d, type: 3}
+    second:
+      variants:
+      - keywords: _BACKFACEMIRRORNORMAL_ON
+        passType: 0
   - first: {fileID: -6465566751694194690, guid: 4c36f6176d9f525449b33c671cb56707, type: 3}
     second:
       variants:
       - keywords: _NORMALMAP
         passType: 0
       - keywords: _METALLICSPECGLOSSMAP _NORMALMAP
-        passType: 0
-  - first: {fileID: -6465566751694194690, guid: 08c40a79c7e26b644bc2be84c3a0e2d1, type: 3}
-    second:
-      variants:
-      - keywords: 
         passType: 0
   - first: {fileID: -6465566751694194690, guid: 7861571fe2ae6004daf9e5eeee4a1fcd, type: 3}
     second:

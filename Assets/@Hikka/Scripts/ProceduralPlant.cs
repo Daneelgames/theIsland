@@ -47,7 +47,12 @@ public class ProceduralPlant : MonoBehaviour
     
     private void Start()
     {
-        InteractiveObjectsManager.instance.proceduralPlants.Add(this);
+        ProceduralPlantsManager.instance.AddProceduralPlant(this);
+    }
+
+    public void PlantBorn()
+    {
+        StartCoroutine(NextGrowthStep());
     }
 
     public void NewDay()
@@ -252,8 +257,6 @@ public class ProceduralPlant : MonoBehaviour
         
         if (part == null)
             yield break;
-        
-        Debug.Log(startLocalScale + "; " + newLocalScale);
         
         part.transform.localScale = startLocalScale;
         while (t < tt)

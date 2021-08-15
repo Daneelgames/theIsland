@@ -66,7 +66,7 @@ public class ToolController : MonoBehaviour
                 if (waterAmount < 0)
                     waterAmount = 0;
                 
-                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedPlantVisual() != null)
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedProceduralPlant() != null)
                 {
                     selectedObject.plantController.WaterUsed(_waterToUse);
                 }
@@ -74,7 +74,7 @@ public class ToolController : MonoBehaviour
             
             case ToolType.Seed:
                 
-                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedPlantVisual() != null)
+                if (selectedObject && selectedObject.plantController && selectedObject.plantController.GetSpawnedProceduralPlant() != null)
                 {
                     PlayerToolsController.instance.CantUseToolFeedback();
                     return;

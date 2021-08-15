@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4902942350362594998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3374522573488524313}
+  - component: {fileID: 211472535068219181}
+  - component: {fileID: 5547513983364014273}
+  m_Layer: 10
+  m_Name: 01 Eyeleaf ProceduralPlant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3374522573488524313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902942350362594998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4552896, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211472535068219181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902942350362594998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a0f0d5267e0c0498b70be2560e977a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantData: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
+  knots:
+    plantPartPrefab:
+    - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  branches:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  leaves:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
+    startGrowthOnStepMinMax: {x: 1, y: 3}
+  fruits:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 1fcea2aa1a39cf14fafc0af119c3641b, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 5}
+  growthRate: 2
+  animateRotation: 0
+  animateScale: 0
+  scaleEveryNode: 0
+  maxKnotGrowScalerPerCycle: 1.2
+  mainKnotGrowthChance: 0.75
+  localKnotScaleScalerMinMax: {x: 0.8, y: 1.2}
+  localBranchScaleScalerMinMax: {x: 0.9, y: 1}
+  knotsMinMaxRotation: {x: -90, y: 90}
+  branchesMinMaxRotation: {x: -30, y: 30}
+  startBranchesMinMaxAmount: {x: 1, y: 1}
+  defaultGrowBranchesChance: 1
+  defaultTwoBranchesChance: 0.2
+  defaultLeavesGrowChance: 0.1
+  defaultFruitsGrowChance: 0.005
+  plantNodes: []
+  newPlantParts: []
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!54 &5547513983364014273
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902942350362594998}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

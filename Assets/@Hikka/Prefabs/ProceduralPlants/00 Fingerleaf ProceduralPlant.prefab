@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 211472535068219181}
   - component: {fileID: 5547513983364014273}
   m_Layer: 10
-  m_Name: ProceduralPlantTest
+  m_Name: 00 Fingerleaf ProceduralPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
