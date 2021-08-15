@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GPUInstancer;
+using PlayerControls;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ProceduralPlant : MonoBehaviour
 {
+    public PlantData plantData;
     [Header("Plants parts")]
     [SerializeField] private PlantPartData knots;
     [SerializeField] private PlantPartData branches;
@@ -46,9 +48,14 @@ public class ProceduralPlant : MonoBehaviour
     private void Start()
     {
         InteractiveObjectsManager.instance.proceduralPlants.Add(this);
-        
     }
 
+    public void NewDay()
+    {
+
+        StartCoroutine(NextGrowthStep());
+    }
+    
     public IEnumerator NextGrowthStep()
     {
         if (!ableToDoNextGrowthStep)
@@ -127,10 +134,12 @@ public class ProceduralPlant : MonoBehaviour
         if (parentNode != null)
             parentNode.closestChildNodes.Add(newNode);
         
-        newNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity, knotParent);
+        newNode.ProceduralPlant = this;
+        
+        newNode.spawnedKnot = Instantiate(knots.plantPartPrefab[Random.Range(0, knots.plantPartPrefab.Count)], originPos, Quaternion.identity);
         
         newNode.spawnedKnot.MasterPlant = this;
-        //newNode.spawnedKnot.transform.parent = knotParent;
+        newNode.spawnedKnot.transform.parent = knotParent;
         newNode.spawnedKnot.transform.localEulerAngles = Vector3.zero;
         newNode.spawnedKnot.ParentPlantNode = newNode;
         if (plantNodes.Count > 1)
@@ -379,6 +388,76 @@ public class ProceduralPlant : MonoBehaviour
             }
         }
     }
+
+    #region selection
+
+    private PlantNode nodeSelected;
+    public void SelectNode(PlantNode node)
+    {
+        if (node == nodeSelected)
+            return;
+
+        nodeSelected?.ShowSpawnedKnot();
+
+        nodeSelected = node;
+
+        if (selectedNodeFeedbackCoroutine == null)
+        {
+            selectedNodeFeedbackCoroutine = StartCoroutine(SelectedNodeFeedbackCoroutine());
+            StartCoroutine(GetDistanceToPlayer());
+        }
+    }
+    
+    public void UnselectNode(PlantNode node)
+    {
+        node?.ShowSpawnedKnot();
+    }
+
+    public void StopSelectionCoroutine()
+    {
+        if (selectedNodeFeedbackCoroutine != null)
+            StopCoroutine(selectedNodeFeedbackCoroutine);
+    }
+    
+    private Coroutine selectedNodeFeedbackCoroutine;
+    public IEnumerator SelectedNodeFeedbackCoroutine()
+    {
+        while (true)
+        {
+            if (nodeSelected == null)
+                yield break;
+            
+            nodeSelected.HideSpawnedKnot();
+            yield return new WaitForSeconds(0.2f);
+
+            if (nodeSelected == null)
+                yield break;
+
+            nodeSelected.ShowSpawnedKnot();   
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator GetDistanceToPlayer()
+    {
+        float distance = 0;
+        while (distance < 2)
+        {
+            yield return new WaitForSeconds(1);
+            if (nodeSelected == null || nodeSelected.spawnedKnot == null)
+                break;
+            
+            distance = Vector3.Distance(nodeSelected.spawnedKnot.transform.position, PlayerMovement.instance.transform.position);
+        }
+        
+        if (selectedNodeFeedbackCoroutine != null)
+            StopCoroutine(selectedNodeFeedbackCoroutine);
+
+        nodeSelected?.ShowSpawnedKnot();
+
+        nodeSelected = null;
+    }
+    #endregion
 }
 
 [Serializable]
@@ -386,6 +465,7 @@ public class PlantNode
 {
     // parent
     // child
+    private ProceduralPlant _proceduralPlant;
     public PlantPart spawnedKnot;
     public List<PlantPart> spawnedBranches = new List<PlantPart>();
     public List<PlantPart> spawnedLeaves = new List<PlantPart>();
@@ -393,46 +473,25 @@ public class PlantNode
     
     public List<PlantNode> closestChildNodes = new List<PlantNode>();
 
-    public void SelectNode()
+
+    public ProceduralPlant ProceduralPlant
     {
-        spawnedKnot.SelectPart();
-        for (int i = 0; i < spawnedBranches.Count; i++)
-        {
-            spawnedBranches[i].SelectPart();
-        }
-        for (int i = 0; i < spawnedLeaves.Count; i++)
-        {
-            spawnedLeaves[i].SelectPart();
-        }
-        for (int i = 0; i < spawnedFruits.Count; i++)
-        {
-            spawnedFruits[i].SelectPart();
-        }
-        for (int i = 0; i < closestChildNodes.Count; i++)
-        {
-            closestChildNodes[i].SelectNode();
-        }
+        get { return _proceduralPlant; }
+        set { _proceduralPlant = value; }
+    }
+    
+    public void HideSpawnedKnot()
+    {
+        Debug.Log("HideSpawnedKnot " + spawnedKnot);
+        if (spawnedKnot)
+            spawnedKnot.gameObject.SetActive(false);
     }
 
-    public void UnselectNode()
+    public void ShowSpawnedKnot()
     {
-        spawnedKnot.UnselectPart();
-        for (int i = 0; i < spawnedBranches.Count; i++)
-        {
-            spawnedBranches[i].UnselectPart();
-        }
-        for (int i = 0; i < spawnedLeaves.Count; i++)
-        {
-            spawnedLeaves[i].UnselectPart();
-        }
-        for (int i = 0; i < spawnedFruits.Count; i++)
-        {
-            spawnedFruits[i].UnselectPart();
-        }
-        for (int i = 0; i < closestChildNodes.Count; i++)
-        {
-            closestChildNodes[i].UnselectNode();
-        }
+        Debug.Log("ShowSpawnedKnot " + spawnedKnot);
+        if (spawnedKnot)
+            spawnedKnot.gameObject.SetActive(true);
     }
 }
 

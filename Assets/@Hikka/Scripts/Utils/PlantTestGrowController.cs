@@ -13,7 +13,7 @@ public class PlantTestGrowController : MonoBehaviour
         {
             foreach (var plant in plants)
             {
-                StartCoroutine(plant.NextGrowthStep());
+                plant.NewDay();
             }
         }
         

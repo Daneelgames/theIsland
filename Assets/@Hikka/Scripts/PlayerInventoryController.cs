@@ -76,7 +76,6 @@ public class PlayerInventoryController : MonoBehaviour
     public void NewToolFound(int toolIndex)
     {
         // already have this item
-        Debug.Log("NewToolFound(int toolIndex) " + toolIndex);
         for (int i = 0; i < inventory.Count; i++)
         {
             if (inventory[i].toolData && inventory[i].toolData.inventoryIndex == toolIndex)

@@ -98,11 +98,11 @@ public class PlayerInteractionController : MonoBehaviour
             if (lastSelectedPlantPart)
             {
                 //lastSelectedPlantPart.UnselectPart();
-                lastSelectedPlantPart.ParentPlantNode.UnselectNode();
+                lastSelectedPlantPart.ParentPlantNode.ShowSpawnedKnot();
+                lastSelectedPlantPart.ParentPlantNode.ProceduralPlant.UnselectNode(lastSelectedPlantPart.ParentPlantNode);
             }
 
             var temp = plantGo.GetComponent<PlantPart>();
-
             switch (temp.plantPartType)
             {
                 case PlantPart.PlantPartType.Knot:
@@ -127,7 +127,8 @@ public class PlayerInteractionController : MonoBehaviour
     {
         lastSelectedPlantGO = plantGo;
         lastSelectedPlantPart = temp;
-        lastSelectedPlantPart.ParentPlantNode.SelectNode();
+
+        lastSelectedPlantPart.ParentPlantNode.ProceduralPlant.SelectNode(lastSelectedPlantPart.ParentPlantNode);
     }
     void SelectPart(GameObject plantGo, PlantPart temp)
     {
@@ -136,10 +137,10 @@ public class PlayerInteractionController : MonoBehaviour
         lastSelectedPlantPart.SelectPart();
     }
 
-void NoSelectedPlantPartGO()
+    void NoSelectedPlantPartGO()
     {
         //lastSelectedPlantPart.UnselectPart();
-        lastSelectedPlantPart.ParentPlantNode.UnselectNode();
+        lastSelectedPlantPart.ParentPlantNode.ProceduralPlant.UnselectNode(lastSelectedPlantPart.ParentPlantNode);
         lastSelectedPlantPart = null;
         lastSelectedPlantGO = null;
     }
@@ -232,8 +233,6 @@ void NoSelectedPlantPartGO()
 
     public void Interact(InteractiveObject objectToInteract, int selectedAction)
     {
-        Debug.Log("Interact; selectedAction " + selectedAction);
-        
         if (selectedAction == -1)
             return;
         
