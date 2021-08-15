@@ -4494,14 +4494,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1728309217}
     m_Modifications:
-    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
-      propertyPath: mainKnotGrowthChance
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 211472535068219181, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
-      propertyPath: defaultTwoBranchesChance
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 3374522573488524313, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
       propertyPath: m_RootOrder
       value: 0

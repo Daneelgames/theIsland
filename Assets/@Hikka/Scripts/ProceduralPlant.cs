@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class ProceduralPlant : MonoBehaviour
 {
+    public PlantData plantData;
     [Header("Plants parts")]
     [SerializeField] private PlantPartData knots;
     [SerializeField] private PlantPartData branches;
@@ -45,9 +46,14 @@ public class ProceduralPlant : MonoBehaviour
     private void Start()
     {
         InteractiveObjectsManager.instance.proceduralPlants.Add(this);
-        
     }
 
+    public void NewDay()
+    {
+
+        StartCoroutine(NextGrowthStep());
+    }
+    
     public IEnumerator NextGrowthStep()
     {
         currentGrowthStep++;

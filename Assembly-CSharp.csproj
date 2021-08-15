@@ -102,6 +102,7 @@
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
      <Compile Include="Assets\Scripts\First_Person_Controller\HeadBob.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\ObjectPooling.cs" />
+     <Compile Include="Assets\GpuInstancerInitiator.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\@Hikka\Scripts\Utils\PlantTestGrowController.cs" />
      <Compile Include="Assets\selected effect\scripts\Selected_effect_touch.cs" />
@@ -143,7 +144,6 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\GpuInstancerInitiator.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_02.json" />

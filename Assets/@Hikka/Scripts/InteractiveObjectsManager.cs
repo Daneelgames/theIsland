@@ -46,7 +46,7 @@ public class InteractiveObjectsManager : MonoBehaviour
     {
         for (int i = 0; i < proceduralPlants.Count; i++)
         {
-            StartCoroutine(proceduralPlants[i].NextGrowthStep());
+            proceduralPlants[i].NewDay();
         }
     }
 }

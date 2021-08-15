@@ -13,10 +13,10 @@ ShaderVariantCollection:
       variants:
       - keywords: _NORMALMAP
         passType: 0
+      - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
+        passType: 0
       - keywords: _EMISSION _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
           _NORMALMAP _UVSEC_UV1
-        passType: 0
-      - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
         passType: 0
   - first: {fileID: 4800000, guid: e0d69a0cae717da4693f30615037e2ee, type: 3}
     second:
@@ -27,9 +27,9 @@ ShaderVariantCollection:
         passType: 0
       - keywords: _NORMALMAP
         passType: 0
-      - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
-        passType: 0
       - keywords: _METALLICSPECGLOSSMAP _NORMALMAP
+        passType: 0
+      - keywords: _GLOSSYREFLECTIONS_OFF _NORMALMAP
         passType: 0
       - keywords: _ALPHATEST_ON
         passType: 0
@@ -38,10 +38,6 @@ ShaderVariantCollection:
       - keywords: _EMISSION _NORMALMAP
         passType: 0
       - keywords: _ALPHATEST_ON _EMISSION
-        passType: 0
-      - keywords: _NORMALMAP
-        passType: 0
-      - keywords: _ALPHATEST_ON
         passType: 0
   - first: {fileID: 4800000, guid: a1fe6b00539636f49bae5f911c8ccc55, type: 3}
     second:
@@ -95,8 +91,6 @@ ShaderVariantCollection:
       - keywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
         passType: 0
       - keywords: _ALPHATEST_ON _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
-        passType: 0
-      - keywords: _NORMALMAP
         passType: 0
   - first: {fileID: -6465566751694194690, guid: 4c36f6176d9f525449b33c671cb56707, type: 3}
     second:

@@ -79,6 +79,7 @@
      <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\GrassMowerController.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\FlyCamera.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Core\Contract\GPUInstancerManager.cs" />
+     <Compile Include="Assets\GPUInstancer\Demos\ShaderGraphVariations\Scripts\ShaderGraphVariationsController.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerPrefabRuntimeHandler.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerSettingsExtention.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerShaderBindings.cs" />
@@ -100,7 +101,6 @@
      <Compile Include="Assets\GPUInstancer\Scripts\API\GPUInstancerAPI.cs" />
      <Compile Include="Assets\GPUInstancer\Demos\PrefabInstancing\Scripts\SpaceshipMobileController.cs" />
      <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerBillboardAtlasBindings.cs" />
-     <Compile Include="Assets\GPUInstancer\Demos\ShaderGraphVariations\Scripts\ShaderGraphVariationsController.cs" />
      <None Include="Assets\GPUInstancer\Shaders\StandardSpecular_GPUI.shader" />
      <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedCameraCalculationKernelVR.compute" />
      <None Include="Assets\GPUInstancer\Shaders\Standard_GPUI.shader" />
