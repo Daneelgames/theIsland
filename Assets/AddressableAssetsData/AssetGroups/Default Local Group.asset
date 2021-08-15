@@ -41,6 +41,30 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 54a28f0a02986434aadf18e7b39649a7
+    m_Address: PickUps/00 FingerLeafSeed.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9f9ae370ffcded44eb724a537b897e13
+    m_Address: PickUps/01 EyeLeafSeed.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2819d1f91b312ac46ba7af6c62679a1b
+    m_Address: PickUps/02 WaterCanTool.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e5be61817df0b5742989b4f70d0aaafa
+    m_Address: PickUps/03 BladeTool.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 733579267f0ec3c49a75c8dbec89e2a9, type: 2}
   m_SchemaSet:

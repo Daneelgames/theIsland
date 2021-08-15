@@ -9,7 +9,7 @@ public class AssetSpawner : MonoBehaviour
 {
     public enum ObjectType
     {
-        ProceduralPlant, Prop, Path
+        ProceduralPlant, Prop, Path, Tool
     }
 
     public static AssetSpawner instance;
@@ -118,6 +118,9 @@ public class AssetSpawner : MonoBehaviour
                 case ObjectType.Path:
                     ProceedPath(asyncOperationHandle.Result);
                     break;
+                case ObjectType.Tool:
+                    ProceedTool(asyncOperationHandle.Result);
+                    break;
             }
             
             var notify = asyncOperationHandle.Result.AddComponent<NotifyOnDestroy>();
@@ -160,6 +163,11 @@ public class AssetSpawner : MonoBehaviour
     void ProceedPath(GameObject go)
     {
         DynamicLevelGenerator.instance.ProceedPath(go);
+    }
+    
+    void ProceedTool(GameObject go)
+    {
+        
     }
 
     void EnqueueSpawnForAfterInitialization(AssetReference assetReference, Vector3 newPos, Quaternion newRot )

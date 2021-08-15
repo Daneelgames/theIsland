@@ -76,12 +76,14 @@
      <Compile Include="Assets\@Hikka\Scripts\ToolController.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\CameraInputData.cs" />
+     <Compile Include="Assets\ProceduralPlantsManager.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\PlayerAudioController.cs" />
      <Compile Include="Assets\Scripts\AssetSpawner.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\MovementState.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaStats.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandGenerator.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\SaveCombinedMesh.cs" />
+     <Compile Include="Assets\ProceduralPlantStatsFeedback.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\PlayerMovementStats.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Noise.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\MovementInputData.cs" />
@@ -143,8 +145,6 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\ProceduralPlantsManager.cs" />
-     <Compile Include="Assets\ProceduralPlantStatsFeedback.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_02.json" />

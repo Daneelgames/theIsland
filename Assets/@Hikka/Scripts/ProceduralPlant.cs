@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GPUInstancer;
 using PlayerControls;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -94,11 +95,77 @@ public class ProceduralPlant : MonoBehaviour
         if (currentAgeInDays >= currentDyingAge)
         {
             // start coroutine NextStepDying
+            currentHealth -= 2;
+            StartCoroutine(NextDyingStep());
         }
         else if (hpOffset > 0)
         {
             StartCoroutine(NextGrowthStep());   
         }
+    }
+    
+    
+
+    IEnumerator NextDyingStep()
+    {
+        int t = 0;
+        for (int i = 0; i < plantNodes.Count; i++)
+        {
+            if (plantNodes[i] == null)
+            {
+                plantNodes.RemoveAt(i);
+                continue;
+            }
+
+            if (plantNodes[i].spawnedKnot && plantNodes[i].spawnedKnot.transform.lossyScale.x < 0.1f)
+            {
+                continue;
+            }
+
+            plantNodes[i].spawnedKnot.transform.localScale *= 0.9f;
+
+            if (plantNodes[i].spawnedLeaves.Count > 0)
+            {
+                StartCoroutine(DropLeaves(plantNodes[i]));
+            }
+            
+            t++;
+
+            if (t == 5)
+            {
+                t = 0;
+                yield return null;   
+            }
+        }
+
+        if (currentHealth <= 0 || plantNodes[0].spawnedKnot && plantNodes[0].spawnedKnot.transform.localScale.x < 0.1f)
+        {
+            PlantDeath();
+        }
+    }
+
+    IEnumerator DropLeaves(PlantNode node)
+    {
+        RaycastHit hit;
+        for (int j = 0; j < node.spawnedLeaves.Count; j++)
+        {
+            var leaf = node.spawnedLeaves[j];
+            leaf.transform.parent = null;
+
+            if (Physics.Raycast(leaf.transform.position, Vector3.down, out hit, 10, _layerMask))
+            {
+                leaf.transform.position = hit.point;
+            }
+            node.spawnedLeaves.RemoveAt(j);
+            yield return null;
+        }
+    }
+
+    public void PlantDeath()
+    {
+        ProceduralPlantsManager.instance.RemovePlant(this);
+        AssetSpawner.instance.Spawn(ProceduralPlantsManager.instance.ToolPickUpsReferences[plantData.inventoryIndex], transform.position, Quaternion.identity, AssetSpawner.ObjectType.Tool);
+        Destroy(gameObject);
     }
     
     public IEnumerator NextGrowthStep()
@@ -129,7 +196,7 @@ public class ProceduralPlant : MonoBehaviour
         }
         else
         {
-            if (Random.value < mainKnotGrowthChance)
+            if (Random.value <= mainKnotGrowthChance)
             {
                 if (scaleEveryNode)
                 {
@@ -323,9 +390,8 @@ public class ProceduralPlant : MonoBehaviour
 
         while (true)
         {
-            for (int i = 1; i < plantNodes.Count; i++)
+            for (int i = 0; i < plantNodes.Count; i++)
             {
-                
                 if (plantNodes[i].spawnedKnot == null)
                 {
                     plantNodes.RemoveAt(i);
@@ -366,10 +432,16 @@ public class ProceduralPlant : MonoBehaviour
     }
 
     void CheckPlantPartForCollision(PlantPart part, Vector3 capsuleStart, Vector3 capsuleEnd, float capsuleRadius, Vector3 direction)
-    {
+    { 
+        Debug.DrawLine(capsuleStart, capsuleEnd, Color.red, duration: 1f);
         RaycastHit hit;
-        if (Physics.SphereCast(capsuleStart, capsuleRadius, direction, out hit, Vector3.Distance(capsuleStart, capsuleEnd), _layerMask))
+        //if (Physics.SphereCast(capsuleStart, capsuleRadius, direction, out hit, Vector3.Distance(capsuleStart, capsuleEnd), _layerMask))
+        //if (Physics.Raycast(capsuleStart, direction, out hit, Vector3.Distance(capsuleStart, capsuleEnd), _layerMask))
+        if (Physics.Linecast(capsuleStart, capsuleEnd, out hit, _layerMask))
         {
+            Debug.Log("ProceduralPlant.CheckNodesForCollisions");
+
+            part.transform.localEulerAngles += new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), Random.Range(-5f, 5f));
             Vector3 temp = Vector3.Cross (part.transform.forward,hit.normal);
             if (!animateRotation)
                 part.transform.rotation = Quaternion.LookRotation(-temp);

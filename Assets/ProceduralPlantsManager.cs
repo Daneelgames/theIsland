@@ -5,9 +5,10 @@ using UnityEngine.AddressableAssets;
 
 public class ProceduralPlantsManager : MonoBehaviour
 {
-    [SerializeField] List<AssetReference> proceduralPlantsReferences;
+    [SerializeField] private List<AssetReference> toolPickUpsReferences;
+    [SerializeField] private List<AssetReference> proceduralPlantsReferences;
     
-    [SerializeField] List<ProceduralPlant> spawnedProceduralPlants;
+    [SerializeField] private List<ProceduralPlant> spawnedProceduralPlants;
 
     public static ProceduralPlantsManager instance;
 
@@ -16,6 +17,10 @@ public class ProceduralPlantsManager : MonoBehaviour
         instance = this;
     }
 
+    public List<AssetReference> ToolPickUpsReferences
+    {
+        get => toolPickUpsReferences;
+    }
     public List<AssetReference> ProceduralPlantsReferences
     {
         get => proceduralPlantsReferences;
@@ -37,5 +42,10 @@ public class ProceduralPlantsManager : MonoBehaviour
         {
             spawnedProceduralPlants[i].NewDay();
         }
+    }
+
+    public void RemovePlant(ProceduralPlant plant)
+    {
+        spawnedProceduralPlants.Remove(plant);
     }
 }
