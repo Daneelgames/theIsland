@@ -170,7 +170,7 @@ MonoBehaviour:
   currentAgeInDays: 0
   startDyingOnDayMinMax: {x: 5, y: 5}
   currentDyingAge: 5
-  growthRate: 1
+  growthRate: 2
   animateRotation: 0
   animateScale: 0
   scaleEveryNode: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
   knotsMinMaxRotation: {x: -60, y: 60}
   branchesMinMaxRotation: {x: -15, y: 15}
   startBranchesMinMaxAmount: {x: 1, y: 1}
-  defaultGrowBranchesChance: 0.5
-  defaultTwoBranchesChance: 0.3
+  defaultGrowBranchesChance: 0.75
+  defaultTwoBranchesChance: 0.75
   defaultLeavesGrowChance: 0.2
   defaultFruitsGrowChance: 0.005
   plantNodes: []
