@@ -151,19 +151,27 @@ MonoBehaviour:
   plantData: {fileID: 11400000, guid: 2125dba77eea19147a2ce346e11d406f, type: 2}
   knots:
     plantPartPrefab:
-    - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
+    - {fileID: 4048185409795078802, guid: 2685ffc0bc6f63c4cb1f13d87cfbb53a, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  attackingKnots:
+    plantPartPrefab:
+    - {fileID: 4048185409795078802, guid: 1cf1bc18efefb9a48ac0648d3f5337cf, type: 3}
     startGrowthOnStepMinMax: {x: 3, y: 8}
   branches:
     plantPartPrefab:
-    - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
+    - {fileID: 6443928958268257529, guid: a52b76cfaa13976498367abade1cfc37, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  attackingBranches:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 4fca84766b369264d92b177278cf3623, type: 3}
     startGrowthOnStepMinMax: {x: 3, y: 8}
   leaves:
     plantPartPrefab:
-    - {fileID: 6443928958268257529, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
+    - {fileID: 6443928958268257529, guid: 24f22f4ea8c133a44bedd23867b27fe3, type: 3}
     startGrowthOnStepMinMax: {x: 1, y: 3}
   fruits:
     plantPartPrefab:
-    - {fileID: 6443928958268257529, guid: 1fcea2aa1a39cf14fafc0af119c3641b, type: 3}
+    - {fileID: 6443928958268257529, guid: d08c82f0cfaa6364ca357ae7af798003, type: 3}
     startGrowthOnStepMinMax: {x: 3, y: 5}
   currentHealth: 3
   minHealthForFruitsSpawn: 6

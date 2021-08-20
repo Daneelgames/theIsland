@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LeavesTest_10694
   m_EditorClassIdentifier: 
   prefabObject: {fileID: 7639419732496513187, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
-  isShadowCasting: 0
+  isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
   shadowLODMap:
@@ -39,7 +39,7 @@ MonoBehaviour:
   maxDistance: 500
   isFrustumCulling: 1
   isOcclusionCulling: 1
-  frustumOffset: 0
+  frustumOffset: 0.1
   minCullingDistance: 5
   occlusionOffset: 0
   occlusionAccuracy: 1

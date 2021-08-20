@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25e83c12ea754689a476d23cac7e5ad7, type: 3}
-  m_Name: KnotTest_10726
+  m_Name: Eyeleaf Knot_29844
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 8811553317481452062, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
+  prefabObject: {fileID: 8811553317481452062, guid: 2685ffc0bc6f63c4cb1f13d87cfbb53a, type: 3}
   isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   useOriginalShaderForShadow: 1
   cullShadows: 0
   minDistance: 0
-  maxDistance: 10000
+  maxDistance: 500
   isFrustumCulling: 1
   isOcclusionCulling: 1
   frustumOffset: 0.1
@@ -69,7 +69,7 @@ MonoBehaviour:
     billboardFaceCamPos: 0
   isBillboardDisabled: 0
   useGeneratedBillboard: 0
-  checkedForBillboardExtensions: 1
+  checkedForBillboardExtensions: 0
   autoUpdateTransformData: 1
   treeType: 0
   warningText: 

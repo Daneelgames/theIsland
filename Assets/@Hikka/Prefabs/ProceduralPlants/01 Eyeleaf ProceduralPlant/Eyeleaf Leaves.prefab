@@ -41,10 +41,10 @@ GameObject:
   - component: {fileID: 2356113929326768681}
   - component: {fileID: 6443928958268257529}
   - component: {fileID: 1180798862841384193}
-  - component: {fileID: 3568585236444564047}
   - component: {fileID: 5795481488671270772}
+  - component: {fileID: 6856465662814268635}
   m_Layer: 10
-  m_Name: LeavesTest
+  m_Name: Eyeleaf Leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,19 +99,6 @@ CapsuleCollider:
   m_Height: 0.08308035
   m_Direction: 1
   m_Center: {x: -0.01118996, y: 0.037750684, z: -0.010896236}
---- !u!114 &3568585236444564047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639419732496513187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 7c5f16bb48d4f6544bf62202021add28, type: 2}
 --- !u!114 &5795481488671270772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +112,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gpuiPrefab: {fileID: 0}
+--- !u!114 &6856465662814268635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639419732496513187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 0dec05d4caab95f42ab3684da8bc77c3, type: 2}
 --- !u!1 &8259493360689086685
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6f604a6b17ed65a43af75b60ceb081d8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 070366c43fe726043bc8a9f97c577823, type: 2}
+      objectReference: {fileID: 2100000, guid: 441cfc4e3cc71f64ebce4ba70a665e72, type: 2}
     - target: {fileID: 919132149155446097, guid: 6f604a6b17ed65a43af75b60ceb081d8, type: 3}
       propertyPath: m_Name
       value: Visual

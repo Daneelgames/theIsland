@@ -288,9 +288,17 @@ MonoBehaviour:
     plantPartPrefab:
     - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
     startGrowthOnStepMinMax: {x: 3, y: 8}
+  attackingKnots:
+    plantPartPrefab:
+    - {fileID: 4048185409795078802, guid: 045cfea864eb10343969bcf38fc956a8, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
   branches:
     plantPartPrefab:
     - {fileID: 6443928958268257529, guid: 565d83983fb188c4080116387c21c882, type: 3}
+    startGrowthOnStepMinMax: {x: 3, y: 8}
+  attackingBranches:
+    plantPartPrefab:
+    - {fileID: 6443928958268257529, guid: 9fb553f175e5da143933ea9bef4a5f70, type: 3}
     startGrowthOnStepMinMax: {x: 3, y: 8}
   leaves:
     plantPartPrefab:

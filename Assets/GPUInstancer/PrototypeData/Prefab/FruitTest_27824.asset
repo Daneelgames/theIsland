@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FruitTest_27824
   m_EditorClassIdentifier: 
   prefabObject: {fileID: 7639419732496513187, guid: 1fcea2aa1a39cf14fafc0af119c3641b, type: 3}
-  isShadowCasting: 0
+  isShadowCasting: 1
   useCustomShadowDistance: 0
   shadowDistance: 0
   shadowLODMap:
@@ -39,7 +39,7 @@ MonoBehaviour:
   maxDistance: 10000
   isFrustumCulling: 1
   isOcclusionCulling: 1
-  frustumOffset: 0
+  frustumOffset: 0.1
   minCullingDistance: 5
   occlusionOffset: 0
   occlusionAccuracy: 1

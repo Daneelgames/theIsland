@@ -912,6 +912,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 777957bc380093c4fbcbed451c696e0a, type: 2}
   - {fileID: 11400000, guid: fd73f977ca18a3b4da5edbfd51b0f765, type: 2}
   - {fileID: 11400000, guid: 7c5f16bb48d4f6544bf62202021add28, type: 2}
+  - {fileID: 11400000, guid: 8a1b9a93f50d32a419b5d5365ff1f63f, type: 2}
+  - {fileID: 11400000, guid: 33822eda7db169a4da95f1871da5d06f, type: 2}
+  - {fileID: 11400000, guid: f66f079d8d349214a915490c41624e38, type: 2}
+  - {fileID: 11400000, guid: 9f6b3a5fb4205e844a976566cb3283d7, type: 2}
+  - {fileID: 11400000, guid: 2f52414c4b135ba41a233346758a4bbf, type: 2}
+  - {fileID: 11400000, guid: 05a83b67e691ef146a03c7951c506361, type: 2}
+  - {fileID: 11400000, guid: e104f3536c4abf646a28d0ad60761637, type: 2}
+  - {fileID: 11400000, guid: 0dec05d4caab95f42ab3684da8bc77c3, type: 2}
   autoSelectCamera: 0
   cameraData:
     mainCamera: {fileID: 327953108}
@@ -926,6 +934,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 777957bc380093c4fbcbed451c696e0a, type: 2}
   - {fileID: 11400000, guid: fd73f977ca18a3b4da5edbfd51b0f765, type: 2}
   - {fileID: 11400000, guid: 7c5f16bb48d4f6544bf62202021add28, type: 2}
+  - {fileID: 11400000, guid: 8a1b9a93f50d32a419b5d5365ff1f63f, type: 2}
+  - {fileID: 11400000, guid: 33822eda7db169a4da95f1871da5d06f, type: 2}
+  - {fileID: 11400000, guid: f66f079d8d349214a915490c41624e38, type: 2}
+  - {fileID: 11400000, guid: 9f6b3a5fb4205e844a976566cb3283d7, type: 2}
+  - {fileID: 11400000, guid: 2f52414c4b135ba41a233346758a4bbf, type: 2}
+  - {fileID: 11400000, guid: 05a83b67e691ef146a03c7951c506361, type: 2}
+  - {fileID: 11400000, guid: e104f3536c4abf646a28d0ad60761637, type: 2}
+  - {fileID: 11400000, guid: 0dec05d4caab95f42ab3684da8bc77c3, type: 2}
   isPrototypeTextMode: 0
   showSceneSettingsBox: 1
   showPrototypeBox: 1
@@ -950,11 +966,35 @@ MonoBehaviour:
     registeredPrefabs: []
   - prefabPrototype: {fileID: 11400000, guid: 7c5f16bb48d4f6544bf62202021add28, type: 2}
     registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 8a1b9a93f50d32a419b5d5365ff1f63f, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 33822eda7db169a4da95f1871da5d06f, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: f66f079d8d349214a915490c41624e38, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 9f6b3a5fb4205e844a976566cb3283d7, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 2f52414c4b135ba41a233346758a4bbf, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 05a83b67e691ef146a03c7951c506361, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: e104f3536c4abf646a28d0ad60761637, type: 2}
+    registeredPrefabs: []
+  - prefabPrototype: {fileID: 11400000, guid: 0dec05d4caab95f42ab3684da8bc77c3, type: 2}
+    registeredPrefabs: []
   prefabList:
   - {fileID: 7639419732496513187, guid: 565d83983fb188c4080116387c21c882, type: 3}
   - {fileID: 7639419732496513187, guid: 1fcea2aa1a39cf14fafc0af119c3641b, type: 3}
   - {fileID: 8811553317481452062, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
   - {fileID: 7639419732496513187, guid: 167b7cabe4031ef46a6cd24bcde6f7a8, type: 3}
+  - {fileID: 7639419732496513187, guid: 9fb553f175e5da143933ea9bef4a5f70, type: 3}
+  - {fileID: 8811553317481452062, guid: 045cfea864eb10343969bcf38fc956a8, type: 3}
+  - {fileID: 7639419732496513187, guid: 4fca84766b369264d92b177278cf3623, type: 3}
+  - {fileID: 8811553317481452062, guid: 1cf1bc18efefb9a48ac0648d3f5337cf, type: 3}
+  - {fileID: 7639419732496513187, guid: a52b76cfaa13976498367abade1cfc37, type: 3}
+  - {fileID: 7639419732496513187, guid: d08c82f0cfaa6364ca357ae7af798003, type: 3}
+  - {fileID: 8811553317481452062, guid: 2685ffc0bc6f63c4cb1f13d87cfbb53a, type: 3}
+  - {fileID: 7639419732496513187, guid: 24f22f4ea8c133a44bedd23867b27fe3, type: 3}
   enableMROnManagerDisable: 1
   enableMROnRemoveInstance: 1
 --- !u!4 &248075319

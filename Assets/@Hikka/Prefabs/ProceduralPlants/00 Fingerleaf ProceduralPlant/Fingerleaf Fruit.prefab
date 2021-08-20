@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5853364167009312217}
   - component: {fileID: 2780584979938756193}
   m_Layer: 10
-  m_Name: FruitTest
+  m_Name: Fingerleaf Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
