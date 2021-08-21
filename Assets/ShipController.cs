@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
@@ -9,15 +10,23 @@ public class ShipController : MonoBehaviour
     // interacted with control panel
     PlayerMovement playerMovement;
     public float moveSpeedScaler = 1;
+    public float dragScale = 0.5f;
+    public float accelerationScale = 1;
     public float torqueSpeedScaler = 0.33f;
     public Rigidbody rb;
     private Vector3 currentVelocity;
     private Vector3 targetVelocity;
     private bool controlledInFrame = false;
-
+    public GameObject outdoorLights;
+    public ShipAudioManager shipAudioManager;
     void Start()
     {
-        StartCoroutine(ControlShip());
+        //(ControlShip());
+    }
+
+    private void FixedUpdate()
+    {
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 
     public void PlayerControlsShip()
@@ -28,30 +37,22 @@ public class ShipController : MonoBehaviour
         {
             StopAllCoroutines();
             rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
             playerMovement.PlayerControlsShip(null);
+            shipAudioManager.StopMovingSfx();
             return;   
         }
 
         
         playerMovement.PlayerControlsShip(this);
 
+        rb.isKinematic = false;
         StartCoroutine(MovePlayerToControlPosition());
     }
 
     IEnumerator MovePlayerToControlPosition()
     {
         playerPositionAtControl.position = playerMovement.transform.position;
-        
-        /*
-        float t = 0;
-        float tt = 0.75f;
-        Vector3 initPos = playerMovement.transform.position;
-        while (t < tt)
-        {
-            yield return null;
-            playerMovement.transform.position = Vector3.Lerp(initPos, playerPositionAtControl.position, t/tt);
-            t += Time.deltaTime;
-        }*/
         
         StartCoroutine(ControlShip());
         while (true)
@@ -63,6 +64,7 @@ public class ShipController : MonoBehaviour
 
     IEnumerator ControlShip()
     {
+        shipAudioManager.StartMovingSfx();
         while (true)
         {
             GetShipMovement();
@@ -126,10 +128,16 @@ public class ShipController : MonoBehaviour
 
         if (controlledInFrame == false)
         {
-            targetVelocity = Vector3.Lerp(targetVelocity, Vector3.zero, Time.deltaTime);
+            targetVelocity = Vector3.Lerp(targetVelocity, Vector3.zero, Time.deltaTime * dragScale);
         }
         
-        currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity * moveSpeedScaler, Time.deltaTime);
-        //rb.velocity = currentVelocity;
+        currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity * moveSpeedScaler, Time.deltaTime * accelerationScale);
+        
+        rb.velocity = currentVelocity;
+    }
+
+    public void ToggleLight()
+    {
+        outdoorLights.SetActive(!outdoorLights.activeInHierarchy);
     }
 }

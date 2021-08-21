@@ -76,8 +76,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.8156058, b: 0.7122642, a: 1}
-  m_Intensity: 10
-  m_Range: 3
+  m_Intensity: 1
+  m_Range: 5
   m_SpotAngle: 165.28857
   m_InnerSpotAngle: 91.652145
   m_CookieSize: 10
@@ -126,6 +126,20 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!64 &839802160651140021
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684637876764091003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8daa69e8e53a76e4b9931aaa1f10a327, type: 3}
 --- !u!1 &4241950592109851367
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,9 +182,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8156058, b: 0.7122642, a: 1}
+  m_Color: {r: 0, g: 0.4528302, b: 0.4397047, a: 1}
   m_Intensity: 1
-  m_Range: 1.5
+  m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -294,8 +308,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 217129312784476067, guid: 58de69643cf5ede4bbba18f52d17836c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58de69643cf5ede4bbba18f52d17836c, type: 3}
+--- !u!1 &3684637876764091003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1393069050684342, guid: 58de69643cf5ede4bbba18f52d17836c, type: 3}
+  m_PrefabInstance: {fileID: 3685778881418150349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3690410717045032227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4640642560115950, guid: 58de69643cf5ede4bbba18f52d17836c, type: 3}
