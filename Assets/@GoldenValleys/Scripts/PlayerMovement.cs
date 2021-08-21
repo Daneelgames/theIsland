@@ -139,7 +139,14 @@ namespace PlayerControls
 
         public void PlayerControlsShip(ShipController ship)
         {
-            transform.parent = ship.transform;
+            if (ship == null)
+            {
+                controller.enabled = true;
+                MouseLook.instance.PlayerControlsShip(null);
+                inControl = true;
+                return;
+            }
+            
             controller.enabled = false;
             MouseLook.instance.PlayerControlsShip(ship);
             inControl = false;
@@ -171,7 +178,14 @@ namespace PlayerControls
 
         private void LateUpdate()
         {
-            if (playerInstance && !teleport)
+            if (!playerInstance)
+                return;
+            
+            if (!inControl)
+            {
+                playerHead.position = transform.position + Vector3.up * playerHeight;
+            }
+            else if (!teleport)
                 playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.smoothDeltaTime);
         }
 

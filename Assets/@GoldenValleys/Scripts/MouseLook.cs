@@ -73,7 +73,10 @@ public class MouseLook : MonoBehaviour
 
     public void PlayerControlsShip(ShipController ship)
     {
-        transform.parent = ship.transform;
+        if (ship == null)
+        {
+            return;
+        }
     }
     
     public void ToggleCrouch(bool crouch)

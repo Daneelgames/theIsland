@@ -8,15 +8,29 @@ public class ShipController : MonoBehaviour
     public Transform playerPositionAtControl;
     // interacted with control panel
     PlayerMovement playerMovement;
-    public float baseSpeedScaler = 5;
+    public float moveSpeedScaler = 1;
+    public float torqueSpeedScaler = 0.33f;
     public Rigidbody rb;
-    
+    private Vector3 currentVelocity;
+    private Vector3 targetVelocity;
+    private bool controlledInFrame = false;
+
+    void Start()
+    {
+        StartCoroutine(ControlShip());
+    }
+
     public void PlayerControlsShip()
     {
         playerMovement = PlayerMovement.instance;
-        
+
         if (playerMovement.inControl == false)
-            return;
+        {
+            StopAllCoroutines();
+            rb.velocity = Vector3.zero;
+            playerMovement.PlayerControlsShip(null);
+            return;   
+        }
 
         
         playerMovement.PlayerControlsShip(this);
@@ -26,6 +40,9 @@ public class ShipController : MonoBehaviour
 
     IEnumerator MovePlayerToControlPosition()
     {
+        playerPositionAtControl.position = playerMovement.transform.position;
+        
+        /*
         float t = 0;
         float tt = 0.75f;
         Vector3 initPos = playerMovement.transform.position;
@@ -34,8 +51,14 @@ public class ShipController : MonoBehaviour
             yield return null;
             playerMovement.transform.position = Vector3.Lerp(initPos, playerPositionAtControl.position, t/tt);
             t += Time.deltaTime;
-        }
+        }*/
+        
         StartCoroutine(ControlShip());
+        while (true)
+        {
+            yield return null;
+            playerMovement.transform.position = playerPositionAtControl.position;
+        }
     }
 
     IEnumerator ControlShip()
@@ -49,17 +72,64 @@ public class ShipController : MonoBehaviour
 
     void GetShipMovement()
     {
+        //targetVelocity = currentVelocity;
+        
+        targetVelocity = Vector3.zero;
+        controlledInFrame = false;
         if (Input.GetKey(KeyCode.W))
-            rb.AddForce(transform.forward * baseSpeedScaler);
+        {
+            controlledInFrame = true;    
+            targetVelocity += transform.forward;   
+        }
+
         if (Input.GetKey(KeyCode.D))
-            rb.AddForce(transform.right * baseSpeedScaler);
+        {
+            controlledInFrame = true;
+            targetVelocity += transform.right;   
+        }
+
         if (Input.GetKey(KeyCode.S))
-            rb.AddForce(transform.forward * - baseSpeedScaler);
+        {
+            controlledInFrame = true;
+            targetVelocity += -transform.forward;   
+        }
+
         if (Input.GetKey(KeyCode.A))
-            rb.AddForce(transform.right * - baseSpeedScaler);
+        {
+            controlledInFrame = true;
+            targetVelocity += -transform.right;   
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
-            rb.AddForce(transform.up * baseSpeedScaler);
+        {
+            controlledInFrame = true;
+            targetVelocity += transform.up;   
+        }
+
         if (Input.GetKey(KeyCode.LeftControl))
-            rb.AddForce(transform.up * - baseSpeedScaler);
+        {
+            controlledInFrame = true;
+            targetVelocity += -transform.up;   
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            controlledInFrame = true;
+            rb.AddRelativeTorque(transform.up * torqueSpeedScaler, ForceMode.Force);
+        }
+        else if (Input.GetKey(KeyCode.Q))
+        {
+            controlledInFrame = true;
+            rb.AddRelativeTorque(transform.up * -torqueSpeedScaler, ForceMode.Force);
+        }
+        
+        targetVelocity.Normalize();
+
+        if (controlledInFrame == false)
+        {
+            targetVelocity = Vector3.Lerp(targetVelocity, Vector3.zero, Time.deltaTime);
+        }
+        
+        currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity * moveSpeedScaler, Time.deltaTime);
+        //rb.velocity = currentVelocity;
     }
 }
