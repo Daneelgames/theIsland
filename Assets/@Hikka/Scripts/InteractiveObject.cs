@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, PlantSeed, Put, TakeItem}
+    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip}
     
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
+    
+    [Header("Settings for different objects")]
+    public ShipController shipController;
     public Collider collider;
     public Vector3 protableTransformOffset = Vector3.zero;
     public Rigidbody rb;
@@ -44,6 +47,9 @@ public class InteractiveObject : MonoBehaviour
         
         switch (actionList[selectedAction].actionType)
         {
+            case ActionType.ControlShip:
+                shipController.PlayerControlsShip();
+                break;
             case ActionType.PickUp:
                 StartCoroutine(PlayerInteractionController.instance.PickUpObject(this));
                 break;

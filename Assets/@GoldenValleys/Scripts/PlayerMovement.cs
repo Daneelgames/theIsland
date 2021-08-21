@@ -136,6 +136,14 @@ namespace PlayerControls
                 gravityCurrent = Mathf.Lerp(gravityCurrent, gravity / 100, Time.deltaTime);
             }
         }
+
+        public void PlayerControlsShip(ShipController ship)
+        {
+            transform.parent = ship.transform;
+            controller.enabled = false;
+            MouseLook.instance.PlayerControlsShip(ship);
+            inControl = false;
+        }
         
         private void FixedUpdate()
         {

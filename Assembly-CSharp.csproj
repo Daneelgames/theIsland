@@ -145,6 +145,9 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
+     <Compile Include="Assets\epyphany\demo\ressources\move.cs" />
+     <Compile Include="Assets\epyphany\demo\ressources\rotate.cs" />
+     <Compile Include="Assets\ShipController.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_02.json" />
@@ -208,6 +211,7 @@
      <None Include="Assets\City Props Bundle\MAPS\bins\bin_01.json" />
      <None Include="Assets\NaturalTilingTextures\External\ShaderForge_NTT_Triplanar.shader" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\Standard_Specular_Snow CutOut.shader" />
+     <None Include="Assets\epyphany\ReadMe.txt" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\R.A.M Non Tesseled trial\Shaders\Water River Offset Vertex Color Flow.shader" />
      <Reference Include="UnityEngine">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
