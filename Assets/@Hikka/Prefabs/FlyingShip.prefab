@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 304530295}
   - component: {fileID: 304530297}
   - component: {fileID: 304530296}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 655380725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ControlsHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 1130255286}
   - component: {fileID: 1130255285}
   - component: {fileID: 1130255284}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 1775585825}
   - component: {fileID: 1775585827}
   - component: {fileID: 1775585826}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 8113586245558121953}
   - component: {fileID: 5513395099897736382}
   - component: {fileID: 7644145493429688013}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CanvasLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 7838580659276626238}
   - component: {fileID: 5540611898001118770}
   - component: {fileID: 6886381409774875245}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5224,7 +5224,7 @@ GameObject:
   - component: {fileID: 1841545651806394885}
   - component: {fileID: 8472747861889896402}
   - component: {fileID: 6476673076353789714}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 
 public class ProceduralPlant : MonoBehaviour
 {
+    public bool requirements = false;
+    
     public PlantData plantData;
 
     [Header("Plants parts")] 
@@ -98,7 +100,10 @@ public class ProceduralPlant : MonoBehaviour
     {
         currentAgeInDays++;
 
-        int hpOffset = _plantController.CompareActionsWithRequirements();
+        int hpOffset = 1;
+        if (requirements)
+            hpOffset = _plantController.CompareActionsWithRequirements();
+        
         currentHealth += hpOffset;
 
         statsFeedback.UpdateText(this);
