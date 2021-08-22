@@ -15,6 +15,7 @@ public class ProceduralPlant : MonoBehaviour
     public PlantData plantData;
 
     [Header("Plants parts")] 
+    public float branchScaler = 5;
     [SerializeField] private PlantPartData knots;
     [SerializeField] private PlantPartData attackingKnots;
 
@@ -348,7 +349,7 @@ public class ProceduralPlant : MonoBehaviour
             
         parentNode.spawnedBranches[i].transform.localEulerAngles += new Vector3(Random.Range(branchesMinMaxRotation.x, branchesMinMaxRotation.y), Random.Range(branchesMinMaxRotation.x, branchesMinMaxRotation.y), Random.Range(branchesMinMaxRotation.x, branchesMinMaxRotation.y));
         
-        parentNode.spawnedBranches[i].transform.localScale = Vector3.one * Random.Range(localBranchScaleScalerMinMax.x, localBranchScaleScalerMinMax.y); 
+        parentNode.spawnedBranches[i].transform.localScale = Vector3.one * branchScaler * Random.Range(localBranchScaleScalerMinMax.x, localBranchScaleScalerMinMax.y); 
             
         newPlantParts.Add(parentNode.spawnedBranches[i]);
         CreateLeaves(parentNode, parentNode.spawnedBranches[i], parentNode);
