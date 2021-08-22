@@ -1277,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4538651911194459487
 Transform:
   m_ObjectHideFlags: 0
@@ -1301,13 +1301,13 @@ Light:
   m_GameObject: {fileID: 486412435281136087}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.1
   m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 84.014595
+  m_InnerSpotAngle: 26.424267
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -2606,7 +2606,7 @@ MonoBehaviour:
   climbSphereRadius: 0.75
   groundMask:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 2880
   mouseLook: {fileID: 4241874864905411291}
   _grounded: 0
   _climbing: 0
@@ -2955,7 +2955,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.02256141, g: 0.04445479, b: 0.122641504, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2976,7 +2976,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2003
+    m_Bits: 4051
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

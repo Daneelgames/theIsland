@@ -64,6 +64,8 @@ public class ProceduralPlant : MonoBehaviour
     [SerializeField] [Range(0, 1)] private float defaultTwoBranchesChance = 0.3f;
     [SerializeField] [Range(0, 1)] private float defaultLeavesGrowChance = 0.1f;
     [SerializeField] [Range(0, 1)] private float defaultFruitsGrowChance = 0.025f;
+    [SerializeField] [Range(0, 1)] private float defaultMinimumPartScaleToGrowNewOne = 0.5f;
+    
 
     [Header("Nodes and parts in memory")] [SerializeField]
     private List<PlantNode> plantNodes = new List<PlantNode>();
@@ -249,6 +251,9 @@ public class ProceduralPlant : MonoBehaviour
                 }
 
                 if (Random.value > defaultGrowBranchesChance)
+                    continue;
+
+                if (newPlantParts[i].transform.lossyScale.x < defaultMinimumPartScaleToGrowNewOne)
                     continue;
 
                 plantNodes.Add(new PlantNode());

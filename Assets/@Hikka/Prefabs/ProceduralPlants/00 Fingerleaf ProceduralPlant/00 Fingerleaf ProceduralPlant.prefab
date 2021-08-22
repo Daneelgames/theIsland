@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requirements: 0
   plantData: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
-  branchScaler: 3
+  branchScaler: 1
   knots:
     plantPartPrefab:
     - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}
@@ -313,9 +313,9 @@ MonoBehaviour:
   currentHealth: 3
   minHealthForFruitsSpawn: 6
   currentAgeInDays: 0
-  startDyingOnDayMinMax: {x: 5, y: 5}
-  currentDyingAge: 5
-  growthRate: 4
+  startDyingOnDayMinMax: {x: 100, y: 100}
+  currentDyingAge: 100
+  growthRate: 10
   animateRotation: 0
   animateScale: 0
   scaleEveryNode: 0
@@ -330,6 +330,7 @@ MonoBehaviour:
   defaultTwoBranchesChance: 0.2
   defaultLeavesGrowChance: 0.1
   defaultFruitsGrowChance: 0.005
+  defaultMinimumPartScaleToGrowNewOne: 0.5
   plantNodes: []
   newPlantParts: []
   _layerMask:
