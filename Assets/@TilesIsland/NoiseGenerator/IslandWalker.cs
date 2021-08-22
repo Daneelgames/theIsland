@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using PlayerControls;
 using UnityEngine;
 
 public class IslandWalker : MonoBehaviour
@@ -18,7 +19,7 @@ public class IslandWalker : MonoBehaviour
         dlg = DynamicLevelGenerator.instance;
         irg = IslandRoadsGenerator.instance;
 
-        target = dlg.playerTarget.transform;
+        target = PlayerMovement.instance.transform;
         
         StartCoroutine(RequestPath());
     }

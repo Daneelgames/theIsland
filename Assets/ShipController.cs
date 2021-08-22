@@ -18,6 +18,7 @@ public class ShipController : MonoBehaviour
     private Vector3 targetVelocity;
     private bool controlledInFrame = false;
     public GameObject outdoorLights;
+    public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
     void Start()
     {
@@ -113,6 +114,11 @@ public class ShipController : MonoBehaviour
             controlledInFrame = true;
             targetVelocity += -transform.up;   
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            PlayerControlsShip();
+        }
+        
         if (Input.GetKey(KeyCode.E))
         {
             controlledInFrame = true;
@@ -139,5 +145,16 @@ public class ShipController : MonoBehaviour
     public void ToggleLight()
     {
         outdoorLights.SetActive(!outdoorLights.activeInHierarchy);
+    }
+
+    public void ToggleMusic()
+    {
+        if (musicSource.isPlaying)
+            musicSource.Stop();
+        else
+        {
+            musicSource.pitch = UnityEngine.Random.Range(0.75f, 1f);
+            musicSource.Play();
+        }
     }
 }

@@ -283,7 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a0f0d5267e0c0498b70be2560e977a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requirements: 0
   plantData: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
+  branchScaler: 3
   knots:
     plantPartPrefab:
     - {fileID: 4048185409795078802, guid: 7b4aea0668c11d746b537f7c8051ac1f, type: 3}

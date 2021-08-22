@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GPUInstancer;
+using PlayerControls;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -12,8 +13,9 @@ public class DynamicLevelGenerator : MonoBehaviour
 {
     public static DynamicLevelGenerator instance;
 
+    public Transform playerStartPoint;
+    
     public float tileSize = 20;
-    public Rigidbody playerTarget;
     public float heightScale = 1000;
     public int viewDistance = 8;
     public int distanceToDestroyTile = 8;
@@ -62,8 +64,12 @@ public class DynamicLevelGenerator : MonoBehaviour
         tilesParent.name = "TilesParent";
 
         var spawnCoords = IslandGenerator.instance.playerSpawnPoint.coordinates;
-        playerTarget.transform.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 200;
-        playerTarget.isKinematic = false;
+        PlayerMovement.instance.teleport = true;
+        PlayerMovement.instance.controller.enabled = false;
+        playerStartPoint.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 100;
+        PlayerMovement.instance.TeleportPlayerHead();
+        PlayerMovement.instance.teleport = false;
+        PlayerMovement.instance.controller.enabled = true;
         
         StartCoroutine(UpdateLevelAroundPlayer());
         StartCoroutine(DestroyTiles());
@@ -94,7 +100,7 @@ public class DynamicLevelGenerator : MonoBehaviour
         
         while (true)
         {
-            playerCoords = GetCoordinatesFromWorldPosition(playerTarget.transform.position);
+            playerCoords = GetCoordinatesFromWorldPosition(PlayerMovement.instance.transform.position);
 
             // spawn new tiles around player
             for (int x = - viewDistance + playerCoords.x; x <= viewDistance + playerCoords.x; x++)
@@ -338,12 +344,13 @@ public class DynamicLevelGenerator : MonoBehaviour
         go.transform.parent = tilesParent.transform;
         yield return null;
         
+        yield break;
+        
         if (spawnedTiles[_x, _z].spawnedNpc == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
         {
             spawnedTiles[_x, _z].spawnedNpc = Instantiate(islandWalkerPrefab, go.transform.position, Quaternion.identity);
         }
         
-        yield break;
         
         if (spawnedTiles[_x, _z].spawnedBuilding == null && IslandGenerator.instance.poisCoordinates.Contains(new Vector2Int(_x, _z)) && IslandGenerator.instance.poisCoordinates.IndexOf(new Vector2Int(_x, _z)) != 0)
         {

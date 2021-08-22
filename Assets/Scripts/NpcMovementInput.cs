@@ -13,7 +13,7 @@ public class NpcMovementInput : MonoBehaviour
     
     void Start()
     {
-        target = DynamicLevelGenerator.instance.playerTarget.transform;
+        target = PlayerMovement.instance.transform;
     }
     
     void Update()

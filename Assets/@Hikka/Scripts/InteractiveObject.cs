@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight}
+    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic}
     
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
     
@@ -52,6 +52,9 @@ public class InteractiveObject : MonoBehaviour
                 break;
             case ActionType.ToggleLight:
                 shipController.ToggleLight();
+                break;
+            case ActionType.ToggleMusic:
+                shipController.ToggleMusic();
                 break;
             case ActionType.PickUp:
                 StartCoroutine(PlayerInteractionController.instance.PickUpObject(this));
