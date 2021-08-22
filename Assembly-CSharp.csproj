@@ -150,9 +150,15 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Lighting.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Pipeline.hlsl" />
      <None Include="Assets\MeshBrush\Templates\Examples\Test Asteroid Example.xml" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\SphereMappedDistortion.shader" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_02.json" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Features.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\StylizedWater2.shader" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWindNoShiver.cginc" />
      <None Include="Assets\SC Post Effects\Shaders\DepthNormals.shader" />
      <None Include="Assets\City Props Bundle\MAPS\dumpsters\clean\dumpster_01.json" />
@@ -161,20 +167,29 @@
      <None Include="Assets\City Props Bundle\MAPS\traffic_lights\traffic_light_01.json" />
      <None Include="Assets\City Props Bundle\MAPS\fire_hydrant\fire_hydrant.json" />
      <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Free.txt" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterShading.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterFog.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\ForwardPass.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NM_indirect.cginc" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Tesselation.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Common.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Standard.shader" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Light.shader" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\Standard_Metalic_Snow.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Fog.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Third-Party Notices 2.txt" />
      <None Include="Assets\MeshBrush\Templates\Examples\Scale Curve Example 1.xml" />
      <None Include="Assets\City Props Bundle\MAPS\dumpsters\clean\dumpster_02.json" />
      <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
      <None Include="Assets\SC Post Effects\Shaders\Pipeline\Pipeline.hlsl" />
      <None Include="Assets\City Props Bundle\MAPS\mailbox\mailbox_street.json" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterMask.shader" />
      <None Include="Assets\SC Post Effects\Shaders\Pipeline\URP.hlsl" />
      <None Include="Assets\City Props Bundle\MAPS\barrels\barrel_01.json" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\Standard_Specular_Snow.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\WaterTransparencyMask.shader" />
      <None Include="Assets\MeshBrush\Templates\Examples\Terrain Example.xml" />
+     <None Include="Assets\StylizedWater2\package.json" />
      <None Include="Assets\City Props Bundle\MAPS\benches\bench_01.json" />
      <None Include="Assets\SC Post Effects\package.json" />
      <None Include="Assets\NatureManufacture Assets\Third-Party Notices.txt" />
@@ -182,8 +197,11 @@
      <None Include="Assets\City Props Bundle\MAPS\dumpsters\dirty\dumpster_01.json" />
      <None Include="Assets\MeshBrush\Templates\Readme.txt" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWind.cginc" />
+     <None Include="Assets\StylizedWater2\Shaders\StylizedWater2_Tessellation.shader" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\VS PRO Forest Biomes\README - VS PRO Biomes.txt" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Specular.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Caustics.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Input.hlsl" />
      <None Include="Assets\City Props Bundle\MAPS\bins\bin_02.json" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Tree_Bark_Metalic.shader" />
      <None Include="Assets\MeshBrush\Templates\Examples\Scale Curve Example 2.xml" />
@@ -191,29 +209,38 @@
      <None Include="Assets\MeshBrush\Templates\Examples\Stroke Alignment Example.xml" />
      <None Include="Assets\MeshBrush\Fonts\Michroma\OFL.txt" />
      <None Include="Assets\City Props Bundle\MAPS\containers\Ruined\container_01.json" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Vertex.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\README - About asset content and setup.txt" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_01.json" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterMask.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Tree_Bark_Specular.shader" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Tree_Leaves_Metalic.shader" />
      <None Include="Assets\SC Post Effects\Shaders\Blurring.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWindTouchRect.cginc" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\R.A.M Non Tesseled trial\Shaders\Water Swamp Offset Vertex Color Flow.shader" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\NM_indirect.cginc" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterPost.shader" />
      <None Include="Assets\City Props Bundle\MAPS\benches\bench_02.json" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\UnderwaterShading.hlsl" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\OFL.txt" />
      <None Include="Assets\SC Post Effects\Shaders\Pipeline\Standard.hlsl" />
      <None Include="Assets\City Props Bundle\MAPS\bins\bin_03.json" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterShading.hlsl" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\City Props Bundle\MAPS\containers\Non_ruined\container_01.json" />
      <None Include="Assets\SC Post Effects\Shaders\Blending.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\Standard_Metallic_Road_Transparent.shader" />
      <None Include="Assets\SC Post Effects\Shaders\SCPE.hlsl" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\DepthNormals.shader" />
      <None Include="Assets\City Props Bundle\MAPS\road_barriers\road_barrier_concrete.json" />
      <None Include="Assets\City Props Bundle\MAPS\bins\bin_01.json" />
      <None Include="Assets\NaturalTilingTextures\External\ShaderForge_NTT_Triplanar.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\Waves.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\Standard_Specular_Snow CutOut.shader" />
      <None Include="Assets\epyphany\ReadMe.txt" />
+     <None Include="Assets\StylizedWater2\Shaders\Underwater\Waterline.shader" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\R.A.M Non Tesseled trial\Shaders\Water River Offset Vertex Color Flow.shader" />
+     <None Include="Assets\StylizedWater2\Shaders\Libraries\URP.hlsl" />
      <Reference Include="UnityEngine">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
@@ -446,10 +473,10 @@
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
      <Reference Include="DOTween">
-     <HintPath>C:/theIsland/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
      </Reference>
      <Reference Include="Newtonsoft.Json">
-     <HintPath>C:/theIsland/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -800,88 +827,88 @@
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VSCode.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.CacheServer">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Addressables">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Searcher.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Runtime">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ResourceManager">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Rider.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ShaderGraph.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ScriptableBuildPipeline">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Addressables.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ScriptableBuildPipeline.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
-     <HintPath>C:/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -904,6 +931,14 @@
     <ProjectReference Include="sc.posteffects.runtime.csproj">
       <Project>{bb30d283-fe45-e07f-1274-7e86f9085c81}</Project>
       <Name>sc.posteffects.runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="sc.stylizedwater2.editor.csproj">
+      <Project>{9d651f3e-312e-3a05-1465-ff88aef77707}</Project>
+      <Name>sc.stylizedwater2.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="sc.stylizedwater2.runtime.csproj">
+      <Project>{e1fe558e-2fa3-3401-8375-c9ff46d11627}</Project>
+      <Name>sc.stylizedwater2.runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
