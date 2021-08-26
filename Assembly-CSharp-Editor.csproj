@@ -731,11 +731,11 @@
      <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
@@ -770,9 +770,17 @@
       <Project>{01c1fec9-6828-fd71-f100-ddb6d21db6b7}</Project>
       <Name>GPUInstancer</Name>
     </ProjectReference>
+    <ProjectReference Include="sc.stylizedwater2.editor.csproj">
+      <Project>{9d651f3e-312e-3a05-1465-ff88aef77707}</Project>
+      <Name>sc.stylizedwater2.editor</Name>
+    </ProjectReference>
     <ProjectReference Include="sc.posteffects.editor.csproj">
       <Project>{4d454618-0422-9639-e38b-e3f3d7af93da}</Project>
       <Name>sc.posteffects.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="sc.stylizedwater2.runtime.csproj">
+      <Project>{e1fe558e-2fa3-3401-8375-c9ff46d11627}</Project>
+      <Name>sc.stylizedwater2.runtime</Name>
     </ProjectReference>
     <ProjectReference Include="GPUInstancer.Editor.csproj">
       <Project>{c8a9dd7c-a5a4-ccaa-3f2a-d2af6bc135f5}</Project>
@@ -781,14 +789,6 @@
     <ProjectReference Include="sc.posteffects.runtime.csproj">
       <Project>{bb30d283-fe45-e07f-1274-7e86f9085c81}</Project>
       <Name>sc.posteffects.runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="sc.stylizedwater2.editor.csproj">
-      <Project>{9d651f3e-312e-3a05-1465-ff88aef77707}</Project>
-      <Name>sc.stylizedwater2.editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="sc.stylizedwater2.runtime.csproj">
-      <Project>{e1fe558e-2fa3-3401-8375-c9ff46d11627}</Project>
-      <Name>sc.stylizedwater2.runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

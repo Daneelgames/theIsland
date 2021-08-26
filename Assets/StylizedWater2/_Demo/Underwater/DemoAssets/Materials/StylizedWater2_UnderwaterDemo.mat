@@ -10,7 +10,8 @@ Material:
   m_Name: StylizedWater2_UnderwaterDemo
   m_Shader: {fileID: 4800000, guid: f04c9486b297dd848909db26983c9ddb, type: 3}
   m_ShaderKeywords: ADVANCED_LIGHTING _ADVANCED_SHADING _CAUSTICS _DEPTH_TEX _DISTANCE_NORMALS
-    _NORMALMAP _SIMPLE_LIGHTING _TRANSLUCENCY _UNDERWATER_ENABLED _WAVES _WORLDSPACEUV_ON
+    _ENVIRONMENTREFLECTIONS_OFF _NORMALMAP _RECEIVE_SHADOWS_OFF _REFRACTION _SIMPLE_LIGHTING
+    _SPECULARHIGHLIGHTS_OFF _TRANSLUCENCY _UNDERWATER_ENABLED _WORLDSPACEUV_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -161,8 +162,8 @@ Material:
     - _ReflectionStrength: 0.9
     - _Reflectivity: 1
     - _RefractionAmount: 0.05
-    - _RefractionOn: 0
-    - _RefractionStrength: 0
+    - _RefractionOn: 1
+    - _RefractionStrength: 3
     - _RimRize: 1
     - _RimTiling: 0.025
     - _SHARP_INERSECTIONOn: 1
@@ -194,12 +195,12 @@ Material:
     - _WaveSpeed: 1
     - _WaveSteepness: 1
     - _WaveTint: 0
-    - _WavesOn: 1
+    - _WavesOn: 0
     - _WorkflowMode: 1
     - _WorldSpaceUV: 1
     - _ZWrite: 1
     m_Colors:
-    - _AnimationParams: {r: -1, g: -1, b: 1, a: 0}
+    - _AnimationParams: {r: -1, g: -1, b: 0.1, a: 0}
     - _BaseColor: {r: 0, g: 0, b: 1, a: 0.9490196}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _DepthMapBounds: {r: -402.3, g: -459.43, b: 0.0012693577, a: 0}

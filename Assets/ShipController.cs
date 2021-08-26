@@ -157,4 +157,9 @@ public class ShipController : MonoBehaviour
             musicSource.Play();
         }
     }
+
+    public void UseGrabber(GrabberController grabber)
+    {
+        grabber.UseGrabberInput();
+    }
 }

@@ -19,7 +19,7 @@ RenderSettings:
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
-  m_LinearFogEnd: 100
+  m_LinearFogEnd: 200
   m_AmbientSkyColor: {r: 0.036712352, g: 0.09994218, b: 0.14150941, a: 1}
   m_AmbientEquatorColor: {r: 0.019607838, g: 0.05710105, b: 0.13333334, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -681,6 +681,38 @@ Transform:
   m_Father: {fileID: 922250489}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205105254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defe3efb56c1bc943a6bfb504a00dc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  verticalDensity:
+    m_OverrideState: 0
+    m_Value: 100
+  verticalDepth:
+    m_OverrideState: 0
+    m_Value: 5
+  horizontalDensity:
+    m_OverrideState: 0
+    m_Value: 8
+  startDistance:
+    m_OverrideState: 0
+    m_Value: 1
+  fogBrightness:
+    m_OverrideState: 0
+    m_Value: 1
+  subsurfaceStrength:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &232138894 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9169220084416313949, guid: 07b4d528b1e6aeb45855f8c1f8b6ccf6, type: 3}
@@ -1255,10 +1287,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 843286136}
     m_Modifications:
-    - target: {fileID: 667458732, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4241874864893504352, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
       propertyPath: m_Name
       value: Player GV
@@ -1306,10 +1334,6 @@ PrefabInstance:
     - target: {fileID: 4241874864893504358, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4241874866288030598, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.21176472
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b7d07e99b0d7d499133d6a997100b3, type: 3}
@@ -3041,7 +3065,7 @@ MonoBehaviour:
   waterLevelTransform: {fileID: 1888241925}
   waterMaterial: {fileID: 2100000, guid: 35027ffa3123a9549bb75189aa589910, type: 2}
   dynamicMaterial: 1
-  settings: {fileID: 1107901639}
+  settings: {fileID: 205105254}
   useVolumeBlending: 0
   verticalDensity: 0.05
   verticalDepth: 0
@@ -4408,38 +4432,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 0.15845871}
   m_Center: {x: 0, y: 1.5, z: 0.01877582}
---- !u!114 &1107901639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: defe3efb56c1bc943a6bfb504a00dc77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  verticalDensity:
-    m_OverrideState: 0
-    m_Value: 100
-  verticalDepth:
-    m_OverrideState: 0
-    m_Value: 5
-  horizontalDensity:
-    m_OverrideState: 0
-    m_Value: 8
-  startDistance:
-    m_OverrideState: 0
-    m_Value: 1
-  fogBrightness:
-    m_OverrideState: 0
-    m_Value: 1
-  subsurfaceStrength:
-    m_OverrideState: 0
-    m_Value: 1
 --- !u!1001 &1111867233
 PrefabInstance:
   m_ObjectHideFlags: 0

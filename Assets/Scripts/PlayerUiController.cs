@@ -93,7 +93,7 @@ public class PlayerUiController : MonoBehaviour
 
             currentSelectedObject = s; 
             
-            if (s.actionList.Count <= 0)
+            if (s.actionList.Count <= 0 || s == null)
                 return;
             
             lastSelectedGameObject = newSelectedGameObject;

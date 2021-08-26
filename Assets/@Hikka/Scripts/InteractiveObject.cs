@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic}
+    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber}
     
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
     
     [Header("Settings for different objects")]
     public ShipController shipController;
+    [SerializeField] GrabberController grabberController;
     public Collider collider;
     public Vector3 protableTransformOffset = Vector3.zero;
     public Rigidbody rb;
@@ -55,6 +56,9 @@ public class InteractiveObject : MonoBehaviour
                 break;
             case ActionType.ToggleMusic:
                 shipController.ToggleMusic();
+                break;
+            case ActionType.Grabber:
+                shipController.UseGrabber(grabberController);
                 break;
             case ActionType.PickUp:
                 StartCoroutine(PlayerInteractionController.instance.PickUpObject(this));

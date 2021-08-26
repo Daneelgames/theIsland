@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPUInstancer", "GPUInstancer.csproj", "{01c1fec9-6828-fd71-f100-ddb6d21db6b7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sc.stylizedwater2.runtime", "sc.stylizedwater2.runtime.csproj", "{e1fe558e-2fa3-3401-8375-c9ff46d11627}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sc.stylizedwater2.editor", "sc.stylizedwater2.editor.csproj", "{9d651f3e-312e-3a05-1465-ff88aef77707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{d19bee26-fed5-a8c1-8e44-0834a7f5ce49}"
 EndProject
@@ -34,12 +34,12 @@ Global
 		{980fd6de-9296-8dd7-de65-f4f8e0da6939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01c1fec9-6828-fd71-f100-ddb6d21db6b7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01c1fec9-6828-fd71-f100-ddb6d21db6b7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e1fe558e-2fa3-3401-8375-c9ff46d11627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{e1fe558e-2fa3-3401-8375-c9ff46d11627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9d651f3e-312e-3a05-1465-ff88aef77707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9d651f3e-312e-3a05-1465-ff88aef77707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{b4e3a9c9-8abd-aba5-26ec-baf161c2773e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{d19bee26-fed5-a8c1-8e44-0834a7f5ce49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{d19bee26-fed5-a8c1-8e44-0834a7f5ce49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c8a9dd7c-a5a4-ccaa-3f2a-d2af6bc135f5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

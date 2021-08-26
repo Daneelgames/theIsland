@@ -41,16 +41,16 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\StylizedWater2\Editor\Underwater\UnderwaterRendererInspector.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\WaterMeshImporter.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\MaterialUI.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\UI.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\FloatingTransformInspector.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\StylizedWaterEditor.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\PlanarReflectionRendererInspector.cs" />
-     <Compile Include="Assets\StylizedWater2\Editor\AssetInfo.cs" />
      <Compile Include="Assets\StylizedWater2\Editor\ShaderConfigurator.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\WaterMeshImporter.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\StylizedWaterEditor.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\FloatingTransformInspector.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\Underwater\UnderwaterRendererInspector.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\PlanarReflectionRendererInspector.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\UI.cs" />
      <Compile Include="Assets\StylizedWater2\Editor\HelpWindow.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\AssetInfo.cs" />
+     <Compile Include="Assets\StylizedWater2\Editor\MaterialUI.cs" />
      <None Include="Assets\StylizedWater2\Editor\sc.stylizedwater2.editor.asmdef" />
      <Reference Include="UnityEngine">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
