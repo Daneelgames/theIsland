@@ -10,11 +10,15 @@ public class ShipAudioManager : MonoBehaviour
 
     public void StartMovingSfx()
     {
+        shipStartMovingSfxSource.pitch = Random.Range(0.75f, 1.25f);
+        shipStartMovingSfxSource.Play();
         shipMovingSfxSource.pitch = Random.Range(0.75f, 1.25f);
         shipMovingSfxSource.Play();
     }
     public void StopMovingSfx()
     {
+        shipEndMovingSfxSource.pitch = Random.Range(0.75f, 1.25f);
+        shipEndMovingSfxSource.Play();
         shipMovingSfxSource.Stop();
     }
 }

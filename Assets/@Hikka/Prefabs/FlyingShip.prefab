@@ -1294,7 +1294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202918774681753446}
   m_LocalRotation: {x: 0.10029693, y: -0.0006134979, z: -0.002070769, w: 0.99495524}
-  m_LocalPosition: {x: -0.0008255988, y: -0.12578103, z: 2.1143832}
+  m_LocalPosition: {x: 0, y: 0.67, z: 24.8}
   m_LocalScale: {x: 6.0794725, y: 5.729591, z: 34.10321}
   m_Children: []
   m_Father: {fileID: 1917618505}
@@ -1391,8 +1391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 5
-  grabTime: 2
-  holdMinTime: 1
+  grabTime: 0.75
+  holdMinTime: 1.25
   releaseTime: 1
   carryTransform: {fileID: 3194489013234458172}
   anim: {fileID: 2529788461978787675}
@@ -6523,8 +6523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 5
-  grabTime: 2
-  holdMinTime: 1
+  grabTime: 0.75
+  holdMinTime: 1.25
   releaseTime: 1
   carryTransform: {fileID: 2087964423954991153}
   anim: {fileID: 7817553839541647262}
@@ -7829,8 +7829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 5
-  grabTime: 2
-  holdMinTime: 1
+  grabTime: 0.75
+  holdMinTime: 1.25
   releaseTime: 1
   carryTransform: {fileID: 2207286032054477336}
   anim: {fileID: 1405272617567339354}

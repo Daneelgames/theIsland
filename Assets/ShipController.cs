@@ -46,6 +46,7 @@ public class ShipController : MonoBehaviour
 
         
         playerMovement.PlayerControlsShip(this);
+        shipAudioManager.StartMovingSfx();
 
         rb.isKinematic = false;
         StartCoroutine(MovePlayerToControlPosition());

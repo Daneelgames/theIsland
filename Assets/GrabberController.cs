@@ -108,7 +108,7 @@ public class GrabberController : MonoBehaviour
     void GrabObject(InteractiveObject interactive)
     {
         carryingObject = interactive;
-        //carryingObject.transform.parent = transform;
+        carryingObject.transform.parent = transform;
     }
 
     void ReleaseObject()
@@ -119,10 +119,8 @@ public class GrabberController : MonoBehaviour
             carryCoroutine = null;
         }
         
-        /*
         if (carryingObject)
             carryingObject.transform.parent = null;
-            */
         
         carryingObject = null;
         
