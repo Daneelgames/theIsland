@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PICK UP
+  m_Text: 
 --- !u!1 &587785195
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TALK
+  m_Text: 
 --- !u!1 &847014395
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLANT
+  m_Text: 
 --- !u!1 &1255761979
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1000, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2051982610
@@ -1659,7 +1659,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64dcd52ec0298e143a2f59aeb6c5cd84, type: 3}
+  m_audioClip: {fileID: 8300000, guid: da63718f4d5fcfc468f94546ebf8a024, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
@@ -1829,7 +1829,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d86116320c495c64c93399c096251520, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 928440b93951caf40b80d5cc83623468, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
@@ -2711,6 +2711,7 @@ MonoBehaviour:
   showTooltips: 1
   selectedObjectIcon: {fileID: 5085301113076175357}
   selectedObjectIconBackground: {fileID: 2400939228790417483}
+  showActionsNames: 0
   actionsParent: {fileID: 2010425623}
   actionTextListUi:
   - uiText: {fileID: 555650015}

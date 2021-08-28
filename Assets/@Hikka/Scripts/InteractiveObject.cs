@@ -6,7 +6,8 @@ using UnityEngine;
 public class InteractiveObject : MonoBehaviour
 {
     public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber}
-    
+
+    public bool playerCouldInteract = true;
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
     
     [Header("Settings for different objects")]

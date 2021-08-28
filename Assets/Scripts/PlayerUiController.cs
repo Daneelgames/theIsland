@@ -18,6 +18,7 @@ public class PlayerUiController : MonoBehaviour
     public Image selectedObjectIconBackground;
 
     [Header("Actions UI")] 
+    public bool showActionsNames = false;
     public Transform actionsParent;
     Vector3 actionsParentInitLocalPos = new Vector3(1000, 0, 0);
     public List<UiActionText> actionTextListUi;
@@ -91,10 +92,11 @@ public class PlayerUiController : MonoBehaviour
         {
             var s = newSelectedGameObject.GetComponent<InteractiveObject>();
 
+            if (s.actionList.Count <= 0 || s == null || s.playerCouldInteract == false)
+                return;
+            
             currentSelectedObject = s; 
             
-            if (s.actionList.Count <= 0 || s == null)
-                return;
             
             lastSelectedGameObject = newSelectedGameObject;
         }
@@ -122,7 +124,7 @@ public class PlayerUiController : MonoBehaviour
         if (!currentSelectedObject && !lastSelectedGameObject && !selectedObject)
             return;
         
-        if (showTooltips && lastSelectedGameObject)
+        if (showTooltips && lastSelectedGameObject && showActionsNames)
             PlayerAudioController.instance.CloseUi();
         
         currentSelectedObject = null;
@@ -162,11 +164,17 @@ public class PlayerUiController : MonoBehaviour
                     actionTextListUi[i].uiBackgroundImage.enabled = false;
                     actionTextListUi[i].uiText.enabled = false;
                 }
-                else
+                else if (showActionsNames)
                 {
                     actionTextListUi[i].uiBackgroundImage.enabled = true;
                     actionTextListUi[i].uiText.enabled = true;
                     actionTextListUi[i].uiText.text = currentSelectedObject.putAction.displayedName[GameManager.instance.gameLanguage].ToUpper();
+                }
+                else
+                {
+                    actionTextListUi[i].uiBackgroundImage.enabled = false;
+                    actionTextListUi[i].uiText.enabled = false;
+                    actionTextListUi[i].uiText.text = String.Empty;
                 }
             }   
         }
@@ -179,31 +187,39 @@ public class PlayerUiController : MonoBehaviour
                     actionTextListUi[i].uiBackgroundImage.enabled = false;
                     actionTextListUi[i].uiText.enabled = false;
                 }
-                else
+                else if (showActionsNames)
                 {
                     actionTextListUi[i].uiBackgroundImage.enabled = true;
                     actionTextListUi[i].uiText.enabled = true;
                     actionTextListUi[i].uiText.text = currentSelectedObject.actionList[i].displayedName[GameManager.instance.gameLanguage].ToUpper();
+                }
+                else
+                {
+                    actionTextListUi[i].uiBackgroundImage.enabled = false;
+                    actionTextListUi[i].uiText.enabled = false;
+                    actionTextListUi[i].uiText.text = String.Empty;
                 }
             }   
         }
         
         while (t < timeToAnimate)
         {
-            t += Time.deltaTime;
+            t += Time.smoothDeltaTime;
 
+            // MOVE SELECTABLE ACTIONS
             if (PlayerInteractionController.instance.draggingObject)
             {
+            
                 actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, putObjectPromtPosition, t /timeToAnimate);
                 selectedObjectIcon.transform.localScale = Vector3.zero;
-                selectedObjectIconBackground.transform.localScale = Vector3.zero;
+                selectedObjectIconBackground.transform.localScale = Vector3.zero;   
             }
             else
             {
                 actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, selectedObjectIcon.transform.localPosition, t /timeToAnimate);
                 selectedObjectIcon.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/timeToAnimate);
                 selectedObjectIconBackground.transform.localScale = selectedObjectIcon.transform.localScale;   
-            }
+            }   
             yield return null;
         }
 
@@ -330,7 +346,7 @@ public class PlayerUiController : MonoBehaviour
                     // find closest action
                     for (int i = 0; i < actionTextListUi.Count; i++)
                     {
-                        if (actionTextListUi[i].uiBackgroundImage.enabled == false)
+                        if (showActionsNames && actionTextListUi[i].uiBackgroundImage.enabled == false || actionTextListUi[i].uiText.text == String.Empty)
                             continue;
                 
                         newDistance = Vector3.Distance(mousePos, actionTextListUi[i].targetTransformForCursor.position);
@@ -370,6 +386,9 @@ public class PlayerUiController : MonoBehaviour
 
     IEnumerator SelectActionMenu(int index)
     {
+        if (!showActionsNames)
+            yield break;
+        
         float t = 0;
         var startHeight = actionTextListUi[index].uiBackgroundImage.rectTransform.sizeDelta.y; 
         var startFontSize = actionTextListUi[index].uiText.fontSize; 
