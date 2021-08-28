@@ -150,6 +150,37 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\PathConnectorSetter.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\SpaceshipUp.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\SeekGround.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Teleporter.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\FramesPerSecond.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\MousePointer.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\SpaceshipPhysics.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerArriveTarget.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\RpyController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\RootMotionController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\SpaceshipController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\CopterController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerCameraFollow.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\AircraftPhysics.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\ObjectCounter.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\RotorAnimation.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\AircraftController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\SpriteRotation.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\EnvironmentUpdater.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\VehiclePhysics.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerParticles.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\PerceiverConnector.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\VehicleController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\AIState.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerDisable.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TimerDestroy.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\PidController.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\CopterPhysics.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerStateTransition.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Scripts\ObjectSpawner.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\StylizedWater2\Shaders\Libraries\Lighting.hlsl" />
@@ -161,6 +192,7 @@
      <None Include="Assets\StylizedWater2\Shaders\Libraries\Features.hlsl" />
      <None Include="Assets\StylizedWater2\Shaders\StylizedWater2.shader" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\NMWindNoShiver.cginc" />
+     <None Include="Assets\Polarith\AI\Extensions\README.txt" />
      <None Include="Assets\SC Post Effects\Shaders\DepthNormals.shader" />
      <None Include="Assets\City Props Bundle\MAPS\dumpsters\clean\dumpster_01.json" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Tree_Leaves_Specular.shader" />
@@ -176,6 +208,7 @@
      <None Include="Assets\StylizedWater2\Shaders\Libraries\Common.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Standard.shader" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Light.shader" />
+     <None Include="Assets\Polarith\AI\Plugins\Polarith.AI.xml" />
      <None Include="Assets\NatureManufacture Assets\Object Shaders\Standard_Metalic_Snow.shader" />
      <None Include="Assets\StylizedWater2\Shaders\Libraries\Fog.hlsl" />
      <None Include="Assets\NatureManufacture Assets\Third-Party Notices 2.txt" />
@@ -201,6 +234,7 @@
      <None Include="Assets\StylizedWater2\Shaders\StylizedWater2_Tessellation.shader" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\VS PRO Forest Biomes\README - VS PRO Biomes.txt" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Specular.shader" />
+     <None Include="Assets\Polarith\AI\Plugins\Shaders\Splat.shader" />
      <None Include="Assets\StylizedWater2\Shaders\Libraries\Caustics.hlsl" />
      <None Include="Assets\StylizedWater2\Shaders\Libraries\Input.hlsl" />
      <None Include="Assets\City Props Bundle\MAPS\bins\bin_02.json" />
@@ -241,6 +275,7 @@
      <None Include="Assets\epyphany\ReadMe.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\Waterline.shader" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\R.A.M Non Tesseled trial\Shaders\Water River Offset Vertex Color Flow.shader" />
+     <None Include="Assets\Polarith\AI\Plugins\Shaders\Extrude.shader" />
      <None Include="Assets\StylizedWater2\Shaders\Libraries\URP.hlsl" />
      <Reference Include="UnityEngine">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -478,6 +513,9 @@
      </Reference>
      <Reference Include="Newtonsoft.Json">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Polarith.AI">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Polarith.AI.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

@@ -319,6 +319,12 @@
      <Reference Include="unityplastic">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
      </Reference>
+     <Reference Include="Polarith.AI.Editor">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Editor/Polarith.AI.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Polarith.AI">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Polarith.AI.dll</HintPath>
+     </Reference>
      <Reference Include="nunit.framework">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
      </Reference>

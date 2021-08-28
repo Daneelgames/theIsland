@@ -149,6 +149,7 @@ namespace PlayerControls
             
             controller.enabled = false;
             MouseLook.instance.PlayerControlsShip(ship);
+            transform.parent = ship.transform;
             inControl = false;
         }
         

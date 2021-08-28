@@ -77,6 +77,7 @@ public class MouseLook : MonoBehaviour
         {
             return;
         }
+
     }
     
     public void ToggleCrouch(bool crouch)

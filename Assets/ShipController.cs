@@ -37,8 +37,11 @@ public class ShipController : MonoBehaviour
         if (playerMovement.inControl == false)
         {
             StopAllCoroutines();
+            /*
             rb.velocity = Vector3.zero;
             rb.isKinematic = true;
+            */
+            
             playerMovement.PlayerControlsShip(null);
             shipAudioManager.StopMovingSfx();
             return;   

@@ -52,6 +52,14 @@
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Wizards\Editor\EditRangeLimitsWizard.cs" />
      <Compile Include="Assets\__Global\Editor\TransformDataHolder.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\MeshBrushEditor.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Editor\EnvironmentUpdaterEditor.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Editor\ObjectSpawnerEditor.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Editor\CopterControllerEditor.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Editor\VehiclePhysicsEditor.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Editor\AircraftControllerEditor.cs" />
+     <Compile Include="Assets\Polarith\AI\Examples\Editor\SpaceShipControllerEditor.cs" />
+     <Compile Include="Assets\Free Boulder Pack\Editor\Instant Screenshot\ScreenshotTaker.cs" />
+     <None Include="Assets\Polarith\AI\Plugins\Editor\Polarith.AI.Editor.xml" />
      <None Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\FavouriteTemplates.xml" />
      <Reference Include="UnityEngine">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -310,6 +318,12 @@
      </Reference>
      <Reference Include="unityplastic">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+     </Reference>
+     <Reference Include="Polarith.AI.Editor">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Editor/Polarith.AI.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Polarith.AI">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Polarith.AI.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>

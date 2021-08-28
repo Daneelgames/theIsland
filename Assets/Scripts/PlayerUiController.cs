@@ -343,10 +343,11 @@ public class PlayerUiController : MonoBehaviour
                 }
                 else
                 {
+                    selectedAction = 0;
                     // find closest action
                     for (int i = 0; i < actionTextListUi.Count; i++)
                     {
-                        if (showActionsNames && actionTextListUi[i].uiBackgroundImage.enabled == false || actionTextListUi[i].uiText.text == String.Empty)
+                        if ((showActionsNames && actionTextListUi[i].uiBackgroundImage.enabled == false) || actionTextListUi[i].uiText.text == String.Empty)
                             continue;
                 
                         newDistance = Vector3.Distance(mousePos, actionTextListUi[i].targetTransformForCursor.position);
@@ -387,7 +388,9 @@ public class PlayerUiController : MonoBehaviour
     IEnumerator SelectActionMenu(int index)
     {
         if (!showActionsNames)
-            yield break;
+        {
+            yield break;   
+        }
         
         float t = 0;
         var startHeight = actionTextListUi[index].uiBackgroundImage.rectTransform.sizeDelta.y; 
