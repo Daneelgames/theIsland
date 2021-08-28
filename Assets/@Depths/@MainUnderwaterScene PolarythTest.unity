@@ -3691,12 +3691,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4444859784425464}
+  - component: {fileID: 1748041737005906}
   - component: {fileID: 54958742900617898}
   - component: {fileID: 114135584852997108}
   - component: {fileID: 114315825493459922}
   - component: {fileID: 1748041737005905}
   m_Layer: 0
-  m_Name: Agent SeekBounds
+  m_Name: TestUnderwaterMob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3716,6 +3717,36 @@ CapsuleCollider:
   m_Height: 1.9193544
   m_Direction: 2
   m_Center: {x: 0, y: 0.46887124, z: -0.073548794}
+--- !u!114 &1748041737005906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748041737005904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ee032a40143684c969d97c7e67ed3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCouldInteract: 0
+  actionList:
+  - actionType: 0
+    displayedName:
+    - Pick Up
+  shipController: {fileID: 0}
+  grabberController: {fileID: 0}
+  collider: {fileID: 0}
+  protableTransformOffset: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+  dragForce: 0
+  zeroVelocityDistanceThreshold: 0
+  putAction:
+    actionType: 2
+    displayedName:
+    - 'E: let go'
+  plantController: {fileID: 0}
+  toolToPickUp: {fileID: 0}
 --- !u!1 &1767424016731226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3793,7 @@ Transform:
   - {fileID: 4647117200266688}
   - {fileID: 4342794823154360}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4647117200266688
 Transform:
@@ -3947,7 +3978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torque: 0.1
-  speed: 2.5
+  speed: 1
   spaceshipController: {fileID: 114315825493459922}
 --- !u!114 &114284804059174864
 MonoBehaviour:
@@ -3956,7 +3987,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057588811070170}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 351244660, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
   m_Name: 
@@ -4065,7 +4096,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057588811070170}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 351244660, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
   m_Name: 
@@ -5229,63 +5260,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 493584, guid: 9c1ec5317210cfe48905f29421850791, type: 3}
   m_PrefabInstance: {fileID: 4536368034749670517}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4861312781235024198
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4336611091131708560, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_Name
-      value: TestUnderwaterMob
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.227
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766734478654049082, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
 --- !u!1001 &5120171299759921180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6030,256 +6004,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 495982, guid: e56588cd3c924cc488787856ff35ea3e, type: 3}
   m_PrefabInstance: {fileID: 8392758267966905983}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9176197457254073814 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4336611091131708560, guid: ba5b5b3dfdd4e874491e6839a81f1c0d, type: 3}
-  m_PrefabInstance: {fileID: 4861312781235024198}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9176197457254073815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176197457254073814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1225004217, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpdateFrequency: 20
-  Threaded: 0
-  SensorShared: 1
-  Sensor: {fileID: 11400000, guid: fc2676f4f553f9a4889d9eb663f629f5, type: 2}
-  objectiveLabels:
-  - Interest
-  - Danger
-  context:
-    minObjectives: 0001
-    normObjectives: 0101
-    constraintSolver:
-      Unlimited: 0
-      Epsilons:
-      - 0
-      - 0.4
-  selfObject: {fileID: 0}
-  indicatorGizmo:
-    Enabled: 0
-    Wireframe: 0
-    ShowReceptors: 0
-    ShowConstraints: 0
-    DrawDoubleSided: 1
-    ResolutionThreshold: 32
-    CustomScale: 1
-    Spacing: 1
-    SolutionColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    InterpolatedSolutionColor: {r: 1, g: 0.6, b: 0.011764706, a: 1}
-    ConstraintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    ReceptorColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    LineColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    ObjectiveColors:
-    - {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
-    - {r: 1, g: 0.23529412, b: 0.23529412, a: 1}
-    - {r: 0.39215687, g: 0.62352943, b: 0.8392157, a: 1}
-  tabState:
-    tab0: 0
-    tab1: 0
-    tab2: 0
-    tab3: 0
-    tab4: 0
-  objectiveFoldout: 1
---- !u!114 &9176197457254073816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176197457254073814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -561398845, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Order: 2000
-  Label: 
-  initialized: 1
-  tabState:
-    tab0: 0
-    tab1: 0
-    tab2: 0
-    tab3: 0
-    tab4: 0
-  advancedInspector: 0
-  PlanarInterpolation:
-    TargetObjective: 0
-    Constraint: 1
---- !u!114 &9176197457254073817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176197457254073814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1187903073, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Order: 1000
-  Label: 
-  initialized: 1
-  tabState:
-    tab0: 0
-    tab1: 0
-    tab2: 0
-    tab3: 0
-    tab4: 0
-  advancedInspector: 0
-  Stabilization:
-    TargetObjective: 0
-    AngleMapping: 2
-    MaxIncrease: 0.2
-    MaxAngle: 45
---- !u!114 &9176197457254073818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176197457254073814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1062805814, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Order: 0
-  Label: SeekDanger
-  initialized: 1
-  tabState:
-    tab0: 0
-    tab1: 0
-    tab2: 0
-    tab3: 0
-    tab4: 0
-  advancedInspector: 0
-  FilteredEnvironments:
-  - Danger
-  GameObjects: []
-  velocityGizmo:
-    Enabled: 0
-    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
-    DirectionScale: 1
-    PointSize: 0.2
-  steeringFoldout: 1
-  innerRadiusGizmo:
-    Enabled: 0
-    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
-  outerRadiusGizmo:
-    Enabled: 0
-    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
-  innerCircleGizmo:
-    Enabled: 0
-    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
-  outerCircleGizmo:
-    Enabled: 0
-    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
-  radiusSteeringFoldout: 1
-  Seek:
-    TargetObjective: 1
-    MagnitudeMultiplier: 1
-    SensitivityOffset: 0
-    ValueWriting: 0
-    LayerBlending: 0
-    LayerNormalization: 0
-    ValueMapping: 2
-    UseSignificance: 1
-    UseSensorProjection: 1
-    VectorProjection: 0
-    PresetVelocity: 0
-    Prediction: 0
-    PredictionMagnitude: 0
-    InnerRadius: 0
-    OuterRadius: 20
-    RadiusMapping: 2
-    ForEachReceptor: 0
---- !u!114 &9176197457254073819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176197457254073814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1062805814, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Order: 0
-  Label: SeekInterest
-  initialized: 1
-  tabState:
-    tab0: 0
-    tab1: 0
-    tab2: 0
-    tab3: 0
-    tab4: 0
-  advancedInspector: 0
-  FilteredEnvironments:
-  - Interest
-  GameObjects: []
-  velocityGizmo:
-    Enabled: 0
-    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
-    DirectionScale: 1
-    PointSize: 0.2
-  steeringFoldout: 1
-  innerRadiusGizmo:
-    Enabled: 0
-    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
-  outerRadiusGizmo:
-    Enabled: 0
-    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
-  innerCircleGizmo:
-    Enabled: 0
-    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
-  outerCircleGizmo:
-    Enabled: 0
-    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
-  radiusSteeringFoldout: 1
-  Seek:
-    TargetObjective: 0
-    MagnitudeMultiplier: 1
-    SensitivityOffset: 0
-    ValueWriting: 0
-    LayerBlending: 0
-    LayerNormalization: 0
-    ValueMapping: 2
-    UseSignificance: 1
-    UseSensorProjection: 1
-    VectorProjection: 0
-    PresetVelocity: 0
-    Prediction: 0
-    PredictionMagnitude: 0
-    InnerRadius: 0
-    OuterRadius: 20
-    RadiusMapping: 2
-    ForEachReceptor: 0
---- !u!114 &9176197457254073820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176197457254073814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 336943168, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  environmentFoldout: 0
-  SteeringPerceiver: {fileID: 426532538}
-  ObjectTag: Untagged
-  Range: -1
-  rangeGizmo:
-    Enabled: 0
-    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}

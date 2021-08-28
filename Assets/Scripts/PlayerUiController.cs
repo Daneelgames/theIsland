@@ -216,7 +216,8 @@ public class PlayerUiController : MonoBehaviour
             }
             else
             {
-                actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, selectedObjectIcon.transform.localPosition, t /timeToAnimate);
+                //actionsParent.transform.localPosition = Vector3.Lerp(actionsParentInitLocalPos, selectedObjectIcon.transform.localPosition, t /timeToAnimate);
+                actionsParent.transform.localPosition =  selectedObjectIcon.transform.localPosition;
                 selectedObjectIcon.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t/timeToAnimate);
                 selectedObjectIconBackground.transform.localScale = selectedObjectIcon.transform.localScale;   
             }   
