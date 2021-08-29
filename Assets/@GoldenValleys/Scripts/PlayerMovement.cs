@@ -78,8 +78,9 @@ namespace PlayerControls
         bool adrenaline = false;
         public float coldScaler = 1;
         private Transform parent = null;
+        
+        public Rigidbody rb;
         public CharacterController controller;
-
 
         private float currentGravityScaler = 1;
 
@@ -138,14 +139,23 @@ namespace PlayerControls
         public void PlayerControlsShip(ShipController ship)
         {
             if (ship == null)
-            {
-                controller.enabled = true;
-                MouseLook.instance.PlayerControlsShip(null);
+            {/*
+                if (rb)
+                    rb.isKinematic = false;
+                else
+                    controller.enabled = true;
+                
                 inControl = true;
+                */
+                
+                MouseLook.instance.PlayerControlsShip(null);
                 return;
             }
             
-            controller.enabled = false;
+            if (rb)
+                rb.isKinematic = true;
+            else
+                controller.enabled = false;
             MouseLook.instance.PlayerControlsShip(ship);
             transform.parent = ship.transform;
             inControl = false;
@@ -154,14 +164,23 @@ namespace PlayerControls
         {
             //PlayerControlsShip(null);
             if (harpoon == null)
-            {
-                controller.enabled = true;
-                MouseLook.instance.PlayerControlsHarpoon(null);
+            {/*
+                if (rb)
+                    rb.isKinematic = false;
+                else
+                    controller.enabled = true;
+                    
                 inControl = true;
+                */
+                MouseLook.instance.PlayerControlsHarpoon(null);
                 return;
             }
             
-            controller.enabled = false;
+            if (rb)
+                rb.isKinematic = true;
+            else
+                controller.enabled = false;
+            
             MouseLook.instance.PlayerControlsHarpoon(harpoon);
             transform.parent = harpoon.transform;
             inControl = false;
@@ -188,7 +207,10 @@ namespace PlayerControls
         void ApplyVelocity()
         {
             //controller.velocity = Vector3.Lerp(controller.velocity, targetVelocity, Time.smoothDeltaTime * velocityChangeSpeed);
-            controller.Move(targetVelocity * (Time.smoothDeltaTime * velocityChangeSpeed));
+            if (rb)
+                rb.AddForce(targetVelocity * (Time.smoothDeltaTime * velocityChangeSpeed));
+            else
+                controller.Move(targetVelocity * (Time.smoothDeltaTime * velocityChangeSpeed));
         }
 
         public void TeleportPlayerHead()
@@ -434,7 +456,10 @@ namespace PlayerControls
         {
             float t = 0;
             inControl = false;
-            controller.enabled = false;
+            if (rb)
+                rb.isKinematic = true;
+            else
+                controller.enabled = false;
             Vector3 startPos = transform.position;
             while (t < time)
             {
@@ -443,7 +468,10 @@ namespace PlayerControls
                 t += Time.deltaTime;
                 yield return null;
             }
-            controller.enabled = true;
+            if (rb)
+                rb.isKinematic = false;
+            else
+                controller.enabled = true;
             inControl = true;
         }
     }

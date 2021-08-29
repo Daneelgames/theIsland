@@ -65,11 +65,17 @@ public class DynamicLevelGenerator : MonoBehaviour
 
         var spawnCoords = IslandGenerator.instance.playerSpawnPoint.coordinates;
         PlayerMovement.instance.teleport = true;
-        PlayerMovement.instance.controller.enabled = false;
+        if (PlayerMovement.instance.rb)
+            PlayerMovement.instance.rb.isKinematic = true;
+        else
+            PlayerMovement.instance.controller.enabled = false;
         playerStartPoint.position = new Vector3(spawnCoords[0].x, 0, spawnCoords[0].y)  * tileSize + Vector3.up * 100;
         PlayerMovement.instance.TeleportPlayerHead();
-        PlayerMovement.instance.teleport = false;
-        PlayerMovement.instance.controller.enabled = true;
+        PlayerMovement.instance.teleport = false;PlayerMovement.instance.teleport = true;
+        if (PlayerMovement.instance.rb)
+            PlayerMovement.instance.rb.isKinematic = false;
+        else
+            PlayerMovement.instance.controller.enabled = true;
         
         StartCoroutine(UpdateLevelAroundPlayer());
         StartCoroutine(DestroyTiles());

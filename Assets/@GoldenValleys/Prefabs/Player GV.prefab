@@ -2617,7 +2617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInstance: 1
-  inControl: 1
+  inControl: 0
   canClimb: 0
   canSprint: 0
   canJump: 0
@@ -2646,6 +2646,7 @@ MonoBehaviour:
   playerAudio: {fileID: 265387704}
   teleport: 0
   coldScaler: 1
+  rb: {fileID: 0}
   controller: {fileID: 1959244711}
 --- !u!114 &265387704
 MonoBehaviour:
@@ -2675,10 +2676,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   - {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
   - {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
-  walkStepFrequencyCoefficient: 1
-  runStepFrequencyCoefficient: 0.8
-  dashStepFrequencyCoefficient: 1
-  smallStepCooldown: 0.8
+  walkStepFrequencyCoefficient: 10
+  runStepFrequencyCoefficient: 8
+  dashStepFrequencyCoefficient: 10
+  smallStepCooldown: 8
   playerMovementStats: {fileID: 11400000, guid: 10424835cb47ce74a8de3a2fd49a7cb6, type: 2}
 --- !u!114 &5109477889186714075
 MonoBehaviour:
@@ -2804,7 +2805,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4241874864893504352}
   m_Material: {fileID: 13400000, guid: 09a0c3d4d16aaab4f90015bde9e59f4a, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.1
   m_Height: 1.2
   m_Direction: 1
@@ -2818,7 +2819,7 @@ CharacterController:
   m_GameObject: {fileID: 4241874864893504352}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1
   m_Radius: 0.1
@@ -3072,7 +3073,7 @@ MonoBehaviour:
     m_Bits: 840
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 1

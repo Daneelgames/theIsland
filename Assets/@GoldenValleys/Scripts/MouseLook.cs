@@ -71,7 +71,6 @@ public class MouseLook : MonoBehaviour
         playerHead.parent = null;
     }
     
-    /*
     void Update()
     {
         if (canControl  && canAim &&!pm.teleport)
@@ -80,7 +79,6 @@ public class MouseLook : MonoBehaviour
             //HandleHookshotStart();
         }
     }
-    */
     
     private void LateUpdate()
     {
@@ -213,7 +211,7 @@ public class MouseLook : MonoBehaviour
 
             xRotation -= mouseY;
             yRotation += mouseX;
-            xRotation = Mathf.Clamp(xRotation, -90, 90);
+            xRotation = Mathf.Clamp(xRotation, -110, 110);
         }
         
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);

@@ -45,12 +45,18 @@ public class LoopsLoadingManager : MonoBehaviour
         
         
         ProceduralPlantsManager.instance.NewDay();
-        PlayerMovement.instance.controller.enabled = false;
+        if (PlayerMovement.instance.rb)
+            PlayerMovement.instance.rb.isKinematic = true;
+        else
+            PlayerMovement.instance.controller.enabled = false;
         PlayerMovement.instance.teleport = true;
         //PlayerMovement.instance.transform.position = new Vector3(PlayerMovement.instance.transform.position.x, positionForPlayerTeleport.position.y, PlayerMovement.instance.transform.position.z);
         PlayerMovement.instance.transform.position = positionForPlayerTeleport.position + playerOffset;
         PlayerMovement.instance.TeleportPlayerHead();
         PlayerMovement.instance.teleport = false;
-        PlayerMovement.instance.controller.enabled = true;
+        if (PlayerMovement.instance.rb)
+            PlayerMovement.instance.rb.isKinematic = false;
+        else
+            PlayerMovement.instance.controller.enabled = true;
     }
 }

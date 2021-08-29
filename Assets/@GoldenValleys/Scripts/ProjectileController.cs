@@ -22,7 +22,6 @@ public class ProjectileController : MonoBehaviour
     
     void FixedUpdate()
     {
-        Debug.Log("rb velocity " + rb.velocity);
         if (collided)
         {
             return;
@@ -54,8 +53,6 @@ public class ProjectileController : MonoBehaviour
 
     void OnCollisionStay(Collision coll)
     {
-        Debug.Log("collided " + collided + "; coll.name " + coll.gameObject.name);
-        
         if (collided)
             return;
 

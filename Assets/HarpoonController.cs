@@ -52,7 +52,7 @@ public class HarpoonController : MonoBehaviour
         if (_ship != null)
             ship = _ship;
         
-        ship.StopControllingShip();
+        //ship.StopControllingShip();
         
         PlayerMovement.instance.PlayerControlsShip(null);
 
@@ -72,6 +72,8 @@ public class HarpoonController : MonoBehaviour
             case State.ControlledByPlayer:
                 // release player's head
                 // unlock player's movement
+                
+                PlayerMovement.instance.transform.position = ship.playerSit.position;
                 PlayerMovement.instance.PlayerControlsHarpoon(null);
 
                 // Stop Controlling the gun
@@ -94,7 +96,7 @@ public class HarpoonController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space))
             {
-                UseHarpoonInput(null);
+                ship.TryToUseHarpoon(this);
             }
 
             if (PlayerUiController.instance.itemWheelVisible == false)
