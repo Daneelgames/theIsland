@@ -9,6 +9,8 @@ public class MouseLook : MonoBehaviour
 {
     public Transform playerBody;
 
+    public Transform playerHead;
+    
     float mouseX = 0;
     float mouseY = 0;
 
@@ -52,6 +54,8 @@ public class MouseLook : MonoBehaviour
     private string aimingString = "Aiming";
     private string mouseXstring = "Mouse X";
     private string mouseYstring = "Mouse Y";
+    
+    private Coroutine controlHarpoonCoroutine;
 
     private void Awake()
     {
@@ -64,6 +68,34 @@ public class MouseLook : MonoBehaviour
         instance = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        playerHead.parent = null;
+    }
+    
+    /*
+    void Update()
+    {
+        if (canControl  && canAim &&!pm.teleport)
+        {
+            Aiming();   
+            //HandleHookshotStart();
+        }
+    }
+    */
+    
+    private void LateUpdate()
+    {
+        if (canControl && canAim &&!pm.teleport)
+        {
+            Looking();
+        }
+        
+        if (canControl && !PlayerMovement.instance.teleport)
+            playerHead.position = Vector3.Lerp(playerHead.position, PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight, 50 * Time.smoothDeltaTime);
+    }
+
+    public void TeleportPlayerHead()
+    {
+        playerHead.position = PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight;
     }
 
     void Start()
@@ -78,11 +110,41 @@ public class MouseLook : MonoBehaviour
             return;
         }
 
+        playerHead.parent = ship.transform;
+    }
+
+    public void PlayerControlsHarpoon(HarpoonController harpoon)
+    {
+        if (harpoon == null)
+        {
+            if (controlHarpoonCoroutine != null)
+            {
+                StopCoroutine(controlHarpoonCoroutine);
+                controlHarpoonCoroutine = null;   
+            }
+
+            canControl = true;
+            return;
+        }
+
+        canControl = false;
+        controlHarpoonCoroutine = StartCoroutine(ControlHarpoon(harpoon.CameraParent));
+    }
+
+    IEnumerator ControlHarpoon(Transform headTarget)
+    {
+        while (true)
+        {
+            playerHead.transform.position = Vector3.Lerp(playerHead.transform.position, headTarget.position, Time.deltaTime * mouseLookSpeedCurrent);
+            playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, headTarget.rotation, Time.deltaTime * mouseLookSpeedCurrent);
+            transform.rotation = Quaternion.Slerp(transform.rotation, playerHead.transform.rotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
+            camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
+            yield return new WaitForEndOfFrame();
+        }
     }
     
     public void ToggleCrouch(bool crouch)
     {
-        
         if (crouch && !crouching)
         {
             crouching = crouch;
@@ -116,28 +178,9 @@ public class MouseLook : MonoBehaviour
         }
     }
 
-    /*
-    void Update()
-    {
-        if (canControl  && canAim &&!pm.teleport)
-        {
-            Aiming();   
-            //HandleHookshotStart();
-        }
-    }
-    */
-
-    private void LateUpdate()
-    {
-        if (canControl && canAim &&!pm.teleport)
-        {
-            Looking();
-        }
-    }
 
     void Aiming()
     {
-        
         if (Math.Abs(Input.GetAxisRaw(aimString)) > 0.1f)
             aiming = true;
         else if (Input.GetButton(aimString))
@@ -174,7 +217,9 @@ public class MouseLook : MonoBehaviour
         }
         
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
+        playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, targetRotation.rotation, Time.deltaTime * mouseLookSpeedCurrent);
+        playerHead.transform.localEulerAngles = new Vector3(playerHead.transform.localEulerAngles.x, playerHead.transform.localEulerAngles.y, 0); 
+        transform.rotation = Quaternion.Slerp(transform.rotation, playerHead.transform.rotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
         camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
         pm.movementTransform.transform.rotation = camHolder.transform.rotation;
     }

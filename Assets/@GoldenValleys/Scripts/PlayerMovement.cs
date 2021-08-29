@@ -15,7 +15,6 @@ namespace PlayerControls
         
         private float _dashCooldownCurrent = 0;
 
-        public Transform playerHead;
         public float playerHeight = 0.5f;
         public Animator cameraAnimator;
         public Animator crosshairAnimator;
@@ -97,7 +96,6 @@ namespace PlayerControls
                     return;
                 }
                 
-                playerHead.parent = null;
                 instance = this;   
             }
         }
@@ -152,6 +150,22 @@ namespace PlayerControls
             transform.parent = ship.transform;
             inControl = false;
         }
+        public void PlayerControlsHarpoon(HarpoonController harpoon)
+        {
+            //PlayerControlsShip(null);
+            if (harpoon == null)
+            {
+                controller.enabled = true;
+                MouseLook.instance.PlayerControlsHarpoon(null);
+                inControl = true;
+                return;
+            }
+            
+            controller.enabled = false;
+            MouseLook.instance.PlayerControlsHarpoon(harpoon);
+            transform.parent = harpoon.transform;
+            inControl = false;
+        }
         
         private void FixedUpdate()
         {
@@ -177,22 +191,9 @@ namespace PlayerControls
             controller.Move(targetVelocity * (Time.smoothDeltaTime * velocityChangeSpeed));
         }
 
-        private void LateUpdate()
-        {
-            if (!playerInstance)
-                return;
-            
-            if (!inControl)
-            {
-                playerHead.position = transform.position + Vector3.up * playerHeight;
-            }
-            else if (!teleport)
-                playerHead.position = Vector3.Lerp(playerHead.position, transform.position + Vector3.up * playerHeight, 50 * Time.smoothDeltaTime);
-        }
-
         public void TeleportPlayerHead()
         {
-            playerHead.position = transform.position + Vector3.up * playerHeight;
+            MouseLook.instance.TeleportPlayerHead();
         }
 
         public void Dash()

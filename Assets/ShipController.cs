@@ -20,6 +20,15 @@ public class ShipController : MonoBehaviour
     public GameObject outdoorLights;
     public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
+    
+    // CONTROLS
+    enum State
+    {
+        Idle, ControlledByPlayer
+    }
+
+    private State _state = State.Idle;
+    
     void Start()
     {
         //(ControlShip());
@@ -30,20 +39,14 @@ public class ShipController : MonoBehaviour
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 
-    public void PlayerControlsShip()
+    public void TryToPlayerControlsShip()
     {
         playerMovement = PlayerMovement.instance;
 
-        if (playerMovement.inControl == false)
+        if (_state == State.ControlledByPlayer && playerMovement.inControl == false)
         {
-            StopAllCoroutines();
-            /*
-            rb.velocity = Vector3.zero;
-            rb.isKinematic = true;
-            */
-            
             playerMovement.PlayerControlsShip(null);
-            shipAudioManager.StopMovingSfx();
+            StopControllingShip();
             return;   
         }
 
@@ -52,9 +55,17 @@ public class ShipController : MonoBehaviour
         shipAudioManager.StartMovingSfx();
 
         rb.isKinematic = false;
+        _state = State.ControlledByPlayer;
         StartCoroutine(MovePlayerToControlPosition());
     }
 
+    public void StopControllingShip()
+    {
+        StopAllCoroutines(); 
+        shipAudioManager.StopMovingSfx();
+        _state = State.Idle;
+    }
+    
     IEnumerator MovePlayerToControlPosition()
     {
         playerPositionAtControl.position = playerMovement.transform.position;
@@ -120,7 +131,7 @@ public class ShipController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            PlayerControlsShip();
+            TryToPlayerControlsShip();
         }
         
         if (Input.GetKey(KeyCode.E))
@@ -146,12 +157,12 @@ public class ShipController : MonoBehaviour
         rb.velocity = currentVelocity;
     }
 
-    public void ToggleLight()
+    public void TryToToggleLight()
     {
         outdoorLights.SetActive(!outdoorLights.activeInHierarchy);
     }
 
-    public void ToggleMusic()
+    public void TryToToggleMusic()
     {
         if (musicSource.isPlaying)
             musicSource.Stop();
@@ -162,8 +173,16 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    public void UseGrabber(GrabberController grabber)
+    public void TryToUseGrabber(GrabberController grabber)
     {
         grabber.UseGrabberInput();
+    }
+    public void TryToUseHarpoon(HarpoonController harpoon)
+    {
+        harpoon.UseHarpoonInput(this);
+    }
+    public void TryToUseDoorLock(DoorLockController doorLock)
+    {
+        doorLock.UseDoorLockInput();
     }
 }

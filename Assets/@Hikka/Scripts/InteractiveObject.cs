@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber}
+    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber, Harpoon, DoorLock}
 
     public bool playerCouldInteract = true;
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
     
-    [Header("Settings for different objects")]
+    [Header("FOR SHIPS")]
     public ShipController shipController;
     [SerializeField] GrabberController grabberController;
+    [SerializeField] HarpoonController harpoonController;
+    [SerializeField] DoorLockController doorLockController;
+    
+    [Header("Settings for different objects")]
     public Collider collider;
     public Vector3 protableTransformOffset = Vector3.zero;
     public Rigidbody rb;
@@ -23,7 +27,6 @@ public class InteractiveObject : MonoBehaviour
     
     [Header("InteractiveObjectType")]
     public PlantController plantController;
-
     public ToolController toolToPickUp;
 
     void Start()
@@ -50,17 +53,25 @@ public class InteractiveObject : MonoBehaviour
         switch (actionList[selectedAction].actionType)
         {
             case ActionType.ControlShip:
-                shipController.PlayerControlsShip();
+                shipController.TryToPlayerControlsShip();
                 break;
             case ActionType.ToggleLight:
-                shipController.ToggleLight();
+                shipController.TryToToggleLight();
                 break;
             case ActionType.ToggleMusic:
-                shipController.ToggleMusic();
+                shipController.TryToToggleMusic();
                 break;
             case ActionType.Grabber:
-                shipController.UseGrabber(grabberController);
+                shipController.TryToUseGrabber(grabberController);
                 break;
+            case ActionType.Harpoon:
+                shipController.TryToUseHarpoon(harpoonController);
+                break;
+            
+            case ActionType.DoorLock:
+                shipController.TryToUseDoorLock(doorLockController);
+                break;
+            
             case ActionType.PickUp:
                 StartCoroutine(PlayerInteractionController.instance.PickUpObject(this));
                 break;

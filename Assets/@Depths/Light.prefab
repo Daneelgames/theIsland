@@ -66,6 +66,8 @@ MonoBehaviour:
     - Pick Up
   shipController: {fileID: 0}
   grabberController: {fileID: 0}
+  harpoonController: {fileID: 0}
+  doorLockController: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -154,7 +156,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295

@@ -400,8 +400,14 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
+     <Reference Include="Polarith.AI">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Polarith.AI.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Plastic.Antlr3.Runtime">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Polarith.AI.Editor">
+     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Editor/Polarith.AI.Editor.dll</HintPath>
      </Reference>
      <Reference Include="DOTweenEditor">
      <HintPath>C:/theIsland/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
@@ -420,12 +426,6 @@
      </Reference>
      <Reference Include="unityplastic">
      <HintPath>C:/theIsland/Library/PackageCache/com.unity.collab-proxy@1.5.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
-     </Reference>
-     <Reference Include="Polarith.AI.Editor">
-     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Editor/Polarith.AI.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Polarith.AI">
-     <HintPath>C:/theIsland/Assets/Polarith/AI/Plugins/Polarith.AI.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
