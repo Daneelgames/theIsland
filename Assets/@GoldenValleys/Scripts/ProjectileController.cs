@@ -59,8 +59,16 @@ public class ProjectileController : MonoBehaviour
         if (coll.gameObject.layer == 7)
         {
             var hpToDamage = coll.gameObject.GetComponent<HealthController>();
+            if (!hpToDamage)
+            {
+                    var partToDamage = coll.gameObject.GetComponent<MobBodyPart>();
+                    if (partToDamage != null)
+                        hpToDamage = partToDamage.hc;
+            }
+            
             if (hpToDamage)
                 hpToDamage.Damage(damage);
+            
             collided = true;
         }
         

@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4335614234287301421
 Transform:
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4295763957467472101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.894, y: 0, z: 1.026}
-  m_LocalScale: {x: 26.017134, y: 26.017134, z: 26.017134}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,7 +95,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6899791571611455345, guid: 7f91716cbff4097408293f1545fe43f4, type: 3}
 --- !u!114 &3774049929102261501
