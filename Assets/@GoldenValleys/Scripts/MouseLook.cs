@@ -71,6 +71,7 @@ public class MouseLook : MonoBehaviour
         playerHead.parent = null;
     }
     
+    /*
     void Update()
     {
         if (canControl  && canAim &&!pm.teleport)
@@ -79,6 +80,7 @@ public class MouseLook : MonoBehaviour
             //HandleHookshotStart();
         }
     }
+    */
     
     private void LateUpdate()
     {
