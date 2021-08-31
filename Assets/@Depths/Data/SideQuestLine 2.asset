@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: SideQuestLine 2
+  m_EditorClassIdentifier: Assembly-CSharp::QuestLine
+  questLineDevName: Side Quest Line 2
+  questLineName:
+  - Side Quest Line 2
+  questLineDescription:
+  - Second  SideQuest Line for testing
+  quests:
+  - questDevName: Test SideQuest 2
+    questName:
+    - First Test SideQuest 2
+    questDescription:
+    - 2 This is your first Test SideQuest. Move towards the randewoo point. Use Navigation
+      System for more info

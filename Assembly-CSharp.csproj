@@ -48,7 +48,7 @@
      <Compile Include="Assets\Scripts\Interactables\DestroyInteractable.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraController.cs" />
-     <Compile Include="Assets\SyncPlayerToShip.cs" />
+     <Compile Include="Assets\@Depths\Scripts\SyncPlayerToShip.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaController.cs" />
@@ -84,8 +84,9 @@
      <Compile Include="Assets\Scripts\Scriptable_Objects\PickableData.cs" />
      <Compile Include="Assets\@Hikka\Scripts\UniversalCursorController.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\SeekGround.cs" />
-     <Compile Include="Assets\MobSpawnManager.cs" />
+     <Compile Include="Assets\@Depths\Scripts\MobSpawnManager.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlayerToolsController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\QuestLinesManager.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IHoverable.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ToolController.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
@@ -114,7 +115,7 @@
      <Compile Include="Assets\Scripts\PlayerUiController.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantController.cs" />
      <Compile Include="Assets\__Global\GameObjectHelper.cs" />
-     <Compile Include="Assets\HarpoonController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\HarpoonController.cs" />
      <Compile Include="Assets\selected effect\scripts\Rotate_self.cs" />
      <Compile Include="Assets\@Hikka\Scripts\LoopsLoadingManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
@@ -130,9 +131,10 @@
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\@Hikka\Scripts\Utils\PlantTestGrowController.cs" />
-     <Compile Include="Assets\LevelSolids.cs" />
+     <Compile Include="Assets\@Depths\Scripts\LevelSolids.cs" />
      <Compile Include="Assets\selected effect\scripts\Selected_effect_touch.cs" />
      <Compile Include="Assets\Scripts\Perlin_Noise_Scroller\PerlinNoiseScroller.cs" />
+     <Compile Include="Assets\@Depths\Scripts\MobBodyPart.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantPart.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerParticles.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TimerDestroy.cs" />
@@ -143,8 +145,8 @@
      <Compile Include="Assets\Scripts\Camera_Controller\CameraZoom.cs" />
      <Compile Include="Assets\@Hikka\Scripts\LoopsLoadingTrigger.cs" />
      <Compile Include="Assets\__Global\TransformHelper.cs" />
-     <Compile Include="Assets\GrabberController.cs" />
-     <Compile Include="Assets\ShipAudioManager.cs" />
+     <Compile Include="Assets\@Depths\Scripts\GrabberController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\ShipAudioManager.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\SpaceshipPhysics.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\SpaceshipController.cs" />
@@ -161,15 +163,15 @@
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\ObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\HeadBobData.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
-     <Compile Include="Assets\ShipController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\ShipController.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaBarUiController.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandRoadsGenerator.cs" />
      <Compile Include="Assets\@Hikka\Scripts\RecipesData.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\MousePointer.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseTextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\InteractionInputData.cs" />
-     <Compile Include="Assets\DoorLockController.cs" />
-     <Compile Include="Assets\SetPlayerToAI.cs" />
+     <Compile Include="Assets\@Depths\Scripts\DoorLockController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\SetPlayerToAI.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ToolData.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\VehiclePhysics.cs" />
      <Compile Include="Assets\Scripts\First_Person_Controller\FirstPersonController.cs" />
@@ -178,7 +180,7 @@
      <Compile Include="Assets\@Hikka\Scripts\RandomizeSoundSourcesPitch.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\IslandWalker.cs" />
-     <Compile Include="Assets\HealthController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraBreathing.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\ProjectileController.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\ObjectCounter.cs" />
@@ -188,7 +190,6 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\MobBodyPart.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />
