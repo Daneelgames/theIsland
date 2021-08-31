@@ -5,32 +5,25 @@ using UnityEngine;
 
 public class QuestLinesManager : MonoBehaviour
 {
+    public static QuestLinesManager instance;
     public QuestLine mainQuestLine;
-    
+    [SerializeField] private int _mainQuestLineQuestsCompleted = -1;
     public List<QuestLine> sideQuestLines = new List<QuestLine>();
-}
 
-[CreateAssetMenu(fileName = "QuestLineData", menuName = "ScriptableObjects/New QuestLine Data", order = 0)]
-[Serializable]
-public class QuestLine: ScriptableObject
-{
-    [Header("Player couldn't see these:")]
-    public string questLineDevName = "New Quest Line";
-    
-    [Header("Player could see these:")]
-    public List<string> questLineName = new List<string>();
-    public List<string> questLineDescription = new List<string>();
-    
-    public List<Quest> quests = new List<Quest>();
-}
+    private void Awake()
+    {
+        instance = this;
+    }
 
-[Serializable]
-public class Quest
-{
-    [Header("Player couldn't see these:")]
-    public string questDevName = "New Quest";
-    
-    [Header("Player could see these:")]
-    public List<string> questName = new List<string>();
-    public List<string> questDescription = new List<string>();
+    public int MainQuestLineQuestsCompleted
+    {
+        get { return _mainQuestLineQuestsCompleted; }
+        set {_mainQuestLineQuestsCompleted = value; }
+    }
+
+    public void StartQuestLine(QuestLine questLineToStart)
+    {
+        if (questLineToStart == mainQuestLine && MainQuestLineQuestsCompleted == -1)
+            MainQuestLineQuestsCompleted = 0;
+    }
 }
