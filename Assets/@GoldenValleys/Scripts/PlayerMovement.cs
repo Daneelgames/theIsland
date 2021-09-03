@@ -86,6 +86,7 @@ namespace PlayerControls
 
         private float shootedCooldown = 0;
         private float shootedCooldownMax = 0.1f;
+        
 
         private void Awake()
         {

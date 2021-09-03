@@ -49,6 +49,7 @@
      <Compile Include="Assets\@GoldenValleys\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraController.cs" />
      <Compile Include="Assets\@Depths\Scripts\SyncPlayerToShip.cs" />
+     <Compile Include="Assets\RadioCallController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaController.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\PathRequestManager.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\CopterPhysics.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Pickable.cs" />
+     <Compile Include="Assets\@Depths\Scripts\RadioCallData.cs" />
      <Compile Include="Assets\NatureManufacture Assets\NatureManufacture Wind\NM_Wind.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\AircraftController.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\ObjectForPooling.cs" />
@@ -135,6 +137,7 @@
      <Compile Include="Assets\selected effect\scripts\Selected_effect_touch.cs" />
      <Compile Include="Assets\Scripts\Perlin_Noise_Scroller\PerlinNoiseScroller.cs" />
      <Compile Include="Assets\@Depths\Scripts\MobBodyPart.cs" />
+     <Compile Include="Assets\@Depths\Scripts\QuestEventController.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantPart.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerParticles.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TimerDestroy.cs" />
@@ -171,6 +174,7 @@
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseTextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\InteractionInputData.cs" />
      <Compile Include="Assets\@Depths\Scripts\DoorLockController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\QuestLine.cs" />
      <Compile Include="Assets\@Depths\Scripts\SetPlayerToAI.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ToolData.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\VehiclePhysics.cs" />
@@ -185,18 +189,14 @@
      <Compile Include="Assets\@GoldenValleys\Scripts\ProjectileController.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\ObjectCounter.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantData.cs" />
+     <Compile Include="Assets\@Depths\Scripts\RadioCallsManager.cs" />
+     <Compile Include="Assets\@Depths\Scripts\QuestTrigger.cs" />
+     <Compile Include="Assets\JournalController.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionData.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\RadioCallController.cs" />
-     <Compile Include="Assets\@Depths\Scripts\QuestEventController.cs" />
-     <Compile Include="Assets\@Depths\Scripts\QuestLine.cs" />
-     <Compile Include="Assets\JournalController.cs" />
-     <Compile Include="Assets\@Depths\Scripts\RadioCallsManager.cs" />
-     <Compile Include="Assets\@Depths\Scripts\QuestTrigger.cs" />
-     <Compile Include="Assets\@Depths\Scripts\RadioCallData.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />

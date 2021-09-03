@@ -919,7 +919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &730576360
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4725,7 +4725,7 @@ MonoBehaviour:
   aimingSpeed: 1
   mouseLookSpeedCurrent: 15
   cameraFovIdle: 75
-  cameraFovAim: 20
+  cameraFovAim: 70
   canControl: 1
   camHolder: {fileID: 2108950099808418664}
   mainCamera: {fileID: 4241874866288030598}

@@ -11,8 +11,8 @@ public class MouseLook : MonoBehaviour
 
     public Transform playerHead;
     
-    float mouseX = 0;
-    float mouseY = 0;
+    public float mouseX = 0;
+    public float mouseY = 0;
 
     float xRotation = 0;
     float yRotation = 0;
@@ -54,6 +54,8 @@ public class MouseLook : MonoBehaviour
     private string aimingString = "Aiming";
     private string mouseXstring = "Mouse X";
     private string mouseYstring = "Mouse Y";
+
+    private ShipController controlledShip;
     
     private Coroutine controlHarpoonCoroutine;
 
@@ -66,12 +68,14 @@ public class MouseLook : MonoBehaviour
         }
         
         instance = this;
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        playerHead.parent = null;
+        
+        
+        //playerHead.parent = null;
     }
     
-    /*
     void Update()
     {
         if (canControl  && canAim &&!pm.teleport)
@@ -80,17 +84,34 @@ public class MouseLook : MonoBehaviour
             //HandleHookshotStart();
         }
     }
-    */
     
     private void LateUpdate()
     {
         if (canControl && canAim &&!pm.teleport)
         {
-            Looking();
+            if (aiming)
+                Looking();
+            else if (controlledShip)
+            {
+                ControlShip();
+            }
         }
-        
+
+        //MovePlayerHead();
+    }
+
+    void MovePlayerHead()
+    {
         if (canControl && !PlayerMovement.instance.teleport)
             playerHead.position = Vector3.Lerp(playerHead.position, PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight, 50 * Time.smoothDeltaTime);
+    }
+
+    void ControlShip()
+    {
+        mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
+        mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
+        
+        controlledShip.AddTorqueFromPlayerHead(mouseX, mouseY);
     }
 
     public void TeleportPlayerHead()
@@ -110,6 +131,7 @@ public class MouseLook : MonoBehaviour
             return;
         }
 
+        controlledShip = ship;
         playerHead.parent = ship.transform;
     }
 
@@ -123,6 +145,8 @@ public class MouseLook : MonoBehaviour
                 controlHarpoonCoroutine = null;   
             }
 
+            transform.position = controlledShip.playerHeadTransform.transform.position;
+            transform.rotation = controlledShip.playerHeadTransform.transform.rotation;
             canControl = true;
             return;
         }

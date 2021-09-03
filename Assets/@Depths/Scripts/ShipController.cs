@@ -21,6 +21,7 @@ public class ShipController : MonoBehaviour
     public GameObject outdoorLights;
     public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
+    public Transform playerHeadTransform;
     
     // CONTROLS
     enum State
@@ -48,10 +49,12 @@ public class ShipController : MonoBehaviour
         }
     }
     
+    /*
     private void FixedUpdate()
     {
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
+    */
 
     public void TryToPlayerControlsShip()
     {
@@ -64,7 +67,6 @@ public class ShipController : MonoBehaviour
             return;   
         }
 
-        
         playerMovement.PlayerControlsShip(this);
         shipAudioManager.StartMovingSfx();
 
@@ -144,17 +146,15 @@ public class ShipController : MonoBehaviour
             _targetVelocity += -transform.up;   
         }
         
-        
-        
         if (Input.GetKey(KeyCode.E))
         {
             controlledInFrame = true;
-            rb.AddRelativeTorque(transform.up * torqueSpeedScaler, ForceMode.Force);
+            rb.AddRelativeTorque(transform.forward * (-torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
         }
         else if (Input.GetKey(KeyCode.Q))
         {
             controlledInFrame = true;
-            rb.AddRelativeTorque(transform.up * -torqueSpeedScaler, ForceMode.Force);
+            rb.AddRelativeTorque(transform.forward * (torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
         }
         
         _targetVelocity.Normalize();
@@ -167,6 +167,19 @@ public class ShipController : MonoBehaviour
         currentVelocity = Vector3.Lerp(currentVelocity, _targetVelocity * moveSpeedScaler, Time.deltaTime * accelerationScale);
         
         rb.velocity = currentVelocity;
+    }
+
+    public void AddTorqueFromPlayerHead(float mouseX, float mouseY)
+    {
+        if (Math.Abs(mouseX) < 0.01f && Math.Abs(mouseY) < 0.01f)
+        {
+            return;
+        }
+
+        controlledInFrame = true;
+        rb.AddRelativeTorque(transform.right * (-mouseY * (torqueSpeedScaler * Time.deltaTime)), ForceMode.Force);
+        rb.AddRelativeTorque(transform.up * (mouseX * (torqueSpeedScaler * Time.deltaTime)), ForceMode.Force);
+        //rb.AddRelativeTorque(new Vector3(-mouseY, 0, mouseX) * (torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
     }
 
     public void TryToToggleLight()
