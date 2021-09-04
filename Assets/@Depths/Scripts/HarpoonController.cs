@@ -58,7 +58,6 @@ public class HarpoonController : MonoBehaviour
         if (_ship.Use360Movement == false)
             PlayerMovement.instance.PlayerControlsShip(null);
 
-        Debug.Log("UseHarpoonInput");
         switch (state)
         {
             case State.Idle:
@@ -71,6 +70,7 @@ public class HarpoonController : MonoBehaviour
                 state = State.ControlledByPlayer;
                 break;
 
+            /*
             case State.ControlledByPlayer:
                 // release player's head
                 // unlock player's movement
@@ -86,24 +86,30 @@ public class HarpoonController : MonoBehaviour
                 }
 
                 state = State.Idle;
-                break;
+                break;*/
         }
     }
 
     Quaternion newLocalRotation = Quaternion.identity;
     IEnumerator HarpoonControlCoroutine()
     {
+        float newMinXRotation = minXRotation;
+        float newMaxXRotation = maxXRotation;
+        float newMinYRotation = minYRotation;
+        float newMaxYRotation = maxYRotation;
+        float newRotationSpeedScaler = rotationSpeedScaler;
+        
         while (true)
         {
             yield return null;
 
+            /*
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 ship.TryToUseHarpoon(this);
             }
+            */
             
-            Debug.Log("HarpoonControlCoroutine");
-
             if (MouseLook.instance.aiming)
                 continue;
             
@@ -114,12 +120,32 @@ public class HarpoonController : MonoBehaviour
 
                 xRotation -= mouseY;
                 yRotation += mouseX;
-                xRotation = Mathf.Clamp(xRotation, minXRotation, maxXRotation);
-                yRotation = Mathf.Clamp(yRotation, minYRotation, maxYRotation);
+
+
+                if (ship._state == ShipController.State.ControlledByPlayer)
+                {
+                    newMinXRotation = minXRotation;
+                    newMaxXRotation = maxXRotation;
+                    newMinYRotation = minYRotation;
+                    newMaxYRotation = maxYRotation;
+                    newRotationSpeedScaler = rotationSpeedScaler;
+                }
+                else if (ship._state == ShipController.State.Idle)
+                {
+                    newMinXRotation = minXRotation * 3;
+                    newMaxXRotation = maxXRotation * 3;
+                    newMinYRotation = minYRotation * 3;
+                    newMaxYRotation = maxYRotation * 3;
+                    newRotationSpeedScaler = rotationSpeedScaler * 3;
+                }
+                
+                
+                xRotation = Mathf.Clamp(xRotation, newMinXRotation, newMaxXRotation);
+                yRotation = Mathf.Clamp(yRotation, newMinYRotation, newMaxYRotation);
             }
 
             newLocalRotation = Quaternion.Euler(xRotation, yRotation, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, newLocalRotation, rotationSpeedScaler * Time.smoothDeltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, newLocalRotation, newRotationSpeedScaler * Time.smoothDeltaTime);
             
             if (attackCooldownCurrent > 0)
                 continue;

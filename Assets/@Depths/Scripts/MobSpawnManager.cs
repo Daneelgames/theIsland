@@ -85,6 +85,7 @@ public class MobSpawnManager : MonoBehaviour
 
     public void MobKilled(HealthController hc)
     {
-        spawnedMobs.Remove(hc);
+        if (spawnedMobs.Contains(hc))
+            spawnedMobs.Remove(hc);
     }
 }

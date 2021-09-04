@@ -6,10 +6,16 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    public int healthCurrent = 100;
+    public float healthCurrent = 100;
+    public float healthMax = 100;
     public List<MobBodyPart> mobBodyParts;
     public GameObject deathParticles;
 
+    void Start()
+    {
+        healthMax = healthCurrent;
+    }
+    
     [ContextMenu("GetBodyParts")]
     public void GetBodyParts()
     {
@@ -36,7 +42,10 @@ public class HealthController : MonoBehaviour
     public void Death()
     {
         MobSpawnManager.instance.MobKilled(this);
-        Instantiate(deathParticles, transform.position, transform.rotation);
+        
+        if (deathParticles)
+            Instantiate(deathParticles, transform.position, transform.rotation);
+        
         Destroy(gameObject);
     }
 }

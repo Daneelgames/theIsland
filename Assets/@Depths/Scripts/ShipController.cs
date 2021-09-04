@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    public HealthController hc;
     public Transform playerPositionAtControl;
     // interacted with control panel
     PlayerMovement playerMovement;
@@ -41,16 +42,16 @@ public class ShipController : MonoBehaviour
     private Vector3 strafe;
     private float power;
     // CONTROLS
-    enum State
+    public enum State
     {
         Idle, ControlledByPlayer
     }
 
-    private State _state = State.Idle;
+    public State _state = State.Idle;
     
     void Start()
     {
-        //(ControlShip());
+        TryToPlayerControlsShip();
     }
 
     public Vector3 TargetVelocity
@@ -93,7 +94,11 @@ public class ShipController : MonoBehaviour
         
         power = Input.GetAxis("Power");
 
-        
+        if (Mathf.Approximately(Input.GetAxis("Mouse ScrollWheel"), 0) == false)
+        {
+            power = Input.GetAxis("Mouse ScrollWheel") * 3000 * Time.deltaTime;
+        }
+
         strafe = new Vector3(Input.GetAxis("Horizontal") * strafeSpeed * Time.deltaTime, Input.GetAxis("Vertical") * strafeSpeed * Time.deltaTime, 0);
         
         //Truespeed controls

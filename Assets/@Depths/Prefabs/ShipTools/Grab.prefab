@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 2855304607998973196}
   - component: {fileID: 2855304607998973199}
   - component: {fileID: 2855304607998973198}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Grabber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
