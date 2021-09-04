@@ -86,7 +86,8 @@ namespace PlayerControls
 
         private float shootedCooldown = 0;
         private float shootedCooldownMax = 0.1f;
-        
+
+        private ShipController shipInControl;
 
         private void Awake()
         {
@@ -158,11 +159,15 @@ namespace PlayerControls
             else
                 controller.enabled = false;
             MouseLook.instance.PlayerControlsShip(ship);
+            shipInControl = ship;
             transform.parent = ship.transform;
             inControl = false;
         }
         public void PlayerControlsHarpoon(HarpoonController harpoon)
         {
+            if (shipInControl.Use360Movement)
+                return;
+            
             //PlayerControlsShip(null);
             if (harpoon == null)
             {/*

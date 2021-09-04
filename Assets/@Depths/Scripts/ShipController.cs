@@ -22,7 +22,24 @@ public class ShipController : MonoBehaviour
     public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
     public Transform playerHeadTransform;
+
+    [Header("Weapons")] 
+    public List<HarpoonController> weaponsControlledByMainControl = new List<HarpoonController>();
     
+    [Header("360 Movement Control")]
+    public bool Use360Movement = true;
+    public float turnspeed = 5.0f;
+    public float  speed = 5.0f;
+    public float  trueSpeed = 0.0f;
+    public float maxTrueSpeed = 10f;
+    public float minTrueSpeed = -3f;
+    public float  strafeSpeed = 5.0f;
+
+    private float roll;
+    private float pitch;
+    private float yaw;
+    private Vector3 strafe;
+    private float power;
     // CONTROLS
     enum State
     {
@@ -47,14 +64,69 @@ public class ShipController : MonoBehaviour
         {
             TryToPlayerControlsShip();
         }
+
+        if (Use360Movement && _state == State.ControlledByPlayer)
+        {
+            GetPlayerInput360();
+        }
+    }
+
+    public float CurrentSpeed
+    {
+        get { return Mathf.RoundToInt(trueSpeed); }
+    }
+
+    void GetPlayerInput360()
+    {
+        if (!MouseLook.instance.aiming)
+        {
+            pitch = Input.GetAxis("Mouse Y");
+            yaw = Input.GetAxis("Mouse X");  
+        }
+        else
+        {
+            pitch = 0;
+            yaw = 0;
+        }
+        
+        roll = Input.GetAxis("Roll");
+        
+        power = Input.GetAxis("Power");
+
+        
+        strafe = new Vector3(Input.GetAxis("Horizontal") * strafeSpeed * Time.deltaTime, Input.GetAxis("Vertical") * strafeSpeed * Time.deltaTime, 0);
+        
+        //Truespeed controls
+
+        if (trueSpeed < maxTrueSpeed && trueSpeed > minTrueSpeed)
+        {
+            trueSpeed += power * 50 * Time.deltaTime;
+        }
+        if (trueSpeed > maxTrueSpeed)
+        {
+            trueSpeed = maxTrueSpeed - 0.01f;	
+        }
+        if (trueSpeed < minTrueSpeed)
+        {
+            trueSpeed = minTrueSpeed + 0.01f;	
+        }
+        
+        if (Input.GetKeyDown(KeyCode.F))
+            trueSpeed = 0;
+        
+        rb.AddRelativeTorque(-pitch * turnspeed * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime);
+        
+        rb.AddRelativeForce(0,0,trueSpeed * speed * Time.deltaTime);
+        rb.AddRelativeForce(strafe);
     }
     
-    /*
     private void FixedUpdate()
     {
+        if (Use360Movement)
+            return;
+        
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
-    */
 
     public void TryToPlayerControlsShip()
     {
@@ -69,6 +141,11 @@ public class ShipController : MonoBehaviour
 
         playerMovement.PlayerControlsShip(this);
         shipAudioManager.StartMovingSfx();
+
+        for (int i = 0; i < weaponsControlledByMainControl.Count; i++)
+        {
+            weaponsControlledByMainControl[i].UseHarpoonInput(this);
+        }
 
         rb.isKinematic = false;
         _state = State.ControlledByPlayer;
@@ -86,7 +163,11 @@ public class ShipController : MonoBehaviour
     {
         playerPositionAtControl.position = playerSit.position;
         
-        StartCoroutine(ControlShip());
+        if (Use360Movement == false)
+            StartCoroutine(ControlShip2Axis());
+        
+        shipAudioManager.StartMovingSfx();
+        
         while (true)
         {
             yield return null;
@@ -94,17 +175,17 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    IEnumerator ControlShip()
+    IEnumerator ControlShip2Axis()
     {
         shipAudioManager.StartMovingSfx();
         while (true)
         {
-            GetShipMovement();
+            GetShipMovement2Axis();
             yield return null;
         }
     }
 
-    void GetShipMovement()
+    void GetShipMovement2Axis()
     {
         //targetVelocity = currentVelocity;
         
@@ -171,7 +252,7 @@ public class ShipController : MonoBehaviour
 
     public void AddTorqueFromPlayerHead(float mouseX, float mouseY)
     {
-        if (Math.Abs(mouseX) < 0.01f && Math.Abs(mouseY) < 0.01f)
+        if (Use360Movement || (Math.Abs(mouseX) < 0.01f && Math.Abs(mouseY) < 0.01f))
         {
             return;
         }

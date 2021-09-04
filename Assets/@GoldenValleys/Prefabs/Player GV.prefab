@@ -4721,15 +4721,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 4241874864893504358}
   playerHead: {fileID: 4035021520469421917}
+  mouseX: 0
+  mouseY: 0
   mouseSensitivity: 1.5
   aimingSpeed: 1
   mouseLookSpeedCurrent: 15
   cameraFovIdle: 75
-  cameraFovAim: 70
+  cameraFovAim: 50
   canControl: 1
   camHolder: {fileID: 2108950099808418664}
   mainCamera: {fileID: 4241874866288030598}
   handsCamera: {fileID: 6591736371622716550}
+  shipCamera: {fileID: 1289260551}
   targetRotation: {fileID: 1307971541}
   aiming: 0
   canAim: 1

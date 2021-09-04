@@ -24,6 +24,8 @@ public class HarpoonController : MonoBehaviour
     [SerializeField] float attackCooldown = 1f;
     [SerializeField] float attackCooldownCurrent = 0f;
 
+    [SerializeField] float rotationSpeedScaler = 0.5f;
+    
     private Coroutine harpoonControlCoroutine;
 
     private float mouseX = 0;
@@ -53,9 +55,10 @@ public class HarpoonController : MonoBehaviour
             ship = _ship;
         
         //ship.StopControllingShip();
-        
-        PlayerMovement.instance.PlayerControlsShip(null);
+        if (_ship.Use360Movement == false)
+            PlayerMovement.instance.PlayerControlsShip(null);
 
+        Debug.Log("UseHarpoonInput");
         switch (state)
         {
             case State.Idle:
@@ -64,7 +67,6 @@ public class HarpoonController : MonoBehaviour
                 PlayerMovement.instance.PlayerControlsHarpoon(this);
 
                 // StartControlling the gun
-                Debug.Log("UseHarpoonInput");
                 harpoonControlCoroutine = StartCoroutine(HarpoonControlCoroutine());
                 state = State.ControlledByPlayer;
                 break;
@@ -88,17 +90,23 @@ public class HarpoonController : MonoBehaviour
         }
     }
 
+    Quaternion newLocalRotation = Quaternion.identity;
     IEnumerator HarpoonControlCoroutine()
     {
         while (true)
         {
             yield return null;
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 ship.TryToUseHarpoon(this);
             }
+            
+            Debug.Log("HarpoonControlCoroutine");
 
+            if (MouseLook.instance.aiming)
+                continue;
+            
             if (PlayerUiController.instance.itemWheelVisible == false)
             {
                 mouseX = Input.GetAxis(mouseXstring) * MouseLook.instance.mouseSensitivity;
@@ -110,13 +118,13 @@ public class HarpoonController : MonoBehaviour
                 yRotation = Mathf.Clamp(yRotation, minYRotation, maxYRotation);
             }
 
-            var newLocalRotation = Quaternion.Euler(xRotation, yRotation, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, newLocalRotation, Time.smoothDeltaTime);
-
+            newLocalRotation = Quaternion.Euler(xRotation, yRotation, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, newLocalRotation, rotationSpeedScaler * Time.smoothDeltaTime);
+            
             if (attackCooldownCurrent > 0)
                 continue;
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 attackAu.Stop();
                 attackAu.pitch = Random.Range(0.75f, 1.25f);

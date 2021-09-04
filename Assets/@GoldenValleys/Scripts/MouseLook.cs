@@ -30,6 +30,7 @@ public class MouseLook : MonoBehaviour
     GameObject camHolder;
     public Camera mainCamera;
     public Camera handsCamera;
+    public Camera shipCamera;
 
     float cameraFov = 60;
     [SerializeField]
@@ -108,6 +109,8 @@ public class MouseLook : MonoBehaviour
 
     void ControlShip()
     {
+        playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, controlledShip.playerHeadTransform.rotation, Time.deltaTime * mouseLookSpeedCurrent);
+        
         mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
         mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
         
@@ -219,10 +222,14 @@ public class MouseLook : MonoBehaviour
         else
         {
             cameraFov = Mathf.Lerp(cameraFov, cameraFovIdle,Time.deltaTime * aimingSpeed);
+            
+            xRotation = 0;
+            yRotation = 0;
         }
 
         mainCamera.fieldOfView = cameraFov;
         handsCamera.fieldOfView = cameraFov;
+        shipCamera.fieldOfView = cameraFov;
         
         if (activeWeaponHolderAnim)
             activeWeaponHolderAnim.SetBool(aimingString, aiming);
