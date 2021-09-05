@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1997220749d38488cc35c1ccd62d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobCloseAttack: {fileID: 0}
+  mobCloseAttack: {fileID: 5862851710855635768}
 --- !u!1 &946359061793630440
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd42399dc73f785428434021ffa25eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 0
   healthCurrent: 100
   healthMax: 100
   mobBodyParts:
@@ -243,6 +244,10 @@ MonoBehaviour:
   - {fileID: 3902125868277325618}
   deathParticles: {fileID: 1076123417484624095, guid: e71eb1c67e604af4280e853c90087d5d, type: 3}
   rb: {fileID: 1001859566247588114}
+  AddExplosiveForceOnDamage: 1
+  explosivePowerOnDamage: 100
+  explosiveRaidusOnDamage: 50
+  damagedAu: {fileID: 0}
 --- !u!114 &4270303809698278470
 MonoBehaviour:
   m_ObjectHideFlags: 0

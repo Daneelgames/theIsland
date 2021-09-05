@@ -13,11 +13,9 @@ public class MobCloseAttack : MonoBehaviour
     public Animator anim;
 
     private List<HealthController> damagedHC = new List<HealthController>();
-    
+    private Coroutine attackCoroutine;
     void OnCollisionStay(Collision coll)
     {
-        Debug.Log("Coll: " + coll.gameObject.name + "; layer: " + coll.gameObject.layer);
-        
         if (coll.gameObject.layer == 7 || coll.gameObject.layer == 11)
         {
             if (dangerous)
@@ -25,7 +23,8 @@ public class MobCloseAttack : MonoBehaviour
             
             if (!searchForNewCollision)
                 return;
-            StartCoroutine(AttackCoroutine());
+            if (attackCoroutine == null)
+                attackCoroutine = StartCoroutine(AttackCoroutine());
         }
     }
 
@@ -50,6 +49,7 @@ public class MobCloseAttack : MonoBehaviour
             hpToDamage.Damage(damage);
             damagedHC.Add(hpToDamage);
         }
+
     }
 
     IEnumerator AttackCoroutine()
@@ -61,6 +61,8 @@ public class MobCloseAttack : MonoBehaviour
         yield return new WaitForSeconds(attackLenght);
         dangerous = false;
         searchForNewCollision = true;
+        
+        attackCoroutine = null;
     }
 
     public void DangerousTrue()
