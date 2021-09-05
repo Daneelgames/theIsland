@@ -245,7 +245,7 @@ MonoBehaviour:
   deathParticles: {fileID: 1076123417484624095, guid: e71eb1c67e604af4280e853c90087d5d, type: 3}
   rb: {fileID: 1001859566247588114}
   AddExplosiveForceOnDamage: 1
-  explosivePowerOnDamage: 100
+  explosivePowerOnDamage: 500
   explosiveRaidusOnDamage: 50
   damagedAu: {fileID: 0}
 --- !u!114 &4270303809698278470

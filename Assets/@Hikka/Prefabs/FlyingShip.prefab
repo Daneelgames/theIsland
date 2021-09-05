@@ -6321,12 +6321,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd42399dc73f785428434021ffa25eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 1
   healthCurrent: 100
   healthMax: 100
   mobBodyParts:
   - {fileID: 3202097833661627660}
   deathParticles: {fileID: 0}
   rb: {fileID: 3189796485433920492}
+  AddExplosiveForceOnDamage: 1
+  explosivePowerOnDamage: 500
+  explosiveRaidusOnDamage: 50
+  damagedAu: {fileID: 0}
 --- !u!114 &4852675596634770593
 MonoBehaviour:
   m_ObjectHideFlags: 0

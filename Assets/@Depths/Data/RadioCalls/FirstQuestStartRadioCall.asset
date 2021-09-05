@@ -24,4 +24,8 @@ MonoBehaviour:
   - speakerName: Nina
     speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
     speakerPhrase:
-    - Follow me
+    - Do you even remember how to pilot a cage?
+  - speakerName: Nina
+    speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
+    speakerPhrase:
+    - Play around with controls, I'll call you a bit later
