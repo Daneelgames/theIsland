@@ -11,14 +11,22 @@ public class HealthController : MonoBehaviour
     public List<MobBodyPart> mobBodyParts;
     public GameObject deathParticles;
 
+    [SerializeField] private Rigidbody rb;
+    
     void Start()
     {
         healthMax = healthCurrent;
     }
-    
-    [ContextMenu("GetBodyParts")]
+
+    public Rigidbody GetRigidbody
+    {
+        get { return rb; }
+    }
+
+        [ContextMenu("GetBodyParts")]
     public void GetBodyParts()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
         mobBodyParts = new List<MobBodyPart>(GetComponentsInChildren<MobBodyPart>());
         for (int i = 0; i < mobBodyParts.Count; i++)
         {

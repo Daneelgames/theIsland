@@ -30,6 +30,7 @@ public class ShipController : MonoBehaviour
     [Header("360 Movement Control")]
     public bool Use360Movement = true;
     public float turnspeed = 5.0f;
+    public float verticalTurnSpeedScaler = 2f;
     public float  speed = 5.0f;
     public float  trueSpeed = 0.0f;
     public float maxTrueSpeed = 10f;
@@ -119,7 +120,7 @@ public class ShipController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
             trueSpeed = 0;
         
-        rb.AddRelativeTorque(-pitch * turnspeed * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime);
+        rb.AddRelativeTorque(-pitch * turnspeed * verticalTurnSpeedScaler * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime);
         
         rb.AddRelativeForce(0,0,trueSpeed * speed * Time.deltaTime);
         rb.AddRelativeForce(strafe);

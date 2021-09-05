@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9073846891741511862}
   - component: {fileID: 2381135478865340207}
   - component: {fileID: 3500234105624165963}
+  - component: {fileID: -4198680500156551264}
   m_Layer: 7
   m_Name: MobDeathParticle
   m_TagString: Untagged
@@ -4970,3 +4971,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4198680500156551264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076123417484624095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcb34efcc2a9c24f9d01e15ffc9f37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: 100
+  startPower: 1000

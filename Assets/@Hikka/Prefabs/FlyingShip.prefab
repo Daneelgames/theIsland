@@ -6678,6 +6678,7 @@ MonoBehaviour:
   mobBodyParts:
   - {fileID: 3202097833661627660}
   deathParticles: {fileID: 0}
+  rb: {fileID: 3189796485433920492}
 --- !u!1 &1129401921919284122
 GameObject:
   m_ObjectHideFlags: 0

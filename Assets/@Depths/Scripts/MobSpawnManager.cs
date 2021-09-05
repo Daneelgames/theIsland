@@ -21,6 +21,8 @@ public class MobSpawnManager : MonoBehaviour
     [SerializeField] List<AssetReference> mobsReferences = new List<AssetReference>();
     [SerializeField] List<HealthController> spawnedMobs = new List<HealthController>();
 
+    [SerializeField] List<Rigidbody> _activeRidigbodies = new List<Rigidbody>();
+
     private void Awake()
     {
         instance = this;
@@ -81,11 +83,22 @@ public class MobSpawnManager : MonoBehaviour
             return;
         
         spawnedMobs.Add(newHc);
+        _activeRidigbodies.Add(newHc.GetRigidbody);
     }
 
     public void MobKilled(HealthController hc)
     {
         if (spawnedMobs.Contains(hc))
+        {
             spawnedMobs.Remove(hc);
+        }
+
+        if (_activeRidigbodies.Contains(hc.GetRigidbody))
+            _activeRidigbodies.Remove(hc.GetRigidbody);
+    }
+
+    public List<Rigidbody> ActiveRigidbodies
+    {
+        get { return _activeRidigbodies; }
     }
 }

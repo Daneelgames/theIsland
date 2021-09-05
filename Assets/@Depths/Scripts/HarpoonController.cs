@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HarpoonController : MonoBehaviour
 {
@@ -49,6 +51,23 @@ public class HarpoonController : MonoBehaviour
 
     private ShipController ship;
     
+    [Header("Laser Spot Settings")]
+    public GameObject laserSpot;
+    public LayerMask laserSpotLayerMask;
+    public float lasetSpotSpeed = 5;
+
+    private Vector3 laserSpotDefaultLocalScale;
+    private RaycastHit hit;
+    private Coroutine UpdateLasetSpotCoroutine;
+
+    private void Start()
+    {
+        if (laserSpot)
+        {
+            laserSpotDefaultLocalScale = laserSpot.transform.localScale;
+        }
+    }
+
     public void UseHarpoonInput(ShipController _ship)
     {
         if (_ship != null)
@@ -61,6 +80,10 @@ public class HarpoonController : MonoBehaviour
         switch (state)
         {
             case State.Idle:
+                
+                if (laserSpot)
+                    UpdateLasetSpotCoroutine = StartCoroutine(UpdateLasetSpot());
+                
                 // lock player's movement
                 // move player's head to cameraParent
                 PlayerMovement.instance.PlayerControlsHarpoon(this);
@@ -70,11 +93,19 @@ public class HarpoonController : MonoBehaviour
                 state = State.ControlledByPlayer;
                 break;
 
-            /*
             case State.ControlledByPlayer:
+
+                /*
+                if (laserSpot && UpdateLasetSpotCoroutine != null)
+                {
+                    StopCoroutine(UpdateLasetSpotCoroutine);
+                    UpdateLasetSpotCoroutine = null;
+                    laserSpot.transform.localScale = Vector3.zero;
+                    laserSpot.transform.position = shotHolder.position;
+                }
+                
                 // release player's head
                 // unlock player's movement
-                
                 PlayerMovement.instance.transform.position = ship.playerSit.position;
                 PlayerMovement.instance.PlayerControlsHarpoon(null);
 
@@ -86,10 +117,25 @@ public class HarpoonController : MonoBehaviour
                 }
 
                 state = State.Idle;
-                break;*/
+                */
+                break;
         }
     }
 
+    IEnumerator UpdateLasetSpot()
+    {
+        while (true)
+        {
+            if (Physics.Raycast(shotHolder.position, shotHolder.forward, out hit,100,  laserSpotLayerMask))
+            {
+                laserSpot.transform.position = Vector3.Lerp(laserSpot.transform.position, hit.point, lasetSpotSpeed * Time.deltaTime);
+                laserSpot.transform.localScale = Vector3.Lerp(laserSpot.transform.localScale, laserSpotDefaultLocalScale, lasetSpotSpeed * Time.deltaTime);
+                laserSpot.transform.LookAt(MouseLook.instance.transform.position);
+            }
+            yield return null;
+        }
+    }
+    
     Quaternion newLocalRotation = Quaternion.identity;
     IEnumerator HarpoonControlCoroutine()
     {

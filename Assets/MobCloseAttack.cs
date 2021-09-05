@@ -5,7 +5,7 @@ using UnityEngine;
 public class MobCloseAttack : MonoBehaviour
 {
     public int damage = 50;
-     bool searchForNewCollision = false;
+    bool searchForNewCollision = true;
     public float attackLenght = 3f;
 
     private bool dangerous = false;
@@ -16,6 +16,8 @@ public class MobCloseAttack : MonoBehaviour
     
     void OnCollisionStay(Collision coll)
     {
+        Debug.Log("Coll: " + coll.gameObject.name + "; layer: " + coll.gameObject.layer);
+        
         if (coll.gameObject.layer == 7 || coll.gameObject.layer == 11)
         {
             if (dangerous)
@@ -52,6 +54,7 @@ public class MobCloseAttack : MonoBehaviour
 
     IEnumerator AttackCoroutine()
     {
+        Debug.Log("AttackCoroutine() ");
         damagedHC.Clear();
         searchForNewCollision = false;
         anim.SetTrigger("Attack");
