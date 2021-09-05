@@ -147,6 +147,7 @@ MonoBehaviour:
   laserSpotLayerMask:
     serializedVersion: 2
     m_Bits: 704
+  lasetSpotSpeed: 5
 --- !u!82 &3245948102496279533
 AudioSource:
   m_ObjectHideFlags: 0
@@ -989,7 +990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6970719426819727749}
   m_LocalRotation: {x: -0.0000014370091, y: -0, z: -0.38268277, w: 0.92387986}
-  m_LocalPosition: {x: -0.157, y: 0.1215, z: 1.305}
+  m_LocalPosition: {x: -0.16, y: 0.12, z: 8.42}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 5276802588061319327}

@@ -192,6 +192,8 @@ MonoBehaviour:
     gainI: 0.6
     gainD: 0.2
   objectiveAsSpeed: -1
+  currentTarget: {fileID: 0}
+  stopDistance: 0
 --- !u!136 &946359061793630441
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -219,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
+  unitName: Murmaid
   healthCurrent: 100
   healthMax: 100
   mobBodyParts:

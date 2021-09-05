@@ -4686,7 +4686,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3374522573488524313}
-  - component: {fileID: 8295359324883282507}
   m_Layer: 9
   m_Name: 00 FingerleafSeedVisual
   m_TagString: Untagged
@@ -4712,77 +4711,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8295359324883282507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4902942350362594998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613daa22f56377841a1008ccbae2c25e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minPulseTime: 2
-  maxPulseTime: 5
-  minScaleMultiplayer: 0.75
-  maxScaleMultiplayer: 1.3
-  plantData: {fileID: 11400000, guid: 1be2f1d2f45e5b34b8833e9f53dfa1fd, type: 2}
-  visualsByLifetime:
-  - plantData: {fileID: 0}
-    rootObject: {fileID: 969136414842618805}
-    pulsatingObjects:
-    - {fileID: 7769185978507126877}
-    - {fileID: 54775244376656062}
-    - {fileID: 6264324121133274892}
-  - plantData: {fileID: 0}
-    rootObject: {fileID: 1214701427108506242}
-    pulsatingObjects:
-    - {fileID: 5108969330677110555}
-    - {fileID: 1418029873924777406}
-    - {fileID: 1958627152182804560}
-    - {fileID: 728406627035825516}
-    - {fileID: 71176955640578345}
-    - {fileID: 2710705649401433119}
-  - plantData: {fileID: 0}
-    rootObject: {fileID: 2278204140411328559}
-    pulsatingObjects:
-    - {fileID: 6410669302121394643}
-    - {fileID: 4258635050577075850}
-    - {fileID: 1095767458633198927}
-    - {fileID: 1448663698547740499}
-    - {fileID: 1796408424805710088}
-    - {fileID: 8570183585551678611}
-    - {fileID: 720117075566155958}
-    - {fileID: 6948764044302339843}
-  - plantData: {fileID: 0}
-    rootObject: {fileID: 2284289931557261057}
-    pulsatingObjects:
-    - {fileID: 8041596370349707362}
-    - {fileID: 5539857711995349962}
-    - {fileID: 1269879689715695773}
-    - {fileID: 3554990441550679007}
-    - {fileID: 4019869386610240265}
-    - {fileID: 6151362952266981058}
-    - {fileID: 7803206562633203197}
-    - {fileID: 8001391888290938466}
-    - {fileID: 3320286164058688473}
-    - {fileID: 9044241490838397423}
-    - {fileID: 4788801708870495671}
-    - {fileID: 8957712803568835610}
-    - {fileID: 289299667431598139}
-    - {fileID: 5938193627967782734}
-    - {fileID: 2760655185712725493}
-    - {fileID: 605094004476308428}
-    - {fileID: 1659023203743425137}
-    - {fileID: 6770616381421534445}
-    - {fileID: 715344085189225504}
-    - {fileID: 7115401488219907216}
-    - {fileID: 393119727323604558}
-    - {fileID: 7913038197976145247}
-    - {fileID: 8548077810937153075}
-    - {fileID: 4275903528841483409}
 --- !u!1 &5108969330677110555
 GameObject:
   m_ObjectHideFlags: 0

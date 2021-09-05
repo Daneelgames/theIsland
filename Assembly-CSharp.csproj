@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaController.cs" />
+     <Compile Include="Assets\RadioCallStartTrigger.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\CombineUtility.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\AIState.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlayerInteractionController.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\@Hikka\Scripts\PlayerInventoryController.cs" />
      <Compile Include="Assets\__Global\FloatHelper.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
+     <Compile Include="Assets\SetTargetToAi.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\VehicleController.cs" />
      <Compile Include="Assets\selected effect\scripts\Selected_effect_mouse_click.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ProceduralPlant.cs" />
@@ -85,12 +87,14 @@
      <Compile Include="Assets\Scripts\NotifyOnDestroy.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\SpriteRotation.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PickableData.cs" />
+     <Compile Include="Assets\AddExplosionForceToRigidbodies.cs" />
      <Compile Include="Assets\@Hikka\Scripts\UniversalCursorController.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\SeekGround.cs" />
      <Compile Include="Assets\@Depths\Scripts\MobSpawnManager.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlayerToolsController.cs" />
      <Compile Include="Assets\@Depths\Scripts\QuestLinesManager.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IHoverable.cs" />
+     <Compile Include="Assets\ShipLightFeedback.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ToolController.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\CameraInputData.cs" />
@@ -125,6 +129,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IPickable.cs" />
      <Compile Include="Assets\ShipHealthFeedback.cs" />
+     <Compile Include="Assets\AnimatorEventsSender.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerCameraFollow.cs" />
      <Compile Include="Assets\Scripts\First_Person_Controller\HeadBob.cs" />
@@ -200,10 +205,7 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\AddExplosionForceToRigidbodies.cs" />
-     <Compile Include="Assets\AnimatorEventsSender.cs" />
-     <Compile Include="Assets\RadioCallStartTrigger.cs" />
-     <Compile Include="Assets\ShipLightFeedback.cs" />
+     <Compile Include="Assets\UnitStartsMoving.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />

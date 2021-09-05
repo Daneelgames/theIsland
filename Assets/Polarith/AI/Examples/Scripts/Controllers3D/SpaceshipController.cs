@@ -27,6 +27,9 @@ namespace Polarith.AI.Package
         [Tooltip("If set equal to or greater than 0, the evaluated AI decision value scales the translation force")]
         [Move.TargetObjective(true)]
         private int objectiveAsSpeed = -1;
+        public GameObject currentTarget;
+        public float stopDistance = 0;
+        private bool closeToTarget = false;
 
         #endregion // Fields
 
@@ -64,12 +67,24 @@ namespace Polarith.AI.Package
 
         #region Methods ================================================================================================
 
+        public void SetNewTarget(GameObject go, float targetStopDistance)
+        {
+            currentTarget = go;
+            stopDistance = targetStopDistance;
+        }
+        
         /// <summary>
         /// This function calculates the pitch angle in degrees based on the <see
         /// cref="AI.Move.AIMContext.LocalDecidedDirection"/>.
         /// </summary>
         protected override void CalculatePitch()
         {
+            if (closeToTarget)
+            {
+                pitch = 0;
+                return;   
+            }
+            
             pitch = Mathf.Atan2(Context.LocalDecidedDirection.y, Context.LocalDecidedDirection.z) * Mathf.Rad2Deg;
         }
 
@@ -81,6 +96,12 @@ namespace Polarith.AI.Package
         /// </summary>
         protected override void CalculateRoll()
         {
+            if (closeToTarget)
+            {
+                roll = 0;
+                return;   
+            }
+            
             float angleToUp = SignedAngle(transform.up, upVector, transform.forward);
 
             Vector3 unrotatedLocalXAxis = Quaternion.AngleAxis(angleToUp, transform.forward) * transform.right;
@@ -107,6 +128,12 @@ namespace Polarith.AI.Package
         /// </summary>
         protected override void CalculateYaw()
         {
+            if (closeToTarget)
+            {
+                yaw = 0;
+                return;   
+            }
+            
             yaw = Mathf.Atan2(Context.LocalDecidedDirection.x, Context.LocalDecidedDirection.z) * Mathf.Rad2Deg;
         }
 
@@ -118,6 +145,17 @@ namespace Polarith.AI.Package
         /// </summary>
         protected override void CalculateForce()
         {
+            if (currentTarget && Vector3.Distance(transform.position, currentTarget.transform.position) < stopDistance)
+            {
+                closeToTarget = true;
+                force = Vector3.zero;
+                return;   
+            }
+            else
+            {
+                closeToTarget = false;
+            }
+            
             force = new Vector3(0.0f, 0.0f, objectiveAsSpeed >= 0 ? Context.DecidedValues[objectiveAsSpeed] : 1);
         }
 

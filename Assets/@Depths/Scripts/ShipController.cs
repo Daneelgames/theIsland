@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    public bool playerShip = false;
+    
     public HealthController hc;
     public Transform playerPositionAtControl;
     // interacted with control panel
@@ -22,6 +24,8 @@ public class ShipController : MonoBehaviour
     public GameObject outdoorLights;
     public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
+    public SetTargetToAi setTargetToAi; 
+        
     public Transform playerHeadTransform;
 
     [Header("Weapons")] 
@@ -52,7 +56,8 @@ public class ShipController : MonoBehaviour
     
     void Start()
     {
-        TryToPlayerControlsShip();
+        if (playerShip)
+            TryToPlayerControlsShip();
     }
 
     public Vector3 TargetVelocity
@@ -62,6 +67,9 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
+        if (!playerShip)
+            return;
+        
         if (Input.GetKeyDown(KeyCode.Space) && (_state == State.Idle|| (_state == State.ControlledByPlayer && MouseLook.instance.canControl)))
         {
             TryToPlayerControlsShip();

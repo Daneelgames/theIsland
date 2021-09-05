@@ -76,7 +76,7 @@ public class InteractiveObject : MonoBehaviour
                 shipController.TryToUseDoorLock(doorLockController);
                 break;
             case ActionType.RadioCallInteract:
-                RadioCallsManager.instance.Interact();
+                RadioCallsManager.playerShipInstance.Interact();
                 break;
             
             case ActionType.PickUp:

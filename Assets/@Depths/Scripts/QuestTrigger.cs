@@ -39,7 +39,7 @@ public class QuestTrigger : MonoBehaviour
         if (questLineToStartOnTrigger)
             QuestLinesManager.instance.StartQuestLine(questLineToStartOnTrigger);
         if (questEventToSpawn != null)
-            AssetSpawner.instance.Spawn(questEventToSpawn, transform.position, Quaternion.identity, AssetSpawner.ObjectType.QuestEvent);
+            AssetSpawner.instance.Spawn(questEventToSpawn, Vector3.zero, Quaternion.identity, AssetSpawner.ObjectType.QuestEvent);
             
         Destroy(gameObject);
     }

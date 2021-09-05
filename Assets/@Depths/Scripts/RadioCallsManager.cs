@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class RadioCallsManager : MonoBehaviour
 {
-    public static RadioCallsManager instance;
+    public bool playerShip = false;
+    public static RadioCallsManager playerShipInstance;
     
     public RadioCallController radioCallController;
 
@@ -17,7 +18,8 @@ public class RadioCallsManager : MonoBehaviour
     private float playNewPhraseCooldown = 0.5f;
     private void Awake()
     {
-        instance = this;
+        if (playerShip)
+            playerShipInstance = this;
     }
 
     void Start()
@@ -34,7 +36,7 @@ public class RadioCallsManager : MonoBehaviour
 
     public void Interact()
     {
-        if (canPlayNewPhrase)
+        if (currentCall != null && canPlayNewPhrase)
             StartCoroutine(PlayNewPhrase());
     }
 
@@ -44,6 +46,11 @@ public class RadioCallsManager : MonoBehaviour
         if (currentPhrase >= currentCall.messagess.Count)
         {
             radioCallController.SetMessage(null);
+            
+            if (currentCall.spawnQuestEventOnEnd != null)
+            {
+                AssetSpawner.instance.Spawn(currentCall.spawnQuestEventOnEnd, Vector3.zero, Quaternion.identity, AssetSpawner.ObjectType.QuestEvent);
+            }
         }
         else
         {

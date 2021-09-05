@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
+using Polarith.AI.Package;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +11,7 @@ using Random = UnityEngine.Random;
 public class HealthController : MonoBehaviour
 {
     public bool player = false;
-    
+    public string unitName;
     public float healthCurrent = 100;
     public float healthMax = 100;
     public List<MobBodyPart> mobBodyParts;
@@ -21,11 +22,15 @@ public class HealthController : MonoBehaviour
     public float explosivePowerOnDamage = 100;
     public float explosiveRaidusOnDamage = 50;
 
+    public ShipController shipController;
+    public SpaceshipController spaceShipController;
+    
     [Header("Audio")]
     public AudioSource damagedAu;
     void Start()
     {
         healthMax = healthCurrent;
+        MobSpawnManager.instance.AddUnit(this);
     }
 
     public Rigidbody GetRigidbody
