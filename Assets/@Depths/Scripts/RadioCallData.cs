@@ -14,6 +14,6 @@ public class RadioCallData : ScriptableObject
 public class RadioMessage
 {
     public string speakerName;
-    public Image speakerImage;
+    public Sprite speakerImage;
     public List<string> speakerPhrase;
 }

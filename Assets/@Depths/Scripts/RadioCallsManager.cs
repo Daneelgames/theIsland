@@ -1,14 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RadioCallsManager : MonoBehaviour
 {
+    public static RadioCallsManager instance;
+    
     public RadioCallController radioCallController;
 
     private RadioCallData currentCall;
     
     int currentPhrase = 0;
+
+    private bool canPlayNewPhrase = true;
+    private float playNewPhraseCooldown = 0.5f;
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    void Start()
+    {
+        radioCallController.SetMessage(null);
+    }
     
     public void RadioCallToPlay(RadioCallData radioCall)
     {
@@ -17,13 +32,33 @@ public class RadioCallsManager : MonoBehaviour
         StartCoroutine(PlayNewPhrase());
     }
 
+    public void Interact()
+    {
+        if (canPlayNewPhrase)
+            StartCoroutine(PlayNewPhrase());
+    }
+
     IEnumerator PlayNewPhrase()
     {
         currentPhrase++;
-        radioCallController.speakerPhoto = currentCall.messagess[currentPhrase].speakerImage;
-        radioCallController.speakerNameString.text = currentCall.messagess[currentPhrase].speakerName.ToUpper();
-        radioCallController.speakerPhraseString.text = currentCall.messagess[currentPhrase].speakerPhrase[GameManager.instance.gameLanguage];
+        if (currentPhrase >= currentCall.messagess.Count)
+        {
+            radioCallController.SetMessage(null);
+        }
+        else
+        {
+            radioCallController.SetMessage(currentCall.messagess[currentPhrase]);   
+        }
 
-        yield return null;
+        canPlayNewPhrase = false;
+        
+        float t = 0;
+        while (t < playNewPhraseCooldown)
+        {
+            t += Time.deltaTime;
+            yield return null;   
+        }
+
+        canPlayNewPhrase = true;
     }
 }

@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    public enum ActionType {PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber, Harpoon, DoorLock}
+    public enum ActionType
+    {
+        PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber, Harpoon, DoorLock,
+        RadioCallInteract
+    }
 
     public bool playerCouldInteract = true;
     public List<InteractiveAction> actionList = new List<InteractiveAction>();
@@ -70,6 +74,9 @@ public class InteractiveObject : MonoBehaviour
             
             case ActionType.DoorLock:
                 shipController.TryToUseDoorLock(doorLockController);
+                break;
+            case ActionType.RadioCallInteract:
+                RadioCallsManager.instance.Interact();
                 break;
             
             case ActionType.PickUp:

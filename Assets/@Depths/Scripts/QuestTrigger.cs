@@ -13,6 +13,8 @@ public class QuestTrigger : MonoBehaviour
 
     private float cooldown = 0.5f;
     private float cooldownCurrent = 0f;
+
+    public float delayBeforeActivating = 0;
     
     bool activated = false;
     
@@ -25,15 +27,21 @@ public class QuestTrigger : MonoBehaviour
         
         if (other.gameObject == PlayerMovement.instance.gameObject)
         {
-            if (questLineToStartOnTrigger)
-                QuestLinesManager.instance.StartQuestLine(questLineToStartOnTrigger);
-            if (questEventToSpawn != null)
-                AssetSpawner.instance.Spawn(questEventToSpawn, transform.position, Quaternion.identity, AssetSpawner.ObjectType.QuestEvent);
-            
             activated = true;
             StopAllCoroutines();
-            Destroy(gameObject);
+            
+            Invoke(nameof(Activate), delayBeforeActivating);
         }
+    }
+
+    void Activate()
+    {
+        if (questLineToStartOnTrigger)
+            QuestLinesManager.instance.StartQuestLine(questLineToStartOnTrigger);
+        if (questEventToSpawn != null)
+            AssetSpawner.instance.Spawn(questEventToSpawn, transform.position, Quaternion.identity, AssetSpawner.ObjectType.QuestEvent);
+            
+        Destroy(gameObject);
     }
 
     IEnumerator Cooldown()

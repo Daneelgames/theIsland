@@ -202,6 +202,8 @@
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
      <Compile Include="Assets\AddExplosionForceToRigidbodies.cs" />
      <Compile Include="Assets\AnimatorEventsSender.cs" />
+     <Compile Include="Assets\RadioCallStartTrigger.cs" />
+     <Compile Include="Assets\ShipLightFeedback.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />
