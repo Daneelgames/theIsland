@@ -480,5 +480,10 @@ namespace PlayerControls
                 controller.enabled = true;
             inControl = true;
         }
+
+        public void ControlledShipDamaged()
+        {
+            cameraAnimator.SetTrigger("Damage");
+        }
     }
 }

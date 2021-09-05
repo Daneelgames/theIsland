@@ -106,7 +106,7 @@ public class MouseLook : MonoBehaviour
         if (canControl && !PlayerMovement.instance.teleport)
             playerHead.position = Vector3.Lerp(playerHead.position, PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight, 50 * Time.smoothDeltaTime);
     }
-
+    
     void ControlShip()
     {
         playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, controlledShip.playerHeadTransform.rotation, Time.deltaTime * mouseLookSpeedCurrent);
