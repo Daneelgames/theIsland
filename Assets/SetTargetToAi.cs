@@ -18,10 +18,11 @@ public class SetTargetToAi : MonoBehaviour
     {
         SetTarget(currentTarget);
         
+        /*
         for (int i = 0; i < LevelSolids.instance.solids.Count; i++)
         {
             aimSeekBounds.GameObjects.Add(LevelSolids.instance.solids[i]);
-        }
+        }*/
         //aimSeekBounds.GameObjects = new List<GameObject>(LevelSolids.instance.solids);
     }
 

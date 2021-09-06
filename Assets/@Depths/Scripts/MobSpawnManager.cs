@@ -45,7 +45,8 @@ public class MobSpawnManager : MonoBehaviour
     {
         while (true)
         {
-            StartCoroutine(SpawnEnemies());
+            if (maxAliveMobsAmount > spawnedMobs.Count)
+                StartCoroutine(SpawnEnemies());
             
             yield return new WaitForSeconds(Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y));
         }

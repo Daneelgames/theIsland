@@ -56,8 +56,9 @@ public class ShipController : MonoBehaviour
     
     void Start()
     {
+        /*
         if (playerShip)
-            TryToPlayerControlsShip();
+            TryToPlayerControlsShip();*/
     }
 
     public Vector3 TargetVelocity

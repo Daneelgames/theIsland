@@ -28,7 +28,7 @@ namespace Polarith.AI.Package
         [Move.TargetObjective(true)]
         private int objectiveAsSpeed = -1;
         public GameObject currentTarget;
-        public float stopDistance = 0;
+        public float stopDistance = 3;
         private bool closeToTarget = false;
 
         #endregion // Fields
