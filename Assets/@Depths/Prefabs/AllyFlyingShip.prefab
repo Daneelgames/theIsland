@@ -6448,6 +6448,8 @@ GameObject:
   - component: {fileID: 6126971813671897524}
   - component: {fileID: 4125825167603041991}
   - component: {fileID: 1023116408763125160}
+  - component: {fileID: 1272819611}
+  - component: {fileID: 1272819612}
   m_Layer: 7
   m_Name: AI
   m_TagString: Untagged
@@ -6729,6 +6731,72 @@ MonoBehaviour:
     AngleMapping: 2
     MaxIncrease: 0.2
     MaxAngle: 45
+--- !u!114 &1272819611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2959172898138399797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 336943168, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentFoldout: 0
+  SteeringPerceiver: {fileID: 0}
+  ObjectTag: Untagged
+  Range: -1
+  rangeGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+--- !u!114 &1272819612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2959172898138399797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 331742073, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 1
+  Label: Follow The target
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments: []
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  Target: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  Follow:
+    TargetObjective: 0
+    MagnitudeMultiplier: 1
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+  targetTag: Untagged
 --- !u!1 &3399305326551271942
 GameObject:
   m_ObjectHideFlags: 0
@@ -17184,6 +17252,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3488459148572510594, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176573383801363952, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
