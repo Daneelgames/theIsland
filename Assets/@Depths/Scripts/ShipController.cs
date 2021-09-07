@@ -53,7 +53,7 @@ public class ShipController : MonoBehaviour
     }
 
     public State _state = State.Idle;
-    
+        
     void Start()
     {
         /*

@@ -48,6 +48,13 @@ public class PlayerUiController : MonoBehaviour
     List<InventorySlot> inventory;
 
     
+    private Vector3 screenPos;
+    private Vector3 uiFeedbackPosition;
+    private GameObject lastSelectedGameObject = null;
+
+    private Coroutine animatePointerCoroutine;
+    private Coroutine movePointerCoroutine;
+    
     private void Awake()
     {
         if (instance != null)
@@ -80,12 +87,6 @@ public class PlayerUiController : MonoBehaviour
         SelectedInteractableObject(currentSelectedObject.gameObject, currentSelectedObject.collider.bounds.center);
     }
     
-    private Vector3 screenPos;
-    private Vector3 uiFeedbackPosition;
-    private GameObject lastSelectedGameObject = null;
-
-    private Coroutine animatePointerCoroutine;
-    private Coroutine movePointerCoroutine;
     public void SelectedInteractableObject(GameObject newSelectedGameObject, Vector3 newPos)
     {
         if (newSelectedGameObject != lastSelectedGameObject)
@@ -97,8 +98,9 @@ public class PlayerUiController : MonoBehaviour
             
             currentSelectedObject = s; 
             
-            
             lastSelectedGameObject = newSelectedGameObject;
+            
+            PlayerAudioController.instance.SelectNewUiAction();
         }
         
         if (!selectedObject)
@@ -364,7 +366,7 @@ public class PlayerUiController : MonoBehaviour
                         previuosSelectedAction = selectedAction;
                         selectNewActionCooldownCurrent = selectNewActionCooldown;
                         
-                        if (showTooltips)
+                        //if (showTooltips)
                             PlayerAudioController.instance.SelectNewUiAction();
                         
                         for (int i = 0; i < actionTextListUi.Count; i++)
