@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Nina
   newTarget: {fileID: 8932933268351636061}
+  speed: 1
 --- !u!1 &4721815558574708206
 GameObject:
   m_ObjectHideFlags: 0
