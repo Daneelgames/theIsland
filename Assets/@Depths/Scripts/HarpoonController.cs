@@ -156,7 +156,7 @@ public class HarpoonController : MonoBehaviour
             }
             */
             
-            if (MouseLook.instance.aiming)
+            if (MouseLook.instance.aiming || MouseLook.instance.controlledShip == false)
                 continue;
             
             if (PlayerUiController.instance.itemWheelVisible == false)

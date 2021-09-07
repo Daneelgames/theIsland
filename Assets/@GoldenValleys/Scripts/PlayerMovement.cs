@@ -141,15 +141,7 @@ namespace PlayerControls
         public void PlayerControlsShip(ShipController ship)
         {
             if (ship == null)
-            {/*
-                if (rb)
-                    rb.isKinematic = false;
-                else
-                    controller.enabled = true;
-                
-                inControl = true;
-                */
-                
+            {
                 MouseLook.instance.PlayerControlsShip(null);
                 return;
             }
@@ -163,6 +155,7 @@ namespace PlayerControls
             transform.parent = ship.transform;
             inControl = false;
         }
+        
         public void PlayerControlsHarpoon(HarpoonController harpoon)
         {
             if (shipInControl.Use360Movement)

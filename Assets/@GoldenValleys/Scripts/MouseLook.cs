@@ -1,9 +1,11 @@
 ﻿ using System;
 using System.Collections;
-using PlayerControls;
+ using System.Diagnostics;
+ using PlayerControls;
 using UnityEngine;
 using UnityEngine.XR;
-using Random = UnityEngine.Random;
+ using Debug = UnityEngine.Debug;
+ using Random = UnityEngine.Random;
 
 public class MouseLook : MonoBehaviour
 {
@@ -56,7 +58,7 @@ public class MouseLook : MonoBehaviour
     private string mouseXstring = "Mouse X";
     private string mouseYstring = "Mouse Y";
 
-    private ShipController controlledShip;
+    public ShipController controlledShip;
     
     private Coroutine controlHarpoonCoroutine;
 
@@ -76,6 +78,10 @@ public class MouseLook : MonoBehaviour
         
         //playerHead.parent = null;
     }
+    void Start()
+    {
+        pm = PlayerMovement.instance;
+    }
     
     void Update()
     {
@@ -90,8 +96,10 @@ public class MouseLook : MonoBehaviour
     {
         if (canControl && canAim &&!pm.teleport)
         {
-            if (aiming)
-                Looking();
+            if (controlledShip == null || aiming)
+            {
+                Looking();   
+            }
             else if (controlledShip)
             {
                 ControlShip();
@@ -122,15 +130,12 @@ public class MouseLook : MonoBehaviour
         playerHead.position = PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight;
     }
 
-    void Start()
-    {
-        pm = PlayerMovement.instance;
-    }
 
     public void PlayerControlsShip(ShipController ship)
     {
         if (ship == null)
         {
+            controlledShip = null;
             return;
         }
 
@@ -148,14 +153,15 @@ public class MouseLook : MonoBehaviour
                 controlHarpoonCoroutine = null;   
             }
 
+            /*
             transform.position = controlledShip.playerHeadTransform.transform.position;
-            transform.rotation = controlledShip.playerHeadTransform.transform.rotation;
+            transform.rotation = controlledShip.playerHeadTransform.transform.rotation;*/
             canControl = true;
             return;
         }
 
         canControl = false;
-        controlHarpoonCoroutine = StartCoroutine(ControlHarpoon(harpoon.CameraParent));
+        //controlHarpoonCoroutine = StartCoroutine(ControlHarpoon(harpoon.CameraParent));
     }
 
     IEnumerator ControlHarpoon(Transform headTarget)
@@ -208,6 +214,7 @@ public class MouseLook : MonoBehaviour
 
     void Aiming()
     {
+        
         if (Math.Abs(Input.GetAxisRaw(aimString)) > 0.1f)
             aiming = true;
         else if (Input.GetButton(aimString))
@@ -223,8 +230,9 @@ public class MouseLook : MonoBehaviour
         {
             cameraFov = Mathf.Lerp(cameraFov, cameraFovIdle,Time.deltaTime * aimingSpeed);
             
+            /*
             xRotation = 0;
-            yRotation = 0;
+            yRotation = 0;*/
         }
 
         mainCamera.fieldOfView = cameraFov;

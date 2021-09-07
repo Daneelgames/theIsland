@@ -2419,7 +2419,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486412435281136087}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
@@ -4234,7 +4234,7 @@ MonoBehaviour:
   playerHead: {fileID: 4035021520469421917}
   mouseX: 0
   mouseY: 0
-  mouseSensitivity: 1.5
+  mouseSensitivity: 1
   aimingSpeed: 1
   mouseLookSpeedCurrent: 15
   cameraFovIdle: 75
@@ -4249,6 +4249,7 @@ MonoBehaviour:
   canAim: 1
   activeWeaponHolderAnim: {fileID: 0}
   portableTransform: {fileID: 2090055459}
+  controlledShip: {fileID: 0}
 --- !u!1 &4241874865819337715
 GameObject:
   m_ObjectHideFlags: 0
