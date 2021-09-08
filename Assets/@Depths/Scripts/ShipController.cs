@@ -9,7 +9,6 @@ public class ShipController : MonoBehaviour
     public bool playerShip = false;
     
     public HealthController hc;
-    public Transform playerPositionAtControl;
     // interacted with control panel
     PlayerMovement playerMovement;
     public Transform playerSit;
@@ -80,6 +79,8 @@ public class ShipController : MonoBehaviour
         {
             GetPlayerInput360();
         }
+        
+        playerMovement.transform.position = playerSit.position;
     }
 
     public float CurrentSpeed
@@ -176,18 +177,18 @@ public class ShipController : MonoBehaviour
     
     IEnumerator MovePlayerToControlPosition()
     {
-        playerPositionAtControl.position = playerSit.position;
-        
         if (Use360Movement == false)
             StartCoroutine(ControlShip2Axis());
         
         shipAudioManager.StartMovingSfx();
         
+        /*
         while (true)
         {
             yield return null;
             playerMovement.transform.position = playerSit.position;
-        }
+        }*/
+        yield return null;
     }
 
     IEnumerator ControlShip2Axis()

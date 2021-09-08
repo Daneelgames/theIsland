@@ -6176,7 +6176,7 @@ MonoBehaviour:
   moveSpeedScaler: 2
   dragScale: 0.5
   accelerationScale: 1
-  torqueSpeedScaler: 2000
+  torqueSpeedScaler: 20000
   rb: {fileID: 3189796485433920492}
   outdoorLights: {fileID: 8905587979935011341}
   musicSource: {fileID: 2056796845559514668}
@@ -6187,7 +6187,7 @@ MonoBehaviour:
   - {fileID: 5297708220636817263}
   - {fileID: 6025214236395928711}
   Use360Movement: 1
-  turnspeed: 10000
+  turnspeed: 5000
   verticalTurnSpeedScaler: 2
   speed: 2000
   trueSpeed: 0
@@ -15324,7 +15324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3758528357830658456
 Transform:
   m_ObjectHideFlags: 0

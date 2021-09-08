@@ -17,7 +17,12 @@ public class QuestTrigger : MonoBehaviour
     public float delayBeforeActivating = 0;
     
     bool activated = false;
-    
+
+    private void Start()
+    {
+        transform.parent = null;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (cooldownCurrent < 0 || activated)

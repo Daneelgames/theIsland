@@ -21,50 +21,50 @@ MonoBehaviour:
     m_Address: PlantVisuals/00 FingerleafVisual.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4902942350362594998, guid: b512574ff6fd59d45bf50b9d6a68903a, type: 3}
-    m_TargetAsset: {fileID: 4902942350362594998, guid: b512574ff6fd59d45bf50b9d6a68903a, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 8fce519158d46e9469a2b14919f82ab4
     m_Address: PlantVisuals/01 EyeleafVisual.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4902942350362594998, guid: 8fce519158d46e9469a2b14919f82ab4, type: 3}
-    m_TargetAsset: {fileID: 4902942350362594998, guid: 8fce519158d46e9469a2b14919f82ab4, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: cb13aabb69357e4459f173693b6fb336
     m_Address: ProceduralPlants/00 Fingerleaf ProceduralPlant.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4902942350362594998, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
-    m_TargetAsset: {fileID: 4902942350362594998, guid: cb13aabb69357e4459f173693b6fb336, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1fbfb4a6f5cc909459e66c522a12745e
     m_Address: ProceduralPlants/01 Eyeleaf ProceduralPlant.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4902942350362594998, guid: 1fbfb4a6f5cc909459e66c522a12745e, type: 3}
-    m_TargetAsset: {fileID: 4902942350362594998, guid: 1fbfb4a6f5cc909459e66c522a12745e, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 54a28f0a02986434aadf18e7b39649a7
     m_Address: PickUps/00 FingerLeafSeed.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4121097693765885485, guid: 54a28f0a02986434aadf18e7b39649a7, type: 3}
-    m_TargetAsset: {fileID: 4121097693765885485, guid: 54a28f0a02986434aadf18e7b39649a7, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 9f9ae370ffcded44eb724a537b897e13
     m_Address: PickUps/01 EyeLeafSeed.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4121097693765885485, guid: 9f9ae370ffcded44eb724a537b897e13, type: 3}
-    m_TargetAsset: {fileID: 4121097693765885485, guid: 9f9ae370ffcded44eb724a537b897e13, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 2819d1f91b312ac46ba7af6c62679a1b
     m_Address: PickUps/02 WaterCanTool.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4121097693765885485, guid: 2819d1f91b312ac46ba7af6c62679a1b, type: 3}
-    m_TargetAsset: {fileID: 4121097693765885485, guid: 2819d1f91b312ac46ba7af6c62679a1b, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: e5be61817df0b5742989b4f70d0aaafa
     m_Address: PickUps/03 BladeTool.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 4121097693765885485, guid: e5be61817df0b5742989b4f70d0aaafa, type: 3}
-    m_TargetAsset: {fileID: 4121097693765885485, guid: e5be61817df0b5742989b4f70d0aaafa, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 05175436aa085014a99295689bb042eb
     m_Address: Mobs/MediumMurmaidMob.prefab
     m_ReadOnly: 0
@@ -85,6 +85,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 18230deeaf7e1444883afe3688d5ac07
     m_Address: QuestEvents/001.2 NinaMovesEvent.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d8911a3abb3747543a4d608e942b4d20
+    m_Address: QuestEvents/001.3 LandOnMotherEvent.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
