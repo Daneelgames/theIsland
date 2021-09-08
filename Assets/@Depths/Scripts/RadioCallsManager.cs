@@ -11,6 +11,7 @@ public class RadioCallsManager : MonoBehaviour
     public RadioCallController radioCallController;
 
     private RadioCallData currentCall;
+    private RadioCallStartTrigger triggerToDestroy;
     
     int currentPhrase = 0;
 
@@ -26,10 +27,11 @@ public class RadioCallsManager : MonoBehaviour
     {
         radioCallController.SetMessage(null);
     }
-    
-    public void RadioCallToPlay(RadioCallData radioCall)
+
+    public void RadioCallToPlay(RadioCallData radioCall, RadioCallStartTrigger _triggerToDestroy)
     {
         currentCall = radioCall;
+        triggerToDestroy = _triggerToDestroy;
         currentPhrase = -1;
         StartCoroutine(PlayNewPhrase());
     }
@@ -47,10 +49,18 @@ public class RadioCallsManager : MonoBehaviour
         {
             radioCallController.SetMessage(null);
             
-            if (currentCall.spawnQuestEventOnEnd != null)
+            if (currentCall.spawnQuestEventOnEnd != null && currentCall.spawnQuestEventOnEnd.RuntimeKeyIsValid() /* && currentCall.spawnQuestEventOnEnd.IsValid()*/)
             {
                 AssetSpawner.instance.Spawn(currentCall.spawnQuestEventOnEnd, Vector3.zero, Quaternion.identity, AssetSpawner.ObjectType.QuestEvent);
             }
+
+            if (triggerToDestroy != null)
+            {
+                Destroy(triggerToDestroy.gameObject);
+                triggerToDestroy = null;
+            }
+
+            currentCall = null;
         }
         else
         {

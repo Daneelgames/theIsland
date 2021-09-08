@@ -8,6 +8,6 @@ public class RadioCallStartTrigger : MonoBehaviour
     public RadioCallData radioCallData;
     private void Start()
     {
-        RadioCallsManager.playerShipInstance.RadioCallToPlay(radioCallData);
+        RadioCallsManager.playerShipInstance.RadioCallToPlay(radioCallData, this);
     }
 }

@@ -80,7 +80,8 @@ public class ShipController : MonoBehaviour
             GetPlayerInput360();
         }
         
-        playerMovement.transform.position = playerSit.position;
+        if (playerMovement)
+            playerMovement.transform.position = playerSit.position;
     }
 
     public float CurrentSpeed

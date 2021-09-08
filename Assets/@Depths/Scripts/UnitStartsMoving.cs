@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class UnitStartsMoving : MonoBehaviour
@@ -15,5 +16,7 @@ public class UnitStartsMoving : MonoBehaviour
         {
             unit.shipController.setTargetToAi.MoveTargetToPosition(newTarget.transform.position, speed);
         }
+        
+        Destroy(gameObject);
     }
 }

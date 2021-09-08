@@ -28,7 +28,19 @@ MonoBehaviour:
   - speakerName: Nina
     speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
     speakerPhrase:
-    - Alright, just follow me
+    - Ramp up the engine power and follow me
+  - speakerName: Nina
+    speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
+    speakerPhrase:
+    - You can kill the engine by hitting F key
+  - speakerName: Nina
+    speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
+    speakerPhrase:
+    - That will make your cage stop
+  - speakerName: Nina
+    speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
+    speakerPhrase:
+    - Ok, let's move
   - speakerName: Nina
     speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
     speakerPhrase:

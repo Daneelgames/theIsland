@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class QuestEventController : MonoBehaviour
 {
-    public float delayToDestroy = 1;
+    public float delayToCheckChildsCount = 1;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        while (true)
+        {
+            if (transform.childCount <= 0)
+                break;
+            yield return new WaitForSeconds(delayToCheckChildsCount);
+        }
+        
         Debug.Log(gameObject.name + " + destroyed");
-        Destroy(gameObject, delayToDestroy);
+        Destroy(gameObject, delayToCheckChildsCount);
     }
 }

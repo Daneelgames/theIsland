@@ -59,7 +59,6 @@
      <Compile Include="Assets\Free Boulder Pack\Editor\Instant Screenshot\ScreenshotTaker.cs" />
      <Compile Include="Assets\__Global\Editor\TransformDataHolder.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\MeshBrushEditor.cs" />
-     <Compile Include="Assets\StarSparrow\Readme\Readme Files\Scripts\Editor\ReadmeStarSparrowEditor.cs" />
      <None Include="Assets\Polarith\AI\Plugins\Editor\Polarith.AI.Editor.xml" />
      <None Include="Assets\MeshBrush\Scripts\Classes\Components\Editor\FavouriteTemplates.xml" />
      <Reference Include="UnityEngine">
