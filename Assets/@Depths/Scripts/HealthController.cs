@@ -17,6 +17,7 @@ public class HealthController : MonoBehaviour
     public List<MobBodyPart> mobBodyParts;
     public GameObject deathParticles;
 
+    [Header("Movement")]
     [SerializeField] private Rigidbody rb;
     public bool AddExplosiveForceOnDamage = false;
     public float explosivePowerOnDamage = 100;
