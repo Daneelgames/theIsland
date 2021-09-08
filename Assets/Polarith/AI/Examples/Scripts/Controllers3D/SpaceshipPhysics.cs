@@ -86,14 +86,14 @@ namespace Polarith.AI.Package
 
         private void FixedUpdate()
         {
-            eulerAngleVelocity = new Vector3(-SpaceshipController.Pitch,
-                                              SpaceshipController.Yaw,
-                                              SpaceshipController.Roll);
+            eulerAngleVelocity = new Vector3(-SpaceshipController.Pitch, SpaceshipController.Yaw, SpaceshipController.Roll);
+
+            SpaceshipController.Body.AddRelativeTorque(eulerAngleVelocity * Torque * body.mass);   
+            
             translation = transform.right * SpaceshipController.Force.x
                         + transform.up * SpaceshipController.Force.y
                         + transform.forward * SpaceshipController.Force.z;
-
-            SpaceshipController.Body.AddRelativeTorque(eulerAngleVelocity * Torque * body.mass);
+            
             SpaceshipController.Body.AddForce(translation * Speed * body.mass);
         }
 

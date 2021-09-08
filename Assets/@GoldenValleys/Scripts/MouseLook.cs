@@ -118,10 +118,12 @@ public class MouseLook : MonoBehaviour
     void ControlShip()
     {
         playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, controlledShip.playerHeadTransform.rotation, Time.deltaTime * mouseLookSpeedCurrent);
+        targetRotation.transform.rotation = playerHead.transform.rotation; 
         
         mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
         mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
-        
+        xRotation = 0;
+        yRotation = 0;
         controlledShip.AddTorqueFromPlayerHead(mouseX, mouseY);
     }
 
@@ -258,8 +260,10 @@ public class MouseLook : MonoBehaviour
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, targetRotation.rotation, Time.deltaTime * mouseLookSpeedCurrent);
         playerHead.transform.localEulerAngles = new Vector3(playerHead.transform.localEulerAngles.x, playerHead.transform.localEulerAngles.y, 0); 
+        /*
         transform.rotation = Quaternion.Slerp(transform.rotation, playerHead.transform.rotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
         camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.smoothDeltaTime * mouseLookSpeedCurrent);
+        */
         pm.movementTransform.transform.rotation = camHolder.transform.rotation;
     }
 

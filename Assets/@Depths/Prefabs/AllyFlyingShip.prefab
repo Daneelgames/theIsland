@@ -10183,6 +10183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8968f2c0f3deb47ade8b5e85bb8276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torqueControlledByPolarith: 0
   torque: 0.5
   speed: 2
   spaceshipController: {fileID: 7740742570053656458}
