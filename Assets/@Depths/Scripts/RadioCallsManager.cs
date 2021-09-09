@@ -65,11 +65,12 @@ public class RadioCallsManager : MonoBehaviour
         else
         {
             radioCallController.SetMessage(currentCall.messagess[currentPhrase]);   
-            if (currentCall.messagess[currentPhrase].startSpawningMobs)
+            if (currentCall.startSpawningMobsPhraseIndex == currentPhrase)
             {
+                MobSpawnManager.instance.SetMaxMobsAlive(5);
+                
                 MobSpawnManager.instance.StartSpawningMobs();
             }
-
         }
 
         canPlayNewPhrase = false;

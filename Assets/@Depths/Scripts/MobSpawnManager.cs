@@ -29,6 +29,11 @@ public class MobSpawnManager : MonoBehaviour
         instance = this;
     }
 
+    public void SetMaxMobsAlive(int amount)
+    {
+        maxAliveMobsAmount = amount;
+    }
+    
     public void StartSpawningMobs()
     {
         StartCoroutine(SpawnEnemiesCoroutine());

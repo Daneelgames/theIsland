@@ -32,6 +32,7 @@ public class QuestTrigger : MonoBehaviour
         
         if (other.gameObject == PlayerMovement.instance.gameObject)
         {
+            StopAllCoroutines();
             StartCoroutine(Activate());
         }
     }
@@ -39,7 +40,6 @@ public class QuestTrigger : MonoBehaviour
     public IEnumerator Activate()
     {
         activated = true;
-        StopAllCoroutines();
 
         yield return new WaitForSeconds(delayBeforeActivating);
         

@@ -10064,7 +10064,7 @@ GameObject:
   - component: {fileID: 5149364004321527447}
   - component: {fileID: 435708877}
   m_Layer: 7
-  m_Name: AllyFlyingShip
+  m_Name: NinaFlyingShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10266,6 +10266,7 @@ MonoBehaviour:
   aimSeekBounds: {fileID: 4125825167603041991}
   aimFleeBounds: {fileID: 8236796550132608139}
   targetStopDistance: 2
+  newTargetPosition: {x: 0, y: 0, z: 0}
   spaceshipController: {fileID: 7740742570053656458}
 --- !u!114 &435708877
 MonoBehaviour:
@@ -20116,6 +20117,10 @@ PrefabInstance:
     - target: {fileID: 4518475587916140102, guid: 22c320d697514544fbdbe0c613f36425, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518475587916140104, guid: 22c320d697514544fbdbe0c613f36425, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4518475587916140104, guid: 22c320d697514544fbdbe0c613f36425, type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.size

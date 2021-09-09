@@ -9,7 +9,7 @@ public class AggroManager : MonoBehaviour
     public float updateDelay = 1f;
     public float aggroDistanceMax = 50;
     public List<HealthController.Fraction> fractionsAggroOnSight = new List<HealthController.Fraction>();
-    public float targetChangeMoveSpeed = 100;
+    public float targetChangeMoveSpeed = 1000;
 
     private Vector3 lastNonCombatTargetPosition;
 
@@ -42,14 +42,16 @@ public class AggroManager : MonoBehaviour
                 yield return null;
             }
             
+            if (setTargetToAi.currentTarget && canSaveLastNonCombatTargetPosition)
+            {
+                lastNonCombatTargetPosition = setTargetToAi.currentTarget.transform.position;
+            }
+            
             if (closestHcToAnger != null)
             {
-
                 if (canSaveLastNonCombatTargetPosition)
-                {
                     canSaveLastNonCombatTargetPosition = false;
-                    lastNonCombatTargetPosition = setTargetToAi.newTargetPosition;
-                }
+                
                 setTargetToAi.MoveTargetToPosition(closestHcToAnger.transform.position, targetChangeMoveSpeed);
             }
             else

@@ -10,6 +10,7 @@ public class RadioCallData : ScriptableObject
 {
     public List<RadioMessage> messagess;
     public AssetReference spawnQuestEventOnEnd;
+    public int startSpawningMobsPhraseIndex = -1;
 }
 
 [Serializable]
@@ -18,5 +19,4 @@ public class RadioMessage
     public string speakerName;
     public Sprite speakerImage;
     public List<string> speakerPhrase;
-    public bool startSpawningMobs = false;
 }
