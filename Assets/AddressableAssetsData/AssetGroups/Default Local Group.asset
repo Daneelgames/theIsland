@@ -95,6 +95,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: a6249e1f93da486419f689d106a88dfb
+    m_Address: QuestEvents/001.4 StartSpawningMobsEvent.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 733579267f0ec3c49a75c8dbec89e2a9, type: 2}
   m_SchemaSet:

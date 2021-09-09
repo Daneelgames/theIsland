@@ -19,7 +19,7 @@ public class MobSpawnManager : MonoBehaviour
     public int maxAliveMobsAmount = 5;
     
     [SerializeField] List<AssetReference> mobsReferences = new List<AssetReference>();
-    [SerializeField] List<HealthController> units = new List<HealthController>();
+    [SerializeField] List<HealthController> _units = new List<HealthController>();
     [SerializeField] List<HealthController> spawnedMobs = new List<HealthController>();
 
     [SerializeField] List<Rigidbody> _activeRidigbodies = new List<Rigidbody>();
@@ -29,16 +29,19 @@ public class MobSpawnManager : MonoBehaviour
         instance = this;
     }
 
-    IEnumerator Start()
+    public void StartSpawningMobs()
     {
-        yield return null;
-
         StartCoroutine(SpawnEnemiesCoroutine());
     }
 
+    public List<HealthController> Units
+    {
+        get { return _units; }
+    }
+    
     public void AddUnit(HealthController hc)
     {
-        units.Add(hc);
+        _units.Add(hc);
     }
 
     IEnumerator SpawnEnemiesCoroutine()
@@ -99,9 +102,9 @@ public class MobSpawnManager : MonoBehaviour
         {
             spawnedMobs.Remove(hc);
         }
-        if (units.Contains(hc))
+        if (_units.Contains(hc))
         {
-            units.Remove(hc);
+            _units.Remove(hc);
         }
 
         if (_activeRidigbodies.Contains(hc.GetRigidbody))
@@ -115,11 +118,11 @@ public class MobSpawnManager : MonoBehaviour
 
     public HealthController FindHcByName(string name)
     {
-        for (int i = 0; i < units.Count; i++)
+        for (int i = 0; i < _units.Count; i++)
         {
-            if (units[i].unitName == name)
+            if (_units[i].unitName == name)
             {
-                return units[i];
+                return _units[i];
             }
         }
 

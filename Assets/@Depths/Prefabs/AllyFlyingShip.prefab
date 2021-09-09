@@ -10062,6 +10062,7 @@ GameObject:
   - component: {fileID: 7740742570053656458}
   - component: {fileID: 6570090419144697558}
   - component: {fileID: 5149364004321527447}
+  - component: {fileID: 435708877}
   m_Layer: 7
   m_Name: AllyFlyingShip
   m_TagString: Untagged
@@ -10176,6 +10177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
+  fraction: 0
   unitName: Nina
   healthCurrent: 100
   healthMax: 100
@@ -10265,6 +10267,23 @@ MonoBehaviour:
   aimFleeBounds: {fileID: 8236796550132608139}
   targetStopDistance: 2
   spaceshipController: {fileID: 7740742570053656458}
+--- !u!114 &435708877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8218239943687068286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acee9edbc7dfa334089d2e0fafed8a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setTargetToAi: {fileID: 5149364004321527447}
+  updateDelay: 1
+  aggroDistanceMax: 50
+  fractionsAggroOnSight: 01000000
+  targetChangeMoveSpeed: 100
 --- !u!1 &8218239943980403478
 GameObject:
   m_ObjectHideFlags: 0
@@ -17872,11 +17891,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
---- !u!4 &7901078476607155748 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5276802588061319327, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
-  m_PrefabInstance: {fileID: 2638180278340071099}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3331714653094575247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 765631931358171700, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
@@ -17888,6 +17902,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f631c35f8c8d5f34f9bf7d9fb5b09c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7901078476607155748 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5276802588061319327, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
+  m_PrefabInstance: {fileID: 2638180278340071099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2968505844099682073
 PrefabInstance:
   m_ObjectHideFlags: 0

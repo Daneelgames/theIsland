@@ -11,6 +11,13 @@ using Random = UnityEngine.Random;
 public class HealthController : MonoBehaviour
 {
     public bool player = false;
+    
+    public enum Fraction
+    {
+        Humans, Mermaids
+    }
+
+    public Fraction fraction = Fraction.Humans;
     public string unitName;
     public float healthCurrent = 100;
     public float healthMax = 100;

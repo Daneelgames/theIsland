@@ -87,7 +87,7 @@ namespace PlayerControls
         private float shootedCooldown = 0;
         private float shootedCooldownMax = 0.1f;
 
-        private ShipController shipInControl;
+        public ShipController shipInControl;
 
         private void Awake()
         {

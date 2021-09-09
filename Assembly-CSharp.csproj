@@ -94,6 +94,7 @@
      <Compile Include="Assets\@Depths\Scripts\MobSpawnManager.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlayerToolsController.cs" />
      <Compile Include="Assets\@Depths\Scripts\LandingZone.cs" />
+     <Compile Include="Assets\AggroManager.cs" />
      <Compile Include="Assets\@Depths\Scripts\QuestLinesManager.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IHoverable.cs" />
      <Compile Include="Assets\@Depths\Scripts\ShipLightFeedback.cs" />
@@ -212,6 +213,7 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
+     <Compile Include="Assets\QuestEventOnDocking.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />

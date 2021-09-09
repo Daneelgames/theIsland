@@ -64,6 +64,8 @@ public class LandingZone : MonoBehaviour
             {
                 shipController.TryToPlayerControlsShip();
             }
+
+            shipController.Dock();
         }
 
         landingCoroutine = null;

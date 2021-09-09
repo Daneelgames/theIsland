@@ -18,5 +18,5 @@ public class RadioMessage
     public string speakerName;
     public Sprite speakerImage;
     public List<string> speakerPhrase;
-
+    public bool startSpawningMobs = false;
 }

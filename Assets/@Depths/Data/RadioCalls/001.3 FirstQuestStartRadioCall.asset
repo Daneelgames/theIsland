@@ -16,19 +16,15 @@ MonoBehaviour:
   - speakerName: Nina
     speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
     speakerPhrase:
-    - Land on Mother's wing
+    - You heard that?
   - speakerName: Nina
     speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
     speakerPhrase:
-    - Set the engine power to zero and align your cage straight
+    - Mermaids are near
   - speakerName: Nina
     speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
     speakerPhrase:
-    - Then open the chassis. The button on the right
-  - speakerName: Nina
-    speakerImage: {fileID: 21300000, guid: 236c3f548f4573c4f801e1ccf214bd63, type: 3}
-    speakerPhrase:
-    - To undock you'll have to close the chassis first
+    - Be ready
   spawnQuestEventOnEnd:
     m_AssetGUID: 
     m_SubObjectName: 

@@ -32,15 +32,17 @@ public class QuestTrigger : MonoBehaviour
         
         if (other.gameObject == PlayerMovement.instance.gameObject)
         {
-            activated = true;
-            StopAllCoroutines();
-            
-            Invoke(nameof(Activate), delayBeforeActivating);
+            StartCoroutine(Activate());
         }
     }
-
-    void Activate()
+    
+    public IEnumerator Activate()
     {
+        activated = true;
+        StopAllCoroutines();
+
+        yield return new WaitForSeconds(delayBeforeActivating);
+        
         if (questLineToStartOnTrigger)
             QuestLinesManager.instance.StartQuestLine(questLineToStartOnTrigger);
         if (questEventToSpawn != null)

@@ -48,7 +48,7 @@ public class ShipController : MonoBehaviour
     // CONTROLS
     public enum State
     {
-        Idle, ControlledByPlayer
+        Idle, ControlledByPlayer, Docked
     }
 
     public State _state = State.Idle;
@@ -307,5 +307,10 @@ public class ShipController : MonoBehaviour
     public void TryToUseDoorLock(DoorLockController doorLock)
     {
         doorLock.UseDoorLockInput();
+    }
+
+    public void Dock()
+    {
+        _state = State.Docked;
     }
 }
