@@ -8,7 +8,7 @@ public class InteractiveObject : MonoBehaviour
     public enum ActionType
     {
         PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber, Harpoon, DoorLock,
-        RadioCallInteract
+        RadioCallInteract, ChassisToggle
     }
 
     public bool playerCouldInteract = true;
@@ -26,8 +26,8 @@ public class InteractiveObject : MonoBehaviour
     public Rigidbody rb;
     public float dragForce = 5;
     public float zeroVelocityDistanceThreshold = 1;
-
     public InteractiveAction putAction;
+    public LandingObject chassis;
     
     [Header("InteractiveObjectType")]
     public PlantController plantController;
@@ -77,6 +77,21 @@ public class InteractiveObject : MonoBehaviour
                 break;
             case ActionType.RadioCallInteract:
                 RadioCallsManager.playerShipInstance.Interact();
+                break;
+            case ActionType.ChassisToggle:
+                bool active = !chassis.gameObject.activeInHierarchy;
+                if (chassis.feedbackTextField)
+                {
+                    if (active == false)
+                    {
+                        chassis.feedbackTextField.text = "CHASSIS CLOSED";
+                    }
+                    else
+                    {
+                        chassis.feedbackTextField.text = "CHASSIS OPENED";
+                    }   
+                }
+                chassis.gameObject.SetActive(active);
                 break;
             
             case ActionType.PickUp:

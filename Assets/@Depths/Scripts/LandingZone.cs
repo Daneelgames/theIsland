@@ -43,9 +43,11 @@ public class LandingZone : MonoBehaviour
         
         while (distancePos > 1 && angle > 1)
         {
-            rb.MovePosition(Vector3.Lerp(rb.position, targetPos, syncTransformSpeedScaler * Time.deltaTime));
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRot, syncTransformSpeedScaler * Time.deltaTime));
-            
+            if (rb.velocity.magnitude < 1)
+            {
+                rb.MovePosition(Vector3.Lerp(rb.position, targetPos, syncTransformSpeedScaler * Time.deltaTime));
+                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRot, syncTransformSpeedScaler * Time.deltaTime));
+            }
             distancePos = Vector3.Distance(transform.position, rb.transform.position);
             angle = Quaternion.Angle(rb.rotation, targetRot);
             
@@ -54,5 +56,16 @@ public class LandingZone : MonoBehaviour
             
             yield return null;
         }
+
+        ShipController shipController = rb.gameObject.GetComponent<ShipController>();
+        if (shipController)
+        {
+            if (shipController._state == ShipController.State.ControlledByPlayer)
+            {
+                shipController.TryToPlayerControlsShip();
+            }
+        }
+
+        landingCoroutine = null;
     }
 }
