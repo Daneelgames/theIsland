@@ -6239,6 +6239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
+  fraction: 0
   unitName: Kid's Ship
   healthCurrent: 100
   healthMax: 100
@@ -19417,10 +19418,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5872886563146865167, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5af8a0bbf4309f34e91a593386134986, type: 3}
     - target: {fileID: 6487544996109710438, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
       propertyPath: m_SizeDelta.x
       value: 810.57

@@ -153,6 +153,10 @@ public class ShipController : MonoBehaviour
         {
             playerMovement.PlayerControlsShip(null);
             StopControllingShip();
+            for (int i = 0; i < weaponsControlledByMainControl.Count; i++)
+            {
+                weaponsControlledByMainControl[i].UseHarpoonInput(this);
+            }
             return;   
         }
 

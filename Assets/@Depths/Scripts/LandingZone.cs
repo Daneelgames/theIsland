@@ -14,7 +14,7 @@ public class LandingZone : MonoBehaviour
     private Coroutine landingCoroutine;
 
     public float effectDistance = 5;
-    
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer != 7)
@@ -41,18 +41,21 @@ public class LandingZone : MonoBehaviour
         float distancePos = Vector3.Distance(transform.position, rb.transform.position);
         float angle = Quaternion.Angle(rb.rotation, targetRot);
         
-        while (distancePos > 1 && angle > 1)
+        while (distancePos > 0.5f && angle > 0.5f)
         {
             if (rb.velocity.magnitude < 1)
             {
                 rb.MovePosition(Vector3.Lerp(rb.position, targetPos, syncTransformSpeedScaler * Time.deltaTime));
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRot, syncTransformSpeedScaler * Time.deltaTime));
             }
+            
             distancePos = Vector3.Distance(transform.position, rb.transform.position);
             angle = Quaternion.Angle(rb.rotation, targetRot);
-            
+
             if (distancePos > effectDistance)
-                yield break;
+            {
+                yield break;   
+            }
             
             yield return null;
         }
@@ -60,10 +63,12 @@ public class LandingZone : MonoBehaviour
         ShipController shipController = rb.gameObject.GetComponent<ShipController>();
         if (shipController)
         {
+            /*
             if (shipController._state == ShipController.State.ControlledByPlayer)
             {
                 shipController.TryToPlayerControlsShip();
             }
+            */
 
             shipController.Dock();
         }

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingTransform: {fileID: 3515443221295103215}
-  syncTransformSpeedScaler: 0.001
-  effectDistance: 5
+  syncTransformSpeedScaler: 0.0001
+  effectDistance: 2.99
 --- !u!135 &7648107935538393456
 SphereCollider:
   m_ObjectHideFlags: 0

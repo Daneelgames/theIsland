@@ -49,6 +49,8 @@ public class HarpoonController : MonoBehaviour
     public AudioSource attackAu;
     public AudioSource reloadAu;
 
+    public float delayOnStartControlling = 0.5f;
+    
     private ShipController ship;
     
     [Header("Laser Spot Settings")]
@@ -89,13 +91,15 @@ public class HarpoonController : MonoBehaviour
                 PlayerMovement.instance.PlayerControlsHarpoon(this);
 
                 // StartControlling the gun
+                if (harpoonControlCoroutine != null)
+                    StopCoroutine(harpoonControlCoroutine);
+                
                 harpoonControlCoroutine = StartCoroutine(HarpoonControlCoroutine());
                 state = State.ControlledByPlayer;
                 break;
 
             case State.ControlledByPlayer:
 
-                /*
                 if (laserSpot && UpdateLasetSpotCoroutine != null)
                 {
                     StopCoroutine(UpdateLasetSpotCoroutine);
@@ -106,7 +110,7 @@ public class HarpoonController : MonoBehaviour
                 
                 // release player's head
                 // unlock player's movement
-                PlayerMovement.instance.transform.position = ship.playerSit.position;
+                //PlayerMovement.instance.transform.position = ship.playerSit.position;
                 PlayerMovement.instance.PlayerControlsHarpoon(null);
 
                 // Stop Controlling the gun
@@ -117,7 +121,6 @@ public class HarpoonController : MonoBehaviour
                 }
 
                 state = State.Idle;
-                */
                 break;
         }
     }
@@ -139,6 +142,8 @@ public class HarpoonController : MonoBehaviour
     Quaternion newLocalRotation = Quaternion.identity;
     IEnumerator HarpoonControlCoroutine()
     {
+        yield return new WaitForSeconds(delayOnStartControlling);
+        
         float newMinXRotation = minXRotation;
         float newMaxXRotation = maxXRotation;
         float newMinYRotation = minYRotation;
@@ -156,7 +161,7 @@ public class HarpoonController : MonoBehaviour
             }
             */
             
-            if (MouseLook.instance.aiming || MouseLook.instance.controlledShip == false)
+            if (MouseLook.instance.aiming /*|| MouseLook.instance.controlledShip == false*/)
                 continue;
             
             if (PlayerUiController.instance.itemWheelVisible == false)
