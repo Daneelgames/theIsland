@@ -30,10 +30,12 @@ public class SetTargetToAi : MonoBehaviour
         
         SetTarget(currentTarget);
         
+        /*
         for (int i = 0; i < LevelSolids.instance.solids.Count; i++)
         {
             aimFleeBounds.GameObjects.Add(LevelSolids.instance.solids[i]);
         }
+        */
         //aimFleeBounds.GameObjects = new List<GameObject>(LevelSolids.instance.solids);
     }
 
