@@ -9674,6 +9674,8 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  lightsToggle: {fileID: 0}
+  systemVisualAnimator: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -9754,6 +9756,8 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  lightsToggle: {fileID: 0}
+  systemVisualAnimator: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -10116,7 +10120,6 @@ MonoBehaviour:
   accelerationScale: 1
   torqueSpeedScaler: 2000
   rb: {fileID: 5901144598381530084}
-  outdoorLights: {fileID: 447683384394174981}
   musicSource: {fileID: 7001489292934710820}
   shipAudioManager: {fileID: 7292378902198339228}
   setTargetToAi: {fileID: 5149364004321527447}
@@ -10531,6 +10534,8 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  lightsToggle: {fileID: 0}
+  systemVisualAnimator: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -17301,6 +17306,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1350276496763494089, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1798164707580280042, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -17402,6 +17411,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8055305107510164869, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978183571335174999, guid: 5f5ad38c14eaa00489f589f42c0dd230, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
@@ -18079,7 +18092,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6884273795869568525}
     m_Modifications:
+    - target: {fileID: 1134879508664072511, guid: 9829ba0f2103f9745b8d3853d516f6ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1191325721798392540, guid: 9829ba0f2103f9745b8d3853d516f6ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759059989082127248, guid: 9829ba0f2103f9745b8d3853d516f6ca, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
@@ -18152,6 +18173,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7800501414908775360, guid: 9829ba0f2103f9745b8d3853d516f6ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670841707013480449, guid: 9829ba0f2103f9745b8d3853d516f6ca, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}

@@ -10,7 +10,7 @@ public class LandingZone : MonoBehaviour
     public float syncTransformSpeedScaler = 1f;
 
     private GameObject lastFrameFoundObject;
-    private Rigidbody rbInCoroutine;
+    private LandingObject landingObjectInCoroutine;
     private Coroutine landingCoroutine;
 
     public float effectDistance = 5;
@@ -24,33 +24,37 @@ public class LandingZone : MonoBehaviour
     
         lastFrameFoundObject = other.gameObject;
         LandingObject landingObject = other.gameObject.GetComponent<LandingObject>();
-        if (landingObject == null)
+        if (landingObject == null || landingObject.shipController._state == ShipController.State.ControlledByPlayer || landingObject.shipController._state == ShipController.State.Docked)
         {
             return;
         }
 
-        rbInCoroutine = landingObject.rb;
-        landingCoroutine = StartCoroutine(LandShip(rbInCoroutine));
+        landingObjectInCoroutine = landingObject;
+        landingCoroutine = StartCoroutine(LandShip(landingObjectInCoroutine));
     }
 
-    IEnumerator LandShip(Rigidbody rb)
+    IEnumerator LandShip(LandingObject landingObject)
     {
         Vector3 targetPos = landingTransform.position;
         Quaternion targetRot = landingTransform.rotation;
 
-        float distancePos = Vector3.Distance(transform.position, rb.transform.position);
-        float angle = Quaternion.Angle(rb.rotation, targetRot);
+        float distancePos = Vector3.Distance(transform.position, landingObject.rb.transform.position);
+        float angle = Quaternion.Angle(landingObject.rb.rotation, targetRot);
+        
+        
+        if (landingObject.shipController == null)
+            yield break;
         
         while (distancePos > 0.5f && angle > 0.5f)
         {
-            if (rb.velocity.magnitude < 1)
+            if (landingObject.rb.velocity.magnitude < 1)
             {
-                rb.MovePosition(Vector3.Lerp(rb.position, targetPos, syncTransformSpeedScaler * Time.deltaTime));
-                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRot, syncTransformSpeedScaler * Time.deltaTime));
+                landingObject.rb.MovePosition(Vector3.Lerp(landingObject.rb.position, targetPos, syncTransformSpeedScaler * Time.deltaTime));
+                landingObject.rb.MoveRotation(Quaternion.Slerp(landingObject.rb.rotation, targetRot, syncTransformSpeedScaler * Time.deltaTime));
             }
             
-            distancePos = Vector3.Distance(transform.position, rb.transform.position);
-            angle = Quaternion.Angle(rb.rotation, targetRot);
+            distancePos = Vector3.Distance(transform.position, landingObject.rb.transform.position);
+            angle = Quaternion.Angle(landingObject.rb.rotation, targetRot);
 
             if (distancePos > effectDistance)
             {
@@ -60,19 +64,10 @@ public class LandingZone : MonoBehaviour
             yield return null;
         }
 
-        ShipController shipController = rb.gameObject.GetComponent<ShipController>();
-        if (shipController)
+        if (landingObject.shipController)
         {
-            /*
-            if (shipController._state == ShipController.State.ControlledByPlayer)
-            {
-                shipController.TryToPlayerControlsShip();
-            }
-            */
-
-            shipController.Dock();
+            landingObject.shipController.Dock();
         }
-
         landingCoroutine = null;
     }
 }

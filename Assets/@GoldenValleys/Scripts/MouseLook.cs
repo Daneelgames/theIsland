@@ -3,7 +3,8 @@ using System.Collections;
  using System.Diagnostics;
  using PlayerControls;
 using UnityEngine;
-using UnityEngine.XR;
+ using UnityEngine.UI;
+ using UnityEngine.XR;
  using Debug = UnityEngine.Debug;
  using Random = UnityEngine.Random;
 
@@ -62,6 +63,8 @@ public class MouseLook : MonoBehaviour
     
     private Coroutine controlHarpoonCoroutine;
 
+    public RectTransform playerCursor;
+    
     private void Awake()
     {
         if (instance != null)
@@ -72,9 +75,7 @@ public class MouseLook : MonoBehaviour
         
         instance = this;
         
-        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
         
         //playerHead.parent = null;
     }
@@ -85,6 +86,7 @@ public class MouseLook : MonoBehaviour
     
     void Update()
     {
+        Cursor.visible = false;
         if (canControl  && canAim &&!pm.teleport)
         {
             Aiming();   
@@ -114,7 +116,8 @@ public class MouseLook : MonoBehaviour
         if (canControl && !PlayerMovement.instance.teleport)
             playerHead.position = Vector3.Lerp(playerHead.position, PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight, 50 * Time.smoothDeltaTime);
     }
-    
+
+    private Vector3 newLocalCursorPosition;
     void ControlShip()
     {
         playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, controlledShip.playerHeadTransform.rotation, Time.deltaTime * mouseLookSpeedCurrent);
@@ -122,6 +125,20 @@ public class MouseLook : MonoBehaviour
         
         mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
         mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
+
+        newLocalCursorPosition = playerCursor.transform.localPosition + new Vector3(mouseX, mouseY, 0) * (Screen.width * mouseSensitivity * Time.smoothDeltaTime);
+        
+        if (newLocalCursorPosition.x > 300)
+            newLocalCursorPosition.x = 300;
+        else if (newLocalCursorPosition.x < -300)
+            newLocalCursorPosition.x = -300;
+        if (newLocalCursorPosition.y > 300)
+            newLocalCursorPosition.y = 300;
+        else if (newLocalCursorPosition.y < -300)
+            newLocalCursorPosition.y = -300;
+        
+        playerCursor.transform.localPosition = newLocalCursorPosition;
+        
         xRotation = 0;
         yRotation = 0;
         controlledShip.AddTorqueFromPlayerHead(mouseX, mouseY);
@@ -132,15 +149,16 @@ public class MouseLook : MonoBehaviour
         playerHead.position = PlayerMovement.instance.transform.position + Vector3.up * PlayerMovement.instance.playerHeight;
     }
 
-
     public void PlayerControlsShip(ShipController ship)
     {
         if (ship == null)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             controlledShip = null;
             return;
         }
 
+        Cursor.lockState = CursorLockMode.Confined;
         controlledShip = ship;
         playerHead.parent = ship.transform;
     }
@@ -249,6 +267,8 @@ public class MouseLook : MonoBehaviour
     {
         if (PlayerUiController.instance.itemWheelVisible == false)
         {
+            playerCursor.transform.localPosition = Vector3.zero;
+            
             mouseX = Input.GetAxis(mouseXstring) * mouseSensitivity;
             mouseY = Input.GetAxis(mouseYstring) * mouseSensitivity;
 

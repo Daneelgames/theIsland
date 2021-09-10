@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f993e6eac43aa4aa8c2312d0e6d67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioCallData: {fileID: 11400000, guid: 38b369939fcd2db46907c93731349625, type: 2}
+  radioCallData: {fileID: 11400000, guid: c37fcbafc0b2b9d4ba8aac0b22103f12, type: 2}
 --- !u!1 &4721815558574708206
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 3521946411346949202}
   - component: {fileID: 2677076868962512661}
   m_Layer: 12
-  m_Name: 001
+  m_Name: 001.4 StartSpawningMobsEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,4 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14162c7832acc743bb43136ccf46ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayToDestroy: 1
+  delayToCheckChildsCount: 1

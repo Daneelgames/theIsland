@@ -11,6 +11,7 @@ public class RadioCallData : ScriptableObject
     public List<RadioMessage> messagess;
     public AssetReference spawnQuestEventOnEnd;
     public int startSpawningMobsPhraseIndex = -1;
+    public int maxAliveMobsToSet = 0;
 }
 
 [Serializable]

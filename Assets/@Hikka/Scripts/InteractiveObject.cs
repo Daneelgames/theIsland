@@ -19,6 +19,8 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField] GrabberController grabberController;
     [SerializeField] HarpoonController harpoonController;
     [SerializeField] DoorLockController doorLockController;
+    [SerializeField] LightsToggle lightsToggle;
+    [SerializeField] private Animator systemVisualAnimator;
     
     [Header("Settings for different objects")]
     public Collider collider;
@@ -32,6 +34,7 @@ public class InteractiveObject : MonoBehaviour
     [Header("InteractiveObjectType")]
     public PlantController plantController;
     public ToolController toolToPickUp;
+    private static readonly int Update = Animator.StringToHash("Update");
 
     void Start()
     {
@@ -54,13 +57,16 @@ public class InteractiveObject : MonoBehaviour
         if (selectedAction >= actionList.Count)
             return;
         
+        if (systemVisualAnimator)
+            systemVisualAnimator.SetTrigger(Update);
+        
         switch (actionList[selectedAction].actionType)
         {
             case ActionType.ControlShip:
                 shipController.TryToPlayerControlsShip();
                 break;
             case ActionType.ToggleLight:
-                shipController.TryToToggleLight();
+                lightsToggle.ToggleLight();
                 break;
             case ActionType.ToggleMusic:
                 shipController.TryToToggleMusic();

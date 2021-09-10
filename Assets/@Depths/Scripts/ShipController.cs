@@ -20,11 +20,10 @@ public class ShipController : MonoBehaviour
     private Vector3 currentVelocity;
     private Vector3 _targetVelocity;
     private bool controlledInFrame = false;
-    public GameObject outdoorLights;
     public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
-    public SetTargetToAi setTargetToAi; 
-        
+    public SetTargetToAi setTargetToAi;
+    public LandingObject chassis;
     public Transform playerHeadTransform;
 
     [Header("Weapons")] 
@@ -70,7 +69,7 @@ public class ShipController : MonoBehaviour
         if (!playerShip)
             return;
         
-        if (Input.GetKeyDown(KeyCode.Space) && (_state == State.Idle|| (_state == State.ControlledByPlayer && MouseLook.instance.canControl)))
+        if (Input.GetKeyDown(KeyCode.Space) && (_state == State.Idle || _state == State.Docked || (_state == State.ControlledByPlayer && MouseLook.instance.canControl)))
         {
             TryToPlayerControlsShip();
         }
@@ -89,12 +88,28 @@ public class ShipController : MonoBehaviour
         get { return Mathf.RoundToInt(trueSpeed); }
     }
 
+    private float normalizedCursorY = 0;
+    private float normalizedCursorX = 0;
     void GetPlayerInput360()
     {
         if (!MouseLook.instance.aiming)
         {
-            pitch = Input.GetAxis("Mouse Y");
-            yaw = Input.GetAxis("Mouse X");  
+            /*
+            pitch = Mathf.Clamp(Input.GetAxis("Mouse Y"), -1, 1);
+            yaw = Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1);
+            */
+            normalizedCursorY = MouseLook.instance.playerCursor.transform.localPosition.y / Screen.height;
+            normalizedCursorX = MouseLook.instance.playerCursor.transform.localPosition.x / Screen.width;
+            
+            if (Mathf.Abs(normalizedCursorY) > 0.05f)
+                pitch = Mathf.Clamp(normalizedCursorY, -1, 1);
+            else
+                pitch = 0;
+                
+            if (Mathf.Abs(normalizedCursorX) > 0.05f)
+                yaw = Mathf.Clamp(normalizedCursorX, -1, 1);
+            else
+                yaw = 0;
         }
         else
         {
@@ -108,10 +123,10 @@ public class ShipController : MonoBehaviour
 
         if (Mathf.Approximately(Input.GetAxis("Mouse ScrollWheel"), 0) == false)
         {
-            power = Input.GetAxis("Mouse ScrollWheel") * 3000 * Time.deltaTime;
+            power = Input.GetAxis("Mouse ScrollWheel") * 2000 * Time.deltaTime;
         }
 
-        strafe = new Vector3(Input.GetAxis("Horizontal") * strafeSpeed * Time.deltaTime, Input.GetAxis("Vertical") * strafeSpeed * Time.deltaTime, 0);
+        strafe = new Vector3(Input.GetAxis("Horizontal") * strafeSpeed, Input.GetAxis("Vertical") * strafeSpeed, 0);
         
         //Truespeed controls
 
@@ -131,10 +146,10 @@ public class ShipController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
             trueSpeed = 0;
         
-        rb.AddRelativeTorque(-pitch * turnspeed * verticalTurnSpeedScaler * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime);
+        rb.AddRelativeTorque(-pitch * turnspeed * verticalTurnSpeedScaler * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime, ForceMode.Force);
         
-        rb.AddRelativeForce(0,0,trueSpeed * speed * Time.deltaTime);
-        rb.AddRelativeForce(strafe);
+        rb.AddRelativeForce(0,0,trueSpeed * speed * Time.deltaTime, ForceMode.Force);
+        rb.AddRelativeForce(strafe * Time.deltaTime, ForceMode.Force);
     }
     
     private void FixedUpdate()
@@ -159,7 +174,7 @@ public class ShipController : MonoBehaviour
             }
             return;   
         }
-
+        
         playerMovement.PlayerControlsShip(this);
         shipAudioManager.StartMovingSfx();
 
@@ -278,15 +293,13 @@ public class ShipController : MonoBehaviour
             return;
         }
 
+        mouseX = Mathf.Clamp(mouseX, -1, 1);
+        mouseY = Mathf.Clamp(mouseY, -1, 1);
+
         controlledInFrame = true;
         rb.AddRelativeTorque(transform.right * (-mouseY * (torqueSpeedScaler * Time.deltaTime)), ForceMode.Force);
         rb.AddRelativeTorque(transform.up * (mouseX * (torqueSpeedScaler * Time.deltaTime)), ForceMode.Force);
         //rb.AddRelativeTorque(new Vector3(-mouseY, 0, mouseX) * (torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
-    }
-
-    public void TryToToggleLight()
-    {
-        outdoorLights.SetActive(!outdoorLights.activeInHierarchy);
     }
 
     public void TryToToggleMusic()
