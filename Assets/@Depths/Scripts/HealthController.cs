@@ -14,7 +14,7 @@ public class HealthController : MonoBehaviour
     
     public enum Fraction
     {
-        Humans, Mermaids
+        Humans, Mermaids, Fish, Plant
     }
 
     public Fraction fraction = Fraction.Humans;

@@ -276,6 +276,7 @@
      <None Include="Assets\_BionicStructures\__CubemapsShaders\ASE_StandartInnerGlowIce.shader" />
      <None Include="Assets\StylizedWater2\Shaders\StylizedWater2_Tessellation.shader" />
      <None Include="Assets\NatureManufacture Assets\Forest Environment Dynamic Nature\VS PRO Forest Biomes\README - VS PRO Biomes.txt" />
+     <None Include="Assets\Underwater_animal_pack\README.txt" />
      <None Include="Assets\NatureManufacture Assets\Foliage Shaders\Advanced Grass Specular.shader" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\ASE_StandartInnerGlowIceT.shader" />
      <None Include="Assets\Polarith\AI\Plugins\Shaders\Splat.shader" />

@@ -42,10 +42,13 @@ public class SetTargetToAi : MonoBehaviour
 
     public void SetTarget(GameObject targetGO)
     {
-        aimSeekBounds.GameObjects.Clear();
-     
-        currentTarget = targetGO;   
-        aimSeekBounds.GameObjects.Add(currentTarget);   
+        currentTarget = targetGO;
+        
+        if (aimSeekBounds)
+        {
+            aimSeekBounds.GameObjects.Clear();
+            aimSeekBounds.GameObjects.Add(currentTarget);   
+        }
         
         spaceshipController.SetNewTarget(currentTarget, targetStopDistance);
     }
