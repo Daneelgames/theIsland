@@ -10,6 +10,7 @@ public class SetTargetToAi : MonoBehaviour
     public GameObject currentTarget;
     public AIMSeekBounds aimSeekBounds;
     public AIMFleeBounds aimFleeBounds;
+    public AIMAvoidBounds aimAvoidBounds;
 
     public float targetStopDistance;
 

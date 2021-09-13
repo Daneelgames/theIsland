@@ -170,7 +170,7 @@ public class ShipController : MonoBehaviour
             StopControllingShip();
             for (int i = 0; i < weaponsControlledByMainControl.Count; i++)
             {
-                weaponsControlledByMainControl[i].UseHarpoonInput(this);
+                weaponsControlledByMainControl[i].UseHarpoonInput(null);
             }
             return;   
         }

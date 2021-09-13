@@ -6449,7 +6449,7 @@ GameObject:
   - component: {fileID: 1023116408763125160}
   - component: {fileID: 1272819611}
   - component: {fileID: 1272819612}
-  - component: {fileID: 8236796550132608139}
+  - component: {fileID: 7873091693351245020}
   m_Layer: 7
   m_Name: AI
   m_TagString: Untagged
@@ -6735,7 +6735,7 @@ MonoBehaviour:
     Prediction: 0
     PredictionMagnitude: 0
   targetTag: Untagged
---- !u!114 &8236796550132608139
+--- !u!114 &7873091693351245020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6744,11 +6744,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2959172898138399797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1744320918, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Script: {fileID: 495989845, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
-  Label: Avoid the wall boundary (passive avoid)
+  Label: avoid
   initialized: 1
   tabState:
     tab0: 0
@@ -6774,12 +6774,12 @@ MonoBehaviour:
     Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
   innerCircleGizmo:
     Enabled: 0
-    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
   outerCircleGizmo:
     Enabled: 0
     Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
   radiusSteeringFoldout: 1
-  FleeBounds:
+  AvoidBounds:
     TargetObjective: 1
     MagnitudeMultiplier: 1
     SensitivityOffset: 0
@@ -6794,9 +6794,17 @@ MonoBehaviour:
     Prediction: 0
     PredictionMagnitude: 0
     InnerRadius: 0
-    OuterRadius: 30
+    OuterRadius: 20
     RadiusMapping: 2
-    BoundsType: 1
+    PlaneBend: 0
+    UseVelocity: 0
+    DefaultOrientation: {x: 0, y: 1, z: 0}
+    smoothness: 0
+    boundsType: 1
+  PlaneGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+    PlaneSize: 5
 --- !u!1 &3399305326551271942
 GameObject:
   m_ObjectHideFlags: 0
@@ -8644,6 +8652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04efe9374104b43498b9d1bd2a2553e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipController: {fileID: 0}
   rb: {fileID: 5901144598381530084}
   feedbackTextField: {fileID: 0}
 --- !u!1 &5654917459877060466
@@ -10123,6 +10132,7 @@ MonoBehaviour:
   musicSource: {fileID: 7001489292934710820}
   shipAudioManager: {fileID: 7292378902198339228}
   setTargetToAi: {fileID: 5149364004321527447}
+  chassis: {fileID: 0}
   playerHeadTransform: {fileID: 1564604218056490070}
   weaponsControlledByMainControl:
   - {fileID: 3757199668112680807}
@@ -10267,7 +10277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
   aimSeekBounds: {fileID: 4125825167603041991}
-  aimFleeBounds: {fileID: 8236796550132608139}
+  aimFleeBounds: {fileID: 0}
+  aimAvoidBounds: {fileID: 7873091693351245020}
   targetStopDistance: 2
   newTargetPosition: {x: 0, y: 0, z: 0}
   spaceshipController: {fileID: 7740742570053656458}

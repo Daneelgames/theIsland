@@ -73,12 +73,54 @@ public class HarpoonController : MonoBehaviour
     public void UseHarpoonInput(ShipController _ship)
     {
         if (_ship != null)
+        {
             ship = _ship;
-        
-        //ship.StopControllingShip();
-        if (_ship.Use360Movement == false)
-            PlayerMovement.instance.PlayerControlsShip(null);
+            
+            if (_ship.Use360Movement == false)
+                PlayerMovement.instance.PlayerControlsShip(null);
 
+            
+            if (laserSpot)
+                UpdateLasetSpotCoroutine = StartCoroutine(UpdateLasetSpot());
+                
+            // lock player's movement
+            // move player's head to cameraParent
+            PlayerMovement.instance.PlayerControlsHarpoon(this);
+
+            // StartControlling the gun
+            if (harpoonControlCoroutine != null)
+                StopCoroutine(harpoonControlCoroutine);
+                
+            harpoonControlCoroutine = StartCoroutine(HarpoonControlCoroutine());
+            state = State.ControlledByPlayer;
+        }
+        else
+        {
+            
+            if (laserSpot && UpdateLasetSpotCoroutine != null)
+            {
+                StopCoroutine(UpdateLasetSpotCoroutine);
+                UpdateLasetSpotCoroutine = null;
+                laserSpot.transform.localScale = Vector3.zero;
+                laserSpot.transform.position = shotHolder.position;
+            }
+                
+            // release player's head
+            // unlock player's movement
+            //PlayerMovement.instance.transform.position = ship.playerSit.position;
+            PlayerMovement.instance.PlayerControlsHarpoon(null);
+
+            // Stop Controlling the gun
+            if (harpoonControlCoroutine != null)
+            {
+                StopCoroutine(harpoonControlCoroutine);
+                harpoonControlCoroutine = null;
+            }
+
+            state = State.Idle;
+        }
+
+        /*
         switch (state)
         {
             case State.Idle:
@@ -122,7 +164,7 @@ public class HarpoonController : MonoBehaviour
 
                 state = State.Idle;
                 break;
-        }
+        }*/
     }
 
     IEnumerator UpdateLasetSpot()
