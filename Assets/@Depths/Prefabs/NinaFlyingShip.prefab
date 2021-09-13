@@ -10236,6 +10236,9 @@ MonoBehaviour:
   aggroDistanceMax: 50
   fractionsAggroOnSight: 01000000
   targetChangeMoveSpeed: 100
+  wander: 0
+  wanderTimeMinMax: {x: 5, y: 30}
+  newPosOffsetMinMax: {x: 5, y: 30}
 --- !u!1 &8218239943980403478
 GameObject:
   m_ObjectHideFlags: 0

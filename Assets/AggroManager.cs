@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using Random = UnityEngine.Random;
 
 public class AggroManager : MonoBehaviour
 {
@@ -14,13 +16,22 @@ public class AggroManager : MonoBehaviour
     private Vector3 lastNonCombatTargetPosition;
 
     private bool canSaveLastNonCombatTargetPosition = true;
+
+    [Header("Wander Behaviour")] 
+    public bool wander = true;
+    public Vector2 wanderTimeMinMax = new Vector2(5f, 30);
+    public Vector2 newPosOffsetMinMax = new Vector2(5f, 30f);
     
     private IEnumerator Start()
     {
+        if (wander)
+            StartCoroutine(WanderBehaviour());
+        
         float distance = 1000;
         float newDistance = 1000;
         while (true)
         {
+            // FIND CLOSEST UNIT TO ANGER ON
             HealthController closestHcToAnger = null;
             distance = 1000;
             for (int i = 0; i < MobSpawnManager.instance.Units.Count; i++)
@@ -42,6 +53,7 @@ public class AggroManager : MonoBehaviour
                 yield return null;
             }
             
+            // SAVE LAST NON COMBAT TARGET POSITION
             if (setTargetToAi.currentTarget && canSaveLastNonCombatTargetPosition)
             {
                 lastNonCombatTargetPosition = setTargetToAi.currentTarget.transform.position;
@@ -61,6 +73,21 @@ public class AggroManager : MonoBehaviour
             }
             
             yield return new WaitForSeconds(updateDelay);
+        }
+    }
+
+    IEnumerator WanderBehaviour()
+    {
+        float timeToWait = 1;
+        while (true)
+        {
+            lastNonCombatTargetPosition = setTargetToAi.transform.position +
+                                          Random.insideUnitSphere *
+                                          Random.Range(newPosOffsetMinMax.x, newPosOffsetMinMax.y);
+            setTargetToAi.MoveTargetToPosition(lastNonCombatTargetPosition, targetChangeMoveSpeed);
+            
+            timeToWait = Random.Range(wanderTimeMinMax.x, wanderTimeMinMax.y);
+            yield return new WaitForSeconds(timeToWait);
         }
     }
 }

@@ -255,7 +255,7 @@ Transform:
   m_Children:
   - {fileID: 3527804207574600178}
   - {fileID: 3433721976208633649}
-  - {fileID: 46094058581948013}
+  - {fileID: 3478289505130072048}
   - {fileID: 3656355487909447498}
   - {fileID: 4996137402231267148}
   m_Father: {fileID: 1798164707580280042}
@@ -624,6 +624,8 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  lightsToggle: {fileID: 0}
+  systemVisualAnimator: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -1205,6 +1207,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.0018
       objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3408911
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39552206
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.06807237
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1022
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0264
+      objectReference: {fileID: 0}
     - target: {fileID: 5944498060874457582, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
       propertyPath: m_Name
       value: InsideLightFeedback
@@ -1318,8 +1348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d56c7504e06dd4cb81d812b6c07d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &46094058581948013 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7112771695626395137, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+--- !u!4 &3478289505130072048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
   m_PrefabInstance: {fileID: 7067949233517357164}
   m_PrefabAsset: {fileID: 0}
