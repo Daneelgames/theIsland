@@ -22,6 +22,10 @@ public class AggroManager : MonoBehaviour
     public Vector2 wanderTimeMinMax = new Vector2(5f, 30);
     public Vector2 newPosOffsetMinMax = new Vector2(5f, 30f);
     
+    public float maxDstBetweenPositionsToCountAsIdle = 0.5f;
+    public float maxIdleTimeBeforeMovingTarget = 3;
+    private Vector3 prevStepPos;
+    private Vector3 curStepPos;
     private IEnumerator Start()
     {
         if (wander)
@@ -79,15 +83,38 @@ public class AggroManager : MonoBehaviour
     IEnumerator WanderBehaviour()
     {
         float timeToWait = 1;
+        StartCoroutine(CheckIfStuck());
+        
         while (true)
         {
-            lastNonCombatTargetPosition = setTargetToAi.transform.position +
-                                          Random.insideUnitSphere *
-                                          Random.Range(newPosOffsetMinMax.x, newPosOffsetMinMax.y);
-            setTargetToAi.MoveTargetToPosition(lastNonCombatTargetPosition, targetChangeMoveSpeed);
+            UpdateLastNonCombatPos();
+            //setTargetToAi.MoveTargetToPosition(lastNonCombatTargetPosition, targetChangeMoveSpeed);
             
             timeToWait = Random.Range(wanderTimeMinMax.x, wanderTimeMinMax.y);
             yield return new WaitForSeconds(timeToWait);
         }
+    }
+
+    IEnumerator CheckIfStuck()
+    {
+        prevStepPos = transform.position;
+        while (true)
+        {
+            curStepPos = transform.position;
+            yield return new WaitForSeconds(maxIdleTimeBeforeMovingTarget);
+            
+            if (Vector3.Distance(curStepPos, transform.position) <= maxDstBetweenPositionsToCountAsIdle)
+            {
+                UpdateLastNonCombatPos();
+            }
+            prevStepPos = curStepPos;
+        }
+    }
+
+    void UpdateLastNonCombatPos()
+    {
+        lastNonCombatTargetPosition = setTargetToAi.transform.position +
+                                      Random.insideUnitSphere *
+                                      Random.Range(newPosOffsetMinMax.x, newPosOffsetMinMax.y);
     }
 }

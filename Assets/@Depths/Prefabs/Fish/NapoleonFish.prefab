@@ -334,6 +334,8 @@ MonoBehaviour:
   wander: 1
   wanderTimeMinMax: {x: 5, y: 30}
   newPosOffsetMinMax: {x: 5, y: 30}
+  maxDstBetweenPositionsToCountAsIdle: 0.5
+  maxIdleTimeBeforeMovingTarget: 3
 --- !u!1 &7975871975087003988
 GameObject:
   m_ObjectHideFlags: 0
