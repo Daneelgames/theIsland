@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
 using Polarith.AI.Move;
 using Polarith.AI.Package;
+using UnityEditor;
 using UnityEngine;
 
 public class SetTargetToAi : MonoBehaviour
@@ -38,6 +40,12 @@ public class SetTargetToAi : MonoBehaviour
         }
         */
         //aimFleeBounds.GameObjects = new List<GameObject>(LevelSolids.instance.solids);
+    }
+
+    private void OnDestroy()
+    {
+        if (currentTarget)
+            Destroy(currentTarget);
     }
 
     public void SetTarget(GameObject targetGO)

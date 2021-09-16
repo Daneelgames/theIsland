@@ -9,7 +9,7 @@ public class AssetSpawner : MonoBehaviour
 {
     public enum ObjectType
     {
-        ProceduralPlant, Prop, Path, Tool, Mob, QuestEvent
+        ProceduralPlant, Prop, Path, Tool, Mob, QuestEvent, Fish
     }
 
     public static AssetSpawner instance;
@@ -124,6 +124,9 @@ public class AssetSpawner : MonoBehaviour
                 case ObjectType.Mob:
                     ProceedMob(asyncOperationHandle.Result);
                     break;
+                case ObjectType.Fish:
+                    ProceedFish(asyncOperationHandle.Result);
+                    break;
                 case ObjectType.QuestEvent:
                     ProceedQuestEvent(asyncOperationHandle.Result);
                     break;
@@ -178,6 +181,10 @@ public class AssetSpawner : MonoBehaviour
     void ProceedMob(GameObject go)
     {
         MobSpawnManager.instance.AddSpawnedMob(go);
+    }
+    void ProceedFish(GameObject go)
+    {
+        FishSpawnManager.instance.ProceedFish(go);
     }
     void ProceedQuestEvent(GameObject go)
     {

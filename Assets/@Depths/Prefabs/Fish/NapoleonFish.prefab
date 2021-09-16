@@ -294,7 +294,10 @@ MonoBehaviour:
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 0}
   spaceShipController: {fileID: 0}
+  setTargetToAi: {fileID: 4654573845763171754}
   damagedAu: {fileID: 0}
+  interactiveObjectsToDrop:
+  - {fileID: 7974196291072837852, guid: 4c24a63824e4c0e4e8bfd5ae2c941908, type: 3}
 --- !u!114 &4654573845763171754
 MonoBehaviour:
   m_ObjectHideFlags: 0

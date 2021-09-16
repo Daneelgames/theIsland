@@ -26,7 +26,18 @@ public class AggroManager : MonoBehaviour
     public float maxIdleTimeBeforeMovingTarget = 3;
     private Vector3 prevStepPos;
     private Vector3 curStepPos;
-    private IEnumerator Start()
+
+    void OnEnable()
+    {
+        StartCoroutine(UpdateCycle());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private IEnumerator UpdateCycle()
     {
         if (wander)
             StartCoroutine(WanderBehaviour());
@@ -35,6 +46,12 @@ public class AggroManager : MonoBehaviour
         float newDistance = 1000;
         while (true)
         {
+            if (MobSpawnManager.instance == null)
+            {
+                yield return null;
+                continue;
+            }
+            
             // FIND CLOSEST UNIT TO ANGER ON
             HealthController closestHcToAnger = null;
             distance = 1000;

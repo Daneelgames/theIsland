@@ -30,11 +30,15 @@ public class HealthController : MonoBehaviour
     public float explosivePowerOnDamage = 100;
     public float explosiveRaidusOnDamage = 50;
 
+    [Header("AI")]
     public ShipController shipController;
     public SpaceshipController spaceShipController;
+    public SetTargetToAi setTargetToAi;
     
     [Header("Audio")]
     public AudioSource damagedAu;
+
+    [Header("Drop")] public List<InteractiveObject> interactiveObjectsToDrop;
     void Start()
     {
         healthMax = healthCurrent;
@@ -62,6 +66,9 @@ public class HealthController : MonoBehaviour
     
     public void Damage(int damage)
     {
+        if (healthCurrent <= 0)
+            return;
+        
         healthCurrent -= damage;
 
         if (damagedAu)
@@ -74,7 +81,6 @@ public class HealthController : MonoBehaviour
         {
             rb.AddExplosionForce(explosivePowerOnDamage, transform.position + new Vector3(Random.Range(-5,5),Random.Range(-5,5),Random.Range(-5,5)), explosiveRaidusOnDamage);
         }
-        
         
         if (player)
             PlayerMovement.instance.ControlledShipDamaged();
@@ -91,6 +97,12 @@ public class HealthController : MonoBehaviour
         
         if (deathParticles)
             Instantiate(deathParticles, transform.position, transform.rotation);
+
+        for (int i = 0; i < interactiveObjectsToDrop.Count; i++)
+        {
+            var newDrop = Instantiate(interactiveObjectsToDrop[i], transform.position, transform.rotation);
+            newDrop.rb.AddExplosionForce(25, transform.position + Random.onUnitSphere, 30);
+        }
         
         if (!player)
             Destroy(gameObject);

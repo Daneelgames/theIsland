@@ -101,6 +101,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: fbbd2967e7ab069479aedd51dd967779
+    m_Address: Fish/NapoleonFish.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 733579267f0ec3c49a75c8dbec89e2a9, type: 2}
   m_SchemaSet:
