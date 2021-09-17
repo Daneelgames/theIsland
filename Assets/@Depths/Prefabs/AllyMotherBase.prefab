@@ -10396,7 +10396,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8218239943687068286}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 1000000
   m_Drag: 1
   m_AngularDrag: 3
   m_UseGravity: 0
@@ -10459,7 +10459,9 @@ MonoBehaviour:
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 9052653888386218517}
   spaceShipController: {fileID: 7740742570053656458}
+  setTargetToAi: {fileID: 0}
   damagedAu: {fileID: 3339766963295171159}
+  interactiveObjectsToDrop: []
 --- !u!114 &4537752663679585449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10533,7 +10535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 1517377322}
   aimSeekBounds: {fileID: 4125825167603041991}
-  aimFleeBounds: {fileID: 6072879483511315226, guid: a334e1732ace08145a5fc8d65cccfc50, type: 3}
+  aimFleeBounds: {fileID: 0}
   aimAvoidBounds: {fileID: 537730189158818375}
   targetStopDistance: 5
   newTargetPosition: {x: 0, y: 0, z: 0}
