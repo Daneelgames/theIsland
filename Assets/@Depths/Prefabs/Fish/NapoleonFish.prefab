@@ -191,6 +191,7 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  musicController: {fileID: 0}
   lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 0}
   collider: {fileID: 0}

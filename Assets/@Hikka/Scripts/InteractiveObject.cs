@@ -19,6 +19,7 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField] GrabberController grabberController;
     [SerializeField] HarpoonController harpoonController;
     [SerializeField] DoorLockController doorLockController;
+    [SerializeField] MusicPlayer musicController;
     [SerializeField] LightsToggle lightsToggle;
     [SerializeField] private Animator systemVisualAnimator;
     
@@ -75,7 +76,7 @@ public class InteractiveObject : MonoBehaviour
                 lightsToggle.ToggleLight();
                 break;
             case ActionType.ToggleMusic:
-                shipController.TryToToggleMusic();
+                musicController.TryToToggleMusic();
                 break;
             case ActionType.Grabber:
                 shipController.TryToUseGrabber(grabberController);

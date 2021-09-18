@@ -220,6 +220,7 @@
      <Compile Include="Assets\DamageOnContact.cs" />
      <Compile Include="Assets\ShipScreenButton.cs" />
      <Compile Include="Assets\RadarObjectListController.cs" />
+     <Compile Include="Assets\MusicPlayer.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />

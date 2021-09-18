@@ -20,7 +20,6 @@ public class ShipController : MonoBehaviour
     private Vector3 currentVelocity;
     private Vector3 _targetVelocity;
     private bool controlledInFrame = false;
-    public AudioSource musicSource;
     public ShipAudioManager shipAudioManager;
     public SetTargetToAi setTargetToAi;
     public LandingObject chassis;
@@ -302,16 +301,6 @@ public class ShipController : MonoBehaviour
         //rb.AddRelativeTorque(new Vector3(-mouseY, 0, mouseX) * (torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
     }
 
-    public void TryToToggleMusic()
-    {
-        if (musicSource.isPlaying)
-            musicSource.Stop();
-        else
-        {
-            musicSource.pitch = UnityEngine.Random.Range(0.75f, 1f);
-            musicSource.Play();
-        }
-    }
 
     public void TryToUseGrabber(GrabberController grabber)
     {

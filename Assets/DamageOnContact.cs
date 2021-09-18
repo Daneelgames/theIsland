@@ -11,6 +11,8 @@ public class DamageOnContact : MonoBehaviour
     public float damageCooldown = 1;
     public int damageScaledByVelocity = 5;
 
+    public bool stopEngineOnContact = true;
+    
     private Coroutine damageCoroutine;
     
     private void OnTriggerStay(Collider other)
@@ -28,6 +30,9 @@ public class DamageOnContact : MonoBehaviour
     {
         if (rb.velocity.magnitude > 0.1f)
         {
+            if (stopEngineOnContact && hc.shipController && hc.shipController._state == ShipController.State.ControlledByPlayer)
+                hc.shipController.TryToPlayerControlsShip();
+            
             hc.Damage(Mathf.RoundToInt(damageScaledByVelocity * rb.velocity.magnitude));
             yield return new WaitForSeconds(damageCooldown);   
         }
