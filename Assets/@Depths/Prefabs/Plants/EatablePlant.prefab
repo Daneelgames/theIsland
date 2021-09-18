@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 922532874770267896}
   - component: {fileID: 866955821012018944}
   - component: {fileID: 922532874770267897}
-  m_Layer: 7
+  - component: {fileID: 3506178822449667513}
+  m_Layer: 9
   m_Name: EatablePlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 922532874770267898}
   m_LocalRotation: {x: 0.23838885, y: -0.13177231, z: 0.032674346, w: 0.9616336}
   m_LocalPosition: {x: -37.91284, y: -3.7984042, z: 0.46835372}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2045162, y: 1.2045162, z: 1.2045162}
   m_Children:
   - {fileID: 1224818015367507382}
   - {fileID: 4553503476687552539}
@@ -58,9 +59,9 @@ MonoBehaviour:
   doorLockController: {fileID: 0}
   lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 0}
-  collider: {fileID: 0}
+  collider: {fileID: 3506178822449667513}
   protableTransformOffset: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 866955821012018944}
   dragForce: 0
   zeroVelocityDistanceThreshold: 0
   putAction:
@@ -112,7 +113,23 @@ MonoBehaviour:
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 0}
   spaceShipController: {fileID: 0}
+  setTargetToAi: {fileID: 0}
   damagedAu: {fileID: 0}
+  interactiveObjectsToDrop: []
+--- !u!136 &3506178822449667513
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922532874770267898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.7033431
+  m_Height: 1.7352021
+  m_Direction: 2
+  m_Center: {x: -0.1739681, y: 0.08543679, z: 0.57095003}
 --- !u!1 &3781506248231852705
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +504,6 @@ GameObject:
   - component: {fileID: 8864798120683872239}
   - component: {fileID: 8709824591735910366}
   - component: {fileID: 6045174806667325102}
-  - component: {fileID: 7977370932011732640}
   m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
@@ -559,19 +575,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7977370932011732640
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728944849277847061}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8906183803487263742
 GameObject:
   m_ObjectHideFlags: 0

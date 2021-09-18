@@ -81,6 +81,7 @@ public class GrabberController : MonoBehaviour
         
         if (coll.gameObject.layer == 9)
         {
+            Debug.Log(coll.gameObject.name);
             InteractiveObject interactive = coll.gameObject.GetComponent<InteractiveObject>();
             if (interactive == null || interactive.actionList.Count <= 0)
                 return;

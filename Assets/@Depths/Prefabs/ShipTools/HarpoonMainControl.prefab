@@ -462,15 +462,16 @@ MonoBehaviour:
   projectile: {fileID: -5463454221934999275, guid: edfd8aaae7b25034b9aceea2049b8b51, type: 3}
   attackCooldown: 2
   attackCooldownCurrent: 0
-  rotationSpeedScaler: 0.5
+  rotationSpeedScaler: 2
   spawnedProjectiles: []
-  minXRotation: -15
-  maxXRotation: 15
-  minYRotation: -15
-  maxYRotation: 15
+  minXRotation: -20
+  maxXRotation: 20
+  minYRotation: -20
+  maxYRotation: 20
   shotHolder: {fileID: 6505861335205220859}
   attackAu: {fileID: 209074986766438945}
   reloadAu: {fileID: 3245948102496279533}
+  delayOnStartControlling: 0.5
   laserSpot: {fileID: 6970719426819727749}
   laserSpotLayerMask:
     serializedVersion: 2

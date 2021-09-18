@@ -114,6 +114,7 @@
      <Compile Include="Assets\@GoldenValleys\Scripts\PlayerMovementStats.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Noise.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\MovementInputData.cs" />
+     <Compile Include="Assets\FishSpawnManager.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Teleporter.cs" />
      <Compile Include="Assets\Scripts\Input_Handler\InputHandler.cs" />
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObject.cs" />
@@ -216,7 +217,7 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\FishSpawnManager.cs" />
+     <Compile Include="Assets\DamageOnContact.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />
@@ -1006,6 +1007,9 @@
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

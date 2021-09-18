@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8968f2c0f3deb47ade8b5e85bb8276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 0.1
-  speed: 1.75
+  torque: 0.3
+  speed: 2
   spaceshipController: {fileID: 914847532802719850}
 --- !u!114 &914847532802719850
 MonoBehaviour:
@@ -257,7 +257,9 @@ MonoBehaviour:
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 0}
   spaceShipController: {fileID: 0}
+  setTargetToAi: {fileID: 0}
   damagedAu: {fileID: 0}
+  interactiveObjectsToDrop: []
 --- !u!82 &-8716418001279694966
 AudioSource:
   m_ObjectHideFlags: 0
@@ -405,6 +407,11 @@ MonoBehaviour:
   aggroDistanceMax: 100
   fractionsAggroOnSight: 00000000
   targetChangeMoveSpeed: 100
+  wander: 1
+  wanderTimeMinMax: {x: 5, y: 30}
+  newPosOffsetMinMax: {x: 5, y: 30}
+  maxDstBetweenPositionsToCountAsIdle: 0.5
+  maxIdleTimeBeforeMovingTarget: 3
 --- !u!1 &947955528171125090
 GameObject:
   m_ObjectHideFlags: 0
