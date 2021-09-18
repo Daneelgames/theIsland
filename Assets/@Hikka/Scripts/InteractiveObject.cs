@@ -22,6 +22,7 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField] MusicPlayer musicController;
     [SerializeField] LightsToggle lightsToggle;
     [SerializeField] private Animator systemVisualAnimator;
+    [SerializeField] private RadarObjectListController radarObject;
     
     [Header("Settings for different objects")]
     public Collider collider;
@@ -93,6 +94,10 @@ public class InteractiveObject : MonoBehaviour
                 break;
             case ActionType.ListOfChoices:
                 // click on choice
+                if (radarObject)
+                {
+                    radarObject.Interact(lastClosestButton);
+                }
                 break;
             case ActionType.ChassisToggle:
                 bool active = !chassis.gameObject.activeInHierarchy;

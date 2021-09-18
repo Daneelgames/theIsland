@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RadioCallsManager : MonoBehaviour
 {
+    public ShipController shipController;
     public bool playerShip = false;
     public static RadioCallsManager playerShipInstance;
     
@@ -12,6 +13,7 @@ public class RadioCallsManager : MonoBehaviour
 
     private RadioCallData currentCall;
     private RadioCallStartTrigger triggerToDestroy;
+
     
     int currentPhrase = 0;
 
@@ -40,6 +42,10 @@ public class RadioCallsManager : MonoBehaviour
     {
         if (currentCall != null && canPlayNewPhrase)
             StartCoroutine(PlayNewPhrase());
+        else if (currentCall == null && shipController.radar)
+        {
+            // TALK TO SHIP
+        }
     }
 
     IEnumerator PlayNewPhrase()

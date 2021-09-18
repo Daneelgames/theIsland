@@ -11,6 +11,8 @@ public class ShipScreenButton : MonoBehaviour
     public Text textField;
     public AudioSource au;
 
+    public GameObject assignedObject;
+    
     [ContextMenu("GetText")]
     public void GetText()
     {
@@ -32,5 +34,10 @@ public class ShipScreenButton : MonoBehaviour
             selected = _select;
             textField.fontStyle = selected ? FontStyle.Bold : FontStyle.Normal;   
         }
+    }
+
+    public void AssignObject(GameObject go)
+    {
+        assignedObject = go;
     }
 }

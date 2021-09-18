@@ -128,7 +128,10 @@ public class HarpoonController : MonoBehaviour
             if (MouseLook.instance.aiming == false && Physics.Raycast(MouseLook.instance.mainCamera.transform.position, MouseLook.instance.playerCursor.transform.position - MouseLook.instance.mainCamera.transform.position, out hit,100,  laserSpotLayerMask))
             {
                 laserSpot.transform.position = Vector3.Lerp(laserSpot.transform.position, hit.point, lasetSpotSpeed * Time.deltaTime);
-                laserSpot.transform.localScale = Vector3.Lerp(laserSpot.transform.localScale, laserSpotDefaultLocalScale, lasetSpotSpeed * Time.deltaTime);
+                if (Vector3.Distance(laserSpot.transform.position, MouseLook.instance.mainCamera.transform.position) < 3)
+                    laserSpot.transform.localScale = Vector3.Lerp(laserSpot.transform.localScale, Vector3.zero, lasetSpotSpeed * Time.deltaTime);
+                else
+                    laserSpot.transform.localScale = Vector3.Lerp(laserSpot.transform.localScale, laserSpotDefaultLocalScale, lasetSpotSpeed * Time.deltaTime);
                 laserSpot.transform.LookAt(MouseLook.instance.transform.position);
             }
             yield return null;

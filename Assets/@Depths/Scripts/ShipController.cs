@@ -24,6 +24,7 @@ public class ShipController : MonoBehaviour
     public SetTargetToAi setTargetToAi;
     public LandingObject chassis;
     public Transform playerHeadTransform;
+    public RadarObjectListController radar;
 
     [Header("Weapons")] 
     public List<HarpoonController> weaponsControlledByMainControl = new List<HarpoonController>();
@@ -165,6 +166,7 @@ public class ShipController : MonoBehaviour
 
         if (_state == State.ControlledByPlayer /*&& playerMovement.inControl == false*/)
         {
+            trueSpeed = 0;
             playerMovement.PlayerControlsShip(null);
             StopControllingShip();
             for (int i = 0; i < weaponsControlledByMainControl.Count; i++)

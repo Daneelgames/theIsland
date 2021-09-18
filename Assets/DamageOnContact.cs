@@ -30,14 +30,15 @@ public class DamageOnContact : MonoBehaviour
     {
         if (rb.velocity.magnitude > 0.1f)
         {
-            if (stopEngineOnContact && hc.shipController && hc.shipController._state == ShipController.State.ControlledByPlayer)
+            if (stopEngineOnContact && hc.shipController &&
+                hc.shipController._state == ShipController.State.ControlledByPlayer &&
+                hc.shipController.CurrentSpeed > 0.1f)
+            {
                 hc.shipController.TryToPlayerControlsShip();
-            
-            hc.Damage(Mathf.RoundToInt(damageScaledByVelocity * rb.velocity.magnitude));
+                hc.Damage(Mathf.RoundToInt(damageScaledByVelocity * rb.velocity.magnitude));   
+            }
             yield return new WaitForSeconds(damageCooldown);   
         }
-        
         damageCoroutine = null;
     }
-    
 }
