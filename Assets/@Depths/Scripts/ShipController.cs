@@ -177,6 +177,7 @@ public class ShipController : MonoBehaviour
         }
         
         playerMovement.PlayerControlsShip(this);
+        chassis.gameObject.SetActive(false);
         shipAudioManager.StartMovingSfx();
 
         for (int i = 0; i < weaponsControlledByMainControl.Count; i++)

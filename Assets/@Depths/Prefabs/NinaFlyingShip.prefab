@@ -9620,8 +9620,10 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  musicController: {fileID: 0}
   lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 0}
+  radarObject: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -9632,6 +9634,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   chassis: {fileID: 0}
+  listOfChoicesButtons: []
   plantController: {fileID: 0}
   toolToPickUp: {fileID: 0}
 --- !u!1 &7813055310798508400
@@ -9702,8 +9705,10 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  musicController: {fileID: 0}
   lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 0}
+  radarObject: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -9714,6 +9719,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   chassis: {fileID: 0}
+  listOfChoicesButtons: []
   plantController: {fileID: 0}
   toolToPickUp: {fileID: 0}
 --- !u!1 &7962997377602589243
@@ -10066,11 +10072,11 @@ MonoBehaviour:
   accelerationScale: 1
   torqueSpeedScaler: 2000
   rb: {fileID: 5901144598381530084}
-  musicSource: {fileID: 7001489292934710820}
   shipAudioManager: {fileID: 7292378902198339228}
   setTargetToAi: {fileID: 5149364004321527447}
   chassis: {fileID: 0}
   playerHeadTransform: {fileID: 1564604218056490070}
+  radar: {fileID: 0}
   weaponsControlledByMainControl:
   - {fileID: 3757199668112680807}
   - {fileID: 3331714653094575247}
@@ -10140,7 +10146,9 @@ MonoBehaviour:
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 9052653888386218517}
   spaceShipController: {fileID: 7740742570053656458}
+  setTargetToAi: {fileID: 0}
   damagedAu: {fileID: 3339766963295171159}
+  interactiveObjectsToDrop: []
 --- !u!114 &4537752663679585449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10153,6 +10161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7766acc17e12c641a4bcd8a1a10f3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipController: {fileID: 9052653888386218517}
   playerShip: 0
   radioCallController: {fileID: 2255385052965598407}
 --- !u!114 &7740742570053656458
@@ -10239,6 +10248,8 @@ MonoBehaviour:
   wander: 0
   wanderTimeMinMax: {x: 5, y: 30}
   newPosOffsetMinMax: {x: 5, y: 30}
+  maxDstBetweenPositionsToCountAsIdle: 0.5
+  maxIdleTimeBeforeMovingTarget: 3
 --- !u!1 &8218239943980403478
 GameObject:
   m_ObjectHideFlags: 0
@@ -10485,8 +10496,10 @@ MonoBehaviour:
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  musicController: {fileID: 0}
   lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 0}
+  radarObject: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -10497,6 +10510,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   chassis: {fileID: 0}
+  listOfChoicesButtons: []
   plantController: {fileID: 0}
   toolToPickUp: {fileID: 0}
 --- !u!1 &8218239944430420774
@@ -17856,11 +17870,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
---- !u!4 &7901078476607155748 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5276802588061319327, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
-  m_PrefabInstance: {fileID: 2638180278340071099}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3331714653094575247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 765631931358171700, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
@@ -17872,6 +17881,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f631c35f8c8d5f34f9bf7d9fb5b09c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7901078476607155748 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5276802588061319327, guid: 82981f5c6bb47ee46a373ac4bad3360b, type: 3}
+  m_PrefabInstance: {fileID: 2638180278340071099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2968505844099682073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20203,11 +20217,6 @@ PrefabInstance:
 --- !u!4 &7001489292934710823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4518475587916140107, guid: 22c320d697514544fbdbe0c613f36425, type: 3}
-  m_PrefabInstance: {fileID: 6890103848511670380}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &7001489292934710820 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4518475587916140104, guid: 22c320d697514544fbdbe0c613f36425, type: 3}
   m_PrefabInstance: {fileID: 6890103848511670380}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6904173352294199131

@@ -6068,7 +6068,7 @@ MonoBehaviour:
   rb: {fileID: 3189796485433920492}
   shipAudioManager: {fileID: 1770696708712220308}
   setTargetToAi: {fileID: 0}
-  chassis: {fileID: 0}
+  chassis: {fileID: 4383845833269300451}
   playerHeadTransform: {fileID: 7500722642920324190}
   radar: {fileID: 3057422771842910289}
   weaponsControlledByMainControl:
@@ -7256,8 +7256,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.20778, y: 1.5082183, z: 1.3793147}
-  m_Center: {x: 0.10388982, y: -0.25410914, z: 0.46777433}
+  m_Size: {x: 1.20778, y: 1.0013673, z: 1.208549}
+  m_Center: {x: 0.10388989, y: -0.0006819369, z: 0.43697983}
 --- !u!114 &565852815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18790,7 +18790,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6145423758705079031, guid: ebf90ba78db400349b5978ab4f8be7b4, type: 3}
       propertyPath: m_Name
-      value: Chassis
+      value: Dock
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177424772655591449, guid: ebf90ba78db400349b5978ab4f8be7b4, type: 3}
+      propertyPath: m_Text
+      value: DOCK
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebf90ba78db400349b5978ab4f8be7b4, type: 3}

@@ -385,12 +385,15 @@ MonoBehaviour:
   actionList:
   - actionType: 11
     displayedName:
-    - CHASSIS
+    - DOCK
   shipController: {fileID: 0}
   grabberController: {fileID: 0}
   harpoonController: {fileID: 0}
   doorLockController: {fileID: 0}
+  musicController: {fileID: 0}
+  lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 5937737557819452105}
+  radarObject: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
@@ -401,6 +404,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   chassis: {fileID: 2410726011695751788}
+  listOfChoicesButtons: []
   plantController: {fileID: 0}
   toolToPickUp: {fileID: 0}
 --- !u!65 &7330919299033586340
@@ -446,7 +450,7 @@ Transform:
   m_Children:
   - {fileID: 1382888195402534893}
   - {fileID: 4871653389774307973}
-  - {fileID: 2405281916174946777}
+  - {fileID: 1263216289085677636}
   m_Father: {fileID: 158134868993349850}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -590,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04efe9374104b43498b9d1bd2a2553e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipController: {fileID: 0}
   rb: {fileID: 0}
   feedbackTextField: {fileID: 6177424772655591449}
 --- !u!1001 &4887781105010528216
@@ -599,6 +604,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3781533507034296286}
     m_Modifications:
+    - target: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7112771695626395137, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -657,8 +666,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
---- !u!224 &2405281916174946777 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7112771695626395137, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
+--- !u!4 &1263216289085677636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5932150559706754972, guid: 57437515e4ef58a4a9042379077a57cb, type: 3}
   m_PrefabInstance: {fileID: 4887781105010528216}
   m_PrefabAsset: {fileID: 0}

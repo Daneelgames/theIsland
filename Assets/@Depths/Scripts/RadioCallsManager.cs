@@ -45,6 +45,7 @@ public class RadioCallsManager : MonoBehaviour
         else if (currentCall == null && shipController.radar)
         {
             // TALK TO SHIP
+            //shipController.radar.selectedObjectInWorld
         }
     }
 

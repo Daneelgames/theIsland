@@ -100,19 +100,11 @@ public class InteractiveObject : MonoBehaviour
                 }
                 break;
             case ActionType.ChassisToggle:
-                bool active = !chassis.gameObject.activeInHierarchy;
-                if (chassis.feedbackTextField)
-                {
-                    if (active == false)
-                    {
-                        chassis.feedbackTextField.text = "CHASSIS CLOSED";
-                    }
-                    else
-                    {
-                        chassis.feedbackTextField.text = "CHASSIS OPENED";
-                    }   
-                }
-                chassis.gameObject.SetActive(active);
+
+                if (shipController._state == ShipController.State.ControlledByPlayer)
+                    shipController.TryToPlayerControlsShip();
+                
+                chassis.gameObject.SetActive(true);
                 break;
             
             case ActionType.PickUp:
