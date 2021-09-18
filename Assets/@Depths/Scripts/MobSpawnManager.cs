@@ -20,7 +20,7 @@ public class MobSpawnManager : MonoBehaviour
     
     [SerializeField] List<AssetReference> mobsReferences = new List<AssetReference>();
     [SerializeField] List<HealthController> _units = new List<HealthController>();
-    [SerializeField] List<HealthController> spawnedMobs = new List<HealthController>();
+    public List<HealthController> spawnedMobs = new List<HealthController>();
 
     [SerializeField] List<Rigidbody> _activeRidigbodies = new List<Rigidbody>();
 

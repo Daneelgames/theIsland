@@ -84,10 +84,10 @@ public class PlayerUiController : MonoBehaviour
     public void DragSelectedObject()
     {
         selectedObject = false;
-        SelectedInteractableObject(currentSelectedObject.gameObject, currentSelectedObject.collider.bounds.center);
+        SelectedInteractableObject(currentSelectedObject.gameObject, currentSelectedObject.collider.bounds.center, Vector3.zero);
     }
     
-    public void SelectedInteractableObject(GameObject newSelectedGameObject, Vector3 newPos)
+    public void SelectedInteractableObject(GameObject newSelectedGameObject, Vector3 newPos, Vector3 hitPoint)
     {
         if (newSelectedGameObject != lastSelectedGameObject)
         {
@@ -101,6 +101,14 @@ public class PlayerUiController : MonoBehaviour
             lastSelectedGameObject = newSelectedGameObject;
             
             PlayerAudioController.instance.SelectNewUiAction();
+            if (s.listOfChoicesButtons.Count > 0)
+            {
+                s.SelectClosestListOfChoicesButton(hitPoint);
+            }
+        }
+        else
+        {
+            currentSelectedObject.SelectClosestListOfChoicesButton(hitPoint);
         }
         
         if (!selectedObject)

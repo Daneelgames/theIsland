@@ -5,7 +5,8 @@ using UnityEngine;
 public class InteractiveObjectsManager : MonoBehaviour
 {
     public static InteractiveObjectsManager instance;
-    public List<InteractiveObject> potsInteractiveObjects = new List<InteractiveObject>();
+    public List<InteractiveObject> playerInteractiveObjects = new List<InteractiveObject>();
+    public List<InteractiveObject> shipInteractiveObjects = new List<InteractiveObject>();
     void Awake()
     {
         if (instance != null)

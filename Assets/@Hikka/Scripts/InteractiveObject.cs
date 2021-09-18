@@ -8,7 +8,7 @@ public class InteractiveObject : MonoBehaviour
     public enum ActionType
     {
         PickUp, PlantSeed, Put, TakeItem, ControlShip, ToggleLight, ToggleMusic, Grabber, Harpoon, DoorLock,
-        RadioCallInteract, ChassisToggle
+        RadioCallInteract, ChassisToggle, ListOfChoices
     }
 
     public bool playerCouldInteract = true;
@@ -30,6 +30,7 @@ public class InteractiveObject : MonoBehaviour
     public float zeroVelocityDistanceThreshold = 1;
     public InteractiveAction putAction;
     public LandingObject chassis;
+    public List<ShipScreenButton> listOfChoicesButtons;
     
     [Header("InteractiveObjectType")]
     public PlantController plantController;
@@ -38,8 +39,13 @@ public class InteractiveObject : MonoBehaviour
 
     void Start()
     {
-        if (plantController && InteractiveObjectsManager.instance)
-            InteractiveObjectsManager.instance.potsInteractiveObjects.Add(this);
+        if (InteractiveObjectsManager.instance)
+        {
+            if (!playerCouldInteract)
+                InteractiveObjectsManager.instance.shipInteractiveObjects.Add(this);
+            else
+                InteractiveObjectsManager.instance.playerInteractiveObjects.Add(this);
+        }
     }
 
     public void InteractWithObject(int selectedAction)
@@ -84,6 +90,9 @@ public class InteractiveObject : MonoBehaviour
             case ActionType.RadioCallInteract:
                 RadioCallsManager.playerShipInstance.Interact();
                 break;
+            case ActionType.ListOfChoices:
+                // click on choice
+                break;
             case ActionType.ChassisToggle:
                 bool active = !chassis.gameObject.activeInHierarchy;
                 if (chassis.feedbackTextField)
@@ -117,8 +126,42 @@ public class InteractiveObject : MonoBehaviour
                 }
                 Destroy(gameObject);
                 break;
-            
         }
+    }
+
+    ShipScreenButton lastClosestButton = null;
+    public void SelectClosestListOfChoicesButton(Vector3 hitPos)
+    {
+        float maxDistance = 10000;
+        float curDistance = 0;
+        ShipScreenButton closestButton = null;
+        
+        for (int i = 0; i < listOfChoicesButtons.Count; i++)
+        {
+            curDistance = Vector3.Distance(hitPos, listOfChoicesButtons[i].transform.position);
+                
+            if (curDistance < maxDistance)
+            {
+                maxDistance = curDistance;
+                closestButton = listOfChoicesButtons[i];
+            }
+        }
+        
+        if (closestButton == lastClosestButton)
+            return;
+        
+        lastClosestButton = closestButton;
+        
+        for (int i = 0; i < listOfChoicesButtons.Count; i++)
+        {
+            if (closestButton != listOfChoicesButtons[i])
+            {
+                listOfChoicesButtons[i].SelectTextField(false);
+            }    
+        }
+        
+        if (closestButton)
+            closestButton.SelectTextField(true);
     }
 }
 

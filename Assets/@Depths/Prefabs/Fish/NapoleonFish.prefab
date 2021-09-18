@@ -203,6 +203,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   chassis: {fileID: 0}
+  listOfChoicesButtons: []
   plantController: {fileID: 0}
   toolToPickUp: {fileID: 0}
 --- !u!54 &7957715671369879844

@@ -75,7 +75,7 @@ public class PlayerInteractionController : MonoBehaviour
                     else if (hit.collider.gameObject.layer == 9) // interactable
                     {
                         selectedInteractableCenter = hit.collider.bounds.center;
-                        PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject, selectedInteractableCenter);
+                        PlayerUiController.instance.SelectedInteractableObject(hit.collider.gameObject, selectedInteractableCenter, hit.point);
                         haveSelectedObject = true;
                     }
                 }
@@ -91,7 +91,7 @@ public class PlayerInteractionController : MonoBehaviour
             }
             else
             {
-                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject, draggingObject.collider.bounds.center);
+                PlayerUiController.instance.SelectedInteractableObject(draggingObject.gameObject, draggingObject.collider.bounds.center, Vector3.zero);
                 if (lastSelectedPlantGO != null)
                 {
                     NoSelectedPlantPartGO();

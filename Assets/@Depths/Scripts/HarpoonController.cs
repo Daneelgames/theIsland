@@ -81,7 +81,7 @@ public class HarpoonController : MonoBehaviour
 
             
             if (laserSpot)
-                UpdateLasetSpotCoroutine = StartCoroutine(UpdateLasetSpot());
+                UpdateLasetSpotCoroutine = StartCoroutine(UpdateLaserSpot());
                 
             // lock player's movement
             // move player's head to cameraParent
@@ -96,7 +96,6 @@ public class HarpoonController : MonoBehaviour
         }
         else
         {
-            
             if (laserSpot && UpdateLasetSpotCoroutine != null)
             {
                 StopCoroutine(UpdateLasetSpotCoroutine);
@@ -119,59 +118,14 @@ public class HarpoonController : MonoBehaviour
 
             state = State.Idle;
         }
-
-        /*
-        switch (state)
-        {
-            case State.Idle:
-                
-                if (laserSpot)
-                    UpdateLasetSpotCoroutine = StartCoroutine(UpdateLasetSpot());
-                
-                // lock player's movement
-                // move player's head to cameraParent
-                PlayerMovement.instance.PlayerControlsHarpoon(this);
-
-                // StartControlling the gun
-                if (harpoonControlCoroutine != null)
-                    StopCoroutine(harpoonControlCoroutine);
-                
-                harpoonControlCoroutine = StartCoroutine(HarpoonControlCoroutine());
-                state = State.ControlledByPlayer;
-                break;
-
-            case State.ControlledByPlayer:
-
-                if (laserSpot && UpdateLasetSpotCoroutine != null)
-                {
-                    StopCoroutine(UpdateLasetSpotCoroutine);
-                    UpdateLasetSpotCoroutine = null;
-                    laserSpot.transform.localScale = Vector3.zero;
-                    laserSpot.transform.position = shotHolder.position;
-                }
-                
-                // release player's head
-                // unlock player's movement
-                //PlayerMovement.instance.transform.position = ship.playerSit.position;
-                PlayerMovement.instance.PlayerControlsHarpoon(null);
-
-                // Stop Controlling the gun
-                if (harpoonControlCoroutine != null)
-                {
-                    StopCoroutine(harpoonControlCoroutine);
-                    harpoonControlCoroutine = null;
-                }
-
-                state = State.Idle;
-                break;
-        }*/
     }
 
-    IEnumerator UpdateLasetSpot()
+    IEnumerator UpdateLaserSpot()
     {
         while (true)
         {
-            if (Physics.Raycast(shotHolder.position, shotHolder.forward, out hit,100,  laserSpotLayerMask))
+            //if (Physics.Raycast(shotHolder.position, shotHolder.forward, out hit,100,  laserSpotLayerMask))
+            if (MouseLook.instance.aiming == false && Physics.Raycast(MouseLook.instance.mainCamera.transform.position, MouseLook.instance.playerCursor.transform.position - MouseLook.instance.mainCamera.transform.position, out hit,100,  laserSpotLayerMask))
             {
                 laserSpot.transform.position = Vector3.Lerp(laserSpot.transform.position, hit.point, lasetSpotSpeed * Time.deltaTime);
                 laserSpot.transform.localScale = Vector3.Lerp(laserSpot.transform.localScale, laserSpotDefaultLocalScale, lasetSpotSpeed * Time.deltaTime);
@@ -196,14 +150,8 @@ public class HarpoonController : MonoBehaviour
         {
             yield return null;
 
-            /*
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ship.TryToUseHarpoon(this);
-            }
-            */
             
-            if (MouseLook.instance.aiming /*|| MouseLook.instance.controlledShip == false*/)
+            if (MouseLook.instance.aiming)
                 continue;
             
             if (PlayerUiController.instance.itemWheelVisible == false)
@@ -264,7 +212,10 @@ public class HarpoonController : MonoBehaviour
             {
                 newProjectile = spawnedProjectiles[i];
                 newProjectile.transform.position = shotHolder.position;
-                newProjectile.transform.rotation = shotHolder.rotation;
+                //newProjectile.transform.rotation = shotHolder.rotation;
+                
+                newProjectile.transform.LookAt(laserSpot.transform.position);
+                
                 newProjectile.rb.velocity = Vector3.zero;
                 newProjectile.rb.angularVelocity = Vector3.zero;
                 newProjectile.rb.Sleep();
