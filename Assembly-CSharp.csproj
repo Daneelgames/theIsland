@@ -52,6 +52,7 @@
      <Compile Include="Assets\@Depths\Scripts\RadioCallController.cs" />
      <Compile Include="Assets\Scripts\Camera_Controller\CameraSwaying.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+     <Compile Include="Assets\MusicPlayer.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\StaminaController.cs" />
      <Compile Include="Assets\@Depths\Scripts\RadioCallStartTrigger.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\CombineUtility.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\IInteractable.cs" />
      <Compile Include="Assets\@Depths\Scripts\SetTargetToAi.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers\VehicleController.cs" />
+     <Compile Include="Assets\DamageOnContact.cs" />
      <Compile Include="Assets\selected effect\scripts\Selected_effect_mouse_click.cs" />
      <Compile Include="Assets\@Hikka\Scripts\ProceduralPlant.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\EnvironmentUpdater.cs" />
@@ -175,6 +177,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\InteractionUIPanel.cs" />
      <Compile Include="Assets\@GoldenValleys\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\PerceiverConnector.cs" />
+     <Compile Include="Assets\ShipScreenButton.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerStateTransition.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Enums\BrushMode.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\MeshTransformationUtility.cs" />
@@ -211,16 +214,13 @@
      <Compile Include="Assets\@Hikka\Scripts\PlantData.cs" />
      <Compile Include="Assets\@Depths\Scripts\RadioCallsManager.cs" />
      <Compile Include="Assets\@Depths\Scripts\QuestTrigger.cs" />
+     <Compile Include="Assets\RadarObjectListController.cs" />
      <Compile Include="Assets\JournalController.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\InteractionData.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\MeshBrushParent.cs" />
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\DamageOnContact.cs" />
-     <Compile Include="Assets\ShipScreenButton.cs" />
-     <Compile Include="Assets\RadarObjectListController.cs" />
-     <Compile Include="Assets\MusicPlayer.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />
@@ -957,6 +957,9 @@
      <Reference Include="Unity.Searcher.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Runtime">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
      </Reference>
@@ -1010,9 +1013,6 @@
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
      <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.2D.Sprite.Editor">
-     <HintPath>C:/@MrPink/theIsland/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

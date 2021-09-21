@@ -150,6 +150,8 @@ public class ShipController : MonoBehaviour
         
         rb.AddRelativeForce(0,0,trueSpeed * speed * Time.deltaTime, ForceMode.Force);
         rb.AddRelativeForce(strafe * Time.deltaTime, ForceMode.Force);
+        
+        shipAudioManager.SetShipsEngineTrueSpeed(trueSpeed, minTrueSpeed, maxTrueSpeed);
     }
     
     private void FixedUpdate()
@@ -180,6 +182,7 @@ public class ShipController : MonoBehaviour
         chassis.gameObject.SetActive(false);
         shipAudioManager.StartMovingSfx();
 
+        
         for (int i = 0; i < weaponsControlledByMainControl.Count; i++)
         {
             weaponsControlledByMainControl[i].UseHarpoonInput(this);

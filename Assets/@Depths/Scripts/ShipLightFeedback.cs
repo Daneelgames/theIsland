@@ -11,7 +11,8 @@ public class ShipLightFeedback : MonoBehaviour
     
     public void Blink(Color color)
     {
-        StartCoroutine(BlinkCoroutine(color));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(BlinkCoroutine(color));
     }
 
     IEnumerator BlinkCoroutine(Color color)

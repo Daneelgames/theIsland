@@ -25,7 +25,8 @@ public class RadioCallController : MonoBehaviour
         anim.SetTrigger(Update);
         if (message == null)
         {
-            lightFeedback.Blink(Color.red);
+            if (lightFeedback.gameObject.activeSelf)
+                lightFeedback.Blink(Color.red);
             speakerPhoto.sprite = null;
             speakerPhoto.color = Color.clear;
             speakerNameString.text = String.Empty;
@@ -33,12 +34,12 @@ public class RadioCallController : MonoBehaviour
         }
         else
         {
-            lightFeedback.Blink(Color.green);
+            if (lightFeedback.gameObject.activeSelf)
+                lightFeedback.Blink(Color.green);
             speakerPhoto.sprite = message.speakerImage;
             speakerPhoto.color = Color.white;
             speakerNameString.text = message.speakerName.ToUpper();
             speakerPhraseString.text = message.speakerPhrase[GameManager.instance.gameLanguage];
         }
-        
     }
 }
