@@ -42,11 +42,43 @@ public class ShipAudioManager : MonoBehaviour
         if (trueSpeed != previousEngineTrueSpeed)
         {
             previousEngineTrueSpeed = trueSpeed;
- 
-            
         }
 
-        if (magnitude < .25f)
-            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 1, Time.deltaTime);
+        if (trueSpeed > -1 && trueSpeed < 1) // IDLE
+        {
+            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 0f, Time.deltaTime);
+            engineAmbientSource1.volume = Mathf.Lerp(engineAmbientSource1.volume, 0f, Time.deltaTime);
+            engineAmbientSource2.volume = Mathf.Lerp(engineAmbientSource2.volume, 0f, Time.deltaTime);
+        }
+        else if (magnitude < .2f)
+        {
+            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 0.5f, Time.deltaTime);
+            engineAmbientSource1.volume = Mathf.Lerp(engineAmbientSource1.volume, 0f, Time.deltaTime);
+            engineAmbientSource2.volume = Mathf.Lerp(engineAmbientSource2.volume, 0f, Time.deltaTime);   
+        }
+        else if (magnitude < .4f)
+        {
+            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 0.25f, Time.deltaTime);
+            engineAmbientSource1.volume = Mathf.Lerp(engineAmbientSource1.volume, 0.25f, Time.deltaTime);
+            engineAmbientSource2.volume = Mathf.Lerp(engineAmbientSource2.volume, 0f, Time.deltaTime);   
+        }
+        else if (magnitude < .6f)
+        {
+            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 0f, Time.deltaTime);
+            engineAmbientSource1.volume = Mathf.Lerp(engineAmbientSource1.volume, 0.5f, Time.deltaTime);
+            engineAmbientSource2.volume = Mathf.Lerp(engineAmbientSource2.volume, 0f, Time.deltaTime);   
+        }
+        else if (magnitude < .8f)
+        {
+            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 0f, Time.deltaTime);
+            engineAmbientSource1.volume = Mathf.Lerp(engineAmbientSource1.volume, 0.25f, Time.deltaTime);
+            engineAmbientSource2.volume = Mathf.Lerp(engineAmbientSource2.volume, 0.25f, Time.deltaTime);   
+        }
+        else
+        {
+            engineAmbientSource0.volume = Mathf.Lerp(engineAmbientSource0.volume, 0f, Time.deltaTime);
+            engineAmbientSource1.volume = Mathf.Lerp(engineAmbientSource1.volume, 0f, Time.deltaTime);
+            engineAmbientSource2.volume = Mathf.Lerp(engineAmbientSource2.volume, 0.5f, Time.deltaTime);   
+        }
     }
 }
