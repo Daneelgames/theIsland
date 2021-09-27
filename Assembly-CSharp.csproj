@@ -41,6 +41,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\NavigationManager.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Utilities\VectorClampingUtility.cs" />
      <Compile Include="Assets\epyphany\demo\ressources\move.cs" />
      <Compile Include="Assets\Scripts\Scriptable_Objects\PerlinNoiseData.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\InteractionUI.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\PathRequestManager.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\Controllers3D\CopterPhysics.cs" />
+     <Compile Include="Assets\NavigationRoom.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\Pickable.cs" />
      <Compile Include="Assets\@Depths\Scripts\RadioCallData.cs" />
      <Compile Include="Assets\NatureManufacture Assets\NatureManufacture Wind\NM_Wind.cs" />

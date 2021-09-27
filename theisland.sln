@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sc.posteffects.editor", "sc.posteffects.editor.csproj", "{4d454618-0422-9639-e38b-e3f3d7af93da}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sc.posteffects.runtime", "sc.posteffects.runtime.csproj", "{bb30d283-fe45-e07f-1274-7e86f9085c81}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{980fd6de-9296-8dd7-de65-f4f8e0da6939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sc.posteffects.runtime", "sc.posteffects.runtime.csproj", "{bb30d283-fe45-e07f-1274-7e86f9085c81}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPUInstancer", "GPUInstancer.csproj", "{01c1fec9-6828-fd71-f100-ddb6d21db6b7}"
 EndProject
@@ -28,10 +28,10 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4d454618-0422-9639-e38b-e3f3d7af93da}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4d454618-0422-9639-e38b-e3f3d7af93da}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{bb30d283-fe45-e07f-1274-7e86f9085c81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{bb30d283-fe45-e07f-1274-7e86f9085c81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{980fd6de-9296-8dd7-de65-f4f8e0da6939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{980fd6de-9296-8dd7-de65-f4f8e0da6939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{bb30d283-fe45-e07f-1274-7e86f9085c81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{bb30d283-fe45-e07f-1274-7e86f9085c81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01c1fec9-6828-fd71-f100-ddb6d21db6b7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01c1fec9-6828-fd71-f100-ddb6d21db6b7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e1fe558e-2fa3-3401-8375-c9ff46d11627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
