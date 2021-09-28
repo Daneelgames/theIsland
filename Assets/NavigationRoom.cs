@@ -88,6 +88,7 @@ public class NavigationRoom : MonoBehaviour
                     Debug.Log(tiles[x, y, z].worldPosition);
                     var tempPos = tiles[x, y, z].worldPosition;
                     GameObject tileObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Destroy(tileObject.GetComponent<Collider>());
                     tileObject.name = "Tile " + x + "; "+ y + "; " + z + ";";
                     tileObject.transform.position = tempPos;
                     tileObject.transform.localScale = new Vector3(.5f,.5f,.5f);
