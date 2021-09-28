@@ -8,6 +8,8 @@ public class NavigationManager : MonoBehaviour
     
     public float tileSize = 5;
 
+    public NavigationRoom activeNavigationRoom;
+    
 
     [Header("Debug")] 
     public Material freeTileMaterial;

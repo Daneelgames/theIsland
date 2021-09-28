@@ -9,9 +9,9 @@ public class NavigationRoom : MonoBehaviour
     public Bounds bounds;
 
     public Vector3Int roomSize;
-    float width = 1;
-    float height = 1;
-    float length = 1;
+    [SerializeField] int width = 1;
+    [SerializeField] int height = 1;
+    [SerializeField] int length = 1;
 
     public Tile[,,] tiles;
 
@@ -57,12 +57,12 @@ public class NavigationRoom : MonoBehaviour
     void InitTiles()
     {
         // GET BOUNDS
-        width = Mathf.Abs(bounds.leftBound.transform.localPosition.x) + Mathf.Abs(bounds.rightBound.transform.localPosition.x);
-        width /= _navigationManager.tileSize;
-        height = Mathf.Abs(bounds.topBound.transform.localPosition.y) + Mathf.Abs(bounds.bottomBound.transform.localPosition.y);
-        height /= _navigationManager.tileSize;
-        length = Mathf.Abs(bounds.forwardBound.transform.localPosition.z) + Mathf.Abs(bounds.backBound.transform.localPosition.z);
-        length /= _navigationManager.tileSize;
+        width = Mathf.RoundToInt(Mathf.Abs(bounds.leftBound.transform.localPosition.x) + Mathf.Abs(bounds.rightBound.transform.localPosition.x));
+        width = Mathf.RoundToInt(width / _navigationManager.tileSize);
+        height = Mathf.RoundToInt(Mathf.Abs(bounds.topBound.transform.localPosition.y) + Mathf.Abs(bounds.bottomBound.transform.localPosition.y));
+        height = Mathf.RoundToInt(height / _navigationManager.tileSize);
+        length = Mathf.RoundToInt(Mathf.Abs(bounds.forwardBound.transform.localPosition.z) + Mathf.Abs(bounds.backBound.transform.localPosition.z));
+        length = Mathf.RoundToInt(length / _navigationManager.tileSize);
 
         roomSize = new Vector3Int(Mathf.RoundToInt(width ), Mathf.RoundToInt(height), Mathf.RoundToInt(length));
         
@@ -164,10 +164,12 @@ public class NavigationRoom : MonoBehaviour
 [Serializable]
 public class Tile
 {
-    public GameObject tileObject;
-    public MeshRenderer meshRenderer;
     public Vector3 worldPosition;
     public bool occupied = false;
+    
+    // DEBUG
+    public GameObject tileObject;
+    public MeshRenderer meshRenderer;
 }
 
 [Serializable]
