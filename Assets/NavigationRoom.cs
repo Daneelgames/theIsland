@@ -23,6 +23,10 @@ public class NavigationRoom : MonoBehaviour
 
     IEnumerator Start()
     {
+        GenerateRoomNavigation();
+        yield break;
+        
+        // used this for making animations for GIFs 
         while (true)
         {
             if (tilesSpawned.Count <= 0)
@@ -80,15 +84,18 @@ public class NavigationRoom : MonoBehaviour
                 for (int z = 0; z < length; z++)
                 {
                     tiles[x, y, z] = new Tile();
-
+                    Debug.Log(new Vector3Int(x,y,z));
+                    tiles[x,y,z].coordinates = new Vector3Int(x,y,z);
+                    
                     tiles[x, y, z].worldPosition = transform.position + 
                             new Vector3(bounds.leftBound.localPosition.x, bounds.bottomBound.localPosition.y, bounds.backBound.position.z) + 
                         new Vector3( _navigationManager.tileSize * x, _navigationManager.tileSize * y,_navigationManager.tileSize * z);
                     
-                    Debug.Log(tiles[x, y, z].worldPosition);
+                    //Debug.Log(tiles[x, y, z].worldPosition);
+                    
                     var tempPos = tiles[x, y, z].worldPosition;
                     GameObject tileObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(tileObject.GetComponent<Collider>());
+                    DestroyImmediate(tileObject.GetComponent<Collider>());
                     tileObject.name = "Tile " + x + "; "+ y + "; " + z + ";";
                     tileObject.transform.position = tempPos;
                     tileObject.transform.localScale = new Vector3(.5f,.5f,.5f);
@@ -166,10 +173,15 @@ public class Tile
 {
     public Vector3 worldPosition;
     public bool occupied = false;
-    
+    public Vector3Int coordinates;
+    public int gCost;
+    public int hCost;
+
+    public Tile parent;
     // DEBUG
     public GameObject tileObject;
     public MeshRenderer meshRenderer;
+    public int fCost { get { return gCost + hCost; } }
 }
 
 [Serializable]
