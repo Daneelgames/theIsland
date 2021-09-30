@@ -7,11 +7,10 @@ using Random = UnityEngine.Random;
 
 public class AggroManager : MonoBehaviour
 {
-    public SetTargetToAi setTargetToAi;
+    public AstarWalker astarWalker;
     public float updateDelay = 1f;
     public float aggroDistanceMax = 50;
     public List<HealthController.Fraction> fractionsAggroOnSight = new List<HealthController.Fraction>();
-    public float targetChangeMoveSpeed = 1000;
 
     private Vector3 lastNonCombatTargetPosition;
 
@@ -75,22 +74,22 @@ public class AggroManager : MonoBehaviour
             }
             
             // SAVE LAST NON COMBAT TARGET POSITION
-            if (setTargetToAi.currentTarget && canSaveLastNonCombatTargetPosition)
+            if (astarWalker.targetTransform && canSaveLastNonCombatTargetPosition)
             {
-                lastNonCombatTargetPosition = setTargetToAi.currentTarget.transform.position;
+                lastNonCombatTargetPosition = astarWalker.targetTransform.transform.position;
             }
             
             if (closestHcToAnger != null)
             {
                 if (canSaveLastNonCombatTargetPosition)
                     canSaveLastNonCombatTargetPosition = false;
-                
-                setTargetToAi.MoveTargetToPosition(closestHcToAnger.transform.position, targetChangeMoveSpeed);
+
+                astarWalker.UpdateTargetPosition(closestHcToAnger.transform.position);
             }
             else
             {
                 canSaveLastNonCombatTargetPosition = true;
-                setTargetToAi.MoveTargetToPosition(lastNonCombatTargetPosition, targetChangeMoveSpeed);
+                astarWalker.UpdateTargetPosition(lastNonCombatTargetPosition);
             }
             
             yield return new WaitForSeconds(updateDelay);
@@ -105,7 +104,6 @@ public class AggroManager : MonoBehaviour
         while (true)
         {
             UpdateLastNonCombatPos();
-            //setTargetToAi.MoveTargetToPosition(lastNonCombatTargetPosition, targetChangeMoveSpeed);
             
             timeToWait = Random.Range(wanderTimeMinMax.x, wanderTimeMinMax.y);
             yield return new WaitForSeconds(timeToWait);
@@ -130,7 +128,7 @@ public class AggroManager : MonoBehaviour
 
     void UpdateLastNonCombatPos()
     {
-        lastNonCombatTargetPosition = setTargetToAi.transform.position +
+        lastNonCombatTargetPosition = astarWalker.targetTransform.position +
                                       Random.insideUnitSphere *
                                       Random.Range(newPosOffsetMinMax.x, newPosOffsetMinMax.y);
     }

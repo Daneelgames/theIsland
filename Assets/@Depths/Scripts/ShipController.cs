@@ -26,6 +26,9 @@ public class ShipController : MonoBehaviour
     public Transform playerHeadTransform;
     public RadarObjectListController radar;
 
+    [Header("AI")]
+    public AstarWalker astarWalker;
+    
     [Header("Weapons")] 
     public List<HarpoonController> weaponsControlledByMainControl = new List<HarpoonController>();
     
@@ -67,7 +70,12 @@ public class ShipController : MonoBehaviour
     void Update()
     {
         if (!playerShip)
-            return;
+        {
+            if (astarWalker)
+                astarWalker.GetDirectionToNextTile();
+            
+            return;   
+        }
         
         if (Input.GetKeyDown(KeyCode.Space) && (_state == State.Idle || _state == State.Docked || (_state == State.ControlledByPlayer && MouseLook.instance.canControl)))
         {

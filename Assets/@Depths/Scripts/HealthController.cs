@@ -33,7 +33,7 @@ public class HealthController : MonoBehaviour
     [Header("AI")]
     public ShipController shipController;
     public SpaceshipController spaceShipController;
-    public SetTargetToAi setTargetToAi;
+    public AstarWalker astarWalker;
     
     [Header("Audio")]
     public AudioSource damagedAu;

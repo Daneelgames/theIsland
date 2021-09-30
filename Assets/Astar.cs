@@ -10,8 +10,8 @@ public class Astar : MonoBehaviour
     {
         instance = this;
     }
-
-    public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
+    
+    public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos, AstarWalker astarWalker)
     {
         Tile startTile = NavigationManager.instance.TileFromWorldPosition(startPos);
         Tile targetTile = NavigationManager.instance.TileFromWorldPosition(targetPos);
@@ -37,7 +37,7 @@ public class Astar : MonoBehaviour
 
             if (currentTile == targetTile)
             {
-                RetracePath(startTile, targetTile);
+                RetracePath(startTile, targetTile, astarWalker);
                 yield break;
             }
 
@@ -69,7 +69,7 @@ public class Astar : MonoBehaviour
         }
     }
 
-    void RetracePath(Tile startTile, Tile endTile)
+    void RetracePath(Tile startTile, Tile endTile, AstarWalker astarWalker)
     {
         List<Tile> path = new List<Tile>();
         Tile currentTile = endTile;
@@ -79,8 +79,13 @@ public class Astar : MonoBehaviour
             currentTile = currentTile.parent;
         }
         path.Reverse();
+
+        if (astarWalker)
+        {
+            astarWalker.UpdatePath(path);
+        }
         
-        NavigationManager.instance.SetPath(path);
+        NavigationManager.instance.SetPath(path);   
     }
 
     int GetDistance(Tile tileA, Tile tileB)

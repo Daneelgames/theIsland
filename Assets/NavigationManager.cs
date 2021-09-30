@@ -51,7 +51,7 @@ public class NavigationManager : MonoBehaviour
                 
                 if (t == 5 && testTarget != null)
                 {
-                    StartCoroutine(Astar.instance.FindPath(currentTile.worldPosition, testTarget.position));
+                    StartCoroutine(Astar.instance.FindPath(currentTile.worldPosition, testTarget.position, null));
                     t = 0;
                 }
             }
