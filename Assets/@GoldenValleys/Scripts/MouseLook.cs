@@ -141,7 +141,6 @@ public class MouseLook : MonoBehaviour
         
         xRotation = 0;
         yRotation = 0;
-        controlledShip.AddTorqueFromPlayerHead(mouseX, mouseY);
     }
 
     public void TeleportPlayerHead()

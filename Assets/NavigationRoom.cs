@@ -84,7 +84,6 @@ public class NavigationRoom : MonoBehaviour
                 for (int z = 0; z < length; z++)
                 {
                     tiles[x, y, z] = new Tile();
-                    Debug.Log(new Vector3Int(x,y,z));
                     tiles[x,y,z].coordinates = new Vector3Int(x,y,z);
                     
                     tiles[x, y, z].worldPosition = transform.position + 
@@ -133,10 +132,12 @@ public class NavigationRoom : MonoBehaviour
         }
 
         Debug.Log("BoxcastAgainstSpawnedDebugTiles; overlappedTilesAmount = " + overlappedTilesAmount);
+        
+        ClearSpawnedObjects();
     }
 
-    [ContextMenu("ClearSpawnedObject")]
-    public void ClearSpawnedObject()
+    [ContextMenu("ClearSpawnedObjects")]
+    public void ClearSpawnedObjects()
     {
         for (int i = tilesSpawned.Count - 1; i >= 0; i--)
         {

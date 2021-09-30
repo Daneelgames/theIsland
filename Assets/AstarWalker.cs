@@ -12,6 +12,15 @@ public class AstarWalker : MonoBehaviour
     public float updateCurrentTargetTileOnPathRate = 0.5f;
     public List<Tile> path = new List<Tile>();
     public int currentTargetTileOnPathIndex = 0;
+
+    private bool _arrivedToClosestTargetTileInPath = false;
+
+    public float aiShipSpeedScaler = 1;
+    public bool ArrivedToClosestTargetTileInPath
+    {
+        get { return _arrivedToClosestTargetTileInPath; }
+        set { _arrivedToClosestTargetTileInPath = value; }
+    }
     void Start()
     {
         StartCoroutine(FollOwTarget());
@@ -40,6 +49,7 @@ public class AstarWalker : MonoBehaviour
 
     public void UpdatePath(List<Tile> newPath)
     {
+        Debug.Log("Update Path");
         path = new List<Tile>(newPath);
         currentTargetTileOnPathIndex = 0;
     }
@@ -62,18 +72,27 @@ public class AstarWalker : MonoBehaviour
             }
         }
 
+        // IF UNIT IS CLOSE TO ITS CLOSEST TILE ON PATH
         if (newDistance < NavigationManager.instance.tileSize / 5)
         {
+            ArrivedToClosestTargetTileInPath = true;
             if (path.Count > path.IndexOf(closestTile) + 1)
             {
-                // GO FOR NEXT POINT   
-                currentTargetTileOnPathIndex = path.Count - 1;
+                // GO FOR NEXT POINT
+                Debug.Log("GO FOR NEXT POINT");
+                if (currentTargetTileOnPathIndex < path.Count - 1)
+                    currentTargetTileOnPathIndex++;
             }
             else
             {
                 // GO TO CLOSEST TILE
+                Debug.Log("GO TO CLOSEST TILE");
                 currentTargetTileOnPathIndex = path.IndexOf(closestTile);
             }
+        }
+        else // IF UNIT IS FAR FROM ITS CLOSEST TILE ON PATH
+        {
+            ArrivedToClosestTargetTileInPath = false;
         }
     }
 
@@ -84,6 +103,22 @@ public class AstarWalker : MonoBehaviour
     
     public Vector3 GetDirectionToNextTile()
     {
-        return Vector3.zero;
+        if (path.Count <= 0 || currentTargetTileOnPathIndex >= path.Count)
+            return Vector3.zero;
+        
+        return (path[currentTargetTileOnPathIndex].worldPosition - transform.position).normalized;
+    }
+    
+    void OnDrawGizmosSelected()
+    {
+        if (path.Count > 0 )
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, path[0].worldPosition);
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                Gizmos.DrawLine(path[i].worldPosition, path[i+1].worldPosition);
+            }
+        }
     }
 }

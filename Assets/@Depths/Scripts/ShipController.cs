@@ -12,13 +12,8 @@ public class ShipController : MonoBehaviour
     // interacted with control panel
     PlayerMovement playerMovement;
     public Transform playerSit;
-    public float moveSpeedScaler = 1;
-    public float dragScale = 0.5f;
-    public float accelerationScale = 1;
-    public float torqueSpeedScaler = 0.33f;
     public Rigidbody rb;
     private Vector3 currentVelocity;
-    private Vector3 _targetVelocity;
     private bool controlledInFrame = false;
     public ShipAudioManager shipAudioManager;
     public SetTargetToAi setTargetToAi;
@@ -33,7 +28,6 @@ public class ShipController : MonoBehaviour
     public List<HarpoonController> weaponsControlledByMainControl = new List<HarpoonController>();
     
     [Header("360 Movement Control")]
-    public bool Use360Movement = true;
     public float turnspeed = 5.0f;
     public float verticalTurnSpeedScaler = 2f;
     public float  speed = 5.0f;
@@ -54,25 +48,13 @@ public class ShipController : MonoBehaviour
     }
 
     public State _state = State.Idle;
-        
-    void Start()
-    {
-        /*
-        if (playerShip)
-            TryToPlayerControlsShip();*/
-    }
-
-    public Vector3 TargetVelocity
-    {
-        get { return _targetVelocity; }
-    }
 
     void Update()
     {
         if (!playerShip)
         {
             if (astarWalker)
-                astarWalker.GetDirectionToNextTile();
+                GetControlsFromAstarWalker();
             
             return;   
         }
@@ -82,7 +64,7 @@ public class ShipController : MonoBehaviour
             TryToPlayerControlsShip();
         }
 
-        if (Use360Movement && _state == State.ControlledByPlayer)
+        if (_state == State.ControlledByPlayer)
         {
             GetPlayerInput360();
         }
@@ -96,16 +78,14 @@ public class ShipController : MonoBehaviour
         get { return Mathf.RoundToInt(trueSpeed); }
     }
 
+    #region PLAYER CONTROLS
+
     private float normalizedCursorY = 0;
     private float normalizedCursorX = 0;
     void GetPlayerInput360()
     {
         if (!MouseLook.instance.aiming)
         {
-            /*
-            pitch = Mathf.Clamp(Input.GetAxis("Mouse Y"), -1, 1);
-            yaw = Mathf.Clamp(Input.GetAxis("Mouse X"), -1, 1);
-            */
             normalizedCursorY = MouseLook.instance.playerCursor.transform.localPosition.y / Screen.height;
             normalizedCursorX = MouseLook.instance.playerCursor.transform.localPosition.x / Screen.width;
             
@@ -162,14 +142,6 @@ public class ShipController : MonoBehaviour
         shipAudioManager.SetShipsEngineTrueSpeed(trueSpeed, minTrueSpeed, maxTrueSpeed);
     }
     
-    private void FixedUpdate()
-    {
-        if (Use360Movement)
-            return;
-        
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-    }
-
     public void TryToPlayerControlsShip()
     {
         playerMovement = PlayerMovement.instance;
@@ -198,9 +170,21 @@ public class ShipController : MonoBehaviour
 
         rb.isKinematic = false;
         _state = State.ControlledByPlayer;
-        StartCoroutine(MovePlayerToControlPosition());
+        MovePlayerToControlPosition();
     }
 
+    #endregion
+    
+    void GetControlsFromAstarWalker()
+    {
+         if (!astarWalker.ArrivedToClosestTargetTileInPath)
+         {
+             // moveTowards target
+             rb.AddForce(astarWalker.GetDirectionToNextTile() * speed * astarWalker.aiShipSpeedScaler * Time.deltaTime, ForceMode.Force);
+             rb.AddRelativeTorque(-pitch * turnspeed * verticalTurnSpeedScaler * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime, ForceMode.Force);
+         }
+    }
+    
     public void StopControllingShip()
     {
         StopAllCoroutines(); 
@@ -208,113 +192,10 @@ public class ShipController : MonoBehaviour
         _state = State.Idle;
     }
     
-    IEnumerator MovePlayerToControlPosition()
-    {
-        if (Use360Movement == false)
-            StartCoroutine(ControlShip2Axis());
-        
-        shipAudioManager.StartMovingSfx();
-        
-        /*
-        while (true)
-        {
-            yield return null;
-            playerMovement.transform.position = playerSit.position;
-        }*/
-        yield return null;
-    }
-
-    IEnumerator ControlShip2Axis()
+    void MovePlayerToControlPosition()
     {
         shipAudioManager.StartMovingSfx();
-        while (true)
-        {
-            GetShipMovement2Axis();
-            yield return null;
-        }
     }
-
-    void GetShipMovement2Axis()
-    {
-        //targetVelocity = currentVelocity;
-        
-        _targetVelocity = Vector3.zero;
-        controlledInFrame = false;
-        if (Input.GetKey(KeyCode.W))
-        {
-            controlledInFrame = true;    
-            _targetVelocity += transform.forward;   
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            controlledInFrame = true;
-            _targetVelocity += transform.right;   
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            controlledInFrame = true;
-            _targetVelocity += -transform.forward;   
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            controlledInFrame = true;
-            _targetVelocity += -transform.right;   
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            controlledInFrame = true;
-            _targetVelocity += transform.up;   
-        }
-
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            controlledInFrame = true;
-            _targetVelocity += -transform.up;   
-        }
-        
-        if (Input.GetKey(KeyCode.E))
-        {
-            controlledInFrame = true;
-            rb.AddRelativeTorque(transform.forward * (-torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
-        }
-        else if (Input.GetKey(KeyCode.Q))
-        {
-            controlledInFrame = true;
-            rb.AddRelativeTorque(transform.forward * (torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
-        }
-        
-        _targetVelocity.Normalize();
-
-        if (controlledInFrame == false)
-        {
-            _targetVelocity = Vector3.Lerp(_targetVelocity, Vector3.zero, Time.deltaTime * dragScale);
-        }
-        
-        currentVelocity = Vector3.Lerp(currentVelocity, _targetVelocity * moveSpeedScaler, Time.deltaTime * accelerationScale);
-        
-        rb.velocity = currentVelocity;
-    }
-
-    public void AddTorqueFromPlayerHead(float mouseX, float mouseY)
-    {
-        if (Use360Movement || (Math.Abs(mouseX) < 0.01f && Math.Abs(mouseY) < 0.01f))
-        {
-            return;
-        }
-
-        mouseX = Mathf.Clamp(mouseX, -1, 1);
-        mouseY = Mathf.Clamp(mouseY, -1, 1);
-
-        controlledInFrame = true;
-        rb.AddRelativeTorque(transform.right * (-mouseY * (torqueSpeedScaler * Time.deltaTime)), ForceMode.Force);
-        rb.AddRelativeTorque(transform.up * (mouseX * (torqueSpeedScaler * Time.deltaTime)), ForceMode.Force);
-        //rb.AddRelativeTorque(new Vector3(-mouseY, 0, mouseX) * (torqueSpeedScaler * Time.deltaTime), ForceMode.Force);
-    }
-
 
     public void TryToUseGrabber(GrabberController grabber)
     {

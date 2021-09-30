@@ -9344,10 +9344,6 @@ MonoBehaviour:
   playerShip: 0
   hc: {fileID: 6841087070115852253}
   playerSit: {fileID: 9052653889869764278}
-  moveSpeedScaler: 2
-  dragScale: 0.5
-  accelerationScale: 1
-  torqueSpeedScaler: 2000
   rb: {fileID: 5901144598381530084}
   shipAudioManager: {fileID: 7292378902198339228}
   setTargetToAi: {fileID: 0}
@@ -9358,7 +9354,6 @@ MonoBehaviour:
   weaponsControlledByMainControl:
   - {fileID: 3757199668112680807}
   - {fileID: 3331714653094575247}
-  Use360Movement: 1
   turnspeed: 10000
   verticalTurnSpeedScaler: 2
   speed: 2000
@@ -9483,6 +9478,7 @@ MonoBehaviour:
   updateCurrentTargetTileOnPathRate: 0.5
   path: []
   currentTargetTileOnPathIndex: 0
+  aiShipSpeedScaler: 3
 --- !u!1 &8218239943980403478
 GameObject:
   m_ObjectHideFlags: 0

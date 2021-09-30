@@ -156,35 +156,6 @@ namespace PlayerControls
             inControl = false;
         }
         
-        public void PlayerControlsHarpoon(HarpoonController harpoon)
-        {
-            if (shipInControl.Use360Movement)
-                return;
-            
-            //PlayerControlsShip(null);
-            if (harpoon == null)
-            {/*
-                if (rb)
-                    rb.isKinematic = false;
-                else
-                    controller.enabled = true;
-                    
-                inControl = true;
-                */
-                MouseLook.instance.PlayerControlsHarpoon(null);
-                return;
-            }
-            
-            if (rb)
-                rb.isKinematic = true;
-            else
-                controller.enabled = false;
-            
-            MouseLook.instance.PlayerControlsHarpoon(harpoon);
-            transform.parent = harpoon.transform;
-            inControl = false;
-        }
-        
         private void FixedUpdate()
         {
             if (teleport || !inControl)

@@ -144,6 +144,7 @@
      <Compile Include="Assets\Scripts\Interaction_System\InteractableBase.cs" />
      <Compile Include="Assets\Scripts\Interaction_System\IPickable.cs" />
      <Compile Include="Assets\@Depths\Scripts\ShipHealthFeedback.cs" />
+     <Compile Include="Assets\AstarWalker.cs" />
      <Compile Include="Assets\@Depths\Scripts\AnimatorEventsSender.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
      <Compile Include="Assets\Polarith\AI\Examples\Scripts\TriggerCameraFollow.cs" />
@@ -230,7 +231,6 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
-     <Compile Include="Assets\AstarWalker.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />

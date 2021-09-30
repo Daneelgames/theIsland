@@ -76,17 +76,9 @@ public class HarpoonController : MonoBehaviour
         {
             ship = _ship;
             
-            if (_ship.Use360Movement == false)
-                PlayerMovement.instance.PlayerControlsShip(null);
-
-            
             if (laserSpot)
                 UpdateLasetSpotCoroutine = StartCoroutine(UpdateLaserSpot());
                 
-            // lock player's movement
-            // move player's head to cameraParent
-            PlayerMovement.instance.PlayerControlsHarpoon(this);
-
             // StartControlling the gun
             if (harpoonControlCoroutine != null)
                 StopCoroutine(harpoonControlCoroutine);
@@ -104,11 +96,6 @@ public class HarpoonController : MonoBehaviour
                 laserSpot.transform.position = shotHolder.position;
             }
                 
-            // release player's head
-            // unlock player's movement
-            //PlayerMovement.instance.transform.position = ship.playerSit.position;
-            PlayerMovement.instance.PlayerControlsHarpoon(null);
-
             // Stop Controlling the gun
             if (harpoonControlCoroutine != null)
             {

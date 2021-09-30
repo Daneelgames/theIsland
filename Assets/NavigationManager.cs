@@ -14,7 +14,6 @@ public class NavigationManager : MonoBehaviour
 
 
     [Header("Debug")] 
-    public Transform testTarget;
     public bool debug = true;
     public Material playerTileMaterial;
     public Material freeTileMaterial;
@@ -34,8 +33,6 @@ public class NavigationManager : MonoBehaviour
 
         Tile prevTile = null;
         
-        int t = 0;
-        
         while (true)
         {
             var currentTile = TileFromWorldPosition(PlayerMovement.instance.transform.position);
@@ -46,15 +43,8 @@ public class NavigationManager : MonoBehaviour
                 {
                     prevTile.meshRenderer.material = prevTile.occupied ? occupiedTileMaterial : freeTileMaterial;
                 }
-
-                t++;
-                
-                if (t == 5 && testTarget != null)
-                {
-                    StartCoroutine(Astar.instance.FindPath(currentTile.worldPosition, testTarget.position, null));
-                    t = 0;
-                }
             }
+            
             yield return new WaitForSeconds(0.1f);
             
             prevTile = currentTile;
@@ -63,12 +53,35 @@ public class NavigationManager : MonoBehaviour
 
     public Tile TileFromWorldPosition(Vector3 worldPosition)
     {
+        // RETURN CLOSEST TILE
         float distance = 1000;
         float newDistance = 0;
         Tile closestTile = null;
         
         foreach (var tile in activeNavigationRoom.tilesSpawned)
         {
+            newDistance = Vector3.Distance(tile.worldPosition, worldPosition); 
+            if (newDistance < distance)
+            {
+                distance = newDistance;
+                closestTile = tile;
+            }
+        }
+
+        return closestTile;
+    }
+    public Tile FreeTileFromWorldPosition(Vector3 worldPosition)
+    {
+        // RETURN CLOSEST TILE
+        float distance = 1000;
+        float newDistance = 0;
+        Tile closestTile = null;
+        
+        foreach (var tile in activeNavigationRoom.tilesSpawned)
+        {
+            if (tile.occupied)
+                continue;
+            
             newDistance = Vector3.Distance(tile.worldPosition, worldPosition); 
             if (newDistance < distance)
             {
@@ -111,6 +124,12 @@ public class NavigationManager : MonoBehaviour
 
     public void SetPath(List<Tile> newPath)
     {
+        if (!debug)
+        {
+            path = new List<Tile>(newPath);
+            return;
+        }
+        
         for (int i = 0; i < path.Count; i++)
         {
             if (path[i].occupied)
@@ -119,6 +138,7 @@ public class NavigationManager : MonoBehaviour
                 path[i].meshRenderer.material = freeTileMaterial;
         }
         path = new List<Tile>(newPath);
+
         
         for (int i = 0; i < path.Count; i++)
         {

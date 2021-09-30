@@ -13,8 +13,9 @@ public class Astar : MonoBehaviour
     
     public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos, AstarWalker astarWalker)
     {
+        Debug.Log("FindPath for " + astarWalker);
         Tile startTile = NavigationManager.instance.TileFromWorldPosition(startPos);
-        Tile targetTile = NavigationManager.instance.TileFromWorldPosition(targetPos);
+        Tile targetTile = NavigationManager.instance.FreeTileFromWorldPosition(targetPos);
         
         List<Tile> openSet = new List<Tile>();
         HashSet<Tile> closedSet = new HashSet<Tile>();
@@ -84,8 +85,10 @@ public class Astar : MonoBehaviour
         {
             astarWalker.UpdatePath(path);
         }
-        
-        NavigationManager.instance.SetPath(path);   
+        else
+        {
+            NavigationManager.instance.SetPath(path);   
+        }   
     }
 
     int GetDistance(Tile tileA, Tile tileB)
