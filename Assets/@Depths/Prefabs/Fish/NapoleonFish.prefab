@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 6279990813968092562}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58ad99cd47c31ee49a0cd09c53e20f3b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -252,6 +252,9 @@ MonoBehaviour:
   updateCurrentTargetTileOnPathRate: 0.5
   path: []
   currentTargetTileOnPathIndex: 0
+  aiShipSpeedScaler: 1
+  lookToMovementDirection: 1
+  turnSpeed: 0.66
 --- !u!1001 &6278643146303896126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1472187511519148, guid: 81c8f9756e538784b8e84fb69fee69af, type: 3}
       propertyPath: m_Name
-      value: Napoleon_fish_prefab
+      value: NapoleonFishAnim
       objectReference: {fileID: 0}
     - target: {fileID: 1472187511519148, guid: 81c8f9756e538784b8e84fb69fee69af, type: 3}
       propertyPath: m_Layer
