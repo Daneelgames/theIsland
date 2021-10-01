@@ -174,14 +174,27 @@ public class ShipController : MonoBehaviour
     }
 
     #endregion
-    
+
+    private Vector3 currentAstarDirection = Vector3.zero;
     void GetControlsFromAstarWalker()
     {
          if (!astarWalker.ArrivedToClosestTargetTileInPath)
          {
-             // moveTowards target
-             rb.AddForce(astarWalker.GetDirectionToNextTile() * speed * astarWalker.aiShipSpeedScaler * Time.deltaTime, ForceMode.Force);
-             rb.AddRelativeTorque(-pitch * turnspeed * verticalTurnSpeedScaler * Time.deltaTime, yaw * turnspeed * Time.deltaTime, -roll * turnspeed * Time.deltaTime, ForceMode.Force);
+             // MOVE UNIT TO TARGET
+             currentAstarDirection = Vector3.Lerp(currentAstarDirection, astarWalker.GetDirectionToNextTile(), Time.deltaTime);
+             rb.AddForce(currentAstarDirection * speed * astarWalker.aiShipSpeedScaler * Time.smoothDeltaTime, ForceMode.Force);
+
+             if (astarWalker.lookToMovementDirection)
+             {
+                 rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(astarWalker.GetDirectionToNextTile()), astarWalker.turnSpeed * Time.smoothDeltaTime);   
+             }
+         }
+         else
+         {
+             if (astarWalker.lookToMovementDirection)
+             {
+                 rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation((astarWalker.targetTransform.position - transform.position).normalized), astarWalker.turnSpeed * Time.smoothDeltaTime);   
+             }
          }
     }
     

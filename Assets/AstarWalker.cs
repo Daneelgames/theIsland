@@ -16,6 +16,8 @@ public class AstarWalker : MonoBehaviour
     private bool _arrivedToClosestTargetTileInPath = false;
 
     public float aiShipSpeedScaler = 1;
+    public bool lookToMovementDirection = true;
+    public float turnSpeed = 1;
     public bool ArrivedToClosestTargetTileInPath
     {
         get { return _arrivedToClosestTargetTileInPath; }
@@ -75,6 +77,7 @@ public class AstarWalker : MonoBehaviour
         // IF UNIT IS CLOSE TO ITS CLOSEST TILE ON PATH
         if (newDistance < NavigationManager.instance.tileSize / 5)
         {
+            Debug.Log("path.IndexOf(closestTile) " + path.IndexOf(closestTile) + "; path.Count = " + path.Count);
             ArrivedToClosestTargetTileInPath = true;
             if (path.Count > path.IndexOf(closestTile) + 1)
             {
