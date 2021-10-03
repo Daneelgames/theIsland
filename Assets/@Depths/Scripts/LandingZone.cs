@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Polarith.AI.Package;
 using UnityEngine;
 
 public class LandingZone : MonoBehaviour

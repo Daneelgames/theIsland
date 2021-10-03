@@ -1,29 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Depths.Scripts;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class NavigationRoom : MonoBehaviour
 {
-    public Bounds bounds;
-
     public Vector3Int roomSize;
-    [SerializeField] int width = 1;
-    [SerializeField] int height = 1;
-    [SerializeField] int length = 1;
 
+    
     public Tile[,,] tiles;
 
     public List<Tile> tilesSpawned;
     public Transform tilesParent;
-    [SerializeField] NavigationManager _navigationManager;
 
     public LayerMask obstaclesLayerMask;
+
+    public bool debug = false;
 
     IEnumerator Start()
     {
         GenerateRoomNavigation();
+        
         yield break;
         
         // used this for making animations for GIFs 
@@ -48,6 +47,12 @@ public class NavigationRoom : MonoBehaviour
             }
         }
     }
+    
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(transform.position, (Vector3)roomSize * GamePropertiesStatic.tileSize);
+    }
 
     [ContextMenu("GenerateRoomNavigation")]
     public void GenerateRoomNavigation()
@@ -60,53 +65,47 @@ public class NavigationRoom : MonoBehaviour
 
     void InitTiles()
     {
-        // GET BOUNDS
-        width = Mathf.RoundToInt(Mathf.Abs(bounds.leftBound.transform.localPosition.x) + Mathf.Abs(bounds.rightBound.transform.localPosition.x));
-        width = Mathf.RoundToInt(width / _navigationManager.tileSize);
-        height = Mathf.RoundToInt(Mathf.Abs(bounds.topBound.transform.localPosition.y) + Mathf.Abs(bounds.bottomBound.transform.localPosition.y));
-        height = Mathf.RoundToInt(height / _navigationManager.tileSize);
-        length = Mathf.RoundToInt(Mathf.Abs(bounds.forwardBound.transform.localPosition.z) + Mathf.Abs(bounds.backBound.transform.localPosition.z));
-        length = Mathf.RoundToInt(length / _navigationManager.tileSize);
-
-        roomSize = new Vector3Int(Mathf.RoundToInt(width ), Mathf.RoundToInt(height), Mathf.RoundToInt(length));
-        
         tiles = new Tile[roomSize.x, roomSize.y,roomSize.z];
-        Debug.Log(tiles.Length);
     }
     
     void GenerateNavigationTilesDebugVisuals()
     {
         // 0,0,0 is back left bottom tile
-        for (int x = 0; x < width; x++)
+        Vector3 zeroTilePos = new Vector3(-roomSize.x / 2 * GamePropertiesStatic.tileSize, -roomSize.y / 2 * GamePropertiesStatic.tileSize, -roomSize.z / 2 * GamePropertiesStatic.tileSize);
+        
+        for (int x = 0; x < roomSize.x; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < roomSize.y; y++)
             {
-                for (int z = 0; z < length; z++)
+                for (int z = 0; z < roomSize.z; z++)
                 {
                     tiles[x, y, z] = new Tile();
                     tiles[x,y,z].coordinates = new Vector3Int(x,y,z);
+                     
+                    Vector3 newTileOffset = new Vector3(GamePropertiesStatic.tileSize * x, GamePropertiesStatic.tileSize * y, GamePropertiesStatic.tileSize * z);
                     
-                    tiles[x, y, z].worldPosition = transform.position + 
-                            new Vector3(bounds.leftBound.localPosition.x, bounds.bottomBound.localPosition.y, bounds.backBound.position.z) + 
-                        new Vector3( _navigationManager.tileSize * x, _navigationManager.tileSize * y,_navigationManager.tileSize * z);
-                    
-                    //Debug.Log(tiles[x, y, z].worldPosition);
+                    tiles[x, y, z].worldPosition = transform.position + zeroTilePos + newTileOffset;
                     
                     var tempPos = tiles[x, y, z].worldPosition;
-                    GameObject tileObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    DestroyImmediate(tileObject.GetComponent<Collider>());
-                    tileObject.name = "Tile " + x + "; "+ y + "; " + z + ";";
-                    tileObject.transform.position = tempPos;
-                    tileObject.transform.localScale = new Vector3(.5f,.5f,.5f);
-                    tileObject.transform.parent = tilesParent;
-                    
-                    tiles[x,y,z].meshRenderer = tileObject.GetComponent<MeshRenderer>();
-                    tiles[x,y,z].meshRenderer.material = _navigationManager.freeTileMaterial;
-                    
-                    if (tiles[x,y,z].occupied)
-                        tiles[x,y,z].meshRenderer.material = _navigationManager.occupiedTileMaterial;
 
-                    tiles[x, y, z].tileObject = tileObject;
+                    if (debug)
+                    {
+                        GameObject tileObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        DestroyImmediate(tileObject.GetComponent<Collider>());
+                        tileObject.name = "Tile " + x + "; "+ y + "; " + z + ";";
+                        tileObject.transform.position = tempPos;
+                        tileObject.transform.localScale = new Vector3(.5f,.5f,.5f);
+                        tileObject.transform.parent = tilesParent;
+                    
+                        tiles[x,y,z].meshRenderer = tileObject.GetComponent<MeshRenderer>();
+                        tiles[x,y,z].meshRenderer.material = NavigationManager.instance.freeTileMaterial;
+                    
+                        if (tiles[x,y,z].occupied)
+                            tiles[x,y,z].meshRenderer.material = NavigationManager.instance.occupiedTileMaterial;
+
+                        tiles[x, y, z].tileObject = tileObject;   
+                    }
+                    
                     tilesSpawned.Add(tiles[x, y, z]);
                 }
             }
@@ -126,8 +125,12 @@ public class NavigationRoom : MonoBehaviour
             if (colliders.Length > 0)
             {
                 tile.occupied = true;
-                tile.meshRenderer.material = _navigationManager.occupiedTileMaterial;
                 overlappedTilesAmount++;
+                
+                if (debug)
+                {
+                    tile.meshRenderer.material = NavigationManager.instance.occupiedTileMaterial;   
+                }
             }
         }
 
@@ -139,6 +142,9 @@ public class NavigationRoom : MonoBehaviour
     [ContextMenu("ClearSpawnedObjects")]
     public void ClearSpawnedObjects()
     {
+        if (debug == false)
+            return;
+        
         for (int i = tilesSpawned.Count - 1; i >= 0; i--)
         {
             if (tilesSpawned[i].tileObject == null)
@@ -183,15 +189,4 @@ public class Tile
     public GameObject tileObject;
     public MeshRenderer meshRenderer;
     public int fCost { get { return gCost + hCost; } }
-}
-
-[Serializable]
-public class Bounds
-{
-    public Transform forwardBound;
-    public Transform rightBound;
-    public Transform backBound;
-    public Transform leftBound;
-    public Transform topBound;
-    public Transform bottomBound;
 }

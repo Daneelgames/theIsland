@@ -2,22 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
-using Polarith.AI.Move;
-using Polarith.AI.Package;
 using UnityEditor;
 using UnityEngine;
 
 public class SetTargetToAi : MonoBehaviour
 {
     public GameObject currentTarget;
-    public AIMSeekBounds aimSeekBounds;
-    public AIMFleeBounds aimFleeBounds;
-    public AIMAvoidBounds aimAvoidBounds;
-
     public float targetStopDistance;
 
     public Vector3 newTargetPosition = Vector3.zero;
-    public SpaceshipController spaceshipController;
     
     void Start()
     {
@@ -32,14 +25,6 @@ public class SetTargetToAi : MonoBehaviour
         }
         
         SetTarget(currentTarget);
-        
-        /*
-        for (int i = 0; i < LevelSolids.instance.solids.Count; i++)
-        {
-            aimFleeBounds.GameObjects.Add(LevelSolids.instance.solids[i]);
-        }
-        */
-        //aimFleeBounds.GameObjects = new List<GameObject>(LevelSolids.instance.solids);
     }
 
     private void OnDestroy()
@@ -51,14 +36,6 @@ public class SetTargetToAi : MonoBehaviour
     public void SetTarget(GameObject targetGO)
     {
         currentTarget = targetGO;
-        
-        if (aimSeekBounds)
-        {
-            aimSeekBounds.GameObjects.Clear();
-            aimSeekBounds.GameObjects.Add(currentTarget);   
-        }
-        
-        spaceshipController.SetNewTarget(currentTarget, targetStopDistance);
     }
 
     private Coroutine moveTargetCoroutine;

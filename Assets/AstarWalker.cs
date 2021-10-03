@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Polarith.AI.Move;
-using Polarith.AI.Package;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -75,7 +73,7 @@ public class AstarWalker : MonoBehaviour
         }
 
         // IF UNIT IS CLOSE TO ITS CLOSEST TILE ON PATH
-        if (newDistance < NavigationManager.instance.tileSize / 5)
+        if (newDistance < 1)
         {
             Debug.Log("path.IndexOf(closestTile) " + path.IndexOf(closestTile) + "; path.Count = " + path.Count);
             ArrivedToClosestTargetTileInPath = true;

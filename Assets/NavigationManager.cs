@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Depths.Scripts;
 using PlayerControls;
 using UnityEngine;
 
@@ -8,17 +9,16 @@ public class NavigationManager : MonoBehaviour
 {
     public static NavigationManager instance;
     
-    public float tileSize = 5;
 
     public NavigationRoom activeNavigationRoom;
 
 
     [Header("Debug")] 
     public bool debug = true;
-    public Material playerTileMaterial;
-    public Material freeTileMaterial;
-    public Material occupiedTileMaterial;
-    public Material pathTileMaterial;
+    public  Material playerTileMaterial;
+    public  Material freeTileMaterial;
+    public  Material occupiedTileMaterial;
+    public  Material pathTileMaterial;
     public List<Tile> path;
 
     private void Awake()

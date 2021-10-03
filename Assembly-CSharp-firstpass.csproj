@@ -310,9 +310,6 @@
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
-     <Reference Include="Polarith.AI">
-     <HintPath>C:/@MrPink/theIsland/Assets/Polarith/AI/Plugins/Polarith.AI.dll</HintPath>
-     </Reference>
      <Reference Include="DOTween">
      <HintPath>C:/@MrPink/theIsland/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
      </Reference>
