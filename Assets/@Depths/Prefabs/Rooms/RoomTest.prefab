@@ -174,12 +174,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1663532462}
   m_Layer: 0
-  m_Name: VIsual
+  m_Name: Solids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1663532462
 Transform:
   m_ObjectHideFlags: 0
@@ -7305,7 +7305,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   debug: 0
-  generateOnStart: 0
 --- !u!1001 &15073903
 PrefabInstance:
   m_ObjectHideFlags: 0

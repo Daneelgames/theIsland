@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/@Depths/@MainUnderwaterScene.unity
-    guid: e8e0e1bee48ce4e48b1d28144c511e51
+    path: Assets/@Depths/@MainCityScene.unity
+    guid: cd1622e6d2139ac45bbc9d1882245b55
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f239bc8a02f252340b9378b1172e175b, type: 2}
