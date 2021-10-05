@@ -9,6 +9,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections;
 using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 [InitializeOnLoad]
 public static class SimpleEditorUtils
@@ -24,10 +25,7 @@ public static class SimpleEditorUtils
             return;
         }
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-        //EditorApplication.SaveCurrentSceneIfUserWantsTo();
-        //EditorApplication.OpenScene(
-        EditorSceneManager.OpenScene(
-            "Assets/@Hikka/Scenes/SafeRoomScene.unity");
+        EditorSceneManager.OpenScene(SceneManager.GetSceneByBuildIndex(0).path);
         EditorApplication.isPlaying = true;
     }
 }

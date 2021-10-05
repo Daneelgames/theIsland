@@ -6442,26 +6442,22 @@ MonoBehaviour:
   playerShip: 1
   hc: {fileID: 2544833742018375637}
   playerSit: {fileID: 43374270}
-  moveSpeedScaler: 2
-  dragScale: 0.5
-  accelerationScale: 1
-  torqueSpeedScaler: 20000
   rb: {fileID: 3189796485433920492}
   shipAudioManager: {fileID: 1770696708712220308}
   setTargetToAi: {fileID: 0}
   chassis: {fileID: 4383845833269300451}
   playerHeadTransform: {fileID: 7500722642920324190}
   radar: {fileID: 3057422771842910289}
+  astarWalker: {fileID: 0}
   weaponsControlledByMainControl:
   - {fileID: 5297708220636817263}
   - {fileID: 6025214236395928711}
-  Use360Movement: 1
   turnspeed: 1000
   verticalTurnSpeedScaler: 10
   speed: 2000
   trueSpeed: 0
-  maxTrueSpeed: 50
-  minTrueSpeed: -25
+  maxTrueSpeed: 500
+  minTrueSpeed: -50
   strafeSpeed: 100000
   _state: 0
 --- !u!54 &3189796485433920492
@@ -6523,8 +6519,7 @@ MonoBehaviour:
   explosivePowerOnDamage: 500
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 1836759581}
-  spaceShipController: {fileID: 0}
-  setTargetToAi: {fileID: 0}
+  astarWalker: {fileID: 0}
   damagedAu: {fileID: 6050657448465805919}
   interactiveObjectsToDrop: []
 --- !u!114 &4852675596634770593

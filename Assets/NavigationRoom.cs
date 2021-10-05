@@ -9,7 +9,6 @@ public class NavigationRoom : MonoBehaviour
 {
     public Vector3Int roomSize;
 
-    
     public Tile[,,] tiles;
 
     public List<Tile> tilesSpawned;
@@ -19,35 +18,6 @@ public class NavigationRoom : MonoBehaviour
 
     public bool debug = false;
 
-    IEnumerator Start()
-    {
-        GenerateRoomNavigation();
-        
-        yield break;
-        
-        // used this for making animations for GIFs 
-        while (true)
-        {
-            if (tilesSpawned.Count <= 0)
-            {
-                yield return null;
-                continue;
-            }
-
-            int t = 0;
-            for (int i = 0; i < tilesSpawned.Count; i++)
-            {
-                tilesSpawned[i].tileObject.SetActive(!tilesSpawned[i].tileObject.activeInHierarchy);
-                t++;
-                if (t > 20)
-                {
-                    t = 0;
-                    yield return null;   
-                }
-            }
-        }
-    }
-    
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
@@ -59,8 +29,8 @@ public class NavigationRoom : MonoBehaviour
     {
         ClearTiles();
         InitTiles();
-        GenerateNavigationTilesDebugVisuals();
-        BoxcastAgainstSpawnedDebugTiles();
+        GenerateNavigationTiles();
+        BoxCastAgainstSpawnedTiles();
     }
 
     void InitTiles()
@@ -68,7 +38,7 @@ public class NavigationRoom : MonoBehaviour
         tiles = new Tile[roomSize.x, roomSize.y,roomSize.z];
     }
     
-    void GenerateNavigationTilesDebugVisuals()
+    void GenerateNavigationTiles()
     {
         // 0,0,0 is back left bottom tile
         Vector3 zeroTilePos = new Vector3(-roomSize.x / 2 * GamePropertiesStatic.tileSize, -roomSize.y / 2 * GamePropertiesStatic.tileSize, -roomSize.z / 2 * GamePropertiesStatic.tileSize);
@@ -112,7 +82,7 @@ public class NavigationRoom : MonoBehaviour
         }
     } 
     
-    void BoxcastAgainstSpawnedDebugTiles()
+    void BoxCastAgainstSpawnedTiles()
     {
         int overlappedTilesAmount = 0;
 

@@ -21,8 +21,9 @@ public class AstarWalker : MonoBehaviour
         get { return _arrivedToClosestTargetTileInPath; }
         set { _arrivedToClosestTargetTileInPath = value; }
     }
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(1);
         StartCoroutine(FollOwTarget());
     }
 
