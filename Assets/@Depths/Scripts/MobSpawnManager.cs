@@ -31,7 +31,7 @@ public class MobSpawnManager : MonoBehaviour
 
     void Start()
     {
-        //StartSpawningMobs();
+        StartSpawningMobs();
     }
 
     public void SetMaxMobsAlive(int amount)

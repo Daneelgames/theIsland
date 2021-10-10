@@ -23,11 +23,12 @@ public class AstarWalker : MonoBehaviour
     }
     IEnumerator Start()
     {
+        targetTransform.parent = null;
         yield return new WaitForSeconds(1);
-        StartCoroutine(FollOwTarget());
+        StartCoroutine(FollowTarget());
     }
 
-    IEnumerator FollOwTarget()
+    IEnumerator FollowTarget()
     {
         while (true)
         {

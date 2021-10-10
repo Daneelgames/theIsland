@@ -654,10 +654,10 @@ MonoBehaviour:
   attackCooldownCurrent: 0
   rotationSpeedScaler: 1
   spawnedProjectiles: []
-  minXRotation: -60
-  maxXRotation: 60
-  minYRotation: -90
-  maxYRotation: 90
+  minXRotation: -15
+  maxXRotation: 15
+  minYRotation: -15
+  maxYRotation: 15
   shotHolder: {fileID: 6505861335205220859}
   attackAu: {fileID: 209074986766438945}
   reloadAu: {fileID: 3245948102496279533}

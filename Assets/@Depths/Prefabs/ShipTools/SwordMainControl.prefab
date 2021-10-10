@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a717ba4e234ac4fb4f1c305a23b673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 300
+  damage: 150
   attackCooldown: 1
   dangerous: 0
   anim: {fileID: 5320687400414818411}
