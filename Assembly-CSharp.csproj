@@ -120,7 +120,6 @@
      <Compile Include="Assets\Scripts\PlayerUiController.cs" />
      <Compile Include="Assets\@Hikka\Scripts\PlantController.cs" />
      <Compile Include="Assets\__Global\GameObjectHelper.cs" />
-     <Compile Include="Assets\@Depths\Scripts\HarpoonController.cs" />
      <Compile Include="Assets\selected effect\scripts\Rotate_self.cs" />
      <Compile Include="Assets\@Hikka\Scripts\LoopsLoadingManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\NoiseMapDisplay.cs" />
@@ -197,6 +196,8 @@
      <Compile Include="Assets\@Hikka\Scripts\InteractiveObjectsManager.cs" />
      <Compile Include="Assets\@TilesIsland\NoiseGenerator\Heap.cs" />
      <Compile Include="Assets\MeshBrush\Scripts\Classes\Components\Examples\RuntimeExample.cs" />
+     <Compile Include="Assets\MeleeWeaponController.cs" />
+     <Compile Include="Assets\@Depths\Scripts\RangedWeaponController.cs" />
      <None Include="Assets\@Hikka\Fonts\JosefinSans\README.txt" />
      <None Include="Assets\StylizedWater2\Shaders\Underwater\UnderwaterEffects.hlsl" />
      <None Include="Assets\_BionicStructures\__CubemapsShaders\VertexColorTransp.shader" />

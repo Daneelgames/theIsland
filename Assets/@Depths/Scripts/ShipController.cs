@@ -16,16 +16,17 @@ public class ShipController : MonoBehaviour
     private Vector3 currentVelocity;
     private bool controlledInFrame = false;
     public ShipAudioManager shipAudioManager;
-    public SetTargetToAi setTargetToAi;
     public LandingObject chassis;
     public Transform playerHeadTransform;
     public RadarObjectListController radar;
 
     [Header("AI")]
     public AstarWalker astarWalker;
+    public SetTargetToAi setTargetToAi;
     
     [Header("Weapons")] 
-    public List<HarpoonController> weaponsControlledByMainControl = new List<HarpoonController>();
+    public List<RangedWeaponController> rangedWeapons = new List<RangedWeaponController>();
+    public List<MeleeWeaponController> meleeWeapons = new List<MeleeWeaponController>();
     
     [Header("360 Movement Control")]
     public float turnspeed = 5.0f;
@@ -151,9 +152,13 @@ public class ShipController : MonoBehaviour
             trueSpeed = 0;
             playerMovement.PlayerControlsShip(null);
             StopControllingShip();
-            for (int i = 0; i < weaponsControlledByMainControl.Count; i++)
+            for (int i = 0; i < rangedWeapons.Count; i++)
             {
-                weaponsControlledByMainControl[i].UseHarpoonInput(null);
+                rangedWeapons[i].UseWeaponInput(null);
+            }
+            for (int i = 0; i < meleeWeapons.Count; i++)
+            {
+                meleeWeapons[i].UseWeaponInput(null);
             }
             return;   
         }
@@ -163,9 +168,13 @@ public class ShipController : MonoBehaviour
         shipAudioManager.StartMovingSfx();
 
         
-        for (int i = 0; i < weaponsControlledByMainControl.Count; i++)
+        for (int i = 0; i < rangedWeapons.Count; i++)
         {
-            weaponsControlledByMainControl[i].UseHarpoonInput(this);
+            rangedWeapons[i].UseWeaponInput(this);
+        }
+        for (int i = 0; i < meleeWeapons.Count; i++)
+        {
+            meleeWeapons[i].UseWeaponInput(this);
         }
 
         rb.isKinematic = false;
@@ -214,9 +223,9 @@ public class ShipController : MonoBehaviour
     {
         grabber.UseGrabberInput();
     }
-    public void TryToUseHarpoon(HarpoonController harpoon)
+    public void TryToUseHarpoon(RangedWeaponController rangedWeapon)
     {
-        harpoon.UseHarpoonInput(this);
+        rangedWeapon.UseWeaponInput(this);
     }
     public void TryToUseDoorLock(DoorLockController doorLock)
     {

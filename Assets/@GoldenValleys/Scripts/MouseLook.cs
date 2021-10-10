@@ -162,9 +162,9 @@ public class MouseLook : MonoBehaviour
         playerHead.parent = ship.transform;
     }
 
-    public void PlayerControlsHarpoon(HarpoonController harpoon)
+    public void PlayerControlsHarpoon(RangedWeaponController rangedWeapon)
     {
-        if (harpoon == null)
+        if (rangedWeapon == null)
         {
             if (controlHarpoonCoroutine != null)
             {

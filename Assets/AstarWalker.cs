@@ -50,7 +50,6 @@ public class AstarWalker : MonoBehaviour
 
     public void UpdatePath(List<Tile> newPath)
     {
-        Debug.Log("Update Path");
         path = new List<Tile>(newPath);
         currentTargetTileOnPathIndex = 0;
     }
@@ -76,19 +75,16 @@ public class AstarWalker : MonoBehaviour
         // IF UNIT IS CLOSE TO ITS CLOSEST TILE ON PATH
         if (newDistance < 1)
         {
-            Debug.Log("path.IndexOf(closestTile) " + path.IndexOf(closestTile) + "; path.Count = " + path.Count);
             ArrivedToClosestTargetTileInPath = true;
             if (path.Count > path.IndexOf(closestTile) + 1)
             {
                 // GO FOR NEXT POINT
-                Debug.Log("GO FOR NEXT POINT");
                 if (currentTargetTileOnPathIndex < path.Count - 1)
                     currentTargetTileOnPathIndex++;
             }
             else
             {
                 // GO TO CLOSEST TILE
-                Debug.Log("GO TO CLOSEST TILE");
                 currentTargetTileOnPathIndex = path.IndexOf(closestTile);
             }
         }

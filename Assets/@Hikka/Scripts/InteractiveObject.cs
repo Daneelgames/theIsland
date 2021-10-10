@@ -17,7 +17,7 @@ public class InteractiveObject : MonoBehaviour
     [Header("FOR SHIPS")]
     public ShipController shipController;
     [SerializeField] GrabberController grabberController;
-    [SerializeField] HarpoonController harpoonController;
+    [SerializeField] RangedWeaponController rangedWeaponController;
     [SerializeField] DoorLockController doorLockController;
     [SerializeField] MusicPlayer musicController;
     [SerializeField] LightsToggle lightsToggle;
@@ -83,7 +83,7 @@ public class InteractiveObject : MonoBehaviour
                 shipController.TryToUseGrabber(grabberController);
                 break;
             case ActionType.Harpoon:
-                shipController.TryToUseHarpoon(harpoonController);
+                shipController.TryToUseHarpoon(rangedWeaponController);
                 break;
             
             case ActionType.DoorLock:
