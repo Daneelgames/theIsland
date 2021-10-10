@@ -54,7 +54,7 @@ public class RadarObjectListController : MonoBehaviour
             
             for (int i = 0; i < InteractiveObjectsManager.instance.shipInteractiveObjects.Count; i++)
             {
-                if (ownShipHc.gameObject == InteractiveObjectsManager.instance.shipInteractiveObjects[i].gameObject)
+                if (InteractiveObjectsManager.instance.shipInteractiveObjects[i] == null || ownShipHc.gameObject == InteractiveObjectsManager.instance.shipInteractiveObjects[i].gameObject)
                     continue;
 
                 bool canAdd = true;
