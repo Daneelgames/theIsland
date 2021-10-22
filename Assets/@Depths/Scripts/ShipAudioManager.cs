@@ -21,12 +21,18 @@ public class ShipAudioManager : MonoBehaviour
         shipStartMovingSfxSource.Play();
         shipMovingSfxSource.pitch = Random.Range(0.75f, 1.25f);
         shipMovingSfxSource.Play();
+        engineAmbientSource0.Play();
+        engineAmbientSource1.Play();
+        engineAmbientSource2.Play();
     }
     public void StopMovingSfx()
     {
         shipEndMovingSfxSource.pitch = Random.Range(0.75f, 1.25f);
         shipEndMovingSfxSource.Play();
         shipMovingSfxSource.Stop();
+        engineAmbientSource0.Stop();
+        engineAmbientSource1.Stop();
+        engineAmbientSource2.Stop();
     }
 
     public void SetShipsEngineTrueSpeed(float trueSpeed, float minTrueSpeed, float maxTrueSpeed)

@@ -1,24 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Depths.Scripts;
 using PlayerControls;
 using UnityEngine;
 
 public class NavigationManager : MonoBehaviour
 {
     public static NavigationManager instance;
-    
-    public float tileSize = 5;
 
     public NavigationRoom activeNavigationRoom;
-
+    public List<NavigationRoom> spawnedNavigationRooms = new List<NavigationRoom>();
 
     [Header("Debug")] 
     public bool debug = true;
-    public Material playerTileMaterial;
-    public Material freeTileMaterial;
-    public Material occupiedTileMaterial;
-    public Material pathTileMaterial;
+    public  Material playerTileMaterial;
+    public  Material freeTileMaterial;
+    public  Material occupiedTileMaterial;
+    public  Material pathTileMaterial;
     public List<Tile> path;
 
     private void Awake()
@@ -28,6 +27,8 @@ public class NavigationManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        StartCoroutine(FindActiveRoom());
+        
         if (!debug)
             yield break;
 
@@ -51,6 +52,40 @@ public class NavigationManager : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
+    IEnumerator FindActiveRoom()
+    {
+        float distance = 1000;
+        float newDistance = 0;
+        NavigationRoom newClosestRoom = null;
+        
+        while (true)
+        {
+            distance = 1000;
+            newClosestRoom = null;
+            
+            for (int i = 0; i < spawnedNavigationRooms.Count; i++)
+            {
+                newDistance = Vector3.Distance(spawnedNavigationRooms[i].transform.position, PlayerMovement.instance.transform.position);
+                if (newDistance < distance)
+                {
+                    distance = newDistance;
+                    newClosestRoom = spawnedNavigationRooms[i];
+                }
+            }
+
+            if (newClosestRoom != activeNavigationRoom)
+            {
+                if (activeNavigationRoom)
+                    activeNavigationRoom.ClearTiles();
+                
+                activeNavigationRoom = newClosestRoom;
+                activeNavigationRoom.GenerateRoomNavigation();
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+    
     public Tile TileFromWorldPosition(Vector3 worldPosition)
     {
         // RETURN CLOSEST TILE

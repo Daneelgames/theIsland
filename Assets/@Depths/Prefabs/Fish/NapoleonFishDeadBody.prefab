@@ -72,10 +72,12 @@ MonoBehaviour:
     - Pick Up
   shipController: {fileID: 0}
   grabberController: {fileID: 0}
-  harpoonController: {fileID: 0}
+  rangedWeaponController: {fileID: 0}
   doorLockController: {fileID: 0}
+  musicController: {fileID: 0}
   lightsToggle: {fileID: 0}
   systemVisualAnimator: {fileID: 0}
+  radarObject: {fileID: 0}
   collider: {fileID: 0}
   protableTransformOffset: {x: 0, y: 0, z: 0}
   rb: {fileID: 7957715671369879844}
@@ -86,6 +88,7 @@ MonoBehaviour:
     displayedName:
     - 'E: let go'
   chassis: {fileID: 0}
+  listOfChoicesButtons: []
   plantController: {fileID: 0}
   toolToPickUp: {fileID: 0}
 --- !u!54 &7957715671369879844

@@ -164,3 +164,4 @@ MonoBehaviour:
   targetPlayer: 0
   deathParticles: {fileID: 0}
   verticalGravityForce: 1
+  force: {x: 0, y: 0, z: 0}

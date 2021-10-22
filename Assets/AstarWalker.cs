@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Polarith.AI.Move;
-using Polarith.AI.Package;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -23,12 +21,14 @@ public class AstarWalker : MonoBehaviour
         get { return _arrivedToClosestTargetTileInPath; }
         set { _arrivedToClosestTargetTileInPath = value; }
     }
-    void Start()
+    IEnumerator Start()
     {
-        StartCoroutine(FollOwTarget());
+        targetTransform.parent = null;
+        yield return new WaitForSeconds(1);
+        StartCoroutine(FollowTarget());
     }
 
-    IEnumerator FollOwTarget()
+    IEnumerator FollowTarget()
     {
         while (true)
         {
@@ -51,7 +51,6 @@ public class AstarWalker : MonoBehaviour
 
     public void UpdatePath(List<Tile> newPath)
     {
-        Debug.Log("Update Path");
         path = new List<Tile>(newPath);
         currentTargetTileOnPathIndex = 0;
     }
@@ -75,21 +74,18 @@ public class AstarWalker : MonoBehaviour
         }
 
         // IF UNIT IS CLOSE TO ITS CLOSEST TILE ON PATH
-        if (newDistance < NavigationManager.instance.tileSize / 5)
+        if (newDistance < 1)
         {
-            Debug.Log("path.IndexOf(closestTile) " + path.IndexOf(closestTile) + "; path.Count = " + path.Count);
             ArrivedToClosestTargetTileInPath = true;
             if (path.Count > path.IndexOf(closestTile) + 1)
             {
                 // GO FOR NEXT POINT
-                Debug.Log("GO FOR NEXT POINT");
                 if (currentTargetTileOnPathIndex < path.Count - 1)
                     currentTargetTileOnPathIndex++;
             }
             else
             {
                 // GO TO CLOSEST TILE
-                Debug.Log("GO TO CLOSEST TILE");
                 currentTargetTileOnPathIndex = path.IndexOf(closestTile);
             }
         }

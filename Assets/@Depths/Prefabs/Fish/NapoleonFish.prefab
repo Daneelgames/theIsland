@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 7974196291072837853}
   - component: {fileID: 6131264811935527938}
   - component: {fileID: 2637692648634577811}
+  - component: {fileID: -6818725371570366401}
   m_Layer: 7
   m_Name: NapoleonFish
   m_TagString: Untagged
@@ -209,7 +210,6 @@ MonoBehaviour:
   explosivePowerOnDamage: 500
   explosiveRaidusOnDamage: 50
   shipController: {fileID: 0}
-  spaceShipController: {fileID: 0}
   astarWalker: {fileID: 2637692648634577811}
   damagedAu: {fileID: 0}
   interactiveObjectsToDrop:
@@ -255,6 +255,21 @@ MonoBehaviour:
   aiShipSpeedScaler: 1
   lookToMovementDirection: 1
   turnSpeed: 0.66
+--- !u!114 &-6818725371570366401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974196291072837854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dbe966c4c9e6340b95df95d781796a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  astarWalker: {fileID: 2637692648634577811}
+  rb: {fileID: 7957715671369879844}
+  speed: 100
 --- !u!1001 &6278643146303896126
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -32,6 +32,9 @@ public class MobCloseAttack : MonoBehaviour
     {
         for (var index = 0; index < damagedHC.Count; index++)
         {
+            if (damagedHC[index] == null)
+                continue;
+            
             if (go == damagedHC[index].gameObject)
                 return;
         }

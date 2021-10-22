@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
-using Polarith.AI.Package;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -32,7 +31,6 @@ public class HealthController : MonoBehaviour
 
     [Header("AI")]
     public ShipController shipController;
-    public SpaceshipController spaceShipController;
     public AstarWalker astarWalker;
     
     [Header("Audio")]

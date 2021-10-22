@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4044204517108333392}
   - component: {fileID: 4307773872264163048}
   - component: {fileID: -6791345005979772348}
-  - component: {fileID: 3745803901174988969}
   - component: {fileID: 3154633582253892314}
   m_Layer: 6
   m_Name: CoralRock1
@@ -96,21 +95,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2329773098209631623, guid: 092c5f87614f29f419bbef08d7693345, type: 3}
---- !u!64 &3745803901174988969
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8270926348443676614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2329773098209631623, guid: 092c5f87614f29f419bbef08d7693345, type: 3}
 --- !u!114 &3154633582253892314
